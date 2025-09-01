@@ -1,0 +1,366 @@
+---
+title: "Practical"
+subtitle: "Distributions"
+toc: true
+toc-location: right
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(ggridges)
+library(kableExtra)
+```
+
+# Introduction
+
+## Session overview
+
+In this practical you will read in a dataset and plot distributions in various ways. You will also get a bit of practice with tidyverse data wrangling.
+
+## Philosophy
+
+Practicals are not a test. It is expected that you often don't know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips
+
+-   don't worry about making mistakes
+-   don't let what you can not do interfere with what you can do
+-   discussing code with your neighbours will help
+-   look things up in the independent study material
+-   look things up in your own code from earlier workshops
+-   there are no stupid questions
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. Record your answers in your script for future reference.
+:::
+
+# Getting started
+
+![](images/do_on_your_computer.png) Start RStudio from the Start menu.
+
+![](images/do_in_R.png) Go the Files tab in the lower right pane and click on the `...` on the right. This will open a "Go to folder" window. Navigate to a place on your computer where you keep your work. Click Open.
+
+![](images/do_in_R.png) Also on the Files tab click on `New Folder`. Type "data-visualisation-in-r" in to the box. This will be the folder that we work in throughout.
+
+![](images/do_in_R.png) Make an RStudio project for this workshop by clicking on the drop-down menu on top right where it says `Project: (None)` and choosing New Project, then New Directory, then New Project. Name the RStudio Project 'week-3'.
+
+![](images/do_in_R.png) Make a new script then save it with a name like visualisation.R to carry out the rest of the work.
+
+![](images/do_in_R.png) Add a comment to the script: `# Distributions`. You can generally add comments in your R scripts following `#`. Commenting is extremely useful to keep track of what your code does, so use them extensively as you write code in the exercises below and in all your R work!
+
+# Exercises
+
+## Wellbeing
+
+We'll be working with a simulated dataset is based on a fictional cross-sectional survey study exploring the relationships between social support, therapy attendance, loneliness, sleep quality, and overall wellbeing in adults.
+
+In this fictional study, participants were recruited from community mental health clinics and general community advertisements between 2019 and 2022. They completed a survey assessing:
+
+-   Perceived social support (categorized as Low, Medium, or High)
+
+-   Current therapy status (Yes or No)
+
+-   Loneliness (a standardized loneliness score; higher scores indicate greater loneliness)
+
+-   Subjective wellbeing (higher scores indicate better wellbeing)
+
+-   Sleep quality (rated on a 1–10 scale)
+
+-   Demographics, including age and sex
+
+The fictional study aimed to understand how social support and therapy might relate to feelings of loneliness and overall wellbeing, as well as how these factors interact with sleep and demographic characteristics.
+
+## Packages
+
+Remember that packages, such as **`ggplot2`** [@ggplot2] need to be installed once and then loaded each session. **`ggplot2`** is one of the **`tidyverse`** [@tidyverse] packages.
+
+Today, we'll be using **`tidyverse`** and **`ggridges`**
+
+::: callout-important
+## Important
+
+If you are working on a University computer (or the VDS) you *do not* need to install **`tidyverse`**.
+
+If you are working on your own computer or using RStudio cloud you *do* need to install **`tidyverse`**.
+:::
+
+To install a package:
+
+![](images/do_in_R.png) Go the Packages tab on the lower right pane. Click Install and type the name of the package into the box that appears.
+
+Wait until you get the prompt back. It will take a few moments, be patient!
+
+To use a package which is installed you have to load it with the `library()` function. You will need to do this whether you are working on your own computer or on a University computer
+
+![](images/do_in_R.png) Load the **`tidyverse`** and **`ggridges`**. Type or copy the following code into your R script:
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(ggridges)
+```
+
+## Reading in data
+
+You will go into more depth about reading in data in the Data Analysis module For now, you can just follow these steps.
+
+![](images/do_on_your_computer.png) Save this file in your `week-3` folder:
+
+-   Data from fictional wellbeing study: [therapy_data.csv](data-raw/therapy_data.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+```{r}
+#| eval: false
+therapy_df <- read_csv("therapy_data.csv")
+```
+
+```{r}
+#| include: false
+therapy_df <- read_csv("data-raw/therapy_data.csv")
+```
+
+## Look at data
+
+![](images/do_in_R.png) Examine the variables and first few rows of the `therapy_df` object using `head()`
+
+```{r}
+
+head(therapy_df)
+```
+
+See that you have a table where each column is a variable from the fictional study, such as wellbeing_score. Each row contains values for each variable for one participant.
+
+## Exercise 1: Histograms
+
+Look at the distribution of the `loneliness_score` variable.
+
+![](images/do_in_R.png) Plot the distribution by creating a plot in which the x-axis variable is `loneliness_score` and the distribution of this variable is shown as a histogram.
+
+```{r}
+#| echo: false
+ggplot(therapy_df, aes(x = loneliness_score)) +
+  geom_histogram()
+```
+
+![](images/do_in_R.png) Try different numbers of bins (e.g., 10, 30, 50)
+
+```{r}
+#| echo: false
+#| eval: false
+ggplot(therapy_df, aes(x = loneliness_score)) +
+  geom_histogram(bins = 10)
+```
+
+![](images/do_on_internet.png) Look up the [named colors](https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/)
+
+![](images/do_in_R.png) Choose a color from the list and use it to change the fill color of your histogram
+
+```{r}
+#| echo: false
+#| eval: false
+ggplot(therapy_df, aes(x = loneliness_score)) +
+  geom_histogram(bins = 10, fill = "cyan")
+```
+
+## Exercise 2: Comparing distributions in groups
+
+A density plot allows us to look at the overall shape of the distribution, rather than counts of values within bins.
+
+![](images/do_in_R.png) Create a density plot of `loneliness_score`.
+
+```{r}
+ggplot(therapy_df, aes(x = loneliness_score)) +
+  geom_density()
+```
+
+We can examine both the histogram and density plot by overlaying them.
+
+![](images/do_in_R.png) Overlay density and histogram of `loneliness_score`.
+
+```{r}
+ggplot(therapy_df, aes(x = loneliness_score, y = after_stat(density))) +
+  geom_histogram(binwidth = 5, fill = "blue", 
+                 color = "black", alpha = 0.5) +
+  geom_density()
+```
+
+What if we want to examine how `loneliness_score` varies across groups, such as people with different levels of support (in the `support_level` variable)? One way we can look at this is to overlay the density of `loneliness_score` for each `support_level`.
+
+To do this, we can copy the density plot from the first part of this exercise, but within the brackets for `geom_density()`, use `support_level` to control the fill aesthetic.
+
+![](images/do_in_R.png) Copy your code for plotting `loneliness_score` density, and add some `aes()` code within the `geom_density()` to fill based on `support_level`.
+
+```{r}
+#| echo: false
+ggplot(therapy_df, aes(x = loneliness_score)) +
+  geom_density(aes(fill = support_level))
+```
+
+See that the fill is opaque, so the densities cover each other up. We can make them transparent by setting alpha to a value lower than 1, as we did in the histogram above.
+
+![](images/do_in_R.png) Set the alpha level for `geom_density()` to 0.5.
+
+```{r}
+#| echo: false
+ggplot(therapy_df, aes(x = loneliness_score)) +
+  geom_density(aes(fill = support_level), alpha = 0.5)
+```
+
+## Exercise 3: Boxplots
+
+Our last density plot allowed us to get a sense of how the distributions of `loneliness_score` varied for different levels of support (`support_level`). But, we might find that visual a bit crowded. Perhaps we want to get a more compact depiction of the distributions and visually separate distributions for each support_level. One way to do this is to use boxplots.
+
+![](images/do_in_R.png) Create this basic boxplot
+
+```{r}
+ggplot(therapy_df, aes(x = support_level, y = loneliness_score)) +
+  geom_boxplot()
+```
+
+What if we want to keep the compact format of the boxplot, but also see the distribution of individual points?
+
+![](images/do_in_R.png) Add a `geom_jitter()` line to show individual observations
+
+```{r}
+#| echo: false
+ggplot(therapy_df, aes(x = support_level, y = loneliness_score)) +
+  geom_boxplot() +
+  geom_jitter()
+```
+
+![](images/do_in_R.png) This is a little busy! Set alpha for `geom_jitter()` to below 1, e.g., 0.2.
+
+```{r}
+#| echo: false
+ggplot(therapy_df, aes(x = support_level, y = loneliness_score)) +
+  geom_boxplot() +
+  geom_jitter(alpha = 0.2)
+```
+
+Boxplots show medians and quartiles. We can plot additional summary statistics, like mean values, using `stat_summary()`
+
+![](images/do_in_R.png) Copy the code below to add a point indicating the mean value, and edit the content within `stat_summary()` to change the color of the points.
+
+```{r}
+#| eval: false
+ggplot(therapy_df, aes(x = support_level, y = loneliness_score)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point")
+```
+
+```{r}
+#| echo: false
+ggplot(therapy_df, aes(x = support_level, y = loneliness_score)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point", color = "red")
+```
+
+## Exercise 4: Violin plots
+
+The boxplots we just generated were less crowded than the overlapping density plots. However, this advantage came at a cost: we can no longer see the **shape** of the distribution. A violin plot allows us to compare the shape of the distribution for one variable across levels of another variable.
+
+![](images/do_in_R.png) Generate this basic violin plot
+
+```{r}
+ggplot(therapy_df, aes(x = support_level, y = loneliness_score)) +
+  geom_violin()
+```
+
+If we want to combine the advantages of a boxplot (compact depiction of medians and quartiles) with the advantages of a violinplot (showing the shapes of the distributions), we can overlay them.
+
+![](images/do_in_R.png) Overlay a violin and boxplot
+
+```{r}
+ggplot(therapy_df, aes(x = support_level, y = loneliness_score)) + 
+  geom_violin() +
+  geom_boxplot()
+```
+
+Hm, these boxplots are very big and cover up parts of the violin plots underneath!
+
+![](images/do_in_R.png) Within `geom_boxplot()`, change the width to something narrower, like 0.1
+
+```{r}
+#| echo: false
+ggplot(therapy_df, aes(x = support_level, y = loneliness_score)) + 
+  geom_violin() +
+  geom_boxplot(width = 0.1)
+```
+
+![](images/do_in_R.png) To help us visually compare the distributions, within `geom_violin()`, use `support_level` to control the fill aesthetic
+
+```{r}
+#| echo: false
+ggplot(therapy_df, aes(x = support_level, y = loneliness_score)) + 
+  geom_violin(aes(fill = support_level)) +
+  geom_boxplot(width = 0.1)
+```
+
+## Exercise 5: Ridgeline plots
+
+You might have noticed that each "violin" in a violin plot essentially shows the distribution twice (the two "sides" of the violin). Ridgeline plots allow you to show each distribution once in a nice visually separated way.
+
+![](images/do_in_R.png) Generate a basic ridgeline plot
+
+```{r}
+ggplot(therapy_df, aes(x = loneliness_score, y = support_level)) +
+  geom_density_ridges()
+```
+
+![](images/do_in_R.png) Use `support_level` to control the fill aesthetic of `geom_density_ridges()` and set the overall alpha level to less than 1 (e.g., 0.5)
+
+```{r}
+#| echo: false
+ggplot(therapy_df, aes(x = loneliness_score, y = support_level)) +
+  geom_density_ridges(aes(fill = support_level), alpha = 0.5)
+```
+
+## Exercise 6: Wrangling practice with visualization
+
+Currently, our dataset contains a lot of information. But we may want to go beyond the exact data in the dataset.
+
+For example, we might want to look at differences in wellbeing for people who are `low` versus `high` in loneliness. We can't do this with the data as-is because `loneliness_score` is a continuous variable.
+
+This poses an extremely common data wrangling issue: we need to use the data we have to derive some new values of interest.
+
+![](images/do_in_R.png) Use `mutate` and `ifelse` to create a new variable called `loneliness_level` in which loneliness_scrores above the median value are `high` and those at or below median are `low`.
+
+```{r}
+# This code generates the new variable
+therapy_df <- therapy_df %>%
+  mutate(loneliness_level = ifelse(loneliness_score > median(loneliness_score), "high", "low"))
+
+# We can see that this new variable is added to therapy_df
+head(therapy_df)
+```
+
+![](images/do_in_R.png) Use either a boxplot, violin plot, or ridge plot to depict the distribution of `wellbeing_score` for each `loneliness_level`: your choice!
+
+```{r}
+#| include: false
+ggplot(therapy_df, aes(x = loneliness_level, y = wellbeing_score)) +
+  geom_violin(aes(fill = loneliness_level), alpha = 0.5) +
+  geom_boxplot(width = 0.1)
+```
+
+You're finished!
+
+# 🥳 Well Done! 🎉
+
+[Consolidate](study_after3.qmd)
+
+# The Code file
+
+This contains all the code needed in the workshop even where it is not visible on the webpage.
+
+The `practical.qmd` file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interweaved to produce well-formatted reports including webpages. [View the Qmd in Browser](https://github.com/laylaunger/york-data-vis-r-course/blob/main/data-vis/week-3/practical3.qmd).

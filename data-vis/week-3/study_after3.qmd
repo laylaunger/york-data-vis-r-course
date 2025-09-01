@@ -1,0 +1,85 @@
+---
+title: "Independent Study to Consolidate"
+subtitle: "Distributions"
+toc: true
+toc-location: right
+---
+
+# Practice
+
+Continue working on the **`tidyverse`** course on DataCamp if not yet complete.
+
+
+# Exercises
+
+```{r}
+#| include: false
+# Load packages
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(ggridges)
+})
+
+# Load data
+stress_df <- read_csv("data-raw/stress_data.csv")
+```
+
+
+## Set up:
+
+If you have just opened RStudio you will want to load the
+**`tidyverse`** and **`ggridges`** packages
+
+## Reading in data
+
+![](images/do_on_your_computer.png) Save this file in your `week-3` folder:
+
+-   Data from fictional stress study: [stress_data.csv](data-raw/stress_data.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+
+
+```{r}
+#| eval: false
+stress_df <- read_csv("stress_data.csv")
+```
+
+```{r}
+head(stress_df)
+```
+
+## Exercise 1: Histogram Practice
+
+![](images/do_in_R.png) Make a histogram of `stress_score`. Try two different bin settings and briefly note what changes. 
+
+Reflect: How does the bin size influence the level of fine detail you can see in the data?
+
+
+
+## Exercise 2: Density Overlay Practice
+
+![](images/do_in_R.png) Overlay a density curve and histogram of `stress_score.` Alter colors / alpha levels so that it is easy to see both the density curve and histogram.
+
+
+## Exercise 3: Categorical Distributions Practice
+
+![](images/do_in_R.png) Compare `stress_score` across `diagnosis` groups using either a boxplot or a violin (your choice). Add jittered points (transparent) and mark the mean with stat_summary().
+
+
+Reflect: Do the means and medians overlap? Are there group differences between diagnoses?
+
+# Exercise 4: Wrangling and Density Ridges
+
+What if we want to make the difference in `stress_score` across `diagnosis` groups more clear by ordering the diagnosis groups from highest to lowest `stress_score`? 
+
+![](images/do_in_R.png) We can "mutate" the `diagnosis` variable by reordering it according to mean `stress_score` within each diagnosis group:
+
+```{r}
+stress_df <- stress_df %>%
+  mutate(diagnosis = fct_reorder(diagnosis, stress_score, .fun = mean, .desc = TRUE))
+```
+
+![](images/do_in_R.png) Generate a ridgeline plot that compares the density curves of `stress_sore` for the different diagnoses. Color the ridges by `diagnosis` and alter the alpha level so that all curves are visible.
+
+# 🥳 Well Done! 🎉

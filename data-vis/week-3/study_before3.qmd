@@ -1,0 +1,30 @@
+---
+title: "Independent Study to Prepare"
+subtitle: "Distributions"
+toc: true
+toc-location: right
+---
+
+# Preparation for Weeks 2 and 3: Get Acquainted with Tidy Data Wrangling
+
+This preparation involves reading some chapters in an online book and getting started with an online DataCamp course. I will recommend this preparation for weeks 2 and 3. You can try taking an initial look in week 2, and revisit the reading more deeply in week 3.
+
+Although the focus of this module is on data visualisation, before you visualise data, you often need to take some steps to get it into a form that you can visualise. These steps are often referred to using phrases like "data management" and "data wrangling". These days, it is common practice in R to perform steps to ensure that your data are in a standard, "tidy" format in which data are stored in a table where each row is an observation and each column is a variable. Common steps for preparing data for visualisation and analysis include:
+
+-   Generating summary statistics, such as the mean value of an outcome variable for groups of participants
+
+-   Selecting a subset of data, such as a subset of variables, or rows for just participants in a subset of groups
+
+The Data Analysis module that you will be completing at the same time will cover many common tidy data wrangling steps, particularly in Weeks 3 and 4. Therefore, we won't spend much time covering these steps in the seminars for Data Visualisation. However, since this is a **crucial** part of working with data in R, you will benefit from getting acquainted with it for this module as well. 
+
+There are many resources for learning about tidy data wrangling. You are encouraged to try the following two resources:
+
+-   Read [Tidyverse Ch 4 - 7](https://bookdown.org/yih_huynh/Guide-to-R-Book/tidyverse.html)
+
+-   DataCamp courses on tidyverse and tidy wrangling
+
+# Distributions
+
+To prepare for diving into this week's topic, visualising distributions:
+
+- Read [Data Visualization Ch 7 and 9](https://clauswilke.com/dataviz/histograms-density-plots.html)

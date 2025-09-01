@@ -1,0 +1,1184 @@
+---
+title: "Week 3 Seminar: Distributions"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    highlight-style: github
+    width: 1200
+---
+
+
+```{r setup, include=FALSE}
+library(kableExtra)
+library(tidyverse)
+library(showtext)
+library(knitr)
+library(here)
+library(patchwork)
+library(colorspace)
+library(viridis)
+library(showtext)
+library(ggridges)
+options(knitr.kable.NA = '')
+knitr::opts_chunk$set(fig.retina = 3)
+theme_set(theme_bw(base_size = 18) +
+          theme(panel.grid = element_blank()))
+
+set.seed(123)
+
+n <- 300
+
+diagnosis <- sample(c("Depression", "Anxiety", "None"), n, replace = TRUE, prob = c(0.35, 0.35, 0.30))
+clinic <- sample(c("North", "South", "East"), n, replace = TRUE)
+sex <- sample(c("Male", "Female"), n, replace = TRUE)
+year <- sample(2018:2020, n, replace = TRUE)
+
+stress_score <- rnorm(n, mean = ifelse(diagnosis == "None", 15, ifelse(diagnosis == "Anxiety", 30, 28)), sd = 5)
+sleep_hours <- rnorm(n, mean = ifelse(diagnosis == "None", 7.5, ifelse(diagnosis == "Anxiety", 6.5, 5)), sd = 1)
+activity_score <- rnorm(n, mean = ifelse(diagnosis == "None", 70, ifelse(diagnosis == "Anxiety", 55, 40)), sd = 10)
+BMI <- rnorm(n, mean = ifelse(diagnosis == "None", 23, 26), sd = 3)
+
+stress_score <- stress_score + rnorm(n, mean = ifelse(sex == "Female", 3, -3), sd = 1.5)
+
+
+# generate stress outliers
+outlier_index <- sample(1:length(stress_score), 10)
+
+for(i in 1:length(stress_score)) {
+  
+  if(i %in% outlier_index){
+    
+    if(stress_score[i] > 30) {
+      stress_score[i] = stress_score[i] - 20
+    } else {
+      stress_score[i] = stress_score[i] + 20
+    }
+  }
+}
+
+stress_score <- ifelse(stress_score < 1, 1, stress_score)
+
+# Combine
+psych_df <- tibble(
+  diagnosis,
+  clinic,
+  stress_score,
+  sleep_hours,
+  activity_score,
+  BMI,
+  sex,
+  year
+)
+
+psych_df$diagnosis = factor(psych_df$diagnosis, levels = c("None", "Anxiety", "Depression"))
+
+
+# Generate base theme for plots
+base_theme <- function (base_text_size = 15) { 
+  theme_linedraw(base_size=11) %+replace% 
+    theme(
+      panel.background  = element_blank(),
+      plot.background = element_rect(fill = "transparent", color = NA), 
+      legend.background = element_rect(fill = "transparent", color = NA),
+      legend.key = element_rect(fill = "transparent", color = NA),
+      axis.ticks = element_blank(),
+      text = element_text(size = base_text_size),
+      plot.title = element_text(size = base_text_size + 3, hjust = 0, vjust = 0.5, face = "bold", margin = margin(b = 0.2, unit = "cm")),
+      plot.subtitle = element_text(size = base_text_size - 2, hjust = 0, vjust = 0.5, margin = margin(b = 0.2, unit = "cm")),
+      plot.caption = element_text(size = base_text_size - 8, hjust = 1, face = "italic", margin = margin(t = 0.1, unit = "cm")),
+      axis.title = element_text(size = base_text_size + 2),
+      legend.title = element_text(size = base_text_size + 2),
+      panel.grid = element_blank()
+    )
+}
+
+```
+
+## From last time
+
+<br>
+
+Using grammar of graphics:
+
+- mapping data variables to axes, shapes (bars, points, etc)
+- controlling attributes such as color, coordinate ranges
+- customising appearance
+- faceting
+
+
+
+---
+
+
+## Today
+
+<br>
+
+Tidyverse overview
+
+<br>
+
+Graphing distributions: techniques and considerations
+
+
+- histograms
+- density plots
+- boxplots
+- violin plots
+- ridgeline plots
+
+
+---
+
+
+## Today's data
+
+<br>
+
+```{r psych-data, echo=FALSE}
+# Display using kable
+psych_df %>% 
+  head(10) %>% 
+  kable("html") %>%
+  kable_styling(font_size = 24, position = "center", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Data types
+
+<br>
+
+<div style="font-size: 75%;">
+
+Categorical
+
+- `diagnosis`
+- `clinic`
+- `sex`
+
+Continuous
+
+- `stress_score`
+- `sleep_hours`
+- `activity_score`
+- `BMI`
+- `year`
+
+</div>
+
+---
+
+## Today
+
+<br>
+
+**Tidyverse overview**
+
+<br>
+
+Graphing distributions: techniques and considerations
+
+
+- histograms
+- density plots
+- boxplots
+- violin plots
+- ridgeline plots
+
+---
+
+## What's the tidyverse?
+
+<br>
+
+A set of packages for wrangling, visualising and analysing data 
+
+Similar approaches, code structure, data structure
+
+<br>
+
+Data wrangling:
+
+`dplyr`, `stringr`, `tidyr`, `readr`, `forcats`
+
+
+[Reference](https://r4ds.had.co.nz/)
+
+
+---
+
+
+## Data wrangling approach
+
+**note the "pipe"**
+
+<br>
+
+```{r logic, eval = FALSE}
+data %>% 
+  do_something_to(some_part_of_data)
+```
+
+---
+
+## Useful functions: count
+
+**count number of times each value of a variable occurs**
+
+<br>
+
+```{r count}
+psych_df %>% 
+  count(diagnosis)
+```
+
+---
+
+## Useful functions: filter
+
+**filter rows that match a certain condition**
+
+<br>
+
+```{r filter-1}
+psych_df %>% 
+  filter(diagnosis == "Anxiety") %>% 
+  count(diagnosis)
+```
+
+---
+
+## Useful functions: filter
+
+**filter rows that match a certain condition**
+
+<br>
+
+```{r filter-2}
+psych_df %>% 
+  filter(diagnosis %in% c("Anxiety","Depression")) %>% 
+  count(diagnosis)
+```
+
+---
+
+## Useful functions: filter
+
+**filter rows that match a certain condition**
+
+<br>
+
+```{r filter-3}
+psych_df %>% 
+  filter(diagnosis == "Anxiety" | diagnosis == "Depression") %>% 
+  count(diagnosis)
+```
+
+---
+
+## Useful functions: filter
+
+**filter rows that match a certain condition**
+
+<br>
+
+```{r filter-4}
+psych_df %>% 
+  filter(diagnosis != "None") %>% 
+  count(diagnosis)
+```
+
+---
+
+## Useful functions: filter
+
+**filter rows that match a certain condition**
+
+<br>
+
+```{r filter-6}
+psych_df %>% 
+  filter(!is.na(diagnosis)) %>% 
+  count(diagnosis)
+```
+
+---
+
+## Useful functions: mutate
+
+**generate additional variables**
+
+<br>
+
+```{r mutate-1}
+psych_df %>% 
+  mutate(activity_BMI = activity_score / BMI) %>%
+  select(diagnosis, activity_score, BMI, activity_BMI)
+```
+
+---
+
+## Useful functions: mutate
+
+**generate additional variables**
+
+<br>
+
+```{r mutate-2}
+psych_df %>% 
+  mutate(activity_BMI = activity_score / BMI,
+         activity_sleep = activity_score / sleep_hours)%>%
+  select(diagnosis, activity_score, BMI, activity_BMI, activity_sleep)
+```
+
+
+---
+
+## Useful functions: group_by + mutate
+
+**generate additional variables by group**
+
+<br>
+
+
+```{r mutate-3}
+psych_df %>% 
+  group_by(diagnosis) %>%
+  mutate(stress_diagnosis = mean(stress_score)) %>%
+  select(diagnosis, stress_score, stress_diagnosis)
+```
+
+---
+
+## Useful functions: group_by + mutate
+
+**generate additional variables by group**
+
+<br>
+
+```{r mutate-4}
+psych_df %>% 
+  group_by(diagnosis, clinic) %>%
+  mutate(stress_diagnosis = mean(stress_score))%>%
+  select(diagnosis, clinic, stress_score, stress_diagnosis)
+```
+
+---
+
+## Useful functions: ifelse
+
+**generate additional variables by group**
+
+<br>
+
+```{r mutate-5}
+psych_df %>% 
+  group_by(diagnosis) %>%
+  mutate(stress_diagnosis = mean(stress_score),
+         stress_binary = ifelse(stress_score > stress_diagnosis, "high", "typical"))%>%
+  select(diagnosis, stress_score, stress_diagnosis, stress_binary)
+```
+
+---
+
+## Useful functions: group_by + summarise
+
+**calculating summaries for groups**
+
+<br>
+
+```{r summarise-1}
+psych_df %>% 
+  group_by(diagnosis) %>% 
+  summarise(stress_mean = mean(stress_score))
+```
+
+---
+
+## Other useful data wrangling functions
+  
+<br>
+
+`select()` is like `filter()` but for variables (columns) instead of observations (rows)
+
+<br>
+
+`arrange()` sorts data
+
+<br>
+
+`rename()` does exactly what you think
+
+<br>
+
+`left_join()` (and other joins) combines datasets based on shared values in shared variables
+
+---
+
+## Today
+
+<br>
+
+Tidyverse overview
+
+<br>
+
+**Graphing distributions**: techniques and considerations
+
+
+- histograms
+- density plots
+- boxplots
+- violin plots
+- ridgeline plots
+
+
+---
+
+## Why distributions?
+
+<br>
+
+Distributions show the overall shape and spread of data that single summary statistics (like the mean) can miss
+
+<br>
+
+Help spot skew and outliers, which inform choices of appropriate analyses
+
+---
+
+## Visualizing distributions
+
+<br>
+
+Focus on visualizing the distribution of one variable:
+
+`stress_score`
+
+<br>
+
+Pros/cons of different ways to visualize and compare distributions
+
+---
+
+## Today's agenda
+
+
+1. histograms
+
+2. density plots
+
+3. box plots
+
+4. violin plots
+
+5. ridgeline plots
+
+---
+
+## Today's agenda
+
+
+1. **histograms**
+
+2. density plots
+
+3. box plots
+
+4. violin plots
+
+5. ridgeline plots
+
+---
+
+## 1. Histograms
+
+<br>
+
+Visualize the distribution of a numeric variable with lots of values
+
+<br>
+
+**Pro**: 
+
+- can view the entire distribution
+
+**Con**: 
+
+- need to be careful with bin width
+
+---
+
+## 1. Histograms
+
+```{r histogram-1, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_histogram()
+```
+
+```{r histogram-1, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
+---
+
+## 1. Histograms
+
+```{r histogram-2, fig.align="center", fig.height = 5}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_histogram(bins = 5)
+```
+
+---
+
+## 1. Histograms
+
+```{r histogram-3, fig.align="center", fig.height = 5}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_histogram(bins = 100)
+```
+
+---
+
+## 1. Histograms
+
+```{r histogram-4, fig.align="center", fig.height = 5}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_histogram(bins = 35)
+```
+
+---
+
+## 1. Histograms
+
+```{r histogram-5, fig.align="center", fig.height = 5}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_histogram(binwidth = 0.5)
+```
+
+---
+
+## 1. Histograms
+
+```{r histogram-6, fig.align="center", fig.height = 5}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_histogram(binwidth = 0.1)
+```
+
+---
+
+## 1. Histograms
+
+```{r histogram-7, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_histogram(binwidth = 1,  fill = "blue", color = "black")
+```
+
+---
+
+```{r histogram-7, echo = FALSE, fig.align="center", fig.height = 4.5}
+```
+
+---
+
+## 1. Histograms
+
+**comparing distributions**
+
+```{r histogram-8, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score, fill = diagnosis)) +
+  geom_histogram(binwidth = 1)
+```
+
+---
+
+```{r histogram-8, echo = FALSE, fig.align="center", fig.height = 4}
+```
+
+---
+
+
+## Today's agenda
+
+<br>
+
+
+1. histograms
+
+2. **density plots**
+
+3. box plots
+
+4. violin plots
+
+5. ridgeline plots
+
+
+---
+
+## 2. Density plots
+
+<br>
+
+Smoothed version of the histogram
+
+**Pro:**
+
+- Focus on overall shape rather than local fluctuations
+
+**Con:**
+
+- Can be misleading with small data sets
+
+---
+
+## 2. Density plots
+
+```{r density-1, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_density()
+```
+
+```{r density-1, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
+---
+
+## 2. Density plots
+
+```{r density-2, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_density(fill = "blue", `alpha` = 0.75)
+```
+
+```{r density-2, echo = FALSE, fig.align="center", fig.height = 5}
+```
+
+---
+
+## 2. Density plots
+
+**overlaying a histogram**
+
+```{r density-3, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score, y = after_stat(density))) +
+  # the y argument scales down the histogram 
+  # to match the density curve
+  geom_histogram(binwidth = 1, fill = "blue", 
+                 color = "black", alpha = 0.75) +
+  geom_density()
+```
+
+---
+
+## 2. Density plots
+
+<br>
+
+```{r density-3, echo = FALSE, fig.align="center", fig.height = 5.5}
+```
+
+---
+
+## 2. Density plots
+
+**comparing two distributions**
+
+```{r density-4, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score, fill = diagnosis)) +
+  geom_density(alpha = 0.4)
+```
+
+---
+
+## 2. Density plots
+
+<br>
+
+```{r density-4, echo = FALSE, fig.align="center", fig.height = 5.5}
+```
+
+---
+
+## 2. Density plots
+
+```{r density-5, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score, color = diagnosis)) +
+  geom_density()
+```
+
+---
+
+## 2. Density plots
+
+<br>
+
+```{r density-5, echo = FALSE, fig.align="center", fig.height = 5.5}
+```
+
+---
+
+## 2. Density plots
+
+```{r density-6, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score)) +
+  geom_density(fill = "blue", alpha = 0.5) +
+  facet_wrap(~diagnosis)
+```
+
+---
+
+## 2. Density plots
+
+<br>
+
+```{r density-6, echo = FALSE, fig.align="center", fig.height = 5.5}
+```
+
+---
+
+## Today's agenda
+
+<br>
+
+
+1. histograms
+
+2. density plots
+
+3. **box plots**
+
+4. violin plots
+
+5. ridgeline plots
+
+---
+
+## 3. Box plots
+
+
+Compact depiction of:
+
+- Median, 25/75 percentiles (quartiles)
+- Potential outliers
+
+**Pro:**
+
+- Conveys key aspects of distribution in a concise way
+
+**Con:**
+
+- Can't see full distribution, which may obscure characteristics such as multi-modality
+
+
+---
+
+## 3. Box plots
+
+```{r box-1, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(y = diagnosis, x = stress_score)) +
+  geom_boxplot()
+```
+
+---
+
+## 3. Box plots
+
+```{r box-1, echo = FALSE, fig.align="center", fig.height = 4}
+```
+
+---
+
+
+## 3. Box plots
+
+**modifying outliers**
+
+```{r box-3, eval = FALSE}
+psych_df %>%
+  ggplot(aes(y = diagnosis, x = stress_score)) +
+  geom_boxplot(fill = "gray", outlier.color = "blue", 
+               outlier.shape = "circle open", outlier.size = 2)
+```
+
+---
+
+## 3. Box plots
+
+<br>
+
+```{r box-3, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
+
+---
+
+## 3. Box plots
+
+**marking the mean**
+
+```{r box-5, eval = FALSE}
+psych_df %>%
+  ggplot(aes(y = diagnosis, x = stress_score)) +
+  geom_boxplot(fill = "gray") +
+  stat_summary(fun = mean, geom = "point", #<<
+               shape = "square", size = 2, color = "red") #<<
+```
+
+---
+
+## 3. Box plots
+
+<br>
+
+```{r box-5, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
+---
+
+## 3. Box plots
+
+**adding jittered points**
+
+Conveys a sense of the distribution of data
+
+```{r box-6, eval = FALSE}
+psych_df %>%
+  ggplot(aes(y = diagnosis, x = stress_score)) +
+  geom_boxplot() +
+  geom_point(position = position_jitter(), color = "black", size = 0.4, alpha = 0.5) #<<
+```
+
+---
+
+## 3. Box plots
+
+<br>
+
+```{r box-6, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
+---
+
+## 3. Box plots
+
+**adding jittered points**
+
+Conveys a sense of the distribution of data
+
+```{r box-6b, eval = FALSE}
+psych_df %>%
+  ggplot(aes(y = diagnosis, x = stress_score)) +
+  geom_boxplot() +
+  geom_jitter(color = "black", size = 0.4, alpha = 0.5) #<<
+```
+
+---
+
+## 3. Box plots
+
+<br>
+
+```{r box-6b, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
+---
+
+
+## 3. Box plots
+
+**suppressing outliers**
+
+```{r box-7, eval = FALSE}
+psych_df %>%
+  ggplot(aes(y = diagnosis, x = stress_score)) +
+  geom_boxplot(outlier.shape = NA) + #<<
+  geom_jitter(color="black", size = 0.4, alpha = 0.5)
+```
+
+---
+
+## 3. Box plots
+
+<br>
+
+```{r box-7, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
+---
+
+## Today's agenda
+
+<br>
+
+
+1. histograms
+
+2. density plots
+
+3. box plots
+
+4. **violin plots**
+
+5. ridgeline plots
+
+---
+
+## 4. Violin plots
+
+<br>
+
+Similar to a boxplot, but less compact: shows the actual distribution, similar to a density plot
+
+Useful when you have a lot of data and want to see the shape of the distribution rather than look at all the individual points
+
+---
+
+## 4. Violin plots
+
+```{r violin-2, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(y = diagnosis, x = stress_score)) + 
+  geom_violin()
+```
+
+---
+
+```{r violin-2, echo = FALSE, fig.align="center", fig.height = 4}
+```
+
+---
+
+## 4. Violin plots
+
+**overlaying a boxplot**
+
+```{r violin-3, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(y = diagnosis, x = stress_score)) + 
+  geom_violin() +
+  geom_boxplot(width = 0.1, color = "grey", alpha = 0.5,
+               outlier.colour = "red")
+```
+
+---
+
+## 4. Violin plots
+
+<br>
+
+```{r violin-3, echo = FALSE, fig.align="center", fig.height = 5.5}
+```
+
+---
+
+## Today's agenda
+
+<br>
+
+
+1. histograms
+
+2. density plots
+
+3. box plots
+
+4. violin plots
+
+5. **ridgeline plots**
+
+---
+
+## 5. Ridgeline plots
+
+<br>
+
+Like violin plots, depict distributions of a variable for multiple groups
+
+Distributions are depicted as densities or histograms rather than violins
+
+<br>
+
+Requires the `ggridges` package
+
+An extension of `ggplot2` that uses the same syntax
+
+---
+
+## 5. Ridgeline plots
+
+```{r ridge-1, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score, y = diagnosis)) +
+  geom_density_ridges() #<<
+```
+
+---
+
+## 5. Ridgeline plots
+
+```{r ridge-1, echo = FALSE, fig.align="center", fig.height = 6}
+```
+
+---
+
+## 5. Ridgeline plots
+
+```{r ridge-2, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score, y = diagnosis)) +
+  geom_density_ridges(stat = "binline", binwidth = 1) #<<
+```
+
+---
+
+## 5. Ridgeline plots
+
+```{r ridge-2, echo = FALSE, fig.align="center", fig.height = 6}
+```
+
+---
+
+## 5. Ridgeline plots
+
+**ordering by mean**
+
+```{r ridge-4, eval = FALSE}
+psych_df %>% 
+  group_by(diagnosis) %>%
+  mutate(diagnosis = fct_reorder(diagnosis, stress_score, .fun = mean, .desc = TRUE))%>%
+  ggplot(aes(x = stress_score, y = diagnosis)) +
+  geom_density_ridges()
+```
+
+---
+
+## 5. Ridgeline plots
+
+```{r ridge-4, echo = FALSE, fig.align="center", fig.height = 6}
+```
+
+---
+
+## 5. Ridgeline plots
+
+**adding jittered points**
+
+```{r ridge-5, eval = FALSE}
+psych_df %>% 
+  group_by(diagnosis) %>%
+  mutate(diagnosis = fct_reorder(diagnosis, stress_score, .fun = mean, .desc = TRUE))%>%
+  ggplot(aes(x = stress_score, y = diagnosis)) +
+  geom_density_ridges(jittered_points = TRUE, #<<
+                      alpha = 0.5, point_size = 0.5) #<<
+```
+
+---
+
+## 5. Ridgeline plots
+
+```{r ridge-5, echo = FALSE, fig.align="center", fig.height = 6}
+```
+
+---
+
+## 5. Ridgeline plots
+
+**adding a rug plot**
+
+```{r ridge-6, eval = FALSE}
+psych_df %>% 
+  group_by(diagnosis) %>%
+  mutate(diagnosis = fct_reorder(diagnosis, stress_score, .fun = mean, .desc = TRUE))%>%
+  ggplot(aes(x = stress_score, y = diagnosis)) +
+  geom_density_ridges(jittered_points = TRUE,
+    position = position_points_jitter(width = 0.05, height = 0),
+    point_shape = '|', point_size = 3, point_alpha = 1, #<<
+    alpha = 0.7)
+```
+
+---
+
+## 5. Ridgeline plots
+
+```{r ridge-6, echo = FALSE, fig.align="center", fig.height = 6}
+```
+
+---
+
+## 5. Ridgeline plots
+
+**adding a raincloud plot**
+
+```{r ridge-7, eval = FALSE}
+psych_df %>% 
+  group_by(diagnosis) %>%
+  mutate(diagnosis = fct_reorder(diagnosis, stress_score, .fun = mean, .desc = TRUE))%>%
+  ggplot(aes(x = stress_score, y = diagnosis)) +
+  geom_density_ridges(jittered_points = TRUE, alpha = 0.5, 
+                      point_size = 0.5, scale = 0.6,
+                      position = "raincloud") #<<
+```
+
+---
+
+## 5. Ridgeline plots
+
+```{r ridge-7, echo = FALSE, fig.align="center", fig.height = 6}
+```
+
+---
+
+## Summary: Distributions
+
+What you’re showing: 
+
+- Shape (range, skew, modality)
+- Centre (median/mean)
+- Spread (e.g., interquartile range)
+- Outliers
+
+
+---
+
+
+## Summary: Distributions
+
+Pick the display
+
+- Histogram – whole shape, aggregated in bins
+
+- Density – smooth shape
+
+- Boxplot – compact summary (median, quartiles)
+
+- Violin – smooth shapes for groups, can add points
+
+- Ridgeline – smooth shapes for groups 
+
+---
+
+## Upcoming
+
+Next week, bar plots
+
+We will look at how continuous variables like the ones we visualized today differ across categorical groups
+
