@@ -1,0 +1,3285 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Visualisation in R",
+    "section": "",
+    "text": "Data Visualisation in R helps you transform complex datasets into clear, compelling, and insightful stories.\n\n\nModern life produces massive amounts of data, from medical records and government reports to consumer behaviour and scientific experiments. These raw data are often impossible to interpret directly. Effective visualisation is what makes patterns, relationships, and insights easy to grasp. It is also one of the most in-demand skills in both academia and industry.\n\n\n\nDesigning good visualisations isn’t just about producing a chart. It requires practice in matching the right data to the right visualisation, choosing what to emphasise, and making design choices that enhance clarity rather than confuse.\n\n\n\nYou’ll find that creating visualisations can be highly engaging and satisfying. There is an immediate reward when a messy dataset suddenly becomes a meaningful picture. You’ll also discover creative opportunities—choosing colours, layouts, and styles that make your work both clear and attractive. By the end of the course you’ll be able to build professional-quality figures, dashboards, and even interactive apps that you can proudly showcase.\nThe time and effort you put into learning Data Visualisation in R WILL reward you no matter how you evaluate yourself relative to others. You will be able to:\n\nExplore and understand datasets by visualising distributions, relationships, and trends.\nDesign clear and comprehensible visualisations that avoid common pitfalls.\nCommunicate findings to diverse audiences through compelling storytelling.\nBuild interactive dashboards that combine multiple visualisations.\nApply these skills across your degree and in a wide range of careers."
+  },
+  {
+    "objectID": "index.html#learning-data-visualisation-is-important",
+    "href": "index.html#learning-data-visualisation-is-important",
+    "title": "Data Visualisation in R",
+    "section": "",
+    "text": "Modern life produces massive amounts of data, from medical records and government reports to consumer behaviour and scientific experiments. These raw data are often impossible to interpret directly. Effective visualisation is what makes patterns, relationships, and insights easy to grasp. It is also one of the most in-demand skills in both academia and industry."
+  },
+  {
+    "objectID": "index.html#and-takes-time",
+    "href": "index.html#and-takes-time",
+    "title": "Data Visualisation in R",
+    "section": "",
+    "text": "Designing good visualisations isn’t just about producing a chart. It requires practice in matching the right data to the right visualisation, choosing what to emphasise, and making design choices that enhance clarity rather than confuse."
+  },
+  {
+    "objectID": "index.html#but-can-be-very-rewarding",
+    "href": "index.html#but-can-be-very-rewarding",
+    "title": "Data Visualisation in R",
+    "section": "",
+    "text": "You’ll find that creating visualisations can be highly engaging and satisfying. There is an immediate reward when a messy dataset suddenly becomes a meaningful picture. You’ll also discover creative opportunities—choosing colours, layouts, and styles that make your work both clear and attractive. By the end of the course you’ll be able to build professional-quality figures, dashboards, and even interactive apps that you can proudly showcase.\nThe time and effort you put into learning Data Visualisation in R WILL reward you no matter how you evaluate yourself relative to others. You will be able to:\n\nExplore and understand datasets by visualising distributions, relationships, and trends.\nDesign clear and comprehensible visualisations that avoid common pitfalls.\nCommunicate findings to diverse audiences through compelling storytelling.\nBuild interactive dashboards that combine multiple visualisations.\nApply these skills across your degree and in a wide range of careers."
+  },
+  {
+    "objectID": "data-vis/week-4/study_after4.html",
+    "href": "data-vis/week-4/study_after4.html",
+    "title": "Independent Study to Consolidate",
+    "section": "",
+    "text": "Continue working on the tidyverse course on DataCamp if not yet complete.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/study_after4.html#set-up",
+    "href": "data-vis/week-4/study_after4.html#set-up",
+    "title": "Independent Study to Consolidate",
+    "section": "Set up",
+    "text": "Set up\nIf you have just opened RStudio you will want to load the tidyverse package.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/study_after4.html#reading-in-data",
+    "href": "data-vis/week-4/study_after4.html#reading-in-data",
+    "title": "Independent Study to Consolidate",
+    "section": "Reading in data",
+    "text": "Reading in data\n Save this file in your week-4 folder:\n\nData from fictional stress study: stress_data.csv\n\n\n Add the following code to your R script and run:\n\nstress_df &lt;- read_csv(\"stress_data.csv\")\n\n\nhead(stress_df)\n\n# A tibble: 6 × 8\n  diagnosis  clinic stress_score sleep_hours activity_score   BMI sex     year\n  &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;\n1 Depression East           28.2        5.95           39.2  24.7 Male    2020\n2 Depression South          27.8        4.99           32.7  26.6 Female  2018\n3 None       North          18.5        6.94           56.2  20.9 Male    2018\n4 None       North          12.9        7.44           88.4  23.6 Female  2019\n5 Depression East           24.6        4.16           54.8  28.1 Female  2020\n6 Depression South          17.5        5.10           25.9  27.0 Male    2020",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/study_after4.html#exercise-1-bar-plot-of-counts",
+    "href": "data-vis/week-4/study_after4.html#exercise-1-bar-plot-of-counts",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 1: Bar plot of counts",
+    "text": "Exercise 1: Bar plot of counts\n Create a bar plot showing how many participants are in each diagnosis group.\nReflect: Which diagnosis group has the largest number of participants?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/study_after4.html#exercise-2-stacked-bar-plot",
+    "href": "data-vis/week-4/study_after4.html#exercise-2-stacked-bar-plot",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 2: Stacked bar plot",
+    "text": "Exercise 2: Stacked bar plot\n Make a stacked bar plot of diagnosis by sex.\nThen, re-plot using position = \"dodge\".\nReflect: When is the stacked version more informative, and when is the dodged version clearer?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/study_after4.html#exercise-3-proportions",
+    "href": "data-vis/week-4/study_after4.html#exercise-3-proportions",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 3: Proportions",
+    "text": "Exercise 3: Proportions\n Create a stacked barplot of proportions for sex (position = \"fill\") within each diagnosis. Remember to label the y-axis appropriately.\nReflect: What does this plot tell you that the count plots do not?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/study_after4.html#exercise-4-wrangling-equivalent",
+    "href": "data-vis/week-4/study_after4.html#exercise-4-wrangling-equivalent",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 4: Wrangling equivalent",
+    "text": "Exercise 4: Wrangling equivalent\n Use count() and mutate() to calculate proportions of sex within each diagnosis. Plot the proportions using geom_bar(stat = \"identity\").",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/study_after4.html#exercise-5-summary-bar-plot",
+    "href": "data-vis/week-4/study_after4.html#exercise-5-summary-bar-plot",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 5: Summary bar plot",
+    "text": "Exercise 5: Summary bar plot\n Plot the mean stress_score (y-axis) for each diagnosis group (x-axis) with error bars showing standard error.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/study_after4.html#exercise-6-grouped-summary-bar-plot",
+    "href": "data-vis/week-4/study_after4.html#exercise-6-grouped-summary-bar-plot",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 6: Grouped summary bar plot",
+    "text": "Exercise 6: Grouped summary bar plot\n Create a grouped bar plot comparing mean stress_score across both diagnosis (x-axis) and sex (fill).\nAdd error bars for standard error and make sure bars and error bars are aligned by using position_dodge().",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html",
+    "href": "data-vis/week-4/practical4.html",
+    "title": "Practical",
+    "section": "",
+    "text": "In this practical you will read in a dataset and create bar plots of counts, proportions, and summary statistics. You will also get a bit more practice with tidyverse data wrangling.\n\nPracticals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#session-overview",
+    "href": "data-vis/week-4/practical4.html#session-overview",
+    "title": "Practical",
+    "section": "",
+    "text": "In this practical you will read in a dataset and create bar plots of counts, proportions, and summary statistics. You will also get a bit more practice with tidyverse data wrangling.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#philosophy",
+    "href": "data-vis/week-4/practical4.html#philosophy",
+    "title": "Practical",
+    "section": "",
+    "text": "Practicals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#learning-app-engagement",
+    "href": "data-vis/week-4/practical4.html#learning-app-engagement",
+    "title": "Practical",
+    "section": "Learning app engagement",
+    "text": "Learning app engagement\nWe’ll be working with a simulated dataset from a fictional digital learning app. Users belong to different user_segments who arrive via different acquisition channels and use the app on mobile or desktop. We’ll look at how engagement differs across different groups.\nVariables:\n\n\nuser_segment: categorical (Students, EarlyCareer, MidCareer, Senior)\n\n\ndevice_type: categorical (Mobile, Desktop)\n\n\nacquisition_channel: categorical (Organic, Ads, Referral, Email)\n\n\nproduct_engagement: continuous (0–100 engagement score combining use frequency, session time, and lessons completed)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#packages",
+    "href": "data-vis/week-4/practical4.html#packages",
+    "title": "Practical",
+    "section": "Packages",
+    "text": "Packages\nRemember that packages, such as ggplot2 (part of tidyverse) need to be installed once and then loaded each session.\nToday we’ll use tidyverse.\n\n\n\n\n\n\nImportant\n\n\n\nIf you are working on a University computer (or the VDS) you do not need to install tidyverse.\nIf you are working on your own computer or using RStudio cloud you do need to install tidyverse.\n\n\nTo install a package:\n Go the Packages tab on the lower right pane. Click Install and type the name of the package into the box that appears.\nTo use a package which is installed you have to load it with the library() function.\n Load the tidyverse. Type or copy the following code into your R script:\n\nlibrary(tidyverse)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#reading-in-data",
+    "href": "data-vis/week-4/practical4.html#reading-in-data",
+    "title": "Practical",
+    "section": "Reading in data",
+    "text": "Reading in data\n Save this file in your week-4 folder:\n\nApp engagement data: app_engagement.csv\n\n\n Add the following code to your R script and run:\n\napp_df &lt;- read_csv(\"app_engagement.csv\")",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#look-at-data",
+    "href": "data-vis/week-4/practical4.html#look-at-data",
+    "title": "Practical",
+    "section": "Look at data",
+    "text": "Look at data\n Examine the variables and first few rows of the app_df object using head().\n\nhead(app_df)\n\n# A tibble: 6 × 5\n  user_id user_segment device_type acquisition_channel product_engagement\n    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;                            &lt;dbl&gt;\n1       1 MidCareer    Mobile      Organic                           55.8\n2       2 EarlyCareer  Desktop     Organic                           89.9\n3       3 Students     Desktop     Organic                           40.6\n4       4 Senior       Mobile      Organic                           48.7\n5       5 MidCareer    Mobile      Ads                               51.1\n6       6 Students     Mobile      Referral                          79.1\n\n\nSee that each column is a variable (e.g., product_engagement), and each row is one user.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#reorder-the-values-of-product_engagement",
+    "href": "data-vis/week-4/practical4.html#reorder-the-values-of-product_engagement",
+    "title": "Practical",
+    "section": "Reorder the values of product_engagement\n",
+    "text": "Reorder the values of product_engagement\n\nIn R, categorical variables are often treated as a special type of variable called a “factor”.\nIn factors, the different values of the variable are called “levels”.\nBy default, the order of the levels is alphabetical.\nWe have discussed reordering the levels of a factor based on values of another variable. But, we can also manually specify an order that is appropriate for our data.\nIn this dataset, user_segment is a factor with a natural order from junior to senior: Students, EarlyCareer, MidCareer, Senior.\n Reorder the levels of user_segement.\n\napp_df &lt;- app_df %&gt;%\n  mutate(user_segment = factor(user_segment, levels = c(\"Student\", \"EarlyCareer\",\"MidCareer\", \"Senior\")))",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#exercise-1-bar-plot-of-counts",
+    "href": "data-vis/week-4/practical4.html#exercise-1-bar-plot-of-counts",
+    "title": "Practical",
+    "section": "Exercise 1: Bar plot of counts\n",
+    "text": "Exercise 1: Bar plot of counts\n\nLook at how many users are in each user_segment.\n Create a basic bar plot of counts of users in each user_segment (remember: counts are the default stat of geom_bar() and therefore stat does not need to be explicitly specified):\n\n\n\n\n\n\n\n\n Order the bars by frequency using forcats::fct_infreq() on user_segment inside aes():\n\n\n\n\n\n\n\n\n Where does geom_bar() get the heights from?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#exercise-2-split-counts-by-a-second-variable",
+    "href": "data-vis/week-4/practical4.html#exercise-2-split-counts-by-a-second-variable",
+    "title": "Practical",
+    "section": "Exercise 2: Split counts by a second variable",
+    "text": "Exercise 2: Split counts by a second variable\nWe can split counts by acquisition_channel.\n Stack counts by acquisition_channel using aes(fill = acquisition_channel)):\n\n\n\n\n\n\n\n\n Unstack to compare absolute counts side-by-side using position = \"dodge\":\n\n\n\n\n\n\n\n\n When might stacked vs dodged bars be preferable?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#exercise-3-proportions-100-stacked",
+    "href": "data-vis/week-4/practical4.html#exercise-3-proportions-100-stacked",
+    "title": "Practical",
+    "section": "Exercise 3: Proportions (100% stacked)\n",
+    "text": "Exercise 3: Proportions (100% stacked)\n\nFor comparing composition across groups, use proportions.\n Convert to proportions with position = \"fill\". Remember to rename the y-axis variable:\n\n\n\n\n\n\n\n\n Add labels inside segments using after_stat():\n\n\n\n\n\n\n\n\n Why are proportions sometimes more informative than raw counts?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#exercise-4-wrangling-equivalent-for-proportions",
+    "href": "data-vis/week-4/practical4.html#exercise-4-wrangling-equivalent-for-proportions",
+    "title": "Practical",
+    "section": "Exercise 4: Wrangling equivalent for proportions",
+    "text": "Exercise 4: Wrangling equivalent for proportions\nInstead of letting geom_bar() do the counting, compute counts yourself first.\n Use count() and mutate() to compute group-wise proportions:",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#exercise-5-summary-bar-mean-engagement-by-segment",
+    "href": "data-vis/week-4/practical4.html#exercise-5-summary-bar-mean-engagement-by-segment",
+    "title": "Practical",
+    "section": "Exercise 5: Summary bar (mean engagement by segment)",
+    "text": "Exercise 5: Summary bar (mean engagement by segment)\nNow let’s summarise a continuous variable by category: mean product_engagement (y-axis) per user_segment (x-axis).\n Use stat_summary() to plot means with SE bars (for means, fun = \"mean\", and for SE, fun.data = \"mean_se\"):\n\n\n\n\n\n\n\n\n Colour the bars by user_segment (optional: set show.legend = FALSE to reduce redundancy):",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#exercise-6-wrangling-equivalent-for-summary-bars",
+    "href": "data-vis/week-4/practical4.html#exercise-6-wrangling-equivalent-for-summary-bars",
+    "title": "Practical",
+    "section": "Exercise 6: Wrangling equivalent for summary bars",
+    "text": "Exercise 6: Wrangling equivalent for summary bars\nCompute mean and SE yourself, then plot with geom_bar(stat = \"identity\").\nReminder: SE = sd(variable) / sqrt(n())\n Use summarise to calculate mean_eng and se_eng, then use the summarised data in a plot that uses geom_bar() and geom_linerange() instead of stat_summary(). Remember that geom_bar() needs stat = \"identity\" to override the default stat = \"count\".\n\n\n\n\n\n\n\n\n What are the pros/cons of using stat_summary() vs pre-computing with summarise()?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/practical4.html#exercise-7-grouped-summary-bars-two-way-comparison",
+    "href": "data-vis/week-4/practical4.html#exercise-7-grouped-summary-bars-two-way-comparison",
+    "title": "Practical",
+    "section": "Exercise 7: Grouped summary bars (two-way comparison)",
+    "text": "Exercise 7: Grouped summary bars (two-way comparison)\nCompare mean engagement across user_segment and device_type.\nYou can reuse and adapt the code you wrote for Exercise 5 that used stat_summary() to create this plot.\n Keep user_segment as your x-axis variable, but add device_type as the fill aes() for the bars and the group aes() for the linerange error bars. Remember to dodge your bars and error bars.\n\nggplot(app_df, aes(x = user_segment, y = product_engagement)) +\n  stat_summary(aes(fill = device_type),\n               fun = \"mean\", geom = \"bar\", position = \"dodge\") +\n  stat_summary(aes(group = device_type),\n               fun.data = \"mean_se\", geom = \"linerange\",\n               position = position_dodge(width = 0.9)) +\n  labs(fill = \"Device\")\n\n\n\n\n\n\n\n Describe the pattern you see. For which user segment(s) does Mobile outperform Desktop, and where is Desktop higher?\nYou’re finished!",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/study_before3.html",
+    "href": "data-vis/week-3/study_before3.html",
+    "title": "Independent Study to Prepare",
+    "section": "",
+    "text": "Preparation for Weeks 2 and 3: Get Acquainted with Tidy Data Wrangling\nThis preparation involves reading some chapters in an online book and getting started with an online DataCamp course. I will recommend this preparation for weeks 2 and 3. You can try taking an initial look in week 2, and revisit the reading more deeply in week 3.\nAlthough the focus of this module is on data visualisation, before you visualise data, you often need to take some steps to get it into a form that you can visualise. These steps are often referred to using phrases like “data management” and “data wrangling”. These days, it is common practice in R to perform steps to ensure that your data are in a standard, “tidy” format in which data are stored in a table where each row is an observation and each column is a variable. Common steps for preparing data for visualisation and analysis include:\n\nGenerating summary statistics, such as the mean value of an outcome variable for groups of participants\nSelecting a subset of data, such as a subset of variables, or rows for just participants in a subset of groups\n\nThe Data Analysis module that you will be completing at the same time will cover many common tidy data wrangling steps, particularly in Weeks 3 and 4. Therefore, we won’t spend much time covering these steps in the seminars for Data Visualisation. However, since this is a crucial part of working with data in R, you will benefit from getting acquainted with it for this module as well.\nThere are many resources for learning about tidy data wrangling. You are encouraged to try the following two resources:\n\nRead Tidyverse Ch 4 - 7\nDataCamp courses on tidyverse and tidy wrangling\n\n\n\nDistributions\nTo prepare for diving into this week’s topic, visualising distributions:\n\nRead Data Visualization Ch 7 and 9",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#from-last-time",
+    "href": "data-vis/week-3/seminar3.html#from-last-time",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "From last time",
+    "text": "From last time\n\nUsing grammar of graphics:\n\nmapping data variables to axes, shapes (bars, points, etc)\ncontrolling attributes such as color, coordinate ranges\ncustomising appearance\nfaceting",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#today",
+    "href": "data-vis/week-3/seminar3.html#today",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today",
+    "text": "Today\n\nTidyverse overview\n\nGraphing distributions: techniques and considerations\n\nhistograms\ndensity plots\nboxplots\nviolin plots\nridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#todays-data",
+    "href": "data-vis/week-3/seminar3.html#todays-data",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today’s data",
+    "text": "Today’s data\n\n\n\n\n\n\ndiagnosis\nclinic\nstress_score\nsleep_hours\nactivity_score\nBMI\nsex\nyear\n\n\n\n\nAnxiety\nSouth\n26.400428\n6.813229\n55.83022\n26.62936\nFemale\n2020\n\n\nNone\nSouth\n28.999814\n7.410025\n71.15532\n23.38990\nFemale\n2019\n\n\nDepression\nNorth\n29.961343\n6.070516\n43.24825\n25.01448\nFemale\n2019\n\n\nNone\nSouth\n17.372159\n6.148900\n61.29423\n28.91811\nFemale\n2018\n\n\nNone\nNorth\n19.681761\n6.977383\n69.48282\n16.25393\nFemale\n2019\n\n\nAnxiety\nNorth\n26.030951\n6.250809\n64.08448\n28.51466\nFemale\n2020\n\n\nDepression\nSouth\n23.664896\n4.004201\n32.50274\n25.13293\nMale\n2019\n\n\nNone\nEast\n3.614131\n6.460045\n66.78394\n24.96954\nMale\n2020\n\n\nDepression\nNorth\n21.485539\n4.982020\n28.52229\n24.63801\nMale\n2018\n\n\nDepression\nEast\n34.049383\n4.867825\n43.54352\n24.21841\nFemale\n2019",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#data-types",
+    "href": "data-vis/week-3/seminar3.html#data-types",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Data types",
+    "text": "Data types\n\n\nCategorical\n\ndiagnosis\nclinic\nsex\n\nContinuous\n\nstress_score\nsleep_hours\nactivity_score\nBMI\nyear",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#today-1",
+    "href": "data-vis/week-3/seminar3.html#today-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today",
+    "text": "Today\n\nTidyverse overview\n\nGraphing distributions: techniques and considerations\n\nhistograms\ndensity plots\nboxplots\nviolin plots\nridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#whats-the-tidyverse",
+    "href": "data-vis/week-3/seminar3.html#whats-the-tidyverse",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "What’s the tidyverse?",
+    "text": "What’s the tidyverse?\n\nA set of packages for wrangling, visualising and analysing data\nSimilar approaches, code structure, data structure\n\nData wrangling:\ndplyr, stringr, tidyr, readr, forcats\nReference",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#data-wrangling-approach",
+    "href": "data-vis/week-3/seminar3.html#data-wrangling-approach",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Data wrangling approach",
+    "text": "Data wrangling approach\nnote the “pipe”\n\n\ndata %&gt;% \n  do_something_to(some_part_of_data)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-count",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-count",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: count",
+    "text": "Useful functions: count\ncount number of times each value of a variable occurs\n\n\npsych_df %&gt;% \n  count(diagnosis)\n\n# A tibble: 3 × 2\n  diagnosis      n\n  &lt;fct&gt;      &lt;int&gt;\n1 None          84\n2 Anxiety      102\n3 Depression   114",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-filter",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-filter",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: filter",
+    "text": "Useful functions: filter\nfilter rows that match a certain condition\n\n\npsych_df %&gt;% \n  filter(diagnosis == \"Anxiety\") %&gt;% \n  count(diagnosis)\n\n# A tibble: 1 × 2\n  diagnosis     n\n  &lt;fct&gt;     &lt;int&gt;\n1 Anxiety     102",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-filter-1",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-filter-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: filter",
+    "text": "Useful functions: filter\nfilter rows that match a certain condition\n\n\npsych_df %&gt;% \n  filter(diagnosis %in% c(\"Anxiety\",\"Depression\")) %&gt;% \n  count(diagnosis)\n\n# A tibble: 2 × 2\n  diagnosis      n\n  &lt;fct&gt;      &lt;int&gt;\n1 Anxiety      102\n2 Depression   114",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-filter-2",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-filter-2",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: filter",
+    "text": "Useful functions: filter\nfilter rows that match a certain condition\n\n\npsych_df %&gt;% \n  filter(diagnosis == \"Anxiety\" | diagnosis == \"Depression\") %&gt;% \n  count(diagnosis)\n\n# A tibble: 2 × 2\n  diagnosis      n\n  &lt;fct&gt;      &lt;int&gt;\n1 Anxiety      102\n2 Depression   114",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-filter-3",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-filter-3",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: filter",
+    "text": "Useful functions: filter\nfilter rows that match a certain condition\n\n\npsych_df %&gt;% \n  filter(diagnosis != \"None\") %&gt;% \n  count(diagnosis)\n\n# A tibble: 2 × 2\n  diagnosis      n\n  &lt;fct&gt;      &lt;int&gt;\n1 Anxiety      102\n2 Depression   114",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-filter-4",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-filter-4",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: filter",
+    "text": "Useful functions: filter\nfilter rows that match a certain condition\n\n\npsych_df %&gt;% \n  filter(!is.na(diagnosis)) %&gt;% \n  count(diagnosis)\n\n# A tibble: 3 × 2\n  diagnosis      n\n  &lt;fct&gt;      &lt;int&gt;\n1 None          84\n2 Anxiety      102\n3 Depression   114",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-mutate",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-mutate",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: mutate",
+    "text": "Useful functions: mutate\ngenerate additional variables\n\n\npsych_df %&gt;% \n  mutate(activity_BMI = activity_score / BMI) %&gt;%\n  select(diagnosis, activity_score, BMI, activity_BMI)\n\n# A tibble: 300 × 4\n   diagnosis  activity_score   BMI activity_BMI\n   &lt;fct&gt;               &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;\n 1 Anxiety              55.8  26.6         2.10\n 2 None                 71.2  23.4         3.04\n 3 Depression           43.2  25.0         1.73\n 4 None                 61.3  28.9         2.12\n 5 None                 69.5  16.3         4.27\n 6 Anxiety              64.1  28.5         2.25\n 7 Depression           32.5  25.1         1.29\n 8 None                 66.8  25.0         2.67\n 9 Depression           28.5  24.6         1.16\n10 Depression           43.5  24.2         1.80\n# ℹ 290 more rows",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-mutate-1",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-mutate-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: mutate",
+    "text": "Useful functions: mutate\ngenerate additional variables\n\n\npsych_df %&gt;% \n  mutate(activity_BMI = activity_score / BMI,\n         activity_sleep = activity_score / sleep_hours)%&gt;%\n  select(diagnosis, activity_score, BMI, activity_BMI, activity_sleep)\n\n# A tibble: 300 × 5\n   diagnosis  activity_score   BMI activity_BMI activity_sleep\n   &lt;fct&gt;               &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;\n 1 Anxiety              55.8  26.6         2.10           8.19\n 2 None                 71.2  23.4         3.04           9.60\n 3 Depression           43.2  25.0         1.73           7.12\n 4 None                 61.3  28.9         2.12           9.97\n 5 None                 69.5  16.3         4.27           9.96\n 6 Anxiety              64.1  28.5         2.25          10.3 \n 7 Depression           32.5  25.1         1.29           8.12\n 8 None                 66.8  25.0         2.67          10.3 \n 9 Depression           28.5  24.6         1.16           5.73\n10 Depression           43.5  24.2         1.80           8.95\n# ℹ 290 more rows",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-group_by-mutate",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-group_by-mutate",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: group_by + mutate",
+    "text": "Useful functions: group_by + mutate\ngenerate additional variables by group\n\n\npsych_df %&gt;% \n  group_by(diagnosis) %&gt;%\n  mutate(stress_diagnosis = mean(stress_score)) %&gt;%\n  select(diagnosis, stress_score, stress_diagnosis)\n\n# A tibble: 300 × 3\n# Groups:   diagnosis [3]\n   diagnosis  stress_score stress_diagnosis\n   &lt;fct&gt;             &lt;dbl&gt;            &lt;dbl&gt;\n 1 Anxiety           26.4              30.4\n 2 None              29.0              16.5\n 3 Depression        30.0              28.3\n 4 None              17.4              16.5\n 5 None              19.7              16.5\n 6 Anxiety           26.0              30.4\n 7 Depression        23.7              28.3\n 8 None               3.61             16.5\n 9 Depression        21.5              28.3\n10 Depression        34.0              28.3\n# ℹ 290 more rows",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-group_by-mutate-1",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-group_by-mutate-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: group_by + mutate",
+    "text": "Useful functions: group_by + mutate\ngenerate additional variables by group\n\n\npsych_df %&gt;% \n  group_by(diagnosis, clinic) %&gt;%\n  mutate(stress_diagnosis = mean(stress_score))%&gt;%\n  select(diagnosis, clinic, stress_score, stress_diagnosis)\n\n# A tibble: 300 × 4\n# Groups:   diagnosis, clinic [9]\n   diagnosis  clinic stress_score stress_diagnosis\n   &lt;fct&gt;      &lt;chr&gt;         &lt;dbl&gt;            &lt;dbl&gt;\n 1 Anxiety    South         26.4              30.7\n 2 None       South         29.0              17.3\n 3 Depression North         30.0              28.0\n 4 None       South         17.4              17.3\n 5 None       North         19.7              16.5\n 6 Anxiety    North         26.0              29.2\n 7 Depression South         23.7              27.7\n 8 None       East           3.61             15.7\n 9 Depression North         21.5              28.0\n10 Depression East          34.0              29.1\n# ℹ 290 more rows",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-ifelse",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-ifelse",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: ifelse",
+    "text": "Useful functions: ifelse\ngenerate additional variables by group\n\n\npsych_df %&gt;% \n  group_by(diagnosis) %&gt;%\n  mutate(stress_diagnosis = mean(stress_score),\n         stress_binary = ifelse(stress_score &gt; stress_diagnosis, \"high\", \"typical\"))%&gt;%\n  select(diagnosis, stress_score, stress_diagnosis, stress_binary)\n\n# A tibble: 300 × 4\n# Groups:   diagnosis [3]\n   diagnosis  stress_score stress_diagnosis stress_binary\n   &lt;fct&gt;             &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;        \n 1 Anxiety           26.4              30.4 typical      \n 2 None              29.0              16.5 high         \n 3 Depression        30.0              28.3 high         \n 4 None              17.4              16.5 high         \n 5 None              19.7              16.5 high         \n 6 Anxiety           26.0              30.4 typical      \n 7 Depression        23.7              28.3 typical      \n 8 None               3.61             16.5 typical      \n 9 Depression        21.5              28.3 typical      \n10 Depression        34.0              28.3 high         \n# ℹ 290 more rows",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#useful-functions-group_by-summarise",
+    "href": "data-vis/week-3/seminar3.html#useful-functions-group_by-summarise",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Useful functions: group_by + summarise",
+    "text": "Useful functions: group_by + summarise\ncalculating summaries for groups\n\n\npsych_df %&gt;% \n  group_by(diagnosis) %&gt;% \n  summarise(stress_mean = mean(stress_score))\n\n# A tibble: 3 × 2\n  diagnosis  stress_mean\n  &lt;fct&gt;            &lt;dbl&gt;\n1 None              16.5\n2 Anxiety           30.4\n3 Depression        28.3",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#other-useful-data-wrangling-functions",
+    "href": "data-vis/week-3/seminar3.html#other-useful-data-wrangling-functions",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Other useful data wrangling functions",
+    "text": "Other useful data wrangling functions\n\nselect() is like filter() but for variables (columns) instead of observations (rows)\n\narrange() sorts data\n\nrename() does exactly what you think\n\nleft_join() (and other joins) combines datasets based on shared values in shared variables",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#today-2",
+    "href": "data-vis/week-3/seminar3.html#today-2",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today",
+    "text": "Today\n\nTidyverse overview\n\nGraphing distributions: techniques and considerations\n\nhistograms\ndensity plots\nboxplots\nviolin plots\nridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#why-distributions",
+    "href": "data-vis/week-3/seminar3.html#why-distributions",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Why distributions?",
+    "text": "Why distributions?\n\nDistributions show the overall shape and spread of data that single summary statistics (like the mean) can miss\n\nHelp spot skew and outliers, which inform choices of appropriate analyses",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#visualizing-distributions",
+    "href": "data-vis/week-3/seminar3.html#visualizing-distributions",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Visualizing distributions",
+    "text": "Visualizing distributions\n\nFocus on visualizing the distribution of one variable:\nstress_score\n\nPros/cons of different ways to visualize and compare distributions",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#todays-agenda",
+    "href": "data-vis/week-3/seminar3.html#todays-agenda",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nhistograms\ndensity plots\nbox plots\nviolin plots\nridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#todays-agenda-1",
+    "href": "data-vis/week-3/seminar3.html#todays-agenda-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nhistograms\ndensity plots\nbox plots\nviolin plots\nridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#histograms",
+    "href": "data-vis/week-3/seminar3.html#histograms",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "1. Histograms",
+    "text": "1. Histograms\n\nVisualize the distribution of a numeric variable with lots of values\n\nPro:\n\ncan view the entire distribution\n\nCon:\n\nneed to be careful with bin width",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#histograms-1",
+    "href": "data-vis/week-3/seminar3.html#histograms-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "1. Histograms",
+    "text": "1. Histograms\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_histogram()",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#histograms-2",
+    "href": "data-vis/week-3/seminar3.html#histograms-2",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "1. Histograms",
+    "text": "1. Histograms\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_histogram(bins = 5)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#histograms-3",
+    "href": "data-vis/week-3/seminar3.html#histograms-3",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "1. Histograms",
+    "text": "1. Histograms\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_histogram(bins = 100)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#histograms-4",
+    "href": "data-vis/week-3/seminar3.html#histograms-4",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "1. Histograms",
+    "text": "1. Histograms\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_histogram(bins = 35)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#histograms-5",
+    "href": "data-vis/week-3/seminar3.html#histograms-5",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "1. Histograms",
+    "text": "1. Histograms\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_histogram(binwidth = 0.5)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#histograms-6",
+    "href": "data-vis/week-3/seminar3.html#histograms-6",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "1. Histograms",
+    "text": "1. Histograms\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_histogram(binwidth = 0.1)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#histograms-7",
+    "href": "data-vis/week-3/seminar3.html#histograms-7",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "1. Histograms",
+    "text": "1. Histograms\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_histogram(binwidth = 1,  fill = \"blue\", color = \"black\")",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#histograms-8",
+    "href": "data-vis/week-3/seminar3.html#histograms-8",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "1. Histograms",
+    "text": "1. Histograms\ncomparing distributions\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score, fill = diagnosis)) +\n  geom_histogram(binwidth = 1)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#todays-agenda-2",
+    "href": "data-vis/week-3/seminar3.html#todays-agenda-2",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\n\nhistograms\ndensity plots\nbox plots\nviolin plots\nridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots",
+    "href": "data-vis/week-3/seminar3.html#density-plots",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots\n\nSmoothed version of the histogram\nPro:\n\nFocus on overall shape rather than local fluctuations\n\nCon:\n\nCan be misleading with small data sets",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-1",
+    "href": "data-vis/week-3/seminar3.html#density-plots-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_density()",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-2",
+    "href": "data-vis/week-3/seminar3.html#density-plots-2",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_density(fill = \"blue\", `alpha` = 0.75)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-3",
+    "href": "data-vis/week-3/seminar3.html#density-plots-3",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots\noverlaying a histogram\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score, y = after_stat(density))) +\n  # the y argument scales down the histogram \n  # to match the density curve\n  geom_histogram(binwidth = 1, fill = \"blue\", \n                 color = \"black\", alpha = 0.75) +\n  geom_density()",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-4",
+    "href": "data-vis/week-3/seminar3.html#density-plots-4",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-5",
+    "href": "data-vis/week-3/seminar3.html#density-plots-5",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots\ncomparing two distributions\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score, fill = diagnosis)) +\n  geom_density(alpha = 0.4)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-6",
+    "href": "data-vis/week-3/seminar3.html#density-plots-6",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-7",
+    "href": "data-vis/week-3/seminar3.html#density-plots-7",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score, color = diagnosis)) +\n  geom_density()",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-8",
+    "href": "data-vis/week-3/seminar3.html#density-plots-8",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-9",
+    "href": "data-vis/week-3/seminar3.html#density-plots-9",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score)) +\n  geom_density(fill = \"blue\", alpha = 0.5) +\n  facet_wrap(~diagnosis)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#density-plots-10",
+    "href": "data-vis/week-3/seminar3.html#density-plots-10",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "2. Density plots",
+    "text": "2. Density plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#todays-agenda-3",
+    "href": "data-vis/week-3/seminar3.html#todays-agenda-3",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\n\nhistograms\ndensity plots\nbox plots\nviolin plots\nridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots",
+    "href": "data-vis/week-3/seminar3.html#box-plots",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots\nCompact depiction of:\n\nMedian, 25/75 percentiles (quartiles)\nPotential outliers\n\nPro:\n\nConveys key aspects of distribution in a concise way\n\nCon:\n\nCan’t see full distribution, which may obscure characteristics such as multi-modality",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-1",
+    "href": "data-vis/week-3/seminar3.html#box-plots-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots\n\npsych_df %&gt;% \n  ggplot(aes(y = diagnosis, x = stress_score)) +\n  geom_boxplot()",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-2",
+    "href": "data-vis/week-3/seminar3.html#box-plots-2",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-3",
+    "href": "data-vis/week-3/seminar3.html#box-plots-3",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots\nmodifying outliers\n\npsych_df %&gt;%\n  ggplot(aes(y = diagnosis, x = stress_score)) +\n  geom_boxplot(fill = \"gray\", outlier.color = \"blue\", \n               outlier.shape = \"circle open\", outlier.size = 2)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-4",
+    "href": "data-vis/week-3/seminar3.html#box-plots-4",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-5",
+    "href": "data-vis/week-3/seminar3.html#box-plots-5",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots\nmarking the mean\n\npsych_df %&gt;%\n  ggplot(aes(y = diagnosis, x = stress_score)) +\n  geom_boxplot(fill = \"gray\") +\n  stat_summary(fun = mean, geom = \"point\", #&lt;&lt;\n               shape = \"square\", size = 2, color = \"red\") #&lt;&lt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-6",
+    "href": "data-vis/week-3/seminar3.html#box-plots-6",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-7",
+    "href": "data-vis/week-3/seminar3.html#box-plots-7",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots\nadding jittered points\nConveys a sense of the distribution of data\n\npsych_df %&gt;%\n  ggplot(aes(y = diagnosis, x = stress_score)) +\n  geom_boxplot() +\n  geom_point(position = position_jitter(), color = \"black\", size = 0.4, alpha = 0.5) #&lt;&lt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-8",
+    "href": "data-vis/week-3/seminar3.html#box-plots-8",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-9",
+    "href": "data-vis/week-3/seminar3.html#box-plots-9",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots\nadding jittered points\nConveys a sense of the distribution of data\n\npsych_df %&gt;%\n  ggplot(aes(y = diagnosis, x = stress_score)) +\n  geom_boxplot() +\n  geom_jitter(color = \"black\", size = 0.4, alpha = 0.5) #&lt;&lt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-10",
+    "href": "data-vis/week-3/seminar3.html#box-plots-10",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-11",
+    "href": "data-vis/week-3/seminar3.html#box-plots-11",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots\nsuppressing outliers\n\npsych_df %&gt;%\n  ggplot(aes(y = diagnosis, x = stress_score)) +\n  geom_boxplot(outlier.shape = NA) + #&lt;&lt;\n  geom_jitter(color=\"black\", size = 0.4, alpha = 0.5)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#box-plots-12",
+    "href": "data-vis/week-3/seminar3.html#box-plots-12",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "3. Box plots",
+    "text": "3. Box plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#todays-agenda-4",
+    "href": "data-vis/week-3/seminar3.html#todays-agenda-4",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\n\nhistograms\ndensity plots\nbox plots\nviolin plots\nridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#violin-plots",
+    "href": "data-vis/week-3/seminar3.html#violin-plots",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "4. Violin plots",
+    "text": "4. Violin plots\n\nSimilar to a boxplot, but less compact: shows the actual distribution, similar to a density plot\nUseful when you have a lot of data and want to see the shape of the distribution rather than look at all the individual points",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#violin-plots-1",
+    "href": "data-vis/week-3/seminar3.html#violin-plots-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "4. Violin plots",
+    "text": "4. Violin plots\n\npsych_df %&gt;% \n  ggplot(aes(y = diagnosis, x = stress_score)) + \n  geom_violin()",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#violin-plots-2",
+    "href": "data-vis/week-3/seminar3.html#violin-plots-2",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "4. Violin plots",
+    "text": "4. Violin plots\noverlaying a boxplot\n\npsych_df %&gt;% \n  ggplot(aes(y = diagnosis, x = stress_score)) + \n  geom_violin() +\n  geom_boxplot(width = 0.1, color = \"grey\", alpha = 0.5,\n               outlier.colour = \"red\")",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#violin-plots-3",
+    "href": "data-vis/week-3/seminar3.html#violin-plots-3",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "4. Violin plots",
+    "text": "4. Violin plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#todays-agenda-5",
+    "href": "data-vis/week-3/seminar3.html#todays-agenda-5",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\n\nhistograms\ndensity plots\nbox plots\nviolin plots\nridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots\n\nLike violin plots, depict distributions of a variable for multiple groups\nDistributions are depicted as densities or histograms rather than violins\n\nRequires the ggridges package\nAn extension of ggplot2 that uses the same syntax",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-1",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score, y = diagnosis)) +\n  geom_density_ridges() #&lt;&lt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-2",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-2",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-3",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-3",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots\n\npsych_df %&gt;% \n  ggplot(aes(x = stress_score, y = diagnosis)) +\n  geom_density_ridges(stat = \"binline\", binwidth = 1) #&lt;&lt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-4",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-4",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-5",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-5",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots\nordering by mean\n\npsych_df %&gt;% \n  group_by(diagnosis) %&gt;%\n  mutate(diagnosis = fct_reorder(diagnosis, stress_score, .fun = mean, .desc = TRUE))%&gt;%\n  ggplot(aes(x = stress_score, y = diagnosis)) +\n  geom_density_ridges()",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-6",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-6",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-7",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-7",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots\nadding jittered points\n\npsych_df %&gt;% \n  group_by(diagnosis) %&gt;%\n  mutate(diagnosis = fct_reorder(diagnosis, stress_score, .fun = mean, .desc = TRUE))%&gt;%\n  ggplot(aes(x = stress_score, y = diagnosis)) +\n  geom_density_ridges(jittered_points = TRUE, #&lt;&lt;\n                      alpha = 0.5, point_size = 0.5) #&lt;&lt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-8",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-8",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-9",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-9",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots\nadding a rug plot\n\npsych_df %&gt;% \n  group_by(diagnosis) %&gt;%\n  mutate(diagnosis = fct_reorder(diagnosis, stress_score, .fun = mean, .desc = TRUE))%&gt;%\n  ggplot(aes(x = stress_score, y = diagnosis)) +\n  geom_density_ridges(jittered_points = TRUE,\n    position = position_points_jitter(width = 0.05, height = 0),\n    point_shape = '|', point_size = 3, point_alpha = 1, #&lt;&lt;\n    alpha = 0.7)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-10",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-10",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-11",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-11",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots\nadding a raincloud plot\n\npsych_df %&gt;% \n  group_by(diagnosis) %&gt;%\n  mutate(diagnosis = fct_reorder(diagnosis, stress_score, .fun = mean, .desc = TRUE))%&gt;%\n  ggplot(aes(x = stress_score, y = diagnosis)) +\n  geom_density_ridges(jittered_points = TRUE, alpha = 0.5, \n                      point_size = 0.5, scale = 0.6,\n                      position = \"raincloud\") #&lt;&lt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#ridgeline-plots-12",
+    "href": "data-vis/week-3/seminar3.html#ridgeline-plots-12",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "5. Ridgeline plots",
+    "text": "5. Ridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#summary-distributions",
+    "href": "data-vis/week-3/seminar3.html#summary-distributions",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Summary: Distributions",
+    "text": "Summary: Distributions\nWhat you’re showing:\n\nShape (range, skew, modality)\nCentre (median/mean)\nSpread (e.g., interquartile range)\nOutliers",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#summary-distributions-1",
+    "href": "data-vis/week-3/seminar3.html#summary-distributions-1",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Summary: Distributions",
+    "text": "Summary: Distributions\nPick the display\n\nHistogram – whole shape, aggregated in bins\nDensity – smooth shape\nBoxplot – compact summary (median, quartiles)\nViolin – smooth shapes for groups, can add points\nRidgeline – smooth shapes for groups",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/seminar3.html#upcoming",
+    "href": "data-vis/week-3/seminar3.html#upcoming",
+    "title": "Week 3 Seminar: Distributions",
+    "section": "Upcoming",
+    "text": "Upcoming\nNext week, bar plots\nWe will look at how continuous variables like the ones we visualized today differ across categorical groups",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/overview3.html",
+    "href": "data-vis/week-3/overview3.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This week you will get a brief review of data management in R, then an in-depth walkthrough of the many ways to visualise distributions. There is a preparation step to get acquainted with standard data management in R.\n\nLearning objectives\nThe successful student will be able to:\n\ngenerate various types of plot to visualise distributions\noverlay multiple plots to provide more visual information about distributions\ncustomise the appearance of distribution plots (e.g., colors)\nperform some basic data wrangling to prepare data for visualisation",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "About"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/study_after2.html",
+    "href": "data-vis/week-2/study_after2.html",
+    "title": "Independent Study to Consolidate",
+    "section": "",
+    "text": "Get started on the tidyverse course on DataCamp.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/study_after2.html#set-up",
+    "href": "data-vis/week-2/study_after2.html#set-up",
+    "title": "Independent Study to Consolidate",
+    "section": "Set up:",
+    "text": "Set up:\nIf you have just opened RStudio you will want to load the tidyverse package\n\nlibrary(tidyverse)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/study_after2.html#reading-in-data",
+    "href": "data-vis/week-2/study_after2.html#reading-in-data",
+    "title": "Independent Study to Consolidate",
+    "section": "Reading in data",
+    "text": "Reading in data\n Save this file in your week-2 folder:\n\nData from fictional stress study: stress_data.csv\n\n\n Add the following code to your R script and run:\n\nstress_df &lt;- read_csv(\"stress_data.csv\")\n\n\nhead(stress_df)\n\n# A tibble: 6 × 9\n   ...1 diagnosis  clinic stress_score sleep_hours activity_score   BMI sex   \n  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; \n1     1 Depression East           28.2        5.95           39.2  24.7 Male  \n2     2 Depression South          27.8        4.99           32.7  26.6 Female\n3     3 None       North          18.5        6.94           56.2  20.9 Male  \n4     4 None       North          12.9        7.44           88.4  23.6 Female\n5     5 Depression East           24.6        4.16           54.8  28.1 Female\n6     6 Depression South          17.5        5.10           25.9  27.0 Male  \n# ℹ 1 more variable: year &lt;dbl&gt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/study_after2.html#plot",
+    "href": "data-vis/week-2/study_after2.html#plot",
+    "title": "Independent Study to Consolidate",
+    "section": "Plot",
+    "text": "Plot\n Generate a boxplot that shows the relationship between diagnosis on the x-axis and stress_score on the y-axis. Facet the plot by sex so that this relationship is plotted separately for Female and Male.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html",
+    "href": "data-vis/week-2/practical2.html",
+    "title": "Practical",
+    "section": "",
+    "text": "In this introduction you will start working with RStudio. You will read in a dataset and plot the data it contains in various ways.\n\nPracticals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#session-overview",
+    "href": "data-vis/week-2/practical2.html#session-overview",
+    "title": "Practical",
+    "section": "",
+    "text": "In this introduction you will start working with RStudio. You will read in a dataset and plot the data it contains in various ways.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#philosophy",
+    "href": "data-vis/week-2/practical2.html#philosophy",
+    "title": "Practical",
+    "section": "",
+    "text": "Practicals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#wellbeing",
+    "href": "data-vis/week-2/practical2.html#wellbeing",
+    "title": "Practical",
+    "section": "Wellbeing",
+    "text": "Wellbeing\nWe’ll be working with a simulated dataset is based on a fictional cross-sectional survey study exploring the relationships between social support, therapy attendance, loneliness, sleep quality, and overall wellbeing in adults.\nIn this fictional study, participants were recruited from community mental health clinics and general community advertisements between 2019 and 2022. They completed a survey assessing:\n\nPerceived social support (categorized as Low, Medium, or High)\nCurrent therapy status (Yes or No)\nLoneliness (a standardized loneliness score; higher scores indicate greater loneliness)\nSubjective wellbeing (higher scores indicate better wellbeing)\nSleep quality (rated on a 1–10 scale)\nDemographics, including age and sex\n\nThe fictional study aimed to understand how social support and therapy might relate to feelings of loneliness and overall wellbeing, as well as how these factors interact with sleep and demographic characteristics.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#packages",
+    "href": "data-vis/week-2/practical2.html#packages",
+    "title": "Practical",
+    "section": "Packages",
+    "text": "Packages\nCommands like c(), sum(), and str() are in packages which are part the ‘base’ R system. A package is a collection of related commands. Base packages are installed automatically when you install R.\nOther packages, such as ggplot2 (Wickham 2016) need to be installed once and then loaded each session. ggplot2 is one of the tidyverse (Wickham et al. 2019) packages.\n\n\n\n\n\n\nImportant\n\n\n\nIf you are working on a University computer (or the VDS) you do not need to install tidyverse.\nIf you are working on your own computer or using RStudio cloud you do need to install tidyverse.\n\n\nTo install a package:\n Go the Packages tab on the lower right pane. Click Install and type tidyverse into the box that appears.\nWait until you get the prompt back. It will take a few moments, be patient!\nTo use a package which is installed you have to load it with the library() function. You will need to do this whether you are working on your own computer or on a University computer\n Load the tidyverse. Type or copy the following code into your R script:\n\nlibrary(tidyverse)\n\n Ensure your cursor is on the line with the code you just added and hit Ctrl+Enter to run it.\nYou can follow this same step to run any code you add to your R script!\nYou will likely be warned of some function name conflicts but these will not be a problem for you.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#reading-in-data",
+    "href": "data-vis/week-2/practical2.html#reading-in-data",
+    "title": "Practical",
+    "section": "Reading in data",
+    "text": "Reading in data\nYou will go into more depth about reading in data in the Data Analysis module. For now, you can just follow these steps.\n Save this file in your week-2 folder:\n\nData from fictional wellbeing study: therapy_data.csv\n\n\n Add the following code to your R script and run:\n\ntherapy_df &lt;- read_csv(\"therapy_data.csv\")",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#look-at-data",
+    "href": "data-vis/week-2/practical2.html#look-at-data",
+    "title": "Practical",
+    "section": "Look at data",
+    "text": "Look at data\n Examine the variables and first few rows of the therapy_df object using head()\n\nhead(therapy_df)\n\n# A tibble: 6 × 8\n  support_level therapy   age loneliness_score wellbeing_score sleep_quality\n  &lt;chr&gt;         &lt;chr&gt;   &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;\n1 Medium        No         42             30.4            58.6             6\n2 Low           Yes        23             72.2            44.5             6\n3 Low           No         35             47.1            39.8             7\n4 Medium        No         23             35.1            56.8             8\n5 Medium        Yes        20             57.0            60.6             6\n6 Medium        No         40             47.2            61.5             6\n# ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;\n\n\nSee that you have a table where each column is a variable from the fictional study, such as wellbeing_score. Each row contains values for each variable for one participant.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#exercise-1-distributions",
+    "href": "data-vis/week-2/practical2.html#exercise-1-distributions",
+    "title": "Practical",
+    "section": "Exercise 1: Distributions",
+    "text": "Exercise 1: Distributions\nLook at the distribution of the main outcome variable, the wellbeing score.\n Plot the distribution by creating a plot in which the x-axis variable is wellbeing_score and the distribution of this variable is shown as a histogram.\n\nggplot(therapy_df, aes(x = wellbeing_score)) +\n  geom_histogram()\n\n\n\n\n\n\n\nAny geom has multiple attributes, such as color. When you just specify the geom followed by empty brackets, like geom_histogram(), the values for those attributes are chosen by default. This means that, under the hood, geom_histogram() is setting the fill of the bars to a gray color, like this:\n\nggplot(therapy_df, aes(x = wellbeing_score)) +\n  geom_histogram(fill = \"#525252\")\n\n\n\n\n\n\n\nSimilarly, geom_histogram() chooses the number “bins” that group together values within the same bar.\nFor this dataset, the default is 30 bins. So the code above is the same as the code below and produces the same histogram:\n\nggplot(therapy_df, aes(x = wellbeing_score)) +\n  geom_histogram(bins = 30)\n\n\n\n\n\n\n\nBut, we can change these defaults.\n Try setting the bins to a larger or smaller number than 30 and see what happens.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#exercise-2-comparing-distributions-in-groups",
+    "href": "data-vis/week-2/practical2.html#exercise-2-comparing-distributions-in-groups",
+    "title": "Practical",
+    "section": "Exercise 2: Comparing distributions in groups",
+    "text": "Exercise 2: Comparing distributions in groups\nWhat if we want to see the distribution of wellbeing_score for different groups of people, such as people with different levels of support? We can do this using a boxplot.\n Create a boxplot:\n\nggplot(therapy_df, aes(x = support_level, y = wellbeing_score)) +\n  geom_boxplot()\n\n\n\n\n\n\n\nJust like geom_histogram(), geom_boxplot() is actually setting values for attributes like fill to a default value. As you can see, the boxes are filled in white.\n Try changing the fill to a different color, like “red”.\nSee Exercise 1 above for an example of setting the fill color to a value (above the color was a hex string: “#525252”, but here you can change it to the name of a common color, like “red” )\n Change the fill color\nNow, instead of setting all boxes to the same color, we can use a variable to control the fill aesthetic.\n Try using the support_level variable to control the fill aesthetic.\nYou will still modify the content inside the brackets for geom_boxplot(), but now instead of fill = \"color_name\", you’ll need to use aes(fill = name_of_variable).\n Once you’ve used the suport_level variable to control the fill aesthetic, you can add a line to choose specific fill colors for each support_level. Copy your code above, add a + at the end of the last line, and add this line:\n\nscale_fill_manual(values = c(\"red\", \"blue\", \"purple\"))\n\n Try a violin plot instead using geom_violin(). what differences do you see?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#exercise-3-visualising-summaries-with-bar-plots",
+    "href": "data-vis/week-2/practical2.html#exercise-3-visualising-summaries-with-bar-plots",
+    "title": "Practical",
+    "section": "Exercise 3: Visualising summaries with bar plots",
+    "text": "Exercise 3: Visualising summaries with bar plots\nInstead of looking at the whole distribution of wellbeing_scores for each support level, maybe we just want to look at a summary statistic, like the mean values.\nWe can generate a new dataset that contains just mean values of wellbeing_scores for each support_level.\n Run the following code to generate the new summary dataset:\n\ntherapy_summary &lt;- therapy_df %&gt;%\n  group_by(support_level) %&gt;%\n  summarise(wellbeing_score_mean = mean(wellbeing_score))\n\nUse the therapy_summary data to create a barplot that depicts the mean wellbeing scores (on the y-axis) for each support level (x-axis) using geom_bar().\n Remember that within the brackets for geom_bar(), you need to specify stat = \"identity\" so that it uses the y-axis variable you specified.\n Change the bar colors to custom colors you choose using scale_fill_manual()\nCheck the seminar slides for examples of using manual scales!",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#exercise-4-relationships-between-continuous-variables",
+    "href": "data-vis/week-2/practical2.html#exercise-4-relationships-between-continuous-variables",
+    "title": "Practical",
+    "section": "Exercise 4: Relationships between continuous variables",
+    "text": "Exercise 4: Relationships between continuous variables\nWhat if we want to look at relationships between continuous variables, such as loneliness_score and wellbeing_score?\n We can create a scatterplot, like this:\n\nggplot(therapy_df, aes(x = loneliness_score, y = wellbeing_score)) +\n  geom_point()\n\n\n\n\n\n\n\n Modify the code above to use the support_level variable to control the color and shape aesthetics of geom_point()",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#exercise-5-coordinate-system-adjustments",
+    "href": "data-vis/week-2/practical2.html#exercise-5-coordinate-system-adjustments",
+    "title": "Practical",
+    "section": "Exercise 5: Coordinate system adjustments",
+    "text": "Exercise 5: Coordinate system adjustments\n Take the bar plot from Exercise 3 and flip the coordinates to horizontal bars using coord_flip()\n Try using coord_cartesian() to limit the y-axis range to focus on a particular range (e.g., ylim = c(40, 80))",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/practical2.html#exercise-7-faceting",
+    "href": "data-vis/week-2/practical2.html#exercise-7-faceting",
+    "title": "Practical",
+    "section": "Exercise 7: Faceting",
+    "text": "Exercise 7: Faceting\n Copy the same scatterplot of loneliness_score vs wellbeing_score from Exercise 4\n\nggplot(therapy_df, aes(x = loneliness_score, y = wellbeing_score)) +\n  geom_point()\n\n\n\n\n\n\n\n Add a facet_wrap() line to create separate facets for each value of the support_level variable\n\nggplot(therapy_df, aes(x = loneliness_score, y = wellbeing_score)) +\n  geom_point() +\n  facet_wrap(~ support_level)\n\n\n\n\n\n\n\nYou’re finished!",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/study_before1.html",
+    "href": "data-vis/week-1/study_before1.html",
+    "title": "Independent Study to Prepare",
+    "section": "",
+    "text": "Read A checklist for designing and improving the visualization of scientific data",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#about-us",
+    "href": "data-vis/week-1/seminar1.html#about-us",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "About us",
+    "text": "About us\nInstructor: Layla Unger\n\nStudents: Introductions",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#module-objectives",
+    "href": "data-vis/week-1/seminar1.html#module-objectives",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Module objectives",
+    "text": "Module objectives\n\nAccomplish great things",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#what-matters",
+    "href": "data-vis/week-1/seminar1.html#what-matters",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "What matters",
+    "text": "What matters\n\nMental health",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#module-components",
+    "href": "data-vis/week-1/seminar1.html#module-components",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Module components",
+    "text": "Module components\n\nSeminars\nPracticals\nAt-home consolidation exercises\nAssessment",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#accessing-the-module",
+    "href": "data-vis/week-1/seminar1.html#accessing-the-module",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Accessing the module",
+    "text": "Accessing the module\n\nModule website\nVLE\nCommunication\nExtensions\nRegrades\nIntegrity",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?\n\n\n\n\n\nx\ny\n\n\n\n\n55.3846\n97.1795\n\n\n51.5385\n96.0256\n\n\n46.1538\n94.4872\n\n\n42.8205\n91.4103\n\n\n40.7692\n88.3333\n\n\n38.7179\n84.8718\n\n\n35.6410\n79.8718\n\n\n33.0769\n77.5641\n\n\n28.9744\n74.4872\n\n\n26.1538\n71.4103",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-1",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-1",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?\n\n\n\n\n\n\nMean of x\nMean of y\n\n\n\n\n54.26327\n47.83225\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSD of x\nSD of y\n\n\n\n\n16.76514\n26.9354\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nMin\nMax\n\n\n\n\nx\n22.3077\n98.2051\n\n\ny\n2.9487\n99.4872",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-2",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-2",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-3",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-3",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?\n\n\n\n\n\nPatient\nAssessor\nTimepoint\nSymptom_Severity\n\n\n\n\na\nA\nPre-Treatment\n33\n\n\nb\nA\nPre-Treatment\n40\n\n\nc\nA\nPre-Treatment\n27\n\n\nd\nB\nPre-Treatment\n41\n\n\ne\nB\nPre-Treatment\n35\n\n\nf\nB\nPre-Treatment\n29\n\n\ng\nC\nPre-Treatment\n38\n\n\nh\nC\nPre-Treatment\n36\n\n\ni\nC\nPre-Treatment\n25\n\n\nj\nD\nPre-Treatment\n72",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-4",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-4",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?\n\n\n\n\n\nTimepoint\nsymptom_mean\nsymptom_sd\n\n\n\n\nPre-Treatment\n44.83333\n20.91904\n\n\nPost-Treatment\n40.33333\n23.44562",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-5",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-5",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-6",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-6",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-7",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-7",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-8",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-8",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?\n\nTo explore: find patterns, outliers, structure\nTo diagnose: check assumptions, spot problems\nWhat else?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-9",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-9",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-10",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-10",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?\n\nTo explore: find patterns, outliers, structure\nTo diagnose: check assumptions, spot problems\nTo explain: communicate results to others",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation",
+    "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "What makes a good visualisation?",
+    "text": "What makes a good visualisation?\n\nAppropriate for the data\nFocus attention on key points\nReadable\nAppealing",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-1",
+    "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-1",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "What makes a good visualisation?",
+    "text": "What makes a good visualisation?\n\nAppropriate for the data",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-2",
+    "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-2",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "What makes a good visualisation?",
+    "text": "What makes a good visualisation?\n\nAppropriate for the data",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-3",
+    "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-3",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "What makes a good visualisation?",
+    "text": "What makes a good visualisation?\n\nAppropriate for the data",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-4",
+    "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-4",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "What makes a good visualisation?",
+    "text": "What makes a good visualisation?\n\nFocus attention on key points",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-5",
+    "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-5",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "What makes a good visualisation?",
+    "text": "What makes a good visualisation?\n\nReadable",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-6",
+    "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-6",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "What makes a good visualisation?",
+    "text": "What makes a good visualisation?\n\nAppealing",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#resources",
+    "href": "data-vis/week-1/seminar1.html#resources",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Resources",
+    "text": "Resources\n\nFundamentals of Data Visualization\nNature Checklist for Scientific Figures",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/overview1.html",
+    "href": "data-vis/week-1/overview1.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This week you will get an introduction to why we visualise data and what makes a good visualisation. There will be a short paper to read to prepare and a seminar. There will be no workshop this week!\n\nLearning objectives\nThe successful student will be able to:\n\nexplain the multiple uses of data visualisations\nexplain the key aspects of an effective visualisation\nevaluate whether a visualisation is good or bad",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "About"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html",
+    "href": "data-vis/data-vis.html",
+    "title": "Data Visualisation",
+    "section": "",
+    "text": "This module introduces you to data visualisation in R.\n\n\nThe Module Learning outcomes are:\n\nExplore and understand datasets by visualising distributions, relationships, and trends.\nDesign clear and comprehensible visualisations that avoid common pitfalls.\nCommunicate findings to diverse audiences through compelling storytelling.\nBuild interactive dashboards that combine multiple visualisations.\nApply these skills across your degree and in a wide range of careers.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#module-learning-objectives",
+    "href": "data-vis/data-vis.html#module-learning-objectives",
+    "title": "Data Visualisation",
+    "section": "",
+    "text": "The Module Learning outcomes are:\n\nExplore and understand datasets by visualising distributions, relationships, and trends.\nDesign clear and comprehensible visualisations that avoid common pitfalls.\nCommunicate findings to diverse audiences through compelling storytelling.\nBuild interactive dashboards that combine multiple visualisations.\nApply these skills across your degree and in a wide range of careers.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#week-1-principles-of-data-visualisation",
+    "href": "data-vis/data-vis.html#week-1-principles-of-data-visualisation",
+    "title": "Data Visualisation",
+    "section": "Week 1: Principles of Data Visualisation",
+    "text": "Week 1: Principles of Data Visualisation",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#week-2-grammar-of-graphics",
+    "href": "data-vis/data-vis.html#week-2-grammar-of-graphics",
+    "title": "Data Visualisation",
+    "section": "Week 2: Grammar of Graphics",
+    "text": "Week 2: Grammar of Graphics",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#week-3-distributions",
+    "href": "data-vis/data-vis.html#week-3-distributions",
+    "title": "Data Visualisation",
+    "section": "Week 3: Distributions",
+    "text": "Week 3: Distributions",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#week-4-bar-plots-for-categorical-data",
+    "href": "data-vis/data-vis.html#week-4-bar-plots-for-categorical-data",
+    "title": "Data Visualisation",
+    "section": "Week 4: Bar Plots for Categorical Data",
+    "text": "Week 4: Bar Plots for Categorical Data",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#week-5-relationships-between-variables",
+    "href": "data-vis/data-vis.html#week-5-relationships-between-variables",
+    "title": "Data Visualisation",
+    "section": "Week 5: Relationships between Variables",
+    "text": "Week 5: Relationships between Variables",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#tidyverse",
+    "href": "data-vis/data-vis.html#tidyverse",
+    "title": "Data Visualisation",
+    "section": "Tidyverse",
+    "text": "Tidyverse\nData wrangling cheat sheet\nData wrangling in depth",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#data-visualisation",
+    "href": "data-vis/data-vis.html#data-visualisation",
+    "title": "Data Visualisation",
+    "section": "Data Visualisation",
+    "text": "Data Visualisation\nFundamentals of Data Visualization\nExplore graph types",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/practical1.html",
+    "href": "data-vis/week-1/practical1.html",
+    "title": "Practical",
+    "section": "",
+    "text": "There is no practical this week.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/study_after1.html",
+    "href": "data-vis/week-1/study_after1.html",
+    "title": "Independent Study to consolidate this week",
+    "section": "",
+    "text": "There is no additional study this week - instead, go ahead and check out Prepare! for next week.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/overview2.html",
+    "href": "data-vis/week-2/overview2.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This week you will get an introduction to the standard approach to creating visualisations in R. There is a preparation step to get acquainted with standard data management in R.\n\nLearning objectives\nThe successful student will be able to:\n\ngenerate common types of graphs, including histograms, barplots, and scatterplots\ncustomise the way variables are used to generate the axes and contents of the graph\ncustomise the appearance of graphs, including colors and axis ranges",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "About"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#from-last-time",
+    "href": "data-vis/week-2/seminar2.html#from-last-time",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "From last time",
+    "text": "From last time\n\nWhy do we visualise data?\n\nExplore\nDiagnose\nExplain",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#today",
+    "href": "data-vis/week-2/seminar2.html#today",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "Today",
+    "text": "Today\n\nThe grammar of graphics\n\nHow graphics are constructed in R (standard)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#packages",
+    "href": "data-vis/week-2/seminar2.html#packages",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "Packages",
+    "text": "Packages\n\nTo expand R’s capabilities, we often need to use packages\nThe main package we’ll be using to generate graphics is ggplot2\n\ninstall.packages(\"ggplot2\")\nlibrary(ggplot2)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot",
+    "href": "data-vis/week-2/seminar2.html#ggplot",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nWhat is the grammar of graphics?\nA framework for building plots by combining basic building blocks, e.g.,:\n\ngeometric objects (like points or bars)\ndata\nvisual mappings (like position and color)\n\nin a consistent, structured way",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-1",
+    "href": "data-vis/week-2/seminar2.html#ggplot-1",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nA graphic…\n\nmaps variables in the data +\nto the aesthetic attributes +\nof geometric objects +\n\nwith possible …\n\nstatistical transformations +\ndifferent coordinate systems +\nand faceting +",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#how-do-we-map-data-to-a-graphic",
+    "href": "data-vis/week-2/seminar2.html#how-do-we-map-data-to-a-graphic",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "How do we “map” data to a graphic?",
+    "text": "How do we “map” data to a graphic?\n\n\nThe way we depict variables in our data as axes, bars, points, etc. dictates the way that patterns such as comparisons and changes are perceived\nA non-exhaustive list:\n\nlength\ncolor (or saturation)\nposition\nsize\nshape\narea\nangle",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#todays-data",
+    "href": "data-vis/week-2/seminar2.html#todays-data",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "Today’s data",
+    "text": "Today’s data\n\n\n\n\n\n\ndiagnosis\nclinic\nstress_score\nsleep_hours\nactivity_score\nBMI\nsex\nyear\n\n\n\n\nAnxiety\nSouth\n26.400428\n6.813229\n55.83022\n26.62936\nFemale\n2020\n\n\nNone\nSouth\n28.999814\n7.410025\n71.15532\n23.38990\nFemale\n2019\n\n\nDepression\nNorth\n29.961343\n6.070516\n43.24825\n25.01448\nFemale\n2019\n\n\nNone\nSouth\n17.372159\n6.148900\n61.29423\n28.91811\nFemale\n2018\n\n\nNone\nNorth\n19.681761\n6.977383\n69.48282\n16.25393\nFemale\n2019\n\n\nAnxiety\nNorth\n26.030951\n6.250809\n64.08448\n28.51466\nFemale\n2020\n\n\nDepression\nSouth\n23.664896\n4.004201\n32.50274\n25.13293\nMale\n2019\n\n\nNone\nEast\n3.614131\n6.460045\n66.78394\n24.96954\nMale\n2020\n\n\nDepression\nNorth\n21.485539\n4.982020\n28.52229\n24.63801\nMale\n2018\n\n\nDepression\nEast\n34.049383\n4.867825\n43.54352\n24.21841\nFemale\n2019",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate",
+    "href": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "How are variables depicted here? What does it communicate?",
+    "text": "How are variables depicted here? What does it communicate?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate-1",
+    "href": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate-1",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "How are variables depicted here? What does it communicate?",
+    "text": "How are variables depicted here? What does it communicate?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate-2",
+    "href": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate-2",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "How are variables depicted here? What does it communicate?",
+    "text": "How are variables depicted here? What does it communicate?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate-3",
+    "href": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate-3",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "How are variables depicted here? What does it communicate?",
+    "text": "How are variables depicted here? What does it communicate?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate-4",
+    "href": "data-vis/week-2/seminar2.html#how-are-variables-depicted-here-what-does-it-communicate-4",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "How are variables depicted here? What does it communicate?",
+    "text": "How are variables depicted here? What does it communicate?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-2",
+    "href": "data-vis/week-2/seminar2.html#ggplot-2",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-3",
+    "href": "data-vis/week-2/seminar2.html#ggplot-3",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-4",
+    "href": "data-vis/week-2/seminar2.html#ggplot-4",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-5",
+    "href": "data-vis/week-2/seminar2.html#ggplot-5",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-6",
+    "href": "data-vis/week-2/seminar2.html#ggplot-6",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-7",
+    "href": "data-vis/week-2/seminar2.html#ggplot-7",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-8",
+    "href": "data-vis/week-2/seminar2.html#ggplot-8",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\nggplot(data = psych_df, aes(x = stress_score))\n\n\n\nWe can choose a variable to plot",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-9",
+    "href": "data-vis/week-2/seminar2.html#ggplot-9",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\nggplot(data = psych_df, aes(x = stress_score)) +\n  geom_histogram()\n\n\nBut we need to tell ggplot what GEOMETRY to use to visualize that variable. Here, a histogram",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-10",
+    "href": "data-vis/week-2/seminar2.html#ggplot-10",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\nggplot(data = psych_df, aes(x = diagnosis, y = stress_score)) +\n  geom_boxplot()\n\n\nNow, what if we wanted to keep looking at that distribution of stress, but break it down by diagnosis? Here, we need to add that diagnosis variable as an axis and choose a geometry to depict it. We’ll try boxplot.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-11",
+    "href": "data-vis/week-2/seminar2.html#ggplot-11",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\nggplot(data = psych_df, aes(x = diagnosis, y = stress_score)) +\n  geom_violin()\n\n\n\nOr violin plot",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-12",
+    "href": "data-vis/week-2/seminar2.html#ggplot-12",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  group_by(diagnosis) %&gt;%\n  summarize(stress_score_mean = mean(stress_score)) %&gt;%\n  ggplot(aes(x = diagnosis, y = stress_score_mean)) +\n  geom_bar(stat = \"identity\")\n\n\nWhat if we don’t want to look at the full distribution - we just want to look at the average tendencies for each diagnosis? Well here we want a bar plot. But we need to calculate that average tendency somehow.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-13",
+    "href": "data-vis/week-2/seminar2.html#ggplot-13",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point()\n\n\nSuppose we want to see, beyond diagnosis, are there variables associated with stress? How about sleep? Now we’re looking at a relationship between continuous variables, so the appropriate choice here is a scatterplot. So the geeometry we’ll use is points in a scatterplot.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-14",
+    "href": "data-vis/week-2/seminar2.html#ggplot-14",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(aes(color = diagnosis))\n\n\nWhat if we want to incorporate another variable into this plot. E.g., what if we want to visualize stress, sleep AND diagnosis? We can control another aesthetic using the diagnosis variable - e.g., point color",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-15",
+    "href": "data-vis/week-2/seminar2.html#ggplot-15",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(aes(shape = diagnosis))\n\n\nWe could use diagnosis to control another aesthetic, like shape",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-16",
+    "href": "data-vis/week-2/seminar2.html#ggplot-16",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = stress_score, y = diagnosis)) +\n  geom_point(aes(color = sleep_hours))\n\n\nWe could change the way we map our variables to aesthetics - axes, shapes",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-17",
+    "href": "data-vis/week-2/seminar2.html#ggplot-17",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-18",
+    "href": "data-vis/week-2/seminar2.html#ggplot-18",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point()\n\n\nCustomize how the variables are plotted as points",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-19",
+    "href": "data-vis/week-2/seminar2.html#ggplot-19",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(color = \"blue\", size = 2)\n\n\nCustomize how the variables are plotted as points",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-20",
+    "href": "data-vis/week-2/seminar2.html#ggplot-20",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(aes(color = diagnosis), size = 2)\n\n\nUse another variable to control the color",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-21",
+    "href": "data-vis/week-2/seminar2.html#ggplot-21",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(aes(color = diagnosis), size = 2) +\n  scale_color_manual(values = c(\"darkgray\", \"deeppink\", \"blue\")) +\n  scale_x_continuous(name = \"Sleep in Hours\", \n                     breaks = seq(0, 12, by = 2), limits = c(0, 12))\n\n\nUse another variable to control the color and customise",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-22",
+    "href": "data-vis/week-2/seminar2.html#ggplot-22",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-23",
+    "href": "data-vis/week-2/seminar2.html#ggplot-23",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  group_by(diagnosis) %&gt;%\n  summarize(stress_score_mean = mean(stress_score)) %&gt;%\n  ggplot(aes(x = diagnosis, y = stress_score_mean)) +\n  geom_bar(stat = \"identity\")\n\n\nWhat if we want to change how the axes are depicted?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-24",
+    "href": "data-vis/week-2/seminar2.html#ggplot-24",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  group_by(diagnosis) %&gt;%\n  summarize(stress_score_mean = mean(stress_score)) %&gt;%\n  ggplot(aes(x = diagnosis, y = stress_score_mean)) +\n  geom_bar(stat = \"identity\") +\n  coord_cartesian(ylim = c(10, 40))",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-25",
+    "href": "data-vis/week-2/seminar2.html#ggplot-25",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  group_by(diagnosis) %&gt;%\n  summarize(stress_score_mean = mean(stress_score)) %&gt;%\n  ggplot(aes(x = diagnosis, y = stress_score_mean)) +\n  geom_bar(stat = \"identity\") +\n  coord_flip()\n\n\nChange the orientation",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-26",
+    "href": "data-vis/week-2/seminar2.html#ggplot-26",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-27",
+    "href": "data-vis/week-2/seminar2.html#ggplot-27",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(aes(color = diagnosis), size = 2) +\n  scale_color_manual(values = c(\"darkgray\", \"deeppink\", \"blue\")) +\n  scale_x_continuous(name = \"Sleep in Hours\", \n                     breaks = seq(0, 12, by = 2), limits = c(0, 12)) \n\n\nWe often want to control the other aspects of appearance, such as font size",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-28",
+    "href": "data-vis/week-2/seminar2.html#ggplot-28",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(aes(color = diagnosis), size = 2) +\n  scale_color_manual(values = c(\"darkgray\", \"deeppink\", \"blue\")) +\n  scale_x_continuous(name = \"Sleep in Hours\", \n                     breaks = seq(0, 12, by = 2), limits = c(0, 12)) +\n  theme(legend.position = \"top\",\n        legend.title = element_blank(),\n        panel.grid = element_blank())\n\n\nWe can add a theme() line and specify the appearance of various characteristics",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-29",
+    "href": "data-vis/week-2/seminar2.html#ggplot-29",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(aes(color = diagnosis), size = 2) +\n  scale_color_manual(values = c(\"darkgray\", \"deeppink\", \"blue\")) +\n  scale_x_continuous(name = \"Sleep in Hours\", \n                     breaks = seq(0, 12, by = 2), limits = c(0, 12)) +\n  theme_bw()\n\n\nThere are also built-in themes that control many characteristics at once",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-30",
+    "href": "data-vis/week-2/seminar2.html#ggplot-30",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-31",
+    "href": "data-vis/week-2/seminar2.html#ggplot-31",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sex, y = stress_score)) +\n  geom_point(position = position_jitter(width = .1))\n\n\nWhat if we want to see how this relationship varies across another variable? Too much to combine into a single plot",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#ggplot-32",
+    "href": "data-vis/week-2/seminar2.html#ggplot-32",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "ggplot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sex, y = stress_score)) +\n  facet_wrap(~diagnosis) +\n  geom_point(position = position_jitter(width = .1))\n\n\nInstead, break across facets",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#summary-grammar-of-graphics",
+    "href": "data-vis/week-2/seminar2.html#summary-grammar-of-graphics",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "Summary: Grammar of Graphics",
+    "text": "Summary: Grammar of Graphics\n\nMinimum for plot = data + aes() + geom()\nMap variables to aesthetics: x, y, color/fill, shape, size, alpha, linetype.\nPick geoms to match the question: hist/box/violin (distributions), bar (summaries/counts), point (relationships).\nUse stats when needed: stat_summary() for means/SE; stat=“identity” when you’ve already computed values.\nTune scales & labels: scale_*_*(), labs().\nAdjust axes/orientation: coord_cartesian(), coord_flip(), coord_polar().\nPolish appearance: theme(), built-ins (theme_bw())\nCompare subsets with facets: facet_wrap() / facet_grid().",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#workflow-checklist",
+    "href": "data-vis/week-2/seminar2.html#workflow-checklist",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "Workflow checklist",
+    "text": "Workflow checklist\n\nStart with a clear question.\nChoose mappings (what goes to x/y/color/…?).\nSelect geom (how should it look?).\nAdd stat/facet if it clarifies the story.\nRefine with scales/coord; label units.\nFinish with theme\nCheck clarity & integrity",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/seminar2.html#upcoming",
+    "href": "data-vis/week-2/seminar2.html#upcoming",
+    "title": "Week 2 Seminar: Grammar of Graphics",
+    "section": "Upcoming",
+    "text": "Upcoming\nWhat is the range and shape of our data?\nDive into distributions",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-2/study_before2.html",
+    "href": "data-vis/week-2/study_before2.html",
+    "title": "Independent Study to Prepare",
+    "section": "",
+    "text": "Preparation for Weeks 2 and 3: Get Acquainted with Tidy Data Wrangling\nThis preparation involves reading some chapters in an online book and getting started with an online DataCamp course. I will recommend this preparation for weeks 2 and 3. You can try taking an initial look in week 2, and revisit the reading more deeply in week 3.\nAlthough the focus of this module is on data visualisation, before you visualise data, you often need to take some steps to get it into a form that you can visualise. These steps are often referred to using phrases like “data management” and “data wrangling”. These days, it is common practice in R to perform steps to ensure that your data are in a standard, “tidy” format in which data are stored in a table where each row is an observation and each column is a variable. Common steps for preparing data for visualisation and analysis include:\n\nGenerating summary statistics, such as the mean value of an outcome variable for groups of participants\nSelecting a subset of data, such as a subset of variables, or rows for just participants in a subset of groups\n\nThe Data Analysis module that you will be completing at the same time will cover many common tidy data wrangling steps, particularly in Weeks 3 and 4. Therefore, we won’t spend much time covering these steps in the seminars for Data Visualisation. However, since this is a crucial part of working with data in R, you will benefit from getting acquainted with it for this module as well.\nThere are many resources for learning about tidy data wrangling. You are encouraged to try the following two resources:\n\nRead Tidyverse Ch 4 - 7\nDataCamp courses on tidyverse and tidy wrangling",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 2: Grammar of Graphics",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html",
+    "href": "data-vis/week-3/practical3.html",
+    "title": "Practical",
+    "section": "",
+    "text": "In this practical you will read in a dataset and plot distributions in various ways. You will also get a bit of practice with tidyverse data wrangling.\n\nPracticals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#session-overview",
+    "href": "data-vis/week-3/practical3.html#session-overview",
+    "title": "Practical",
+    "section": "",
+    "text": "In this practical you will read in a dataset and plot distributions in various ways. You will also get a bit of practice with tidyverse data wrangling.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#philosophy",
+    "href": "data-vis/week-3/practical3.html#philosophy",
+    "title": "Practical",
+    "section": "",
+    "text": "Practicals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#wellbeing",
+    "href": "data-vis/week-3/practical3.html#wellbeing",
+    "title": "Practical",
+    "section": "Wellbeing",
+    "text": "Wellbeing\nWe’ll be working with a simulated dataset is based on a fictional cross-sectional survey study exploring the relationships between social support, therapy attendance, loneliness, sleep quality, and overall wellbeing in adults.\nIn this fictional study, participants were recruited from community mental health clinics and general community advertisements between 2019 and 2022. They completed a survey assessing:\n\nPerceived social support (categorized as Low, Medium, or High)\nCurrent therapy status (Yes or No)\nLoneliness (a standardized loneliness score; higher scores indicate greater loneliness)\nSubjective wellbeing (higher scores indicate better wellbeing)\nSleep quality (rated on a 1–10 scale)\nDemographics, including age and sex\n\nThe fictional study aimed to understand how social support and therapy might relate to feelings of loneliness and overall wellbeing, as well as how these factors interact with sleep and demographic characteristics.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#packages",
+    "href": "data-vis/week-3/practical3.html#packages",
+    "title": "Practical",
+    "section": "Packages",
+    "text": "Packages\nRemember that packages, such as ggplot2 (Wickham 2016) need to be installed once and then loaded each session. ggplot2 is one of the tidyverse (Wickham et al. 2019) packages.\nToday, we’ll be using tidyverse and ggridges\n\n\n\n\n\n\nImportant\n\n\n\nIf you are working on a University computer (or the VDS) you do not need to install tidyverse.\nIf you are working on your own computer or using RStudio cloud you do need to install tidyverse.\n\n\nTo install a package:\n Go the Packages tab on the lower right pane. Click Install and type the name of the package into the box that appears.\nWait until you get the prompt back. It will take a few moments, be patient!\nTo use a package which is installed you have to load it with the library() function. You will need to do this whether you are working on your own computer or on a University computer\n Load the tidyverse and ggridges. Type or copy the following code into your R script:\n\nlibrary(tidyverse)\nlibrary(ggridges)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#reading-in-data",
+    "href": "data-vis/week-3/practical3.html#reading-in-data",
+    "title": "Practical",
+    "section": "Reading in data",
+    "text": "Reading in data\nYou will go into more depth about reading in data in the Data Analysis module For now, you can just follow these steps.\n Save this file in your week-3 folder:\n\nData from fictional wellbeing study: therapy_data.csv\n\n\n Add the following code to your R script and run:\n\ntherapy_df &lt;- read_csv(\"therapy_data.csv\")",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#look-at-data",
+    "href": "data-vis/week-3/practical3.html#look-at-data",
+    "title": "Practical",
+    "section": "Look at data",
+    "text": "Look at data\n Examine the variables and first few rows of the therapy_df object using head()\n\nhead(therapy_df)\n\n# A tibble: 6 × 8\n  support_level therapy   age loneliness_score wellbeing_score sleep_quality\n  &lt;chr&gt;         &lt;chr&gt;   &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;\n1 Medium        No         42             30.4            58.6             6\n2 Low           Yes        23             72.2            44.5             6\n3 Low           No         35             47.1            39.8             7\n4 Medium        No         23             35.1            56.8             8\n5 Medium        Yes        20             57.0            60.6             6\n6 Medium        No         40             47.2            61.5             6\n# ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;\n\n\nSee that you have a table where each column is a variable from the fictional study, such as wellbeing_score. Each row contains values for each variable for one participant.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#exercise-1-histograms",
+    "href": "data-vis/week-3/practical3.html#exercise-1-histograms",
+    "title": "Practical",
+    "section": "Exercise 1: Histograms",
+    "text": "Exercise 1: Histograms\nLook at the distribution of the loneliness_score variable.\n Plot the distribution by creating a plot in which the x-axis variable is loneliness_score and the distribution of this variable is shown as a histogram.\n\n\n\n\n\n\n\n\n Try different numbers of bins (e.g., 10, 30, 50)\n Look up the named colors\n Choose a color from the list and use it to change the fill color of your histogram",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#exercise-2-comparing-distributions-in-groups",
+    "href": "data-vis/week-3/practical3.html#exercise-2-comparing-distributions-in-groups",
+    "title": "Practical",
+    "section": "Exercise 2: Comparing distributions in groups",
+    "text": "Exercise 2: Comparing distributions in groups\nA density plot allows us to look at the overall shape of the distribution, rather than counts of values within bins.\n Create a density plot of loneliness_score.\n\nggplot(therapy_df, aes(x = loneliness_score)) +\n  geom_density()\n\n\n\n\n\n\n\nWe can examine both the histogram and density plot by overlaying them.\n Overlay density and histogram of loneliness_score.\n\nggplot(therapy_df, aes(x = loneliness_score, y = after_stat(density))) +\n  geom_histogram(binwidth = 5, fill = \"blue\", \n                 color = \"black\", alpha = 0.5) +\n  geom_density()\n\n\n\n\n\n\n\nWhat if we want to examine how loneliness_score varies across groups, such as people with different levels of support (in the support_level variable)? One way we can look at this is to overlay the density of loneliness_score for each support_level.\nTo do this, we can copy the density plot from the first part of this exercise, but within the brackets for geom_density(), use support_level to control the fill aesthetic.\n Copy your code for plotting loneliness_score density, and add some aes() code within the geom_density() to fill based on support_level.\n\n\n\n\n\n\n\n\nSee that the fill is opaque, so the densities cover each other up. We can make them transparent by setting alpha to a value lower than 1, as we did in the histogram above.\n Set the alpha level for geom_density() to 0.5.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#exercise-3-boxplots",
+    "href": "data-vis/week-3/practical3.html#exercise-3-boxplots",
+    "title": "Practical",
+    "section": "Exercise 3: Boxplots",
+    "text": "Exercise 3: Boxplots\nOur last density plot allowed us to get a sense of how the distributions of loneliness_score varied for different levels of support (support_level). But, we might find that visual a bit crowded. Perhaps we want to get a more compact depiction of the distributions and visually separate distributions for each support_level. One way to do this is to use boxplots.\n Create this basic boxplot\n\nggplot(therapy_df, aes(x = support_level, y = loneliness_score)) +\n  geom_boxplot()\n\n\n\n\n\n\n\nWhat if we want to keep the compact format of the boxplot, but also see the distribution of individual points?\n Add a geom_jitter() line to show individual observations\n\n\n\n\n\n\n\n\n This is a little busy! Set alpha for geom_jitter() to below 1, e.g., 0.2.\n\n\n\n\n\n\n\n\nBoxplots show medians and quartiles. We can plot additional summary statistics, like mean values, using stat_summary()\n Copy the code below to add a point indicating the mean value, and edit the content within stat_summary() to change the color of the points.\n\nggplot(therapy_df, aes(x = support_level, y = loneliness_score)) +\n  geom_boxplot() +\n  stat_summary(fun = mean, geom = \"point\")",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#exercise-4-violin-plots",
+    "href": "data-vis/week-3/practical3.html#exercise-4-violin-plots",
+    "title": "Practical",
+    "section": "Exercise 4: Violin plots",
+    "text": "Exercise 4: Violin plots\nThe boxplots we just generated were less crowded than the overlapping density plots. However, this advantage came at a cost: we can no longer see the shape of the distribution. A violin plot allows us to compare the shape of the distribution for one variable across levels of another variable.\n Generate this basic violin plot\n\nggplot(therapy_df, aes(x = support_level, y = loneliness_score)) +\n  geom_violin()\n\n\n\n\n\n\n\nIf we want to combine the advantages of a boxplot (compact depiction of medians and quartiles) with the advantages of a violinplot (showing the shapes of the distributions), we can overlay them.\n Overlay a violin and boxplot\n\nggplot(therapy_df, aes(x = support_level, y = loneliness_score)) + \n  geom_violin() +\n  geom_boxplot()\n\n\n\n\n\n\n\nHm, these boxplots are very big and cover up parts of the violin plots underneath!\n Within geom_boxplot(), change the width to something narrower, like 0.1\n\n\n\n\n\n\n\n\n To help us visually compare the distributions, within geom_violin(), use support_level to control the fill aesthetic",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#exercise-5-ridgeline-plots",
+    "href": "data-vis/week-3/practical3.html#exercise-5-ridgeline-plots",
+    "title": "Practical",
+    "section": "Exercise 5: Ridgeline plots",
+    "text": "Exercise 5: Ridgeline plots\nYou might have noticed that each “violin” in a violin plot essentially shows the distribution twice (the two “sides” of the violin). Ridgeline plots allow you to show each distribution once in a nice visually separated way.\n Generate a basic ridgeline plot\n\nggplot(therapy_df, aes(x = loneliness_score, y = support_level)) +\n  geom_density_ridges()\n\n\n\n\n\n\n\n Use support_level to control the fill aesthetic of geom_density_ridges() and set the overall alpha level to less than 1 (e.g., 0.5)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/practical3.html#exercise-6-wrangling-practice-with-visualization",
+    "href": "data-vis/week-3/practical3.html#exercise-6-wrangling-practice-with-visualization",
+    "title": "Practical",
+    "section": "Exercise 6: Wrangling practice with visualization",
+    "text": "Exercise 6: Wrangling practice with visualization\nCurrently, our dataset contains a lot of information. But we may want to go beyond the exact data in the dataset.\nFor example, we might want to look at differences in wellbeing for people who are low versus high in loneliness. We can’t do this with the data as-is because loneliness_score is a continuous variable.\nThis poses an extremely common data wrangling issue: we need to use the data we have to derive some new values of interest.\n Use mutate and ifelse to create a new variable called loneliness_level in which loneliness_scrores above the median value are high and those at or below median are low.\n\n# This code generates the new variable\ntherapy_df &lt;- therapy_df %&gt;%\n  mutate(loneliness_level = ifelse(loneliness_score &gt; median(loneliness_score), \"high\", \"low\"))\n\n# We can see that this new variable is added to therapy_df\nhead(therapy_df)\n\n# A tibble: 6 × 9\n  support_level therapy   age loneliness_score wellbeing_score sleep_quality\n  &lt;chr&gt;         &lt;chr&gt;   &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;\n1 Medium        No         42             30.4            58.6             6\n2 Low           Yes        23             72.2            44.5             6\n3 Low           No         35             47.1            39.8             7\n4 Medium        No         23             35.1            56.8             8\n5 Medium        Yes        20             57.0            60.6             6\n6 Medium        No         40             47.2            61.5             6\n# ℹ 3 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;, loneliness_level &lt;chr&gt;\n\n\n Use either a boxplot, violin plot, or ridge plot to depict the distribution of wellbeing_score for each loneliness_level: your choice!\nYou’re finished!",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Practical"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/study_after3.html",
+    "href": "data-vis/week-3/study_after3.html",
+    "title": "Independent Study to Consolidate",
+    "section": "",
+    "text": "Continue working on the tidyverse course on DataCamp if not yet complete.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/study_after3.html#set-up",
+    "href": "data-vis/week-3/study_after3.html#set-up",
+    "title": "Independent Study to Consolidate",
+    "section": "Set up:",
+    "text": "Set up:\nIf you have just opened RStudio you will want to load the tidyverse and ggridges packages",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/study_after3.html#reading-in-data",
+    "href": "data-vis/week-3/study_after3.html#reading-in-data",
+    "title": "Independent Study to Consolidate",
+    "section": "Reading in data",
+    "text": "Reading in data\n Save this file in your week-3 folder:\n\nData from fictional stress study: stress_data.csv\n\n\n Add the following code to your R script and run:\n\nstress_df &lt;- read_csv(\"stress_data.csv\")\n\n\nhead(stress_df)\n\n# A tibble: 6 × 9\n   ...1 diagnosis  clinic stress_score sleep_hours activity_score   BMI sex   \n  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; \n1     1 Depression East           28.2        5.95           39.2  24.7 Male  \n2     2 Depression South          27.8        4.99           32.7  26.6 Female\n3     3 None       North          18.5        6.94           56.2  20.9 Male  \n4     4 None       North          12.9        7.44           88.4  23.6 Female\n5     5 Depression East           24.6        4.16           54.8  28.1 Female\n6     6 Depression South          17.5        5.10           25.9  27.0 Male  \n# ℹ 1 more variable: year &lt;dbl&gt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/study_after3.html#exercise-1-histogram-practice",
+    "href": "data-vis/week-3/study_after3.html#exercise-1-histogram-practice",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 1: Histogram Practice",
+    "text": "Exercise 1: Histogram Practice\n Make a histogram of stress_score. Try two different bin settings and briefly note what changes.\nReflect: How does the bin size influence the level of fine detail you can see in the data?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/study_after3.html#exercise-2-density-overlay-practice",
+    "href": "data-vis/week-3/study_after3.html#exercise-2-density-overlay-practice",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 2: Density Overlay Practice",
+    "text": "Exercise 2: Density Overlay Practice\n Overlay a density curve and histogram of stress_score. Alter colors / alpha levels so that it is easy to see both the density curve and histogram.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-3/study_after3.html#exercise-3-categorical-distributions-practice",
+    "href": "data-vis/week-3/study_after3.html#exercise-3-categorical-distributions-practice",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 3: Categorical Distributions Practice",
+    "text": "Exercise 3: Categorical Distributions Practice\n Compare stress_score across diagnosis groups using either a boxplot or a violin (your choice). Add jittered points (transparent) and mark the mean with stat_summary().\nReflect: Do the means and medians overlap? Are there group differences between diagnoses?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 3: Distributions",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/overview4.html",
+    "href": "data-vis/week-4/overview4.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This week you will get a brief review of data management in R, then an in-depth walkthrough of the many ways to visualise distributions. There is a preparation step to get acquainted with standard data management in R.\n\nLearning objectives\nThe successful student will be able to:\n\ngenerate various types of plot to visualise distributions\noverlay multiple plots to provide more visual information about distributions\ncustomise the appearance of distribution plots (e.g., colors)\nperform some basic data wrangling to prepare data for visualisation",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "About"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#from-last-time",
+    "href": "data-vis/week-4/seminar4.html#from-last-time",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "From last time",
+    "text": "From last time\n\nTidyverse:\n\nbasic data wrangling\n\n\nGraphing distributions:\n\nhistograms, densities, boxplots, violin plots, ridgeline plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#today",
+    "href": "data-vis/week-4/seminar4.html#today",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Today",
+    "text": "Today\n\nBar plots",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#todays-data",
+    "href": "data-vis/week-4/seminar4.html#todays-data",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Today’s data",
+    "text": "Today’s data\n\n\n\n\n\n\nintervention_id\nparticipant_group\nintervention_type\nsession_region\nlead_clinician\nsymptom_reduction\n\n\n\n\n1\nOlder Adults\nSupport Group\nSouth\nDr. Brown\n19.1\n\n\n2\nOlder Adults\nMedication\nEast\nDr. Smith\n20.1\n\n\n3\nOlder Adults\nMedication\nNorth\nDr. Chen\n19.4\n\n\n4\nAdults\nSupport Group\nNorth\nDr. Lee\n6.3\n\n\n5\nOlder Adults\nCBT\nCentral\nDr. Lee\n33.4\n\n\n6\nAdults\nCBT\nCentral\nDr. Chen\n25.8\n\n\n7\nAdults\nSupport Group\nEast\nDr. Smith\n19.0\n\n\n8\nAdults\nMedication\nSouth\nDr. Chen\n27.4\n\n\n9\nOlder Adults\nMedication\nCentral\nDr. Brown\n25.0\n\n\n10\nTeens\nMedication\nCentral\nDr. Brown\n18.6",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#why-bars",
+    "href": "data-vis/week-4/seminar4.html#why-bars",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Why bars?",
+    "text": "Why bars?\n\nHeights of bars give us easy insights into categorical variables:\n\nCount how many values within each category there are\nSee how a continuous variable differs across the categorical groups\n\n\n\n\n\n\nintervention_id\nparticipant_group\nintervention_type\nsession_region\nlead_clinician\nsymptom_reduction\n\n\n\n\n1\nOlder Adults\nSupport Group\nSouth\nDr. Brown\n19.1\n\n\n2\nOlder Adults\nMedication\nEast\nDr. Smith\n20.1\n\n\n3\nOlder Adults\nMedication\nNorth\nDr. Chen\n19.4\n\n\n\n\n\n\n\n\nWe have categorical variables here like intervention type.\nHow many people in each intervention type group?\nHow did symptom reduction (continuous) differ acros intervention type groups?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#today-1",
+    "href": "data-vis/week-4/seminar4.html#today-1",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Today",
+    "text": "Today\n\n\n\n\nbarplot of counts\nbarplot of proportions\n\n\n\nbarplot of summary stats\ngrouped barplot of summary stats",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#today-2",
+    "href": "data-vis/week-4/seminar4.html#today-2",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Today",
+    "text": "Today\n\n\n\n\nbarplot of counts\nbarplot of proportions\n\n\n\nbarplot of summary stats\ngrouped barplot of summary stats",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#why-bars-1",
+    "href": "data-vis/week-4/seminar4.html#why-bars-1",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Why bars?",
+    "text": "Why bars?\n\nHeights of bars give us easy insights into categorical variables:\n\nCount how many values within each category there are\nSee how a continuous variable differs across the categorical groups",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#standard-barplot-of-counts",
+    "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Standard barplot of counts",
+    "text": "Standard barplot of counts\n\ncount sessions in each session_region\n\n\n\n\n\nintervention_id\nparticipant_group\nintervention_type\nsession_region\nlead_clinician\nsymptom_reduction\n\n\n\n\n1\nOlder Adults\nSupport Group\nSouth\nDr. Brown\n19.1\n\n\n2\nOlder Adults\nMedication\nEast\nDr. Smith\n20.1\n\n\n3\nOlder Adults\nMedication\nNorth\nDr. Chen\n19.4\n\n\n4\nAdults\nSupport Group\nNorth\nDr. Lee\n6.3\n\n\n5\nOlder Adults\nCBT\nCentral\nDr. Lee\n33.4\n\n\n6\nAdults\nCBT\nCentral\nDr. Chen\n25.8\n\n\n7\nAdults\nSupport Group\nEast\nDr. Smith\n19.0\n\n\n8\nAdults\nMedication\nSouth\nDr. Chen\n27.4\n\n\n9\nOlder Adults\nMedication\nCentral\nDr. Brown\n25.0\n\n\n10\nTeens\nMedication\nCentral\nDr. Brown\n18.6",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-1",
+    "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-1",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Standard barplot of counts",
+    "text": "Standard barplot of counts\ndefault for geom_bar() is to plot counts\n\nggplot(mental_health, aes(x = session_region)) + #&lt; y-axis specified by geom_bar()\n  geom_bar() #&lt; default stat = \"count\": counts number of ROWS per x-axis group\n\n\nThe default behavior for geom_bar is to count the number of values in each level of a variable, e.g., the number of patients in each region. There is a hidden default value for an argument in geom_bar() called “stat”, that indicates what kind of statistic should determine the height of the bar. By default the value is “count”, so tht it counts the frequency of each unique value in that variable, and that’s the height of the bar.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-2",
+    "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-2",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Standard barplot of counts",
+    "text": "Standard barplot of counts\nequivalent with wrangling\n\nmental_health %&gt;%\n  count(session_region, name = \"num_session\") %&gt;% #&lt; calculate counts\n  ggplot(aes(x = session_region, y = num_session)) + #&lt; use counts as y-axis\n  geom_bar(stat = \"identity\") #&lt; override default\n\n\nThis is what’s happening under the hood - calculate counts then plot them. But if we count ourselves, we need to turn off the default stat = “count” and switch it to “identity” so it uses the y-axis variable",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-3",
+    "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-3",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Standard barplot of counts",
+    "text": "Standard barplot of counts\nordering levels of the variable\n\nggplot(mental_health, aes(x = fct_infreq(session_region))) + #&lt; order bars by counts\n  geom_bar() \n\n\nWe can do a bit of wrangling so that our bars are ordered by these counts",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-4",
+    "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-4",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Standard barplot of counts",
+    "text": "Standard barplot of counts\nequivalent with wrangling\n\nmental_health %&gt;%\n  count(session_region, name = \"num_session\") %&gt;% #&lt; calculate counts\n  ggplot(aes(x = reorder(session_region, num_session), y = num_session)) + #&lt; reorder\n  geom_bar(stat = \"identity\") #&lt; override default\n\n\nAgain, note use of identity",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-5",
+    "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-5",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Standard barplot of counts",
+    "text": "Standard barplot of counts\n\ncount sessions in each session_region AND each participant_group\n\n\n\n\n\n\nintervention_id\nparticipant_group\nintervention_type\nsession_region\nlead_clinician\nsymptom_reduction\n\n\n\n\n1\nOlder Adults\nSupport Group\nSouth\nDr. Brown\n19.1\n\n\n2\nOlder Adults\nMedication\nEast\nDr. Smith\n20.1\n\n\n3\nOlder Adults\nMedication\nNorth\nDr. Chen\n19.4\n\n\n\n\n\n\n\n\nWe might have nested categorical variables. E.g., here, in each region participants come from multiple age groups. We can count up how many participants in each age group in each region",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-6",
+    "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-6",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Standard barplot of counts",
+    "text": "Standard barplot of counts\nsplit counts by another variable\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group)) #&lt; add another variable to set fill by count \n\n\nUSE POINTER TO ILLUSTRATE WHAT A SEGMENT MEANS\nBy default, there’s an argument here called “position” that is set to “stack”. So this counts up the numbers and stacks them on top of each other.\nStacking makes it harder to use those heights to quickly “see” counts. Lets unstack them.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-7",
+    "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-7",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Standard barplot of counts",
+    "text": "Standard barplot of counts\nunstack using position = “dodge”\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group), position = \"dodge\") #&lt; unstack \n\n\nUSE POINTER TO ILLUSTRATE THAT SEGMENT IS SAME VALUE AS BEFORE\nUnstacked",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#today-3",
+    "href": "data-vis/week-4/seminar4.html#today-3",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Today",
+    "text": "Today\n\n\n\n\nbarplot of counts\nbarplot of proportions\n\n\n\nbarplot of summary stats\ngrouped barplot of summary stats",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-proportions",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-proportions",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of proportions",
+    "text": "Barplot of proportions\ndifficult to compare across groups?\n\n\nGoing back to this plot - this gives us absolute counts. But we might be less interested in absolute totals, and more in the relative frequencies across groups. For this we need proportions.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-proportions-1",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-proportions-1",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of proportions",
+    "text": "Barplot of proportions\nconvert counts to proportions\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group), position = \"fill\") + #&lt;\n  scale_y_continuous(name = \"prop\") #&lt; adjust the label from default \"count\"\n\n\nNow we’re still counting up the numbers, but now before stacking, we calculate the proportion of each count from the total.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-proportions-2",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-proportions-2",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of proportions",
+    "text": "Barplot of proportions\nconvert counts to proportions\n\nggplot(mental_health, aes(intervention_type, fill = participant_group)) +\n  geom_bar(position = position_fill()) +\n  geom_text(aes(label = after_stat(count / sum(count))), #&lt; get \"count\" stat calculated in next line\n            stat = \"count\", #&lt; calculate counts per group\n            position = position_fill(vjust = 0.5)) + #&lt; centered within filled segments\n  scale_y_continuous(name = \"prop\")\n\n\nUse that count variable to label the props",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-proportions-3",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-proportions-3",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of proportions",
+    "text": "Barplot of proportions\nwrangling equivalent\n\nmental_health %&gt;%\n  count(session_region, participant_group, name = \"num_session\") %&gt;% #&lt; calculate counts\n  group_by(session_region) %&gt;% #&lt; for each session_region...\n  mutate(prop = num_session / sum(num_session)) %&gt;% #&lt; calculate proportion out of total count\n  ungroup() %&gt;%\n  ggplot(aes(x = session_region, y = prop)) +\n  geom_bar(aes(fill = participant_group), stat = \"identity\") #&lt;",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplots-of-proportions-counts",
+    "href": "data-vis/week-4/seminar4.html#barplots-of-proportions-counts",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplots of proportions / counts",
+    "text": "Barplots of proportions / counts\n\nWhat if we had multiple records (rows) per patient, but we still wanted to plot the number of patients?\nWhat would happen if we went straight to:\n\nggplot(mental_health, aes(x = session_region)) + #&lt; y-axis specified by geom_bar()\n  geom_bar() #&lt; default stat = \"count\": counts number of ROWS per x-axis group\n\n\nThink about need to wrangle before plotting",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#today-4",
+    "href": "data-vis/week-4/seminar4.html#today-4",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Today",
+    "text": "Today\n\n\n\n\nbarplot of counts\nbarplot of proportions\n\n\n\nbarplot of summary stats\ngrouped barplot of summary stats\n\n\n\nThis has all just been counting numbers of observations in categorical groups. Allows us to see how counts vary across groups, whether counts are similar, whether proportions are similar.\nBut tells us nothing about the relationship with other variables.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-summary-stats",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of summary stats",
+    "text": "Barplot of summary stats\n\nWe often want to know about relationships between variables:\n\nDid treatment affect outcome?\nDo symptoms vary with diagnosis?\n\n\nWhat are the categorical and continuous variables?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-1",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-1",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of summary stats",
+    "text": "Barplot of summary stats\nhow does symptom_reduction vary across groups?\n\n\n\n\n\nintervention_id\nparticipant_group\nintervention_type\nsession_region\nlead_clinician\nsymptom_reduction\n\n\n\n\n1\nOlder Adults\nSupport Group\nSouth\nDr. Brown\n19.1\n\n\n2\nOlder Adults\nMedication\nEast\nDr. Smith\n20.1\n\n\n3\nOlder Adults\nMedication\nNorth\nDr. Chen\n19.4\n\n\n4\nAdults\nSupport Group\nNorth\nDr. Lee\n6.3\n\n\n5\nOlder Adults\nCBT\nCentral\nDr. Lee\n33.4\n\n\n6\nAdults\nCBT\nCentral\nDr. Chen\n25.8\n\n\n7\nAdults\nSupport Group\nEast\nDr. Smith\n19.0\n\n\n8\nAdults\nMedication\nSouth\nDr. Chen\n27.4\n\n\n9\nOlder Adults\nMedication\nCentral\nDr. Brown\n25.0\n\n\n10\nTeens\nMedication\nCentral\nDr. Brown\n18.6",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-2",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-2",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of summary stats",
+    "text": "Barplot of summary stats\nhow does symptom_reduction vary across groups?\n\n\nStandard approach is to calculate a summary statistic for central tendency - typically mean - of that continuous outcome variable for each categorical group\nAnd add some indication of variability around that central tendency - typically standard error or confidence interval. Do people need a reminder of these?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-3",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-3",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of summary stats",
+    "text": "Barplot of summary stats\nsimplified in comparison to distributions\n\n\nSee how it’s a summarized version of violin / boxplots we saw before",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-4",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-4",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of summary stats",
+    "text": "Barplot of summary stats\nsimplified in comparison to distributions\n\n\nSee how it’s a summarized version of violin / boxplots we saw before",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-5",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-5",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of summary stats",
+    "text": "Barplot of summary stats\nhandy stat_summary\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(fun = \"mean\", geom = \"bar\") #&lt; specify summary stat and shape",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-6",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-6",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of summary stats",
+    "text": "Barplot of summary stats\nhandy stat_summary\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(fun = \"mean\", geom = \"bar\") +\n  stat_summary(fun.data = \"mean_se\", geom = \"linerange\") #&lt; add error bars",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-7",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-7",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of summary stats",
+    "text": "Barplot of summary stats\nhandy stat_summary\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(aes(fill = intervention_type), fun = \"mean\", geom = \"bar\", show.legend = F) +\n  stat_summary(fun.data = \"mean_se\", geom = \"linerange\") #&lt; add error bars",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-8",
+    "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-8",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Barplot of summary stats",
+    "text": "Barplot of summary stats\nequivalent with wrangling\n\nmental_health %&gt;%\n  group_by(intervention_type) %&gt;% #&lt; for each intervention_type group...\n  summarise(\n    mean = mean(symptom_reduction, na.rm = TRUE), #&lt; calculate mean\n    se = sd(symptom_reduction, na.rm = TRUE) / sqrt(n()) #&lt; calculate SE\n  ) %&gt;%\n  ggplot(aes(x = intervention_type, y = mean)) + #&lt; choose mean as y-axis\n  geom_bar(aes(fill = intervention_type), stat = \"identity\", show.legend = F) + #&lt; identity!\n  geom_linerange(aes(ymin = mean - se, ymax = mean + se)) #&lt; range of error bar",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#today-5",
+    "href": "data-vis/week-4/seminar4.html#today-5",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Today",
+    "text": "Today\n\n\n\n\nbarplot of counts\nbarplot of proportions\n\n\n\nbarplot of summary stats\ngrouped barplot of summary stats\n\n\n\nWhat if there’s more than one categorical variable that might be related to that outcome variable?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats",
+    "href": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Grouped barplot of summary stats",
+    "text": "Grouped barplot of summary stats\n\nMultiple categorical variables related to an outcome:\n\nDo different groups of patients respond differently to different treatments?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-1",
+    "href": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-1",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Grouped barplot of summary stats",
+    "text": "Grouped barplot of summary stats\nhow does symptom_reduction vary across multiple groups?\n\n\n\n\n\nintervention_id\nparticipant_group\nintervention_type\nsession_region\nlead_clinician\nsymptom_reduction\n\n\n\n\n1\nOlder Adults\nSupport Group\nSouth\nDr. Brown\n19.1\n\n\n2\nOlder Adults\nMedication\nEast\nDr. Smith\n20.1\n\n\n3\nOlder Adults\nMedication\nNorth\nDr. Chen\n19.4\n\n\n4\nAdults\nSupport Group\nNorth\nDr. Lee\n6.3\n\n\n5\nOlder Adults\nCBT\nCentral\nDr. Lee\n33.4\n\n\n6\nAdults\nCBT\nCentral\nDr. Chen\n25.8\n\n\n7\nAdults\nSupport Group\nEast\nDr. Smith\n19.0\n\n\n8\nAdults\nMedication\nSouth\nDr. Chen\n27.4\n\n\n9\nOlder Adults\nMedication\nCentral\nDr. Brown\n25.0\n\n\n10\nTeens\nMedication\nCentral\nDr. Brown\n18.6",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-2",
+    "href": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-2",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Grouped barplot of summary stats",
+    "text": "Grouped barplot of summary stats\nhow does symptom_reduction vary across multiple groups?\n\n\nNow we’ve plotted separate bars for each participant_group within intervention type",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-3",
+    "href": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-3",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Grouped barplot of summary stats",
+    "text": "Grouped barplot of summary stats\nhow does symptom_reduction vary across multiple groups?\n\n\nWe could switch around the x-axis and grouping variables - which is better?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-4",
+    "href": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-4",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Grouped barplot of summary stats",
+    "text": "Grouped barplot of summary stats\nadd grouping variable\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(aes(fill = participant_group), #&lt; Now we fill by ANOTHER group\n               fun = \"mean\", geom = \"bar\", position = \"dodge\", #&lt; avoid stacking groups\n               show.legend = F)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-5",
+    "href": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-5",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Grouped barplot of summary stats",
+    "text": "Grouped barplot of summary stats\nadd grouping variable\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(aes(fill = participant_group),\n               fun = \"mean\", geom = \"bar\", position = \"dodge\",\n               show.legend = F) +\n  stat_summary(aes(group = participant_group), \n               fun.data = \"mean_se\", geom = \"linerange\", position = position_dodge(width = .9)) #&lt; match bar width",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#summary-bar-plots",
+    "href": "data-vis/week-4/seminar4.html#summary-bar-plots",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Summary: Bar Plots",
+    "text": "Summary: Bar Plots\nWhat bars are good for:\n\nCounts within categories\nProportions within a category\nSummaries of a continuous outcome by category (mean/SE or CI)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#key-mechanics",
+    "href": "data-vis/week-4/seminar4.html#key-mechanics",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Key mechanics",
+    "text": "Key mechanics\n\nCounts: geom_bar() (default stat = “count”)\nPre-computed y: geom_bar(stat = “identity”)\nUnstacked bars: position = “dodge”\nProportions: position = “fill” (stack to 100%)\nSummary stats: stat_summary(fun = “…”, geom = “…”)\nUnstacked errorbars: position_dodge(width = .9)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/seminar4.html#upcoming",
+    "href": "data-vis/week-4/seminar4.html#upcoming",
+    "title": "Week 4 Seminar: Barplots",
+    "section": "Upcoming",
+    "text": "Upcoming",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-4/study_before4.html",
+    "href": "data-vis/week-4/study_before4.html",
+    "title": "Independent Study to Prepare",
+    "section": "",
+    "text": "Bar Plots\nTo prepare for diving into this week’s topic, bar plots:\n\nRead Data Visualization Ch 6 and 10",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 4: Barplots for Categorical Data",
+      "Prepare!"
+    ]
+  }
+]
