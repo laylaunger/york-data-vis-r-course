@@ -1,0 +1,8 @@
+---
+title: "Independent Study to Prepare"
+subtitle: "Principles of Data Visualisation"
+toc: true
+toc-location: right
+---
+
+1.  Read [A checklist for designing and improving the visualization of scientific data](../reading/nature_checklist.pdf){target="_blank"}

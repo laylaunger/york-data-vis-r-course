@@ -1,0 +1,498 @@
+---
+title: "Week 1 Seminar: Principles of Data Visualisation"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    highlight-style: github
+---
+
+```{r setup, include=FALSE}
+library(kableExtra)
+library(tidyverse)
+library(showtext)
+library(knitr)
+library(here)
+library(patchwork)
+library(colorspace)
+options(knitr.kable.NA = '')
+knitr::opts_chunk$set(fig.retina = 3)
+
+# Read dino data
+dino_data <- read_csv(here("data-vis",  "data", "dino_data.csv"), col_names = c("x","y"))
+
+# Read patient data
+patient_data <- read_csv(here("data-vis",  "data", "patient_data_sem1.csv"))
+patient_data$Timepoint <- factor(patient_data$Timepoint, levels = c("Pre-Treatment", "Post-Treatment"))
+
+# Set seed for simulating datasets
+set.seed(123)
+
+# Generate intervention data
+n_per_group <- 50
+baseline_mean <- 15
+baseline_sd <- 5
+
+# Control group
+control_baseline <- rnorm(n_per_group, mean = baseline_mean, sd = baseline_sd)
+control_change <- rnorm(n_per_group, mean = 0, sd = 3)
+control_post <- control_baseline + control_change
+
+# Treatment group
+treatment_baseline <- rnorm(n_per_group, mean = baseline_mean, sd = baseline_sd)
+treatment_change <- rnorm(n_per_group, mean = -5, sd = 4)
+treatment_post <- treatment_baseline + treatment_change
+
+# Combine
+intervention_data <- tibble(
+  ID = 1:(2 * n_per_group),
+  Group = rep(c("Control", "Treatment"), each = n_per_group),
+  Pre = c(control_baseline, treatment_baseline),
+  Post = c(control_post, treatment_post)
+) %>%
+  pivot_longer(cols = c(Pre, Post), names_to = "Time", values_to = "Score") %>%
+  mutate(Time = factor(Time, levels = c("Pre", "Post")))
+
+
+# Generate student help data
+years <- 2015:2019
+totals <- c(100, 120, 160, 200, 250)
+
+counseling <- c(50, 60, 75, 90, 110)
+peer <- round(counseling * c(1.2, 1.45, 1.7, 1.9, 2.1) - (rnorm(length(counseling), mean = 0, sd = 10)),0)
+none <- round(counseling * c(0.8, 0.7, 0.6, 0.6, 0.4) - (rnorm(length(counseling), mean = 0, sd = 10)),0)
+
+student_help <- tibble(
+  Year = rep(years, times = 3),
+  Category = rep(c("Counseling", "Peer Support", "None"), each = length(years)),
+  Count = c(counseling, peer, none)
+)
+
+student_help$Category <- factor(student_help$Category, levels = c("Counseling", "Peer Support", "None"))
+
+# Generate therapy data
+n_patients <- 50
+
+# Create patient IDs
+ids_cbt <- paste0("CBT_", seq(1, n_patients))
+ids_mbt <- paste0("MBT_", seq(1, n_patients))
+ids <- c(ids_cbt, ids_mbt)
+
+# Therapy group assignment
+therapy <- c(rep("CBT", n_patients), rep("MBT", n_patients))
+
+# Therapy group assignment
+therapy <- c(rep("CBT", n_patients), rep("MBT", n_patients))
+
+# Time points
+time_points <- c("Baseline", "MidTreatment", "Post", "FollowUp")
+
+# Generate stress scores
+generate_scores <- function(group) {
+  if (group == "CBT") {
+    baseline <- rnorm(1, 70, 10)
+    mid <- baseline - rnorm(1, 15, 5)
+    post <- mid - rnorm(1, 10, 5)
+    followup <- post + rnorm(1, 5, 3)
+  } else { # MBT
+    baseline <- rnorm(1, 70, 10)
+    mid <- baseline - rnorm(1, 10, 5)
+    post <- mid - rnorm(1, 5, 5)
+    followup <- post + rnorm(1, 3, 3)
+  }
+  c(baseline, mid, post, followup)
+}
+
+# Create data frame
+therapy <- map2_dfr(ids, therapy, ~{
+  scores <- generate_scores(.y)
+  tibble(ID = .x,
+         Therapy = .y,
+         Time = time_points,
+         Stress = scores)
+})
+
+therapy$Time <- factor(therapy$Time, levels = c("Baseline", "MidTreatment", "Post", "FollowUp"))
+
+
+# Generate base theme for plots
+base_theme <- function () { 
+  theme_linedraw(base_size=11) %+replace% 
+    theme(
+      panel.background  = element_blank(),
+      plot.background = element_rect(fill = "transparent", color = NA), 
+      legend.background = element_rect(fill = "transparent", color = NA),
+      legend.key = element_rect(fill = "transparent", color = NA),
+      axis.ticks = element_blank(),
+      plot.title = element_text(size = 18, hjust = 0, vjust = 0.5, face = "bold", margin = margin(b = 0.2, unit = "cm")),
+      plot.subtitle = element_text(size = 12, hjust = 0, vjust = 0.5, margin = margin(b = 0.2, unit = "cm")),
+      plot.caption = element_text(size = 7, hjust = 1, face = "italic", margin = margin(t = 0.1, unit = "cm")),
+      axis.text.x = element_text(size = 13),
+      axis.text.y = element_text(size = 13),
+      axis.title = element_text(size = 15),
+      legend.title = element_text(size = 15),
+      legend.text = element_text(size = 13),
+      panel.grid = element_blank()
+    )
+}
+
+```
+
+## About us
+
+Instructor: Layla Unger
+
+<br>
+
+Students: Introductions
+
+---
+
+## Module objectives
+
+-   Accomplish great things
+
+---
+
+## What matters
+
+-   Mental health
+
+---
+
+## Module components
+
+-   Seminars
+-   Practicals
+-   At-home consolidation exercises
+-   Assessment
+
+---
+
+## Accessing the module
+
+-   Module website
+-   VLE
+-   Communication
+-   Extensions
+-   Regrades
+-   Integrity
+
+---
+
+## Why visualise data?
+
+```{r dino-data, echo=FALSE}
+# Display using kable
+dino_data %>% 
+  head(10) %>% 
+  kable("html") %>%
+  kable_styling(font_size = 24, position = "center", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Why visualise data?
+
+::: fragment
+```{r dino-preview-1, echo = FALSE}
+dino_data %>% 
+  summarize(`Mean of x` = mean(x),
+            `Mean of y` = mean(y)) %>%  
+  kable("html") %>%
+  kable_styling(font_size = 24, position = "center", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
+```
+:::
+
+<br>
+
+::: fragment
+```{r dino-summary-2, echo = FALSE}
+dino_data %>% 
+  summarize(`SD of x` = sd(x),
+            `SD of y` = sd(y)) %>%  
+  kable("html") %>%
+  kable_styling(font_size = 24, position = "center", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
+```
+:::
+
+<br>
+
+::: fragment
+```{r dino-summary-3, echo = FALSE}
+dino_data %>% 
+  pivot_longer(x:y, values_to = "value", names_to = "Variable") %>% 
+  group_by(Variable) %>% 
+  summarize(Min = min(value),
+            Max = max(value)) %>% 
+  kable("html") %>%
+  kable_styling(font_size = 24, position = "center", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
+```
+:::
+
+---
+
+## Why visualise data?
+
+```{r dino-graph, echo = FALSE, fig.align = "center", fig.height = 6.5}
+dino_data %>% 
+  ggplot(aes(x = x, y = y)) + 
+  geom_point(color = "#bb0000") +
+  labs(title = "Sometimes visualizing data can reveal important details",
+       subtitle = "From Alberto Cairo's Datasaurus") +
+  base_theme() +
+  scale_x_continuous(limits = c(0, 100)) +
+  theme(panel.grid.major = element_blank(),
+        axis.title = element_blank())
+```
+
+---
+
+## Why visualise data?
+
+```{r patient-preview-1, echo=FALSE}
+# Display using kable
+patient_data %>% 
+  head(10) %>% 
+  kable("html") %>%
+  kable_styling(font_size = 24, position = "center", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Why visualise data?
+
+```{r patient-summary-1, echo = FALSE}
+patient_data %>%
+  group_by(Timepoint) %>%
+  dplyr::summarise(symptom_mean = mean(Symptom_Severity),
+                   symptom_sd = sd(Symptom_Severity)) %>%
+  kable("html") %>%
+  kable_styling(font_size = 24, position = "center", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Why visualise data?
+
+```{r patient-graph-1, echo = FALSE, fig.align = "center", fig.height = 6.5}
+ggplot(patient_data, aes(x = Timepoint, y = Symptom_Severity)) +
+  geom_violin(color = "transparent", fill = rgb(0,0,1,.2)) +
+  geom_point() +
+  labs(title = "Changes in Depression Symptoms with Treatment",
+       y = "Symptom Severity",
+       x = "Timepoint") +
+  base_theme() +
+  coord_cartesian(ylim = c(0, 100)) +
+  theme(panel.grid.major = element_blank()) 
+
+```
+
+---
+
+## Why visualise data?
+
+```{r patient-graph-2, echo = FALSE, fig.align = "center", fig.height = 6.5}
+ggplot(patient_data, aes(x = Timepoint, y = Symptom_Severity)) +
+  geom_violin(color = "transparent", fill = rgb(0,0,1,.2)) +
+  geom_point(aes(color = Assessor)) +
+  geom_line(aes(group = Patient, color = Assessor)) +
+  labs(title = "Changes in Depression Symptoms with Treatment",
+       y = "Symptom Severity",
+       x = "Timepoint") +
+  base_theme() +
+  coord_cartesian(ylim = c(0, 100)) +
+  theme(panel.grid.major = element_blank())
+```
+---
+
+## Why visualise data?
+
+```{r patient-graph-3, echo = FALSE, fig.align = "center", fig.height = 6.5}
+ggplot(patient_data[patient_data$Assessor != "D",], aes(x = Timepoint, y = Symptom_Severity)) +
+  geom_violin(color = "transparent", fill = rgb(0,0,1,.2)) +
+  geom_point(aes(color = Assessor)) +
+  geom_line(aes(group = Patient, color = Assessor)) +
+  labs(title = "Changes in Depression Symptoms with Treatment",
+       y = "Symptom Severity",
+       x = "Timepoint") +
+  base_theme() +
+  coord_cartesian(ylim = c(0, 50)) +
+  theme(panel.grid.major = element_blank())
+```
+
+---
+
+## Why visualise data?
+
+-   To **explore**: find patterns, outliers, structure
+-   To **diagnose**: check assumptions, spot problems
+-   What else?
+
+---
+
+## Why visualise data?
+
+```{r intervention-graph-1, echo = FALSE, fig.align = "center", fig.height = 6.5}
+ggplot(intervention_data, aes(x = Time, y = Score, group = ID, color = Group)) +
+  geom_line(alpha = 0.5) +
+  stat_summary(aes(group = Group), fun = mean, geom = "line", size = 1.5, color = "black") +
+  labs(title = "Individual Changes in Depression Symptoms with Treatment",
+       y = "Symptom Severity",
+       x = "Timepoint") +
+  scale_color_manual(values = c("Treatment" = "#d95f02", "Control" = "#1b9e77")) +
+  base_theme() +
+  theme(panel.grid.major = element_blank())
+```
+
+---
+
+## Why visualise data?
+
+-   To **explore**: find patterns, outliers, structure
+-   To **diagnose**: check assumptions, spot problems
+-   To **explain**: communicate results to others
+
+---
+
+## What makes a good visualisation?
+
+-   Appropriate for the data
+-   Focus attention on key points
+-   Readable
+-   Appealing
+
+---
+
+## What makes a good visualisation?
+
+-   Appropriate for the data
+
+```{r help-graph-1, echo = FALSE, fig.align = "center", fig.height = 6.5}
+# Blank plot
+student_help %>%
+  group_by(Year) %>%
+  mutate(Proportion = Count / sum(Count)) %>%
+  ggplot(aes(x = factor(Year), y = Proportion, fill = Category)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Changes in Mental Health Support Access Among Students (2015–2019)",
+       x = "Year",
+       y = "Proportion of Students",
+       fill = "Support Type") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  base_theme() +
+  theme(panel.grid.major = element_blank(),
+        axis.title.y = element_text(color = "white"),
+        axis.text.y = element_text(color = "white"),
+        legend.title = element_text(size = 15),
+        legend.text = element_text(size = 13)) +
+  annotate("rect",
+           xmin = -Inf,
+           xmax = Inf,
+           ymin = -Inf,
+           ymax = Inf,
+           fill = "white")
+```
+
+---
+
+## What makes a good visualisation?
+
+-   Appropriate for the data
+
+```{r help-graph-2, echo = FALSE, fig.align = "center", fig.height = 6.5}
+# Count data - bad
+ggplot(student_help, aes(x = Year, y = Count, group = Category)) +
+  geom_bar(aes(fill = Category), stat = "identity", position = position_dodge(width = .9)) +
+  labs(title = "Changes in Mental Health Support Access Among Students (2015–2019)",
+       x = "Year",
+       y = "Number of Students",
+       fill = "Support Type") +
+  base_theme() +
+  theme(panel.grid.major = element_blank())
+```
+
+---
+
+## What makes a good visualisation?
+
+-   Appropriate for the data
+
+```{r help-graph-3, echo = FALSE, fig.align = "center", fig.height = 6.5}
+# Percent data - good
+student_help %>%
+  group_by(Year) %>%
+  mutate(Proportion = Count / sum(Count)) %>%
+  ggplot(aes(x = factor(Year), y = Proportion, fill = Category)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Changes in Mental Health Support Access Among Students (2015–2019)",
+       x = "Year",
+       y = "Proportion of Students",
+       fill = "Support Type") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  base_theme()
+```
+
+---
+
+## What makes a good visualisation?
+
+-   Focus attention on key points
+
+```{r therapy-graph-1, echo = FALSE, fig.align = "center", fig.height = 6.5, fig.width = 17}
+
+# Compare good versus bad assignment of variables to aes 
+therapy_plot_good <- ggplot(therapy, aes(x = Therapy, y = Stress, group = Time, color = Time)) +
+  stat_summary(fun = mean, geom = "line", position = position_dodge(width = 0.2)) +
+  stat_summary(fun = mean, geom = "point", position = position_dodge(width = 0.2)) +
+  labs(title = "BAD: X-axis = Therapy Type", y = "Mean Stress Level") +
+  base_theme()
+
+
+therapy_plot_bad <- ggplot(therapy, aes(x = Time, y = Stress, group = Therapy, color = Therapy)) +
+  stat_summary(fun = mean, geom = "line") +
+  stat_summary(fun = mean, geom = "point") +
+  labs(title = "GOOD: X-axis = Time", y = "Mean Stress Level") +
+  base_theme()
+
+
+therapy_plot_good + therapy_plot_bad
+```
+
+---
+
+## What makes a good visualisation?
+
+-   Readable
+
+```{r unreadable-graph, echo=FALSE,  fig.align = "center", fig.height = 6.5,}
+knitr::include_graphics(here("data-vis","figs","unreadable_graph.png"))
+
+```
+
+---
+
+## What makes a good visualisation?
+
+-   Appealing
+
+```{r palettes, echo=FALSE}
+divergingx_palettes(palette = "Temps", plot = TRUE)
+
+```
+
+---
+
+## Resources
+
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
+- [Nature Checklist for Scientific Figures](https://rdcu.be/etvAL)
+
+---

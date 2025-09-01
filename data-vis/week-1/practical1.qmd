@@ -1,0 +1,9 @@
+---
+title: "Practical"
+subtitle: "Principles of Data Visualisation"
+toc: true
+toc-location: right
+---
+
+
+There is no practical this week.

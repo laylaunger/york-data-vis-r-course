@@ -1,0 +1,17 @@
+---
+title: Overview
+subtitle: "Principles of Data Visualisation"
+toc: true
+toc-location: right
+---
+
+This week you will get an introduction to why we visualise data and what makes a good visualisation. There will be a short paper to read to prepare and a seminar. There will be no workshop this week!
+
+
+### Learning objectives
+
+The successful student will be able to:
+
+-   explain the multiple uses of data visualisations
+-   explain the key aspects of an effective visualisation
+-   evaluate whether a visualisation is good or bad

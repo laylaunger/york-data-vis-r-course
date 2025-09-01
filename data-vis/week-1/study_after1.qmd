@@ -1,0 +1,9 @@
+---
+title: "Independent Study to consolidate this week"
+subtitle: "Principles of Data Visualisation"
+toc: true
+toc-location: right
+---
+
+
+There is no additional study this week - instead, go ahead and check out Prepare! for next week.
