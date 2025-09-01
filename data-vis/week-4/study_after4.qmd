@@ -1,0 +1,89 @@
+---
+title: "Independent Study to Consolidate"
+subtitle: "Bar Plots"
+toc: true
+toc-location: right
+---
+
+# Practice
+
+Continue working on the **`tidyverse`** course on DataCamp if not yet complete.
+
+# Exercises
+
+```{r}
+#| include: false
+# Load packages
+suppressPackageStartupMessages({
+  library(tidyverse)
+})
+
+# Load data
+stress_df <- read_csv("data-raw/stress_data.csv")
+```
+
+## Set up
+
+If you have just opened RStudio you will want to load the **`tidyverse`** package.
+
+## Reading in data
+
+![](images/do_on_your_computer.png) Save this file in your `week-4` folder:  
+
+-   Data from fictional stress study: [stress_data.csv](data-raw/stress_data.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+```{r}
+#| eval: false
+stress_df <- read_csv("stress_data.csv")
+```
+
+```{r}
+head(stress_df)
+```
+
+
+## Exercise 1: Bar plot of counts
+
+![](images/do_in_R.png) Create a bar plot showing how many participants are in each `diagnosis` group.
+
+Reflect: Which diagnosis group has the largest number of participants?
+
+
+## Exercise 2: Stacked bar plot
+
+![](images/do_in_R.png) Make a stacked bar plot of `diagnosis` by `sex`.  
+
+Then, re-plot using `position = "dodge"`.
+
+Reflect: When is the stacked version more informative, and when is the dodged version clearer?
+
+
+## Exercise 3: Proportions
+
+![](images/do_in_R.png) Create a stacked barplot of proportions for `sex` (`position = "fill"`) within each `diagnosis`. Remember to label the y-axis appropriately. 
+
+Reflect: What does this plot tell you that the count plots do not?
+
+
+## Exercise 4: Wrangling equivalent
+
+![](images/do_in_R.png) Use `count()` and `mutate()` to calculate proportions of `sex` within each `diagnosis`. Plot the proportions using `geom_bar(stat = "identity")`.
+
+
+
+## Exercise 5: Summary bar plot
+
+![](images/do_in_R.png) Plot the **mean stress_score** (y-axis) for each `diagnosis` group (x-axis) with error bars showing standard error.  
+
+
+
+## Exercise 6: Grouped summary bar plot
+
+![](images/do_in_R.png) Create a grouped bar plot comparing mean `stress_score` across both `diagnosis` (x-axis) and `sex` (fill).  
+
+Add error bars for standard error and make sure bars and error bars are aligned by using `position_dodge()`.
+
+
+# 🥳 Well Done! 🎉

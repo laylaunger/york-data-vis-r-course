@@ -1,0 +1,12 @@
+---
+title: "Independent Study to Prepare"
+subtitle: "Bar Plots"
+toc: true
+toc-location: right
+---
+
+# Bar Plots
+
+To prepare for diving into this week's topic, bar plots:
+
+- Read [Data Visualization Ch 6 and 10](https://clauswilke.com/dataviz/)

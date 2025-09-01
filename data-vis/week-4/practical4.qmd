@@ -1,0 +1,324 @@
+---
+title: "Practical"
+subtitle: "Barplots"
+toc: true
+toc-location: right
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+# Introduction
+
+## Session overview
+
+In this practical you will read in a dataset and create bar plots of counts, proportions, and summary statistics. You will also get a bit more practice with tidyverse data wrangling.
+
+## Philosophy
+
+Practicals are not a test. It is expected that you often don't know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips
+
+-   don't worry about making mistakes
+-   don't let what you can not do interfere with what you can do
+-   discussing code with your neighbours will help
+-   look things up in the independent study material
+-   look things up in your own code from earlier workshops
+-   there are no stupid questions
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. Record your answers in your script for future reference.
+:::
+
+# Getting started
+
+![](images/do_on_your_computer.png) Start RStudio from the Start menu.
+
+![](images/do_in_R.png) Go the Files tab in the lower right pane and click on the `...` on the right. This will open a "Go to folder" window. Navigate to a place on your computer where you keep your work. Click Open.
+
+![](images/do_in_R.png) Also on the Files tab click on `New Folder`. Type "data-visualisation-in-r" in to the box. This will be the folder that we work in throughout.
+
+![](images/do_in_R.png) Make an RStudio project for this workshop by clicking on the drop-down menu on top right where it says `Project: (None)` and choosing New Project, then New Directory, then New Project. Name the RStudio Project **`week-4`**.
+
+![](images/do_in_R.png) Make a new script then save it with a name like `barplots.R` to carry out the rest of the work.
+
+![](images/do_in_R.png) Add a comment to the script: `# Barplots`. Use comments throughout to explain what each block of code does.
+
+# Exercises
+
+## Learning app engagement
+
+We'll be working with a simulated dataset from a fictional **digital learning app**. Users belong to different **user_segments** who arrive via different **acquisition channels** and use the app on **mobile** or **desktop**. We’ll look at how engagement differs across different groups.
+
+Variables:
+
+- `user_segment`: categorical (Students, EarlyCareer, MidCareer, Senior)  
+- `device_type`: categorical (Mobile, Desktop)  
+- `acquisition_channel`: categorical (Organic, Ads, Referral, Email)  
+- `product_engagement`: continuous (0–100 engagement score combining use frequency, session time, and lessons completed)
+
+## Packages
+
+Remember that packages, such as **`ggplot2`** (part of **`tidyverse`**) need to be installed once and then loaded each session.
+
+Today we’ll use **`tidyverse`**.
+
+::: callout-important
+## Important
+
+If you are working on a University computer (or the VDS) you *do not* need to install **`tidyverse`**.
+
+If you are working on your own computer or using RStudio cloud you *do* need to install **`tidyverse`**.
+:::
+
+To install a package:
+
+![](images/do_in_R.png) Go the Packages tab on the lower right pane. Click Install and type the name of the package into the box that appears.
+
+To use a package which is installed you have to load it with the `library()` function.
+
+![](images/do_in_R.png) Load the **`tidyverse`**. Type or copy the following code into your R script:
+
+```{r}
+#| eval: false
+library(tidyverse)
+```
+
+## Reading in data
+
+![](images/do_on_your_computer.png) Save this file in your `week-4` folder:
+
+-   App engagement data: [app_engagement.csv](data-raw/app_engagement.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+```{r}
+#| eval: false
+app_df <- read_csv("app_engagement.csv")
+```
+
+```{r}
+#| include: false
+# For the compiled site build; students will use the line above:
+app_df <- read_csv("data-raw/app_engagement.csv")
+```
+
+## Look at data
+
+![](images/do_in_R.png) Examine the variables and first few rows of the `app_df` object using `head()`.
+
+```{r}
+head(app_df)
+```
+
+See that each column is a variable (e.g., `product_engagement`), and each row is one user.
+
+## Reorder the values of `product_engagement`
+
+In R, categorical variables are often treated as a special type of variable called a "factor".
+
+In factors, the different values of the variable are called "levels".
+
+By default, the order of the levels is alphabetical. 
+
+We have discussed reordering the levels of a factor based on values of another variable. But, we can also manually specify an order that is appropriate for our data.
+
+In this dataset, `user_segment` is a factor with a natural order from junior to senior: Students, EarlyCareer, MidCareer, Senior.
+
+![](images/do_in_R.png) Reorder the levels of `user_segement`.
+
+```{r}
+app_df <- app_df %>%
+  mutate(user_segment = factor(user_segment, levels = c("Student", "EarlyCareer","MidCareer", "Senior")))
+```
+
+---
+
+## Exercise 1: Bar plot of **counts**
+
+Look at **how many users** are in each `user_segment`.
+
+![](images/do_in_R.png) Create a basic bar plot of counts of users in each `user_segment` (remember: counts are the default `stat` of `geom_bar()` and therefore `stat` does not need to be explicitly specified):
+
+```{r}
+#| echo: false
+ggplot(app_df, aes(x = user_segment)) +
+  geom_bar()
+```
+
+![](images/do_in_R.png) Order the bars by frequency using `forcats::fct_infreq()` on `user_segment` inside `aes()`:
+
+```{r}
+#| echo: false
+ggplot(app_df, aes(x = forcats::fct_infreq(user_segment))) +
+  geom_bar()
+```
+
+![](images/answer.png) Where does `geom_bar()` get the heights from?
+
+---
+
+## Exercise 2: **Split counts** by a second variable
+
+We can split counts by `acquisition_channel`.
+
+![](images/do_in_R.png) Stack counts by `acquisition_channel` using `aes(fill = acquisition_channel))`:
+
+```{r}
+#| echo: false
+ggplot(app_df, aes(x = user_segment)) +
+  geom_bar(aes(fill = acquisition_channel))  # default position = "stack"
+```
+
+![](images/do_in_R.png) Unstack to compare absolute counts side-by-side using `position = "dodge"`:
+
+```{r}
+#| echo: false
+ggplot(app_df, aes(x = user_segment)) +
+  geom_bar(aes(fill = acquisition_channel), position = "dodge")
+```
+
+![](images/answer.png) When might stacked vs dodged bars be preferable?
+
+---
+
+## Exercise 3: **Proportions (100% stacked)**
+
+For comparing **composition** across groups, use proportions.
+
+![](images/do_in_R.png) Convert to proportions with `position = "fill"`. Remember to rename the y-axis variable:
+
+```{r}
+#| echo: false
+ggplot(app_df, aes(x = user_segment)) +
+  geom_bar(aes(fill = acquisition_channel), position = "fill") +
+  scale_y_continuous(name = "proportion")
+```
+
+![](images/do_in_R.png) Add **labels** inside segments using `after_stat()`:
+
+```{r}
+#| echo: false
+ggplot(app_df, aes(user_segment, fill = acquisition_channel)) +
+  geom_bar(position = position_fill()) +
+  geom_text(aes(label = round(after_stat(count / sum(count)), 2)),
+            stat = "count",
+            position = position_fill(vjust = 0.5)) +
+  scale_y_continuous(name = "proportion")
+```
+
+![](images/answer.png) Why are proportions sometimes more informative than raw counts?
+
+---
+
+## Exercise 4: **Wrangling equivalent** for proportions
+
+Instead of letting `geom_bar()` do the counting, compute counts yourself first.
+
+![](images/do_in_R.png) Use `count()` and `mutate()` to compute group-wise proportions:
+
+```{r}
+#| echo: false
+app_df %>%
+  count(user_segment, acquisition_channel, name = "n") %>%
+  group_by(user_segment) %>%
+  mutate(prop = n / sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x = user_segment, y = prop)) +
+  geom_bar(aes(fill = acquisition_channel), stat = "identity")
+```
+
+---
+
+## Exercise 5: **Summary bar** (mean engagement by segment)
+
+Now let’s summarise a **continuous** variable by category: mean `product_engagement` (y-axis) per `user_segment` (x-axis).
+
+![](images/do_in_R.png) Use `stat_summary()` to plot means with SE bars (for means, `fun = "mean"`, and for SE, `fun.data = "mean_se"`):
+
+```{r}
+#| echo: false
+ggplot(app_df, aes(x = user_segment, y = product_engagement)) +
+  stat_summary(fun = "mean", geom = "bar") +
+  stat_summary(fun.data = "mean_se", geom = "linerange")
+```
+
+![](images/do_in_R.png) Colour the bars by `user_segment` (optional: set `show.legend = FALSE` to reduce redundancy):
+
+```{r}
+#| echo: false
+ggplot(app_df, aes(x = user_segment, y = product_engagement)) +
+  stat_summary(aes(fill = user_segment), fun = "mean", geom = "bar", show.legend = FALSE) +
+  stat_summary(fun.data = "mean_se", geom = "linerange")
+```
+
+---
+
+## Exercise 6: **Wrangling equivalent** for summary bars
+
+Compute mean and SE yourself, then plot with `geom_bar(stat = "identity")`.
+
+Reminder: SE = sd(variable) / sqrt(n()) 
+
+![](images/do_in_R.png) Use `summarise` to calculate `mean_eng` and `se_eng`, then use the summarised data in a plot that uses `geom_bar()` and `geom_linerange()` instead of `stat_summary()`. Remember that `geom_bar()` needs `stat = "identity"` to override the default `stat = "count"`.
+
+```{r}
+#| echo: false
+app_df %>%
+  group_by(user_segment) %>%
+  summarise(
+    mean_eng = mean(product_engagement, na.rm = TRUE),
+    se_eng   = sd(product_engagement, na.rm = TRUE) / sqrt(n())
+  ) %>%
+  ggplot(aes(x = user_segment, y = mean_eng)) +
+  geom_bar(aes(fill = user_segment), stat = "identity", show.legend = FALSE) +
+  geom_linerange(aes(ymin = mean_eng - se_eng, ymax = mean_eng + se_eng))
+```
+
+![](images/answer.png) What are the pros/cons of using `stat_summary()` vs pre-computing with `summarise()`?
+
+---
+
+## Exercise 7: **Grouped** summary bars (two-way comparison)
+
+Compare mean engagement across **user_segment** and **device_type**.
+
+You can reuse and adapt the code you wrote for Exercise 5 that used `stat_summary()` to create this plot. 
+
+![](images/do_in_R.png) Keep `user_segment` as your x-axis variable, but add `device_type` as the fill `aes()` for the bars and the group `aes()` for the linerange error bars. Remember to dodge your bars and error bars.
+
+```{r}
+ggplot(app_df, aes(x = user_segment, y = product_engagement)) +
+  stat_summary(aes(fill = device_type),
+               fun = "mean", geom = "bar", position = "dodge") +
+  stat_summary(aes(group = device_type),
+               fun.data = "mean_se", geom = "linerange",
+               position = position_dodge(width = 0.9)) +
+  labs(fill = "Device")
+```
+
+![](images/answer.png) Describe the pattern you see. For which user segment(s) does **Mobile** outperform **Desktop**, and where is **Desktop** higher?
+
+
+You're finished!
+
+# 🥳 Well Done! 🎉
+
+[Consolidate](study_after4.qmd)
+
+# The Code file
+
+This contains all the code needed in the workshop even where it is not visible on the webpage.
+
+The `practical.qmd` file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interweaved to produce well-formatted reports including webpages.
