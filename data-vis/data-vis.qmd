@@ -1,0 +1,70 @@
+---
+title: "Data Visualisation"
+toc: true
+toc-location: right
+---
+
+# Introduction
+
+This module introduces you to data visualisation in R. 
+
+## Module Learning Objectives
+
+The Module Learning outcomes are:
+
+- Explore and understand datasets by visualising distributions, relationships, and trends.
+
+- Design clear and comprehensible visualisations that avoid common pitfalls.
+
+- Communicate findings to diverse audiences through compelling storytelling.
+
+- Build interactive dashboards that combine multiple visualisations.
+
+- Apply these skills across your degree and in a wide range of careers.
+
+# How Data Visualisation is organized
+
+Data visualisation is organized so that each week, you are introduced to a topic and get hands-on practice. To help your learning go smoothly, the organization is designed to be similar to the data analysis module that students will be completing at the same time.
+
+Each week has:
+
+-   An overview on the "About" page which gives the Learning Objectives, a topic summary and the instructions for the week. You should read this first.
+
+-   Some independent study on the "Prepare!" page to prepare you for the workshop. This will be reading from the [course book](https://clauswilke.com/dataviz/),  watching a video, or doing some coding or set up.
+
+- A one-hour seminar in which I will walk you through the topic for the week.
+
+-   A two-hour practical using R. You will spend most of the session going through some exercises. Anything you have not done before is explained and guided but you will also have to use the skills gained in previous practicals.
+
+-   Some independent study on the "Consolidate!" page to give you more practice. The exercises are usually similar to those in the workshop but with less guidance. Occasionally, there will be reading to do. 
+
+# Content
+
+## Week 1: Principles of Data Visualisation
+
+## Week 2: Grammar of Graphics
+
+## Week 3: Distributions
+
+## Week 4: Bar Plots for Categorical Data
+
+## Week 5: Relationships between Variables
+
+# Resources
+
+## Tidyverse 
+
+Data wrangling [cheat sheet](https://stat33b.berkeley.edu/spring-2025/cheatsheets/dplyr-cheatsheet.pdf)
+
+Data wrangling [in depth](https://r4ds.had.co.nz/wrangle-intro.html)
+
+## Data Visualisation
+
+[Fundamentals of Data Visualization](https://clauswilke.com/dataviz/index.html)
+
+Explore [graph types](https://www.data-to-viz.com/#explore)
+
+
+
+
+
