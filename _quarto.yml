@@ -1,0 +1,212 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - reading/**
+
+
+
+website:
+  title: "Data Visualisation"
+  # cookie-consent:
+  #   type: implied
+  #   style: simple
+  #   palette: light
+  #   google-analytics: "G-50FV9HPTRE"
+
+  page-footer:
+    left: "Data Visualisation"
+    right:
+      - icon: github
+        href: "https://github.com/laylaunger"
+        text: "Layla on GitHub"  
+ 
+  navbar:
+    background: light
+    twitter-card: true
+    site-url: "https://laylaunger.github.io/data-vis/"
+    repo-url: "https://github.com/laylaunger/data-vis"
+    issue-url: "https://github.com/laylaunger/data-vis/issues/new/choose"
+    repo-actions: [edit, issue]
+    page-navigation: true
+    search: true
+    left:
+      - text: "Welcome!"
+        file: index.qmd
+      - text: "PSY00122M-A "
+        file:  data-vis/data-vis.qmd
+    tools:
+      - icon: github
+        href: "https://github.com/laylaunger"
+        text: "Layla on GitHub"  
+
+
+  sidebar:
+    - title: "PSY00122M-A "
+      style: "floating"
+      background: light
+      contents:
+          - href: data-vis/data-vis.qmd
+          - section: "Week 1: Principles of Data Visualisation"
+            contents:
+             - href: data-vis/week-1/overview1.qmd
+               text: About
+             - href: data-vis/week-1/study_before1.qmd
+               text: Prepare!
+             - href: data-vis/week-1/seminar1.qmd
+               text: Seminar
+             - href: data-vis/week-1/practical1.qmd
+               text: Practical
+             - href: data-vis/week-1/study_after1.qmd
+               text: Consolidate!
+          - section: "Week 2: Grammar of Graphics"
+            contents:
+             - href: data-vis/week-2/overview2.qmd
+               text: About
+             - href: data-vis/week-2/study_before2.qmd
+               text: Prepare!
+             - href: data-vis/week-2/seminar2.qmd
+               text: Seminar
+             - href: data-vis/week-2/practical2.qmd
+               text: Practical
+             - href: data-vis/week-2/study_after2.qmd
+               text: Consolidate!
+          - section: "Week 3: Distributions"
+            contents:
+             - href: data-vis/week-3/overview3.qmd
+               text: About
+             - href: data-vis/week-3/study_before3.qmd
+               text: Prepare!
+             - href: data-vis/week-3/seminar3.qmd
+               text: Seminar
+             - href: data-vis/week-3/practical3.qmd
+               text: Practical
+             - href: data-vis/week-3/study_after3.qmd
+               text: Consolidate!
+          - section: "Week 4: Barplots for Categorical Data"
+            contents:
+             - href: data-vis/week-4/overview4.qmd
+               text: About
+             - href: data-vis/week-4/study_before4.qmd
+               text: Prepare!
+             - href: data-vis/week-4/seminar4.qmd
+               text: Seminar
+             - href: data-vis/week-4/practical4.qmd
+               text: Practical
+             - href: data-vis/week-4/study_after4.qmd
+               text: Consolidate!
+          # - section: "Week 5: Relationships between Variables"
+          #   contents:
+          #    - href: data-vis/week-5/overview5.qmd
+          #      text: About
+          #    - href: data-vis/week-5/study_before5.qmd
+          #      text: Prepare!
+          #    - href: data-vis/week-5/seminar5.qmd
+          #      text: Seminar
+          #    - href: data-vis/week-5/practical5.qmd
+          #      text: Practical
+          #    - href: data-vis/week-5/study_after5.qmd
+          #      text: Consolidate!
+          # - section: "Week 6: Time Series and Line Plots"
+          #   contents:
+          #    - href: data-vis/week-6/overview6.qmd
+          #      text: About
+          #    - href: data-vis/week-6/study_before6.qmd
+          #      text: Prepare!
+          #    - href: data-vis/week-6/seminar6.qmd
+          #      text: Seminar
+          #    - href: data-vis/week-6/practical6.qmd
+          #      text: Practical
+          #    - href: data-vis/week-6/study_after6.qmd
+          #      text: Consolidate!
+          # - section: "Week 7: Advanced Customizations"
+          #   contents:
+          #    - href: data-vis/week-7/overview7.qmd
+          #      text: About
+          #    - href: data-vis/week-7/study_before7.qmd
+          #      text: Prepare!
+          #    - href: data-vis/week-7/seminar7.qmd
+          #      text: Seminar
+          #    - href: data-vis/week-7/practical7.qmd
+          #      text: Practical
+          #    - href: data-vis/week-7/study_after7.qmd
+          #      text: Consolidate!
+          # - section: "Week 8: One-way ANOVA and Kruskal-Wallis"
+          #   contents:
+          #    - href: data-vis/week-8/overview8.qmd
+          #      text: About
+          #    - href: data-vis/week-8/study_before8.qmd
+          #      text: Prepare!
+          #    - href: data-vis/week-8/seminar8.qmd
+          #      text: Seminar
+          #    - href: data-vis/week-8/practical8.qmd
+          #      text: Practical
+          #    - href: data-vis/week-8/study_after8.qmd
+          #      text: Consolidate!
+          # - section: "Week 9: Introduction to the Assessment"
+          #   contents:
+          #    - href: data-vis/week-9/overview9.qmd
+          #      text: About
+          #    - href: data-vis/week-9/study_before9.qmd
+          #      text: Prepare!
+          #    - href: data-vis/week-9/seminar9.qmd
+          #      text: Seminar
+          #    - href: data-vis/week-9/practical9.qmd
+          #      text: Practical
+          #    - href: data-vis/week-9/study_after9.qmd
+          #      text: Consolidate!
+          # - section: "Week 10: Reproducible Reporting"
+          #   contents:
+          #    - href: data-vis/week-9/overview10.qmd
+          #      text: About
+          #    - href: data-vis/week-9/study_before10.qmd
+          #      text: Prepare!
+          #    - href: data-vis/week-9/seminar10.qmd
+          #      text: Seminar
+          #    - href: data-vis/week-9/practical10.qmd
+          #      text: Practical
+          #    - href: data-vis/week-9/study_after10.qmd
+          #      text: Consolidate!
+
+execute:
+  echo: true
+  warning: false
+  output: true
+  error: true
+  collapse: true
+  freeze: auto
+  cache: true
+
+engine: knitr
+
+
+format:
+  html:
+    link-external-newwindow: true
+    link-external-filter: '^(?:http:|https:)\/\/laylaunger\.github\.io\/data-vis'
+    theme:
+      light: [cosmo, custom.scss]
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    code-line-numbers: false
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 300px
+
+    author-meta: Layla Unger
+
+
+metadata-files:
+  - _downlit.yml
+
+
+fig-dpi: 600
+
+bibliography: references.bib
+
+comments:
+  hypothesis: true
+
+editor: source
