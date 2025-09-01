@@ -1,0 +1,411 @@
+---
+title: "Practical"
+subtitle: "Grammar of Graphics"
+toc: true
+toc-location: right
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(kableExtra)
+```
+
+# Introduction
+
+## Session overview
+
+In this introduction you will start working with RStudio. You will read in a dataset and plot the data it contains in various ways.
+
+## Philosophy
+
+Practicals are not a test. It is expected that you often don't know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips
+
+-   don't worry about making mistakes
+-   don't let what you can not do interfere with what you can do
+-   discussing code with your neighbours will help
+-   look things up in the independent study material
+-   look things up in your own code from earlier workshops
+-   there are no stupid questions
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. Record your answers in your script for future reference.
+:::
+
+# Getting started
+
+![](images/do_on_your_computer.png) Start RStudio from the Start menu.
+
+![](images/do_in_R.png) Go the Files tab in the lower right pane and click on the `...` on the right. This will open a "Go to folder" window. Navigate to a place on your computer where you keep your work. Click Open.
+
+![](images/do_in_R.png) Also on the Files tab click on `New Folder`. Type "data-visualisation-in-r" in to the box. This will be the folder that we work in throughout.
+
+![](images/do_in_R.png) Make an RStudio project for this workshop by clicking on the drop-down menu on top right where it says `Project: (None)` and choosing New Project, then New Directory, then New Project. Name the RStudio Project 'week-2'.
+
+![](images/do_in_R.png) Make a new script then save it with a name like visualisation.R to carry out the rest of the work.
+
+![](images/do_in_R.png) Add a comment to the script: `# Grammar of Graphics`. You can generally add comments in your R scripts following `#`. Commenting is extremely useful to keep track of what your code does, so use them extensively as you write code in the exercises below and in all your R work!
+
+# Exercises
+
+## Wellbeing
+
+We'll be working with a simulated dataset is based on a fictional cross-sectional survey study exploring the relationships between social support, therapy attendance, loneliness, sleep quality, and overall wellbeing in adults.
+
+In this fictional study, participants were recruited from community mental health clinics and general community advertisements between 2019 and 2022. They completed a survey assessing:
+
+-   Perceived social support (categorized as Low, Medium, or High)
+
+-   Current therapy status (Yes or No)
+
+-   Loneliness (a standardized loneliness score; higher scores indicate greater loneliness)
+
+-   Subjective wellbeing (higher scores indicate better wellbeing)
+
+-   Sleep quality (rated on a 1–10 scale)
+
+-   Demographics, including age and sex
+
+The fictional study aimed to understand how social support and therapy might relate to feelings of loneliness and overall wellbeing, as well as how these factors interact with sleep and demographic characteristics.
+
+## Packages
+
+Commands like `c()`, `sum()`, and `str()` are in packages which are part the 'base' R system. A package is a collection of related commands. Base packages are installed automatically when you install R.
+
+Other packages, such as **`ggplot2`** [@ggplot2] need to be installed once and then loaded each session. **`ggplot2`** is one of the **`tidyverse`** [@tidyverse] packages.
+
+::: callout-important
+## Important
+
+If you are working on a University computer (or the VDS) you *do not* need to install **`tidyverse`**.
+
+If you are working on your own computer or using RStudio cloud you *do* need to install **`tidyverse`**.
+:::
+
+To install a package:
+
+![](images/do_in_R.png) Go the Packages tab on the lower right pane. Click Install and type **`tidyverse`** into the box that appears.
+
+Wait until you get the prompt back. It will take a few moments, be patient!
+
+To use a package which is installed you have to load it with the `library()` function. You will need to do this whether you are working on your own computer or on a University computer
+
+![](images/do_in_R.png) Load the **`tidyverse`**. Type or copy the following code into your R script:
+
+```{r}
+#| eval: false
+library(tidyverse)
+```
+
+![](images/do_in_R.png) Ensure your cursor is on the line with the code you just added and hit Ctrl+Enter to run it.
+
+You can follow this same step to run any code you add to your R script!
+
+You will likely be warned of some function name conflicts but these will not be a problem for you.
+
+## Reading in data
+
+You will go into more depth about reading in data in the Data Analysis module. For now, you can just follow these steps.
+
+![](images/do_on_your_computer.png) Save this file in your `week-2` folder:
+
+-   Data from fictional wellbeing study: [therapy_data.csv](data-raw/therapy_data.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+```{r}
+#| eval: false
+therapy_df <- read_csv("therapy_data.csv")
+```
+
+
+```{r}
+#| include: false
+therapy_df <- read_csv("data-raw/therapy_data.csv")
+```
+
+
+## Look at data
+
+![](images/do_in_R.png) Examine the variables and first few rows of the `therapy_df` object using `head()`
+
+```{r}
+
+head(therapy_df)
+```
+
+See that you have a table where each column is a variable from the fictional study, such as wellbeing_score. Each row contains values for each variable for one participant.
+
+## Exercise 1: Distributions
+
+Look at the distribution of the main outcome variable, the wellbeing score.
+
+![](images/do_in_R.png) Plot the distribution by creating a plot in which the x-axis variable is wellbeing_score and the distribution of this variable is shown as a histogram.
+
+```{r}
+ggplot(therapy_df, aes(x = wellbeing_score)) +
+  geom_histogram()
+```
+
+Any geom has multiple attributes, such as color. When you just specify the geom followed by empty brackets, like `geom_histogram()`, the values for those attributes are chosen by default. This means that, under the hood, `geom_histogram()` is setting the fill of the bars to a gray color, like this:
+
+```{r}
+ggplot(therapy_df, aes(x = wellbeing_score)) +
+  geom_histogram(fill = "#525252")
+```
+
+Similarly, geom_histogram() chooses the number "bins" that group together values within the same bar.
+
+For this dataset, the default is 30 bins. So the code above is the same as the code below and produces the same histogram:
+
+```{r}
+ggplot(therapy_df, aes(x = wellbeing_score)) +
+  geom_histogram(bins = 30)
+```
+
+But, we can change these defaults.
+
+![](images/do_in_R.png) Try setting the bins to a larger or smaller number than 30 and see what happens.
+
+```{r}
+#| eval: false
+#| include: false
+
+ggplot(therapy_df, aes(x = wellbeing_score)) +
+  geom_histogram(bins = 10)
+
+ggplot(therapy_df, aes(x = wellbeing_score)) +
+  geom_histogram(bins = 50)
+```
+
+## Exercise 2: Comparing distributions in groups
+
+What if we want to see the distribution of wellbeing_score for different groups of people, such as people with different levels of support? We can do this using a boxplot.
+
+![](images/do_in_R.png) Create a boxplot:
+
+```{r}
+ggplot(therapy_df, aes(x = support_level, y = wellbeing_score)) +
+  geom_boxplot()
+```
+
+Just like `geom_histogram()`, `geom_boxplot()` is actually setting values for attributes like fill to a default value. As you can see, the boxes are filled in white.
+
+![](images/do_in_R.png) Try changing the fill to a different color, like "red".
+
+See Exercise 1 above for an example of setting the fill color to a value (above the color was a hex string: "#525252", but here you can change it to the name of a common color, like "red" )
+
+![](images/do_in_R.png) Change the fill color
+
+```{r}
+#| eval: false
+#| include: false
+
+ggplot(therapy_df, aes(x = support_level, y = wellbeing_score)) +
+  geom_boxplot(fill = "red")
+```
+
+Now, instead of setting all boxes to the same color, we can use **a variable** to control the fill aesthetic.
+
+![](images/do_in_R.png) Try using the `support_level` variable to control the fill aesthetic.
+
+You will still modify the content inside the brackets for `geom_boxplot()`, but now instead of `fill = "color_name"`, you'll need to use `aes(fill = name_of_variable)`.
+
+```{r}
+#| eval: false
+#| include: false
+
+ggplot(therapy_df, aes(x = support_level, y = wellbeing_score)) +
+  geom_boxplot(aes(fill = support_level))
+```
+
+![](images/do_in_R.png) Once you've used the `suport_level` variable to control the fill aesthetic, you can add a line to choose specific fill colors for each support_level. Copy your code above, add a + at the end of the last line, and add this line:
+
+```{r}
+#| eval: false
+
+scale_fill_manual(values = c("red", "blue", "purple"))
+```
+
+![](images/do_in_R.png) Try a violin plot instead using `geom_violin()`. what differences do you see?
+
+```{r}
+#| eval: false
+#| include: false
+
+ggplot(therapy_df, aes(x = support_level, y = wellbeing_score)) +
+  geom_violin(aes(fill = support_level))
+
+```
+
+
+## Exercise 3: Visualising summaries with bar plots
+
+
+Instead of looking at the whole distribution of `wellbeing_scores` for each support level, maybe we just want to look at a summary statistic, like the mean values. 
+
+We can generate a new dataset that contains just mean values of `wellbeing_scores` for each support_level.
+
+![](images/do_in_R.png) Run the following code to generate the new summary dataset:
+
+```{r}
+therapy_summary <- therapy_df %>%
+  group_by(support_level) %>%
+  summarise(wellbeing_score_mean = mean(wellbeing_score))
+```
+
+Use the `therapy_summary` data to create a barplot that depicts the mean wellbeing scores (on the y-axis) for each support level (x-axis) using `geom_bar()`.
+
+![](images/do_in_R.png) Remember that within the brackets for `geom_bar()`, you need to specify `stat = "identity"` so that it uses the y-axis variable you specified.
+
+```{r}
+#| include: false
+#| eval: false
+
+ggplot(therapy_summary, aes(x = support_level, y = wellbeing_score_mean)) +
+  geom_bar(stat = "identity")
+```
+
+
+![](images/do_in_R.png) Change the bar colors to custom colors you choose using `scale_fill_manual()`
+
+Check the seminar slides for examples of using manual scales!
+
+
+## Exercise 4: Relationships between continuous variables
+
+What if we want to look at relationships between continuous variables, such as `loneliness_score` and `wellbeing_score`?
+
+![](images/do_in_R.png) We can create a scatterplot, like this:
+
+```{r}
+ggplot(therapy_df, aes(x = loneliness_score, y = wellbeing_score)) +
+  geom_point()
+```
+
+![](images/do_in_R.png) Modify the code above to use the `support_level` variable to control the `color` and `shape` aesthetics of `geom_point()`
+
+
+```{r}
+#| include: false
+#| eval: false
+
+ggplot(therapy_df, aes(x = loneliness_score, y = wellbeing_score)) +
+  geom_point(aes(color = support_level, shape = support_level))
+```
+
+
+## Exercise 5: Coordinate system adjustments
+
+![](images/do_in_R.png) Take the bar plot from Exercise 3 and flip the coordinates to horizontal bars using `coord_flip()`
+
+```{r}
+#| include: false
+#| eval: false
+
+ggplot(therapy_summary, aes(x = support_level, y = wellbeing_score_mean)) +
+  geom_bar(stat = "identity") +
+  coord_flip()
+```
+
+
+![](images/do_in_R.png) Try using `coord_cartesian()` to limit the y-axis range to focus on a particular range (e.g., `ylim = c(40, 80)`)
+
+```{r}
+#| include: false
+#| eval: false
+
+ggplot(therapy_summary, aes(x = support_level, y = wellbeing_score_mean)) +
+  geom_bar(stat = "identity") +
+  coord_cartesian(ylim = c(40, 80))
+```
+
+
+# Exercise 6: Themes and appearance
+
+We can control additional characteristics, such as the size of text in axes, the plot background, etc.
+
+
+![](images/do_in_R.png) Copy your code for one of the plots above and add `theme_bw()` to change its overall appearance
+
+```{r}
+#| include: false
+#| eval: false
+
+ggplot(therapy_summary, aes(x = support_level, y = wellbeing_score_mean)) +
+  geom_bar(stat = "identity") +
+  coord_cartesian(ylim = c(40, 80)) +
+  theme_bw()
+```
+
+
+![](images/do_in_R.png) Add a `theme()` line, and within the brackets, set `axis.title = element_text(size = 12)`
+
+
+```{r}
+#| include: false
+#| eval: false
+
+ggplot(therapy_summary, aes(x = support_level, y = wellbeing_score_mean)) +
+  geom_bar(stat = "identity") +
+  coord_cartesian(ylim = c(40, 80)) +
+  theme_bw() +
+  theme(axis.title = element_text(size = 12))
+```
+
+
+![](images/do_in_R.png) Within the `theme()` brackets, change other characteristics such as the size of `axis.text`
+
+```{r}
+#| include: false
+#| eval: false
+
+ggplot(therapy_summary, aes(x = support_level, y = wellbeing_score_mean)) +
+  geom_bar(stat = "identity") +
+  coord_cartesian(ylim = c(40, 80)) +
+  theme_bw() +
+  theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10))
+```
+
+
+## Exercise 7: Faceting
+
+![](images/do_in_R.png) Copy the same scatterplot of `loneliness_score` vs `wellbeing_score` from Exercise 4
+
+```{r}
+ggplot(therapy_df, aes(x = loneliness_score, y = wellbeing_score)) +
+  geom_point()
+```
+
+![](images/do_in_R.png) Add a facet_wrap() line to create separate facets for each value of the `support_level` variable
+
+```{r}
+ggplot(therapy_df, aes(x = loneliness_score, y = wellbeing_score)) +
+  geom_point() +
+  facet_wrap(~ support_level)
+```
+
+
+
+You're finished!
+
+# 🥳 Well Done! 🎉
+
+[Consolidate](study_after2.qmd)
+
+# The Code file
+
+This contains all the code needed in the practical even where it is not visible on the webpage.
+
+The `practical.qmd` file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interweaved to produce well-formatted reports including webpages. [View the Qmd in Browser](https://github.com/laylaunger/york-data-vis-r-course/blob/main/data-vis/week-2/practical2.qmd). 

@@ -1,0 +1,1010 @@
+---
+title: "Week 2 Seminar: Grammar of Graphics"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    highlight-style: github
+    width: 1200
+---
+
+```{r setup, include=FALSE}
+library(kableExtra)
+library(tidyverse)
+library(showtext)
+library(knitr)
+library(here)
+library(patchwork)
+library(colorspace)
+library(viridis)
+options(knitr.kable.NA = '')
+knitr::opts_chunk$set(fig.retina = 3)
+theme_set(theme_bw(base_size = 18) +
+          theme(panel.grid = element_blank()))
+
+set.seed(123)
+
+n <- 300
+
+diagnosis <- sample(c("Depression", "Anxiety", "None"), n, replace = TRUE, prob = c(0.35, 0.35, 0.30))
+clinic <- sample(c("North", "South", "East"), n, replace = TRUE)
+sex <- sample(c("Male", "Female"), n, replace = TRUE)
+year <- sample(2018:2020, n, replace = TRUE)
+
+stress_score <- rnorm(n, mean = ifelse(diagnosis == "None", 15, ifelse(diagnosis == "Anxiety", 30, 28)), sd = 5)
+sleep_hours <- rnorm(n, mean = ifelse(diagnosis == "None", 7.5, ifelse(diagnosis == "Anxiety", 6.5, 5)), sd = 1)
+activity_score <- rnorm(n, mean = ifelse(diagnosis == "None", 70, ifelse(diagnosis == "Anxiety", 55, 40)), sd = 10)
+BMI <- rnorm(n, mean = ifelse(diagnosis == "None", 23, 26), sd = 3)
+
+stress_score <- stress_score + rnorm(n, mean = ifelse(sex == "Female", 3, -3), sd = 1.5)
+
+# Combine
+psych_df <- tibble(
+  diagnosis,
+  clinic,
+  stress_score,
+  sleep_hours,
+  activity_score,
+  BMI,
+  sex,
+  year
+)
+
+psych_df$diagnosis = factor(psych_df$diagnosis, levels = c("None", "Anxiety", "Depression"))
+
+
+# Generate base theme for plots
+base_theme <- function (base_text_size = 15) { 
+  theme_linedraw(base_size=11) %+replace% 
+    theme(
+      panel.background  = element_blank(),
+      plot.background = element_rect(fill = "transparent", color = NA), 
+      legend.background = element_rect(fill = "transparent", color = NA),
+      legend.key = element_rect(fill = "transparent", color = NA),
+      axis.ticks = element_blank(),
+      text = element_text(size = base_text_size),
+      plot.title = element_text(size = base_text_size + 3, hjust = 0, vjust = 0.5, face = "bold", margin = margin(b = 0.2, unit = "cm")),
+      plot.subtitle = element_text(size = base_text_size - 2, hjust = 0, vjust = 0.5, margin = margin(b = 0.2, unit = "cm")),
+      plot.caption = element_text(size = base_text_size - 8, hjust = 1, face = "italic", margin = margin(t = 0.1, unit = "cm")),
+      axis.title = element_text(size = base_text_size + 2),
+      legend.title = element_text(size = base_text_size + 2),
+      panel.grid = element_blank()
+    )
+}
+
+```
+
+## From last time
+
+<br>
+
+Why do we visualise data?
+
+- Explore
+- Diagnose
+- Explain
+
+---
+
+## Today
+
+<br>
+
+The grammar of graphics 
+
+- How graphics are constructed in R (standard)
+
+---
+
+## Packages
+
+<br>
+
+To expand R's capabilities, we often need to use packages
+
+The main package we'll be using to generate graphics is ggplot2
+
+
+```{r load-ggplot2, eval = FALSE}
+
+install.packages("ggplot2")
+library(ggplot2)
+
+```
+
+
+---
+
+## ggplot
+
+<br>
+
+<div style="font-size: 80%;">
+
+What is the <span style="color:blue; font-weight:bold;">g</span>rammar of <span style="color:blue; font-weight:bold;">g</span>raphics?
+
+A framework for building plots by combining basic building blocks, e.g.,:
+
+- geometric objects (like points or bars)
+- data
+- visual mappings (like position and color)
+
+in a consistent, structured way
+
+</div>
+
+---
+
+## ggplot
+
+<br>
+
+<div style="font-size: 80%;">
+
+A graphic... 
+
+- maps  <span style="color:blue; font-weight:bold;">variables in the data</span> +
+- to the <span style="color:blue; font-weight:bold;">aesthetic attributes</span> +
+- of <span style="color:blue; font-weight:bold;">geometric objects</span> +
+
+with possible ... 
+
+- <span style="color:blue; font-weight:bold;">statistical transformations</span> +
+- different <span style="color:blue; font-weight:bold;">coordinate systems</span> +
+- and <span style="color:blue; font-weight:bold;">faceting</span> +
+
+</div>
+
+---
+
+## How do we "map" data to a graphic?
+
+<br>
+
+<div style="font-size: 75%;">
+
+The way we depict variables in our data as axes, bars, points, etc. dictates the way that patterns such as comparisons and changes are perceived
+
+A non-exhaustive list:
+
+- length
+- color (or saturation)
+- position
+- size
+- shape
+- area
+- angle
+
+</div>
+
+---
+
+## Today's data
+
+<br>
+
+```{r psych-data, echo=FALSE}
+# Display using kable
+psych_df %>% 
+  head(10) %>% 
+  kable("html") %>%
+  kable_styling(font_size = 24, position = "center", full_width = F) %>%
+  row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## How are variables depicted here? What does it communicate?
+
+```{r psych-graph-scatter, echo = FALSE, fig.align = "center", fig.height = 6.5}
+psych_df %>%
+ggplot(aes(x = stress_score, y = sleep_hours)) +
+  geom_point(aes(color = diagnosis)) +
+  labs(x = "Stress Score",
+       y = "Sleep Hours",
+       color = "Diagnosis") +
+  base_theme()
+```
+
+---
+
+## How are variables depicted here? What does it communicate?
+
+```{r psych-graph-bar-1, echo = FALSE, fig.align = "center", fig.height = 6.5}
+psych_df %>%
+ggplot(aes(x = diagnosis, y = stress_score)) +
+  stat_summary(fun = "mean", geom = "bar") +
+  labs(x = "Diagnosis",
+       y = "Stress Score") +
+  base_theme()
+```
+
+---
+
+## How are variables depicted here? What does it communicate?
+
+```{r psych-graph-bar-2, echo = FALSE, fig.align = "center", fig.height = 6.5}
+psych_df %>%
+  ggplot(aes(x = diagnosis, y = stress_score)) +
+  stat_summary(aes(fill = diagnosis), fun = "mean", geom = "bar", show.legend = F) +
+  labs(x = "Diagnosis",
+       y = "Stress Score") +
+  base_theme()
+```
+
+---
+
+## How are variables depicted here? What does it communicate?
+
+```{r psych-graph-scatter-category, echo = FALSE, fig.align = "center", fig.height = 6.5}
+ggplot(psych_df, aes(x = stress_score, y = diagnosis)) +
+  geom_point(aes(fill = sleep_hours), position = position_jitter(height = .2), shape = 21, alpha = .6, size = 3 ) +
+  scale_fill_viridis(limits = c(2, 10), breaks = seq(2, 10, by = 2)) +
+  labs(x = "Stress Score",
+       y = "Diagnosis",
+       fill = "Sleep Hours") +
+  base_theme() +
+  theme(legend.position = "top")
+```
+
+---
+
+## How are variables depicted here? What does it communicate?
+
+```{r psych-graph-pie, echo = FALSE, fig.align = "center", fig.height = 6.5}
+psych_df %>% 
+  count(diagnosis) %>% 
+  ggplot(aes(x = "", y = n, fill = diagnosis)) +
+  geom_bar(stat = "identity", width = 1, color = "white") +
+  coord_polar("y", start = 0) +
+  labs(fill = "Diagnosis") +
+  theme_void() +
+  theme(legend.title = element_text(size = 15),
+        legend.text = element_text(size = 13))
+```
+
+---
+
+## ggplot
+
+<br>
+
+<div style="font-size: 75%;">
+
+Bulding blocks
+
+- data
+- aesthetics: specify variables to use for axes, shapes
+- geom: the shapes that will depict the data
+- scales: customise how variables are used to depict axes, shapes
+- statistical transformations: depict summaries (e.g., means) and model fits
+- coord: customise axis ranges and appearance
+- theme: customise features such as font size, background color, legend position
+- facets: break graphic into subsets
+
+</div>
+
+---
+
+## ggplot
+
+<br>
+
+<div style="font-size: 75%;">
+
+Bulding blocks
+
+- data
+- <span style="color:blue; font-weight:bold;">aesthetics</span>: specify variables to use for axes, shapes
+- <span style="color:blue; font-weight:bold;">geom</span>: the shapes that will depict the data
+- scales: customise how variables are used to depict axes, shapes
+- statistical transformations: depict summaries (e.g., means) and model fits
+- coord: customise axis ranges and appearance
+- theme: customise features such as font size, background color, legend position
+- facets: break graphic into subsets
+
+</div>
+
+---
+
+## ggplot
+
+```{r y-axis, echo=FALSE,  fig.align = "center", fig.height = 6.5,}
+knitr::include_graphics(here("data-vis","figs","map_x_axis.png"))
+
+```
+---
+
+## ggplot
+
+```{r x-axis, echo=FALSE,  fig.align = "center", fig.height = 6.5,}
+knitr::include_graphics(here("data-vis","figs","map_y_axis.png"))
+
+```
+
+---
+
+## ggplot
+
+```{r shapes, echo=FALSE,  fig.align = "center", fig.height = 6.5,}
+knitr::include_graphics(here("data-vis","figs","map_shapes.png"))
+
+```
+
+---
+
+## ggplot
+
+<br>
+
+<div style="font-size: 75%;">
+
+Bulding blocks
+
+- data
+- <span style="color:blue; font-weight:bold;">aesthetics</span>: specify variables to use for axes, shapes
+- <span style="color:blue; font-weight:bold;">geom</span>: the shapes that will depict the data
+- scales: customise how variables are used to depict axes, shapes
+- statistical transformations: depict summaries (e.g., means) and model fits
+- coord: customise axis ranges and appearance
+- theme: customise features such as font size, background color, legend position
+- facets: break graphic into subsets
+
+</div>
+
+---
+
+## ggplot
+
+```{r base-plot, eval = FALSE}
+
+ggplot(data = psych_df, aes(x = stress_score))
+
+```
+
+```{r base-plot, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+::: notes
+
+We can choose a variable to plot
+
+:::
+
+---
+
+## ggplot
+
+```{r histogram-plot, eval = FALSE}
+
+
+
+ggplot(data = psych_df, aes(x = stress_score)) +
+  geom_histogram()
+
+```
+
+::: notes
+
+But we need to tell ggplot what GEOMETRY to use to visualize that variable. 
+Here, a histogram
+
+:::
+
+```{r histogram-plot, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+
+
+
+---
+
+## ggplot
+
+```{r boxplot-plot, eval = FALSE}
+
+ggplot(data = psych_df, aes(x = diagnosis, y = stress_score)) +
+  geom_boxplot()
+
+```
+
+::: notes
+
+Now, what if we wanted to keep looking at that distribution of stress, but break
+it down by diagnosis? Here, we need to add that diagnosis variable as an axis
+and choose a geometry to depict it. We'll try boxplot.
+
+:::
+
+
+```{r boxplot-plot, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+
+
+
+---
+
+## ggplot
+
+
+```{r violinplot-plot, eval = FALSE}
+
+ggplot(data = psych_df, aes(x = diagnosis, y = stress_score)) +
+  geom_violin()
+
+```
+
+```{r violinplot-plot, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+::: notes
+
+Or violin plot
+
+:::
+
+
+---
+
+## ggplot
+
+
+
+```{r barplot-plot, eval = FALSE}
+
+psych_df %>%
+  group_by(diagnosis) %>%
+  summarize(stress_score_mean = mean(stress_score)) %>%
+  ggplot(aes(x = diagnosis, y = stress_score_mean)) +
+  geom_bar(stat = "identity")
+
+```
+
+::: notes
+
+What if we don't want to look at the full distribution - we just want to
+look at the average tendencies for each diagnosis? 
+Well here we want a bar plot. But we need to calculate that average tendency 
+somehow. 
+
+:::
+
+
+
+```{r barplot-plot, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+
+```{r scatterplot-plot, eval = FALSE}
+
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point()
+
+```
+
+::: notes
+
+Suppose we want to see, beyond diagnosis, are there variables associated with
+stress? How about sleep? Now we're looking at a relationship between continuous
+variables, so the appropriate choice here is a scatterplot. So the geeometry 
+we'll use is points in a scatterplot.
+
+:::
+
+
+```{r scatterplot-plot, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+
+
+```{r scatterplot-plot-diagnosis-color, eval = FALSE}
+
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point(aes(color = diagnosis))
+
+```
+
+::: notes
+
+What if we want to incorporate another variable into this plot. 
+E.g., what if we want to visualize stress, sleep AND diagnosis?
+We can control another aesthetic using the diagnosis variable - e.g.,
+point color
+
+:::
+
+
+```{r scatterplot-plot-diagnosis-color, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+
+```{r scatterplot-plot-diagnosis-shape, eval = FALSE}
+
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point(aes(shape = diagnosis))
+
+```
+
+::: notes
+
+We could use diagnosis to control another aesthetic, like shape
+
+:::
+
+```{r scatterplot-plot-diagnosis-shape, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+
+---
+
+## ggplot
+
+
+```{r scatterplot-plot-diagnosis-color2, eval = FALSE}
+
+psych_df %>%
+  ggplot(aes(x = stress_score, y = diagnosis)) +
+  geom_point(aes(color = sleep_hours))
+
+```
+
+::: notes
+
+We could change the way we map our variables to aesthetics - axes, shapes
+
+:::
+
+
+```{r scatterplot-plot-diagnosis-color2, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+
+---
+
+## ggplot
+
+<br>
+
+<div style="font-size: 75%;">
+
+Bulding blocks
+
+- data
+- aesthetics: specify variables to use for axes, shapes
+- geom: the shapes that will depict the data
+- <span style="color:blue; font-weight:bold;">scales</span>: customise how variables are used to depict axes, shapes
+- statistical transformations: depict summaries (e.g., means) and model fits
+- coord: customise axis ranges and appearance
+- theme: customise features such as font size, background color, legend position
+- facets: break graphic into subsets
+
+</div>
+
+---
+
+## ggplot
+
+
+```{r scatterplot-plot-blue1, eval = FALSE}
+
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point()
+
+```
+
+::: notes
+
+Customize how the variables are plotted as points
+
+:::
+
+
+
+```{r scatterplot-plot-blue1, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+
+```{r scatterplot-plot-blue2, eval = FALSE}
+
+
+
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point(color = "blue", size = 2)
+```
+
+::: notes
+
+Customize how the variables are plotted as points
+
+:::
+
+```{r scatterplot-plot-blue2, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+
+---
+
+## ggplot
+
+
+```{r scatterplot-plot-color1, eval = FALSE}
+
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point(aes(color = diagnosis), size = 2)
+```
+
+::: notes
+
+Use another variable to control the color
+
+:::
+
+
+```{r scatterplot-plot-color1, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+
+
+```{r scatterplot-plot-color2, eval = FALSE}
+
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point(aes(color = diagnosis), size = 2) +
+  scale_color_manual(values = c("darkgray", "deeppink", "blue")) +
+  scale_x_continuous(name = "Sleep in Hours", 
+                     breaks = seq(0, 12, by = 2), limits = c(0, 12))
+```
+
+::: notes
+
+Use another variable to control the color and customise
+
+:::
+
+
+```{r scatterplot-plot-color2, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+<br>
+
+<div style="font-size: 75%;">
+
+Bulding blocks
+
+- data
+- aesthetics: specify variables to use for axes, shapes
+- geom: the shapes that will depict the data
+- scales: customise how variables are used to depict axes, shapes
+- statistical transformations: depict summaries (e.g., means) and model fits
+- <span style="color:blue; font-weight:bold;">coord</span>: customise axis ranges and appearance
+- theme: customise features such as font size, background color, legend position
+- facets: break graphic into subsets
+
+</div>
+
+---
+
+## ggplot
+
+
+
+```{r barplot-plot1, eval = FALSE}
+psych_df %>%
+  group_by(diagnosis) %>%
+  summarize(stress_score_mean = mean(stress_score)) %>%
+  ggplot(aes(x = diagnosis, y = stress_score_mean)) +
+  geom_bar(stat = "identity")
+```
+
+::: notes
+
+What if we want to change how the axes are depicted?
+
+:::
+
+
+```{r barplot-plot1, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+```{r echo = FALSE, eval = FALSE}
+
+# Change the range
+
+
+```
+
+```{r barplot-plot2, eval = FALSE}
+
+psych_df %>%
+  group_by(diagnosis) %>%
+  summarize(stress_score_mean = mean(stress_score)) %>%
+  ggplot(aes(x = diagnosis, y = stress_score_mean)) +
+  geom_bar(stat = "identity") +
+  coord_cartesian(ylim = c(10, 40))
+```
+
+```{r barplot-plot2, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+
+```{r barplot-plot3, eval = FALSE}
+
+psych_df %>%
+  group_by(diagnosis) %>%
+  summarize(stress_score_mean = mean(stress_score)) %>%
+  ggplot(aes(x = diagnosis, y = stress_score_mean)) +
+  geom_bar(stat = "identity") +
+  coord_flip()
+
+```
+
+::: notes
+
+Change the orientation
+
+:::
+
+
+```{r barplot-plot3, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+<br>
+
+<div style="font-size: 75%;">
+
+Bulding blocks
+
+- data
+- aesthetics: specify variables to use for axes, shapes
+- geom: the shapes that will depict the data
+- scales: customise how variables are used to depict axes, shapes
+- statistical transformations: depict summaries (e.g., means) and model fits
+- coord: customise axis ranges and appearance
+- <span style="color:blue; font-weight:bold;">theme</span>: customise features such as font size, background color, legend position
+- facets: break graphic into subsets
+
+</div>
+
+
+---
+
+## ggplot
+
+
+```{r barplot-plot-theme1, eval = FALSE}
+
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point(aes(color = diagnosis), size = 2) +
+  scale_color_manual(values = c("darkgray", "deeppink", "blue")) +
+  scale_x_continuous(name = "Sleep in Hours", 
+                     breaks = seq(0, 12, by = 2), limits = c(0, 12)) 
+
+```
+
+::: notes
+
+We often want to control the other aspects of appearance, such as font size
+
+:::
+
+
+```{r barplot-plot-theme1, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+
+```{r barplot-plot-theme2, eval = FALSE}
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point(aes(color = diagnosis), size = 2) +
+  scale_color_manual(values = c("darkgray", "deeppink", "blue")) +
+  scale_x_continuous(name = "Sleep in Hours", 
+                     breaks = seq(0, 12, by = 2), limits = c(0, 12)) +
+  theme(legend.position = "top",
+        legend.title = element_blank(),
+        panel.grid = element_blank())
+
+
+```
+
+::: notes
+
+We can add a theme() line and specify the appearance of various characteristics
+
+:::
+
+
+```{r barplot-plot-theme2, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+
+---
+
+## ggplot
+
+
+```{r barplot-plot-theme-bw, eval = FALSE}
+psych_df %>%
+  ggplot(aes(x = sleep_hours, y = stress_score)) +
+  geom_point(aes(color = diagnosis), size = 2) +
+  scale_color_manual(values = c("darkgray", "deeppink", "blue")) +
+  scale_x_continuous(name = "Sleep in Hours", 
+                     breaks = seq(0, 12, by = 2), limits = c(0, 12)) +
+  theme_bw()
+
+
+```
+
+::: notes
+
+There are also built-in themes that control many characteristics at once
+
+:::
+
+
+```{r barplot-plot-theme-bw, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+<br>
+
+<div style="font-size: 75%;">
+
+Bulding blocks
+
+- data
+- aesthetics: specify variables to use for axes, shapes
+- geom: the shapes that will depict the data
+- scales: customise how variables are used to depict axes, shapes
+- statistical transformations: depict summaries (e.g., means) and model fits
+- coord: customise axis ranges and appearance
+- theme: customise features such as font size, background color, legend position
+- <span style="color:blue; font-weight:bold;">facets</span>: break graphic into subsets
+
+</div>
+
+
+---
+
+## ggplot
+
+
+```{r scatterplot-plot-facet1, eval = FALSE}
+
+
+
+psych_df %>%
+  ggplot(aes(x = sex, y = stress_score)) +
+  geom_point(position = position_jitter(width = .1))
+
+```
+
+
+::: notes
+
+What if we want to see how this relationship varies across another variable? 
+Too much to combine into a single plot
+
+:::
+
+```{r scatterplot-plot-facet1, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## ggplot
+
+
+```{r scatterplot-plot-facet2, eval = FALSE}
+psych_df %>%
+  ggplot(aes(x = sex, y = stress_score)) +
+  facet_wrap(~diagnosis) +
+  geom_point(position = position_jitter(width = .1))
+
+```
+
+::: notes
+
+Instead, break across facets
+
+:::
+
+```{r scatterplot-plot-facet2, echo = FALSE, fig.align = 'center', fig.height = 5}
+```
+
+---
+
+## Summary: Grammar of Graphics
+
+- Minimum for plot = data + aes() + geom()
+
+- Map variables to aesthetics: x, y, color/fill, shape, size, alpha, linetype.
+
+- Pick geoms to match the question: hist/box/violin (distributions), bar (summaries/counts), point (relationships).
+
+- Use stats when needed: stat_summary() for means/SE; stat="identity" when you’ve already computed values.
+
+- Tune scales & labels: scale_*_*(), labs().
+
+- Adjust axes/orientation: coord_cartesian(), coord_flip(), coord_polar().
+
+- Polish appearance: theme(), built-ins (theme_bw())
+
+- Compare subsets with facets: facet_wrap() / facet_grid().
+
+---
+
+## Workflow checklist
+
+- Start with a clear question.
+
+- Choose mappings (what goes to x/y/color/…?).
+
+- Select geom (how should it look?).
+
+- Add stat/facet if it clarifies the story.
+
+- Refine with scales/coord; label units.
+
+- Finish with theme
+
+- Check clarity & integrity 
+
+---
+
+## Upcoming
+
+What is the range and shape of our data?
+
+Dive into distributions

@@ -1,0 +1,18 @@
+---
+title: Overview
+subtitle: "Grammar of Graphics"
+toc: true
+toc-location: right
+---
+
+This week you will get an introduction to the standard approach to creating visualisations in R. There is a preparation step to get acquainted with standard data management in R.
+
+
+### Learning objectives
+
+The successful student will be able to:
+
+-   generate common types of graphs, including histograms, barplots, and scatterplots
+-   customise the way variables are used to generate the axes and contents of the graph
+-   customise the appearance of graphs, including colors and axis ranges
+

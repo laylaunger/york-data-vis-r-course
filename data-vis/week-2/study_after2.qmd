@@ -1,0 +1,61 @@
+---
+title: "Independent Study to Consolidate"
+subtitle: "Grammar of Graphics"
+toc: true
+toc-location: right
+---
+
+# Practice
+
+Get started on the **`tidyverse`** course on DataCamp.
+
+
+# Exercises
+
+## Set up:
+
+If you have just opened RStudio you will want to load the
+**`tidyverse`** package
+
+```{r}
+#| code-fold: false
+library(tidyverse)
+```
+
+## Reading in data
+
+![](images/do_on_your_computer.png) Save this file in your `week-2` folder:
+
+-   Data from fictional stress study: [stress_data.csv](data-raw/stress_data.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+```{r}
+#| include: false
+stress_df <- read_csv("data-raw/stress_data.csv")
+```
+
+```{r}
+#| eval: false
+stress_df <- read_csv("stress_data.csv")
+```
+
+```{r}
+head(stress_df)
+```
+
+## Plot
+
+![](images/do_in_R.png) Generate a boxplot that shows the relationship between diagnosis on the x-axis and stress_score on the y-axis. Facet the plot by sex so that this relationship is plotted separately for Female and Male.
+
+```{r}
+#| echo: false
+
+ggplot(stress_df, aes(x = diagnosis, y = stress_score)) +
+  geom_boxplot() +
+  facet_wrap(~ sex)
+```
+
+
+# 🥳 Well Done! 🎉
+
