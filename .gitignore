@@ -55,3 +55,6 @@ _site/
 
 # Freeze
 _freeze/
+
+# artifacts
+*_files/
