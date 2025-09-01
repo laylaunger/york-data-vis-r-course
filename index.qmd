@@ -1,0 +1,29 @@
+---
+title: "Data Visualisation in R"
+toc: true
+toc-location: right
+---
+
+# Overview
+
+Data Visualisation in R helps you transform complex datasets into clear, compelling, and insightful stories.  
+
+## Learning Data Visualisation is important...
+
+Modern life produces massive amounts of data, from medical records and government reports to consumer behaviour and scientific experiments. These raw data are often impossible to interpret directly. Effective visualisation is what makes patterns, relationships, and insights easy to grasp. It is also one of the most in-demand skills in both academia and industry.
+
+## ... and takes time ...
+
+Designing good visualisations isn’t just about producing a chart. It requires practice in matching the right data to the right visualisation, choosing what to emphasise, and making design choices that enhance clarity rather than confuse.
+
+## ... but can be very rewarding ...
+
+You’ll find that creating visualisations can be highly engaging and satisfying. There is an immediate reward when a messy dataset suddenly becomes a meaningful picture. You’ll also discover creative opportunities—choosing colours, layouts, and styles that make your work both clear and attractive. By the end of the course you’ll be able to build professional-quality figures, dashboards, and even interactive apps that you can proudly showcase.
+
+The time and effort you put into learning *Data Visualisation in R* WILL reward you no matter how you evaluate yourself relative to others. You will be able to:
+
+- Explore and understand datasets by visualising distributions, relationships, and trends.
+- Design clear and comprehensible visualisations that avoid common pitfalls.
+- Communicate findings to diverse audiences through compelling storytelling.
+- Build interactive dashboards that combine multiple visualisations.
+- Apply these skills across your degree and in a wide range of careers.
