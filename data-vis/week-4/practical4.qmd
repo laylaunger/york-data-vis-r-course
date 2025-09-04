@@ -8,6 +8,7 @@ toc-location: right
 ```{r}
 #| include: false
 library(tidyverse)
+library(here)
 ```
 
 # Introduction
@@ -99,7 +100,7 @@ library(tidyverse)
 
 ![](images/do_on_your_computer.png) Save this file in your `week-4` folder:
 
--   App engagement data: [app_engagement.csv](data-raw/app_engagement.csv)
+-   App engagement data: [app_engagement.csv](../data/app_engagement.csv)
 
 ![](images/do_in_R.png) Add the following code to your R script and run:
 
@@ -110,8 +111,7 @@ app_df <- read_csv("app_engagement.csv")
 
 ```{r}
 #| include: false
-# For the compiled site build; students will use the line above:
-app_df <- read_csv("data-raw/app_engagement.csv")
+app_df <- read_csv(here("data-vis",  "data", "app_engagement.csv"))
 ```
 
 ## Look at data
@@ -299,6 +299,7 @@ You can reuse and adapt the code you wrote for Exercise 5 that used `stat_summar
 ![](images/do_in_R.png) Keep `user_segment` as your x-axis variable, but add `device_type` as the fill `aes()` for the bars and the group `aes()` for the linerange error bars. Remember to dodge your bars and error bars.
 
 ```{r}
+#| echo: false
 ggplot(app_df, aes(x = user_segment, y = product_engagement)) +
   stat_summary(aes(fill = device_type),
                fun = "mean", geom = "bar", position = "dodge") +

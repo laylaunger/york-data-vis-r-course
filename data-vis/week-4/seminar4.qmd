@@ -7,6 +7,8 @@ format:
     chalkboard: true
     highlight-style: github
     width: 1200
+execute:
+  freeze: false   # enable or disable
 ---
 
 
@@ -19,7 +21,6 @@ library(here)
 library(patchwork)
 library(colorspace)
 library(viridis)
-library(showtext)
 library(ggridges)
 library(scales)
 options(knitr.kable.NA = '')
@@ -68,24 +69,6 @@ mental_health <- mental_health %>%
 mental_health$participant_group <- factor(mental_health$participant_group, levels = c("Teens", "Adults", "Older Adults"))
 
 
-# Generate base theme for plots
-base_theme <- function (base_text_size = 15) { 
-  theme_linedraw(base_size=11) %+replace% 
-    theme(
-      panel.background  = element_blank(),
-      plot.background = element_rect(fill = "transparent", color = NA), 
-      legend.background = element_rect(fill = "transparent", color = NA),
-      legend.key = element_rect(fill = "transparent", color = NA),
-      axis.ticks = element_blank(),
-      text = element_text(size = base_text_size),
-      plot.title = element_text(size = base_text_size + 3, hjust = 0, vjust = 0.5, face = "bold", margin = margin(b = 0.2, unit = "cm")),
-      plot.subtitle = element_text(size = base_text_size - 2, hjust = 0, vjust = 0.5, margin = margin(b = 0.2, unit = "cm")),
-      plot.caption = element_text(size = base_text_size - 8, hjust = 1, face = "italic", margin = margin(t = 0.1, unit = "cm")),
-      axis.title = element_text(size = base_text_size + 2),
-      legend.title = element_text(size = base_text_size + 2),
-      panel.grid = element_blank()
-    )
-}
 
 ```
 
@@ -111,6 +94,7 @@ Graphing distributions:
 
 Bar plots
 
+---
 
 ## Today's data
 
@@ -136,6 +120,8 @@ Heights of bars give us easy insights into categorical variables:
 - Count how many values within each category there are
 
 - See how a continuous variable differs across the categorical groups
+
+- Displays relationships analyzed by ANOVA, regression
 
 ```{r psych-data-short, echo=FALSE}
 # Display using kable
@@ -375,6 +361,28 @@ Unstacked
 ---
 
 ```{r barplot-count5, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
+---
+
+## Standard barplot of counts
+
+**unstack using position = "dodge"**
+
+```{r barplot-count5B, eval = FALSE}
+ggplot(mental_health, aes(x = session_region)) +
+  geom_bar(aes(fill = participant_group), position = "dodge") +
+  scale_fill_manual(values = c("midnightblue", "maroon", "sandybrown"))
+```
+
+::: notes
+just as a reminder, we can override those default fill colors
+
+:::
+
+---
+
+```{r barplot-count5B, echo = FALSE, fig.align="center", fig.height = 5.25}
 ```
 
 ---

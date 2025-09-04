@@ -1,19 +1,18 @@
 ---
 title: Overview
-subtitle: "Distributions"
+subtitle: "Bar Plots"
 toc: true
 toc-location: right
 ---
 
-This week you will get a brief review of data management in R, then an in-depth walkthrough of the many ways to visualise distributions. There is a preparation step to get acquainted with standard data management in R.
-
+This week you will learn how to use bar plots to visualise categorical data. We will cover counts, proportions, and summary statistics, as well as how to handle grouped bar plots. 
 
 ### Learning objectives
 
 The successful student will be able to:
 
--   generate various types of plot to visualise distributions
--   overlay multiple plots to provide more visual information about distributions
--   customise the appearance of distribution plots (e.g., colors)
--   perform some basic data wrangling to prepare data for visualisation
+-   generate bar plots to show counts of categorical variables
+-   create bar plots of proportions to compare relative frequencies
+-   plot summary statistics (e.g., means and error bars) for continuous outcomes by group
+-   produce grouped bar plots to compare multiple categorical variables simultaneously
 

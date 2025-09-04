@@ -16,10 +16,11 @@ Continue working on the **`tidyverse`** course on DataCamp if not yet complete.
 # Load packages
 suppressPackageStartupMessages({
   library(tidyverse)
+  library(here)
 })
 
 # Load data
-stress_df <- read_csv("data-raw/stress_data.csv")
+stress_df <- read_csv(here("data-vis",  "data", "stress_data.csv"))
 ```
 
 ## Set up
@@ -30,7 +31,7 @@ If you have just opened RStudio you will want to load the **`tidyverse`** packag
 
 ![](images/do_on_your_computer.png) Save this file in your `week-4` folder:  
 
--   Data from fictional stress study: [stress_data.csv](data-raw/stress_data.csv)
+-   Data from fictional stress study: [stress_data.csv](../data/stress_data.csv)
 
 ![](images/do_in_R.png) Add the following code to your R script and run:
 
