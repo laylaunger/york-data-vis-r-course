@@ -57,5 +57,4 @@ _site/
 _freeze/
 
 # artifacts
-*_files/
-figure-revealjs/
+**/*_files/
