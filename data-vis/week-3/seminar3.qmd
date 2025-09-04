@@ -75,25 +75,6 @@ psych_df <- tibble(
 psych_df$diagnosis = factor(psych_df$diagnosis, levels = c("None", "Anxiety", "Depression"))
 
 
-# Generate base theme for plots
-base_theme <- function (base_text_size = 15) { 
-  theme_linedraw(base_size=11) %+replace% 
-    theme(
-      panel.background  = element_blank(),
-      plot.background = element_rect(fill = "transparent", color = NA), 
-      legend.background = element_rect(fill = "transparent", color = NA),
-      legend.key = element_rect(fill = "transparent", color = NA),
-      axis.ticks = element_blank(),
-      text = element_text(size = base_text_size),
-      plot.title = element_text(size = base_text_size + 3, hjust = 0, vjust = 0.5, face = "bold", margin = margin(b = 0.2, unit = "cm")),
-      plot.subtitle = element_text(size = base_text_size - 2, hjust = 0, vjust = 0.5, margin = margin(b = 0.2, unit = "cm")),
-      plot.caption = element_text(size = base_text_size - 8, hjust = 1, face = "italic", margin = margin(t = 0.1, unit = "cm")),
-      axis.title = element_text(size = base_text_size + 2),
-      legend.title = element_text(size = base_text_size + 2),
-      panel.grid = element_blank()
-    )
-}
-
 ```
 
 ## From last time
@@ -443,11 +424,15 @@ Tidyverse overview
 
 <br>
 
-Distributions show the overall shape and spread of data that single summary statistics (like the mean) can miss
+- Distributions show the overall shape and spread of data that single summary statistics (like the mean) can miss
 
 <br>
 
-Help spot skew and outliers, which inform choices of appropriate analyses
+- Help spot skew and outliers, which inform choices of appropriate analyses
+
+::: notes
+
+:::
 
 ---
 
@@ -523,6 +508,10 @@ psych_df %>%
 
 ```{r histogram-1, echo = FALSE, fig.align="center", fig.height = 5.25}
 ```
+
+::: notes
+Note - in previous lectures, when I was setting up the lectures, I put in some code that you couldn't see that customized the appearance of the plots, such as the text size, background color, etc. But from now on we're going to be looking closely at the code for generating plots, so I've only done minimal formatting to make sure that the font size is visible and the background is plain.
+:::
 
 ---
 
@@ -696,7 +685,7 @@ psych_df %>%
 
 ## 2. Density plots
 
-**comparing two distributions**
+**comparing multiple distributions**
 
 ```{r density-4, eval = FALSE}
 psych_df %>% 
@@ -713,14 +702,28 @@ psych_df %>%
 ```{r density-4, echo = FALSE, fig.align="center", fig.height = 5.5}
 ```
 
+
+::: notes
+
+NOTICE: when we used a variable to set the fill color, ggplot chose the color SCALE automatically. 
+
+It uses this default color scale.
+
+:::
+
 ---
+
 
 ## 2. Density plots
 
-```{r density-5, eval = FALSE}
+**comparing multiple distributions**
+
+```{r density-4B, eval = FALSE}
 psych_df %>% 
-  ggplot(aes(x = stress_score, color = diagnosis)) +
-  geom_density()
+  ggplot(aes(x = stress_score, fill = diagnosis)) +
+  geom_density(alpha = 0.5) +
+  scale_fill_manual(values = c("gray", "lightyellow", "lightblue")) +
+  theme_bw()
 ```
 
 ---
@@ -729,8 +732,43 @@ psych_df %>%
 
 <br>
 
-```{r density-5, echo = FALSE, fig.align="center", fig.height = 5.5}
+```{r density-4B, echo = FALSE, fig.align="center", fig.height = 5.5}
 ```
+
+::: notes
+
+We can override these colors manually by adding a scale layer.
+
+:::
+
+---
+
+## 2. Density plots
+
+**comparing multiple distributions**
+
+```{r density-4C, eval = FALSE}
+psych_df %>% 
+  ggplot(aes(x = stress_score, color = diagnosis)) +
+  geom_density(alpha = 0.5) +
+  scale_color_manual(values = c("gray", "lightyellow", "lightblue")) +
+  theme_bw()
+```
+
+---
+
+## 2. Density plots
+
+<br>
+
+```{r density-4C, echo = FALSE, fig.align="center", fig.height = 5.5}
+```
+
+::: notes
+
+Same thing for overriding color scale.
+
+:::
 
 ---
 
@@ -742,6 +780,14 @@ psych_df %>%
   geom_density(fill = "blue", alpha = 0.5) +
   facet_wrap(~diagnosis)
 ```
+
+::: notes
+
+But this example also highlights an issue here. We want to see those distributions, but the overlap makes that difficult
+
+So instead of filling them with different colors, we could split them across different facets.
+
+:::
 
 ---
 

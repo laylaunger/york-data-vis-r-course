@@ -26,13 +26,20 @@ library(tidyverse)
 
 ![](images/do_on_your_computer.png) Save this file in your `week-2` folder:
 
--   Data from fictional stress study: [stress_data.csv](data-raw/stress_data.csv)
+-   Data from fictional stress study: [stress_data.csv](../data/stress_data.csv)
 
 ![](images/do_in_R.png) Add the following code to your R script and run:
 
 ```{r}
 #| include: false
-stress_df <- read_csv("data-raw/stress_data.csv")
+# Load packages
+suppressPackageStartupMessages({
+  library(here)
+})
+
+# Load data
+stress_df <- read_csv(here("data-vis",  "data", "stress_data.csv"))
+
 ```
 
 ```{r}

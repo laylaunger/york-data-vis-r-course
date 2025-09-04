@@ -9,6 +9,7 @@ toc-location: right
 #| include: false
 library(tidyverse)
 library(kableExtra)
+library(here)
 ```
 
 # Introduction
@@ -119,7 +120,7 @@ You will go into more depth about reading in data in the Data Analysis module. F
 
 ![](images/do_on_your_computer.png) Save this file in your `week-2` folder:
 
--   Data from fictional wellbeing study: [therapy_data.csv](data-raw/therapy_data.csv)
+-   Data from fictional wellbeing study: [therapy_data.csv](../data/therapy_data.csv)
 
 ![](images/do_in_R.png) Add the following code to your R script and run:
 
@@ -131,7 +132,7 @@ therapy_df <- read_csv("therapy_data.csv")
 
 ```{r}
 #| include: false
-therapy_df <- read_csv("data-raw/therapy_data.csv")
+therapy_df <- read_csv(here("data-vis",  "data", "therapy_data.csv"))
 ```
 
 
