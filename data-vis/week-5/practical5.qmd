@@ -1,0 +1,355 @@
+---
+title: "Practical"
+subtitle: "Relationships between Variables"
+toc: true
+toc-location: right
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(here)
+```
+
+# Introduction
+
+## Session overview
+
+In this practical you will read in two datasets and create plots that show relationships between continuous variables, add trend lines, explore differences across categorical groups, and practice joining related datasets. 
+
+## Philosophy
+
+Practicals are not a test. It is expected that you often don't know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips
+
+-   don't worry about making mistakes
+-   don't let what you can not do interfere with what you can do
+-   discussing code with your neighbours will help
+-   look things up in the independent study material
+-   look things up in your own code from earlier workshops
+-   there are no stupid questions
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. Record your answers in your script for future reference.
+:::
+
+# Getting started
+
+![](images/do_on_your_computer.png) Start RStudio from the Start menu.
+
+![](images/do_in_R.png) Go the Files tab in the lower right pane and click on the `...` on the right. This will open a "Go to folder" window. Navigate to a place on your computer where you keep your work. Click Open.
+
+![](images/do_in_R.png) Also on the Files tab click on `New Folder`. Type "data-visualisation-in-r" in to the box. This will be the folder that we work in throughout.
+
+![](images/do_in_R.png) Make an RStudio project for this workshop by clicking on the drop-down menu on top right where it says `Project: (None)` and choosing New Project, then New Directory, then New Project. Name the RStudio Project **`week-5`**.
+
+![](images/do_in_R.png) Make a new script then save it with a name like `relationships.R` to carry out the rest of the work.
+
+![](images/do_in_R.png) Add a comment to the script: `# Relationships between Variables`. Use comments throughout to explain what each block of code does.
+
+# Exercises
+
+## Today’s data
+
+We’ll use two related CSVs about **social media and wellbeing**. The **primary** dataset has one row per participant with three continuous variables and one categorical moderator. The **secondary** dataset has one row per participant with two additional variables and a 90‑day follow‑up score.
+
+- Primary (`wellbeing_primary.csv`):  
+  - `participant_id` (identifier)
+  - `participant_group` (Student, Employed, Retired)
+  - `sleep_hours` (hours per night)
+  - `social_hours` (hours of social media per week)
+  - `wellbeing_index` (0–100)
+
+- Secondary (`wellbeing_secondary.csv`):  
+  - `participant_id` (identifier)
+  - `notifications_on` (TRUE/FALSE)
+  - `in_person_hours` (hours per week of in-person socialising)
+  - `wellbeing_90d` (0–100 follow-up)
+
+### Load the data
+
+![](images/do_on_your_computer.png) Save this file in your `week-5` folder:
+
+-   Wellbeing primary: [wellbeing_primary.csv](../data/wellbeing_primary.csv)
+-   Wellbeing secondary: [wellbeing_secondary.csv](../data/wellbeing_secondary.csv)
+
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+```{r}
+#| eval: false
+well_p <- read_csv("wellbeing_primary.csv")
+well_s <- read_csv("wellbeing_secondary.csv")
+```
+
+```{r}
+#| include: false
+well_p <- read_csv(here("data-vis",  "data", "wellbeing_primary.csv"))
+well_s <- read_csv(here("data-vis",  "data", "wellbeing_secondary.csv"))
+```
+
+## Look at the data
+
+![](images/do_in_R.png) Examine the variables and first few rows of the `well_p` and `well_s` objects using `head()`.
+
+```{r}
+head(well_p)
+head(well_s)
+```
+
+See that each column is a variable (e.g., `social_hours`), and each row is a participant.
+
+## Reorder the values of `participant_group`
+
+As a reminder, sometimes categorical variables have a natural order that we want to specify.
+
+In this dataset, `participant_group` is a factor with a natural order from junior to senior: student, employed, retired.
+
+![](images/do_in_R.png) Reorder the levels of `user_segement`.
+
+```{r}
+well_p <- well_p %>%
+  mutate(participant_group = factor(participant_group, levels = c("student", "employed", "retired")))
+```
+
+
+---
+
+## Exercise 1: Basic scatterplot
+
+![](images/do_in_R.png) Plot `sleep_hours` (x) vs `wellbeing_index` (y).
+
+```{r}
+#| echo: false
+ggplot(well_p, aes(x = sleep_hours, y = wellbeing_index)) +
+  geom_point()
+```
+
+![](images/answer.png) Describe the overall pattern. Is it roughly positive, negative, or flat?
+
+![](images/do_in_R.png) Improve readability by setting transparency of points using `alpha`.
+
+```{r}
+#| echo: false
+ggplot(well_p, aes(sleep_hours, wellbeing_index)) +
+  geom_point(alpha = 0.45)
+```
+
+
+
+## Exercise 2: Improve Readability: Jitter
+
+Suppose many x-values were identical and would therefore overlap in the plot.
+
+![](images/do_in_R.png) Add a variable that rounds hours to the nearest whole number 
+
+```{r}
+well_p <- well_p %>%
+  mutate(sleep_hours_round = round(sleep_hours, 0))
+```
+
+
+![](images/do_in_R.png) Try generating a basic scatterplot of `sleep_hours_round` (x) vs `wellbeing_index` (y).
+
+```{r}
+#| echo: false
+ggplot(well_p, aes(sleep_hours_round, wellbeing_index)) +
+  geom_point(alpha = 0.45)
+```
+
+See how overlap makes the plot difficult to read.
+
+![](images/do_in_R.png) Add jitter to `geom_point()` using `position = position_jitter()`. Note that within `position_jitter()`, you can set the `width` and `height`. If you leave them blank, default values will be used. However, these default values are probably not ideal. Consider: do you really want to jitter both `width` and `height`? If you only want to jitter one, set the value of the other to 0. For the one you do want to jitter, choose a value that makes the plot more clear and readable.
+
+```{r}
+#| echo: false
+ggplot(well_p, aes(sleep_hours_round, wellbeing_index)) +
+  geom_point(alpha = 0.45, position = position_jitter(width = .2, height = 0))
+```
+
+
+
+## Exercise 3: Add a trend line
+
+Add a **linear model** line to emphasise the relationship.
+
+![](images/do_in_R.png) Return to plotting `sleep_hours` versus `wellbeing_index`. Fit a straight line with `geom_smooth(method = "lm")`.
+
+```{r}
+#| echo: false
+ggplot(well_p, aes(sleep_hours, wellbeing_index)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm")
+```
+
+![](images/answer.png) What does the slope suggest about the relationship between sleep and wellbeing?
+
+
+
+## Exercise 4: Relationships can differ by group
+
+Now lets look at the relationship between social media use (`social_hours`) and wellbeing (`wellbeing_index`).
+
+This relationship may differ by `participant_group`. We can colour by group and draw group‑specific lines.
+
+![](images/do_in_R.png) Plot `social_hours` vs `wellbeing_index`, coloured by `participant_group` with separate trend lines.
+
+```{r}
+#| echo: false
+ggplot(well_p, aes(social_hours, wellbeing_index)) +
+  geom_point(aes(color = participant_group), alpha = 0.45) +
+  geom_smooth(aes(color = participant_group), method = "lm")
+```
+
+![](images/answer.png) Compare slopes across groups. Which group shows the **strongest negative** association between social media use and wellbeing? Which shows the weakest?
+
+
+
+## Exercise 5: Facet by group
+
+Sometimes separate panels are easier to compare than separate colors in one panel.
+
+![](images/do_in_R.png) Facet panels by `participant_group` and add a line per facet.
+
+```{r}
+#| echo: false
+ggplot(well_p, aes(social_hours, wellbeing_index)) +
+  facet_wrap(~ participant_group) +
+  geom_point(alpha = 0.45, size = 1.6) +
+  geom_smooth(method = "lm")
+```
+
+![](images/answer.png) Why does faceting improve readability here?
+
+Note that it looks like different participant groups have different ranges of `social_hours`. By default, `facet_wrap()` uses the same range across all panels.
+
+It is possible to alter `facet_wrap()` to use different ranges for the x-axis, y-axis or both across panels.
+
+![](images/do_in_R.png) Within `facet_wrap()`, add `scales = "free_x"`. Note how the ranges of the x-axis now differ across panels.
+
+```{r}
+#| echo: false
+ggplot(well_p, aes(social_hours, wellbeing_index)) +
+  facet_wrap(~ participant_group, scales = "free_x") +
+  geom_point(alpha = 0.45, size = 1.6) +
+  geom_smooth(method = "lm")
+```
+
+
+
+## Exercise 6: Join the primary and secondary datasets
+
+The secondary dataset, `well_s`, contains variables that give us additional information about the participants.
+
+![](images/do_in_R.png) Use `left_join` to combine `well_s` and `well_p` by `participant_id`. Name the joined dataset `well_join`.
+
+```{r}
+#| include: false
+well_join <- well_s %>%
+  left_join(well_p, by = "participant_id")
+```
+
+![](images/do_in_R.png) Look at the joined dataset.
+
+```{r}
+head(well_join)
+```
+
+
+
+## Exercise 7: Moderating Effect of In-Person Social Hours
+
+Does in-person socialising buffer the effect of social media on wellbeing?
+
+Let's look at relationship between `social_hours` and `wellbeing_index` in participants who: (A) spend a lot of time socialising in-person, versus (B) spend relatively less time socialising in-person. 
+
+![](images/do_in_R.png) Split `in_person_hours` into two groups: "high" (above the median) and "low" (below the median).
+
+```{r}
+well_join <- well_join %>%
+  mutate(in_person_band = case_when(
+    in_person_hours > median(in_person_hours)   ~ "High",
+    TRUE                  ~ "Low"
+  )) %>%
+  mutate(in_person_band = factor(in_person_band, levels = c("High", "Low")))
+```
+
+![](images/do_in_R.png) Create scatterplots of `social_hours` versus `wellbeing_index` faceted by `in_person_band`.
+
+```{r}
+#| echo: false
+ggplot(well_join, aes(social_hours, wellbeing_90d)) +
+  facet_wrap(~ in_person_band) +
+  geom_point(alpha = 0.45, size = 1.6) +
+  geom_smooth(method = "lm")
+```
+
+![](images/answer.png) Do higher **in‑person** hours appear to buffer the relationship between social media use and wellbeing?
+
+
+
+## Exercise 9: Correlation matrix
+
+Select **numeric** variables and compute a correlation matrix.
+
+Note: You may want to refer back to the code in the seminar for these steps.
+
+![](images/do_in_R.png) Create a new object called `well_num` by selecting just the numeric columns of `well_join` and removing the `sleep_hours_round` variable. Then use `cor` on `well_num` to compute correlations and round them to two digits.
+
+```{r}
+#| echo: false
+well_num <- well_join %>% 
+  dplyr::select(where(is.numeric)) %>%
+  dplyr::select(-sleep_hours_round)
+cor_mat <- cor(well_num, use = "pairwise.complete.obs") %>% round(2)
+cor_mat[1:6, 1:6]
+```
+
+![](images/do_in_R.png) Tidy the matrix.
+
+```{r}
+#| echo: false
+cor_tidy <- cor_mat %>%
+  as.data.frame() %>%
+  tibble::rownames_to_column("var1") %>%
+  tidyr::pivot_longer(-var1, names_to = "var2", values_to = "r")
+
+head(cor_tidy)
+```
+
+![](images/do_in_R.png) Plot `cor_tidy` using `geom_tile()`. Add a `scale_fill_gradient2()` line to customise the colors.
+
+```{r}
+#| echo: false
+ggplot(cor_tidy, aes(var1, var2, fill = r)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red",
+                       midpoint = 0, limits = c(-1, 1), name = "r") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+![](images/answer.png) Which variables are most strongly related to **wellbeing_90d**? To **wellbeing_index**? Do the relationships make sense?
+
+
+
+
+You're finished!
+
+# 🥳 Well Done! 🎉
+
+[Consolidate](study_after5.qmd)
+
+# The Code file
+
+This contains all the code needed in the workshop even where it is not visible on the webpage.
+
+The `practical5.qmd` file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interweaved to produce well-formatted reports including webpages.

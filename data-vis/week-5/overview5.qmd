@@ -1,0 +1,19 @@
+---
+title: Overview
+subtitle: "Relationships between Variables"
+toc: true
+toc-location: right
+---
+
+This week you will learn how to visualise relationships between continuous variables. We will cover scatterplots, trend lines, visualising how relationships differ between groups, and correlation matrices. Within these topics, we will cover joining multiple related datasets together.
+
+### Learning objectives
+
+The successful student will be able to:
+
+-   generate scatterplots to show relationships between continuous variables
+-   add trend lines to highlight the direction of the relationship
+-   split scatterplots by categorical groups using color and facets
+-   plot correlation matrices
+-   join relational data based on shared identifiers
+

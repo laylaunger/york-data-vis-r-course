@@ -1,0 +1,12 @@
+---
+title: "Independent Study to Prepare"
+subtitle: "Relationships between Variables"
+toc: true
+toc-location: right
+---
+
+# Relationships between Variables
+
+To prepare for diving into this week's topic, relationships between variables:
+
+- Read [Data Visualization Ch 12.1 - 12.2](https://clauswilke.com/dataviz/)

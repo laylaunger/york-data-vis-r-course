@@ -1,0 +1,87 @@
+---
+title: "Independent Study to Consolidate"
+subtitle: "Relationships between Variables"
+toc: true
+toc-location: right
+---
+
+
+# Exercises
+
+```{r}
+#| include: false
+# Load packages
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(here)
+})
+
+# Load data
+customer_ops <- read_csv(here("data-vis",  "data", "customer_ops.csv"))
+```
+
+## Set up
+
+If you have just opened RStudio you will want to load the **`tidyverse`** package.
+
+## Reading in data
+
+![](images/do_on_your_computer.png) Save this file in your `week-5` folder:  
+
+-   Customer operations dataset: [customer_ops.csv](../data/customer_ops.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+```{r}
+#| eval: false
+ops_df <- read_csv("customer_ops.csv")
+```
+
+```{r}
+head(ops_df)
+```
+
+---
+
+## Exercise 1: Scatterplot
+
+![](images/do_in_R.png) Make a scatterplot of `sleep_hours` (x-axis) versus `wellbeing_index` (y-axis).  
+Add some transparency to the points using `alpha`.
+
+Reflect: Does the relationship look positive, negative, or flat?
+
+
+## Exercise 2: Trend line
+
+![](images/do_in_R.png) Add a **linear model** line to the scatterplot using `geom_smooth(method = "lm")`.
+
+Reflect: What does the slope suggest about the relationship?
+
+
+
+## Exercise 3: Group differences
+
+![](images/do_in_R.png) Plot `social_hours` vs `wellbeing_index`, colouring points by `participant_group`.  Add group-specific trend lines.
+
+Reflect: Which group appears most negatively affected by social media hours?
+
+
+
+## Exercise 4: Faceting
+
+![](images/do_in_R.png) Re-make the plot of `social_hours` vs `wellbeing_index`, but facet by `participant_group`.  Try `scales = "free_x"` inside `facet_wrap()`.
+
+Reflect: Why might faceting make patterns easier to compare?
+
+
+
+
+## Exercise 5: Correlation matrix
+
+![](images/do_in_R.png) Select the numeric columns of your dataset. Compute a correlation matrix with `cor()`.  Plot it with `geom_tile()` and customise the gradient scale.
+
+Reflect: Which variables are most strongly related to `wellbeing_index`?
+
+
+
+# 🥳 Well Done! 🎉

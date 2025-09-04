@@ -1,0 +1,1060 @@
+---
+title: "Week 5 Seminar: Relationships between Variables"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    highlight-style: github
+    width: 1200
+execute:
+  freeze: false   # enable or disable
+---
+
+
+```{r setup, include=FALSE}
+#| context: setup
+library(kableExtra)
+library(tidyverse)
+library(here)
+library(showtext)
+library(knitr)
+library(ggrepel)
+library(ggExtra)   # ggMarginal for marginal hists/densities
+library(scales)
+library(tibble)
+library(hexbin)    # for geom_hex binning
+library(ggpubr)
+library(corrplot)
+options(knitr.kable.NA = '')
+knitr::opts_chunk$set(fig.retina = 3)
+
+theme_set(theme_bw(base_size = 18) +
+          theme(panel.grid = element_blank()))
+
+# Load data
+customer_ops <- read_csv(here("data-vis",  "data", "customer_ops.csv"))
+ops_sat <- read_csv(here("data-vis",  "data", "ops_sat.csv"))
+
+customer_ops_big <- read_csv(here("data-vis",  "data", "customer_ops_big.csv"))
+
+customer_ops$job_role <- factor(customer_ops$job_role, levels = c("support_engineer",
+                                                                  "implement_specialist",
+                                                                  "account_manager"))
+
+
+```
+
+## From last time
+
+<br>
+
+Bar plots:
+
+- counts, proportions, summary bars with error bars
+
+::: notes
+
+Last week we focused on using bar plots to get insight into CATEGORICAL variables. 
+We looked at how to count up the number of observations in categorical groups and proportions.
+We also looked at visualizing how a continuous variable differed across categorical groups.
+
+We did this by using bars to convey summary statistics for each group, like using the height of the bar to show the mean value of a continuous variable in each group.
+
+
+:::
+
+---
+
+## Today
+
+<br>
+
+Relationships between continuous variables
+
+::: notes
+
+Today we're going to focus on plots that show us relationships between continuous variables.
+
+:::
+
+---
+
+## Today’s data
+
+### Primary: `customer_ops`
+
+```{r head-customer-ops, echo=FALSE}
+customer_ops %>% 
+  select(employee_id, job_role, training_hours, client_contacts, task_switch_hours, performance_index) %>%
+  head(10) %>% 
+  kable("html") %>%
+  kable_styling(font_size = 22, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+::: notes
+
+Describe variables
+
+:::
+
+---
+
+## Today’s data
+
+### Secondary: `ops_sat`
+
+```{r head-ops-sat, echo=FALSE}
+ops_sat %>%
+  select(employee_id, region, tenure_months, sat_90d) %>%
+  head(10) %>%
+  kable("html") %>%
+  kable_styling(font_size = 22, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+::: notes
+
+Note relationship with primary dataset
+
+:::
+
+---
+
+## Why plot relationships between continuous variables?
+
+- See how changes in one variable are associated with changes in another
+
+- See how relationships between continuous variables differ across categorical groups
+
+- Displays the patterns analyzed in correlations, regression
+
+```{r head-customer-ops-short, echo=FALSE}
+customer_ops %>% 
+  select(employee_id, job_role, training_hours, client_contacts, task_switch_hours, performance_index) %>%
+  head(3) %>% 
+  kable("html") %>%
+  kable_styling(font_size = 22, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+
+::: notes
+We have continuous variables here like number of training hours and the employee's perfrmance index.
+
+Are they positively related? Does more training improve performance?
+
+We also have task switch hours. How does that relate to performance? Is it negatively related?
+
+We also have a categorical variable here, job role. Do relationships between those variables differ across groups? Maybe training helps performance for some roles but less for others.
+
+These are the kinds of questions we'd analyze using correlations and regression. So we want to visualize these patterns to see what our analyses are capturing.
+
+:::
+
+---
+
+## Today
+
+<br>
+
+- Scatterplots in depth
+- Adding trend lines
+- Differences across categorical groups
+- Correlation matrices
+
+Will include:
+
+- Joining relational data
+
+::: notes
+
+Today we're going to focus on plots that show us relationships between continuous variables.
+The primary way to depict these relationships is scatterplots, so we'll be talking about those in depth.
+
+We'll also talk about how to add lines to really emphasize the core relationship between variables.
+
+And finally we'll cover plots that visualize multiple relationships at once, in correlation matrices.
+
+As we're doing this, I'm going to show you how we can join multiple related datasets.
+
+:::
+
+
+---
+
+## Today
+
+<br>
+
+- **Scatterplots in depth**
+- Adding trend lines
+- Differences across categorical groups
+- Correlation matrices
+
+Will include:
+
+- Joining relational data
+
+---
+
+## Why plot relationships between continuous variables?
+
+- **See how changes in one variable are associated with changes in another**
+
+- See how relationships between continuous variables differ across categorical groups
+
+- Displays the patterns analyzed in correlations, regression
+
+---
+
+## Scatter Plot: Basic
+
+**relationship between x and y**
+
+```{r scatter-1A, eval=FALSE}
+ggplot(customer_ops, aes(x = training_hours, y = performance_index)) 
+```
+
+```{r ref.label="scatter-1A", echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+We want to look at relationships between two variables here.
+
+So we treat one as the x variable and the other as the y
+
+:::
+
+---
+
+## Scatter Plot: Basic
+
+**relationship betwen x and y: `geom_point`**
+
+```{r scatter-1B, eval=FALSE}
+ggplot(customer_ops, aes(x = training_hours, y = performance_index)) +
+  geom_point()
+```
+
+```{r scatter-1B, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+Then to see how they're related, we just add a point for each employee. 
+
+Already gives us a basic sense of this positive relationship.
+
+BUT there are many things we might want to do to adapt this basic plot approach to make it more readable.
+
+:::
+
+---
+
+## Scatter Plot: Improve Readability
+
+**transparency (`alpha`)**
+
+```{r scatter-2, eval=FALSE}
+ggplot(customer_ops, aes(training_hours, performance_index)) +
+  geom_point(alpha = 0.5)
+```
+
+---
+
+## Scatter Plot: Improve Readability
+
+**transparency (`alpha`)**
+
+```{r scatter-2, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+First, we don't actually care hugely about those individual points. We want to see the relationship between variables. SO we can emphasize with making points transparent.
+
+:::
+
+---
+
+## Scatter Plot: Improve Readability
+
+**reduce overlap with jitter**
+
+```{r include=FALSE}
+customer_ops_rounded <- customer_ops %>%
+  dplyr::mutate(training_hours = round(training_hours, 0))
+```
+
+```{r head-customer-ops-rounded, echo=FALSE}
+customer_ops_rounded %>% 
+  select(employee_id, job_role, training_hours, client_contacts, task_switch_hours, performance_index) %>%
+  head(5) %>% 
+  kable("html") %>%
+  kable_styling(font_size = 22, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+::: notes
+Go back to previous plot - note that most people's training hours were a little different from other people's, so there weren't lots of overlapping points with the same training hours.
+
+But what if there was more overlap? Here's the data again, but with one change - now hours is rounded to the nearest whole hour. So now it's more likely that different people will have the same number of training hours.
+
+:::
+
+---
+
+## Scatter Plot: Improve Readability
+
+**reduce overlap with jitter**
+
+```{r scatter-3A, eval=FALSE}
+ggplot(customer_ops_rounded, aes(training_hours, performance_index)) +
+  geom_point(alpha = 0.5)
+```
+
+---
+
+## Scatter Plot: Improve Readability
+
+**reduce overlap with jitter**
+
+```{r scatter-3A, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+
+:::
+
+--- 
+
+## Scatter Plot: Improve Readability
+
+**reduce overlap with jitter**
+
+```{r scatter-3B, eval=FALSE}
+ggplot(customer_ops_rounded, aes(training_hours, performance_index)) +
+  geom_point(alpha = 0.5, position = position_jitter(width = 0.2, height = 0))
+```
+
+--- 
+
+## Scatter Plot: Improve Readability
+
+**reduce overlap with jitter**
+
+```{r scatter-3B, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+--- 
+
+## Scatter Plot: Improve Readability
+
+**many points hard to see**
+
+```{r scatter-4A, eval=FALSE}
+ggplot(customer_ops_big, aes(training_hours, performance_index)) +
+  geom_point(alpha = 0.1)
+```
+
+```{r scatter-4A, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+What if we had a whole lot more data? Now even with transparency this plot is kind of busy.
+
+:::
+
+--- 
+
+## Scatter Plot: Improve Readability
+
+**many points hard to see: combine in bins**
+
+```{r scatter-4B, eval=FALSE}
+ggplot(customer_ops_big, aes(training_hours, performance_index)) +
+  geom_hex(bins = 20) 
+```
+
+--- 
+
+## Scatter Plot: Improve Readability
+
+**many points hard to see: combine in bins**
+
+```{r scatter-4B, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=6.5}
+```
+
+::: notes
+
+One way to overcome this is to group points with similar x- and y-values into bins.
+
+This is similar to the histograms we saw back when talking about distributions.
+
+There, we just binned similar values on ONE dimension into bins.
+
+Here, this plot bins points with similar values on TWO dimensions into bins.
+
+ALSO NOTE: ggplot autmatically gave us this color gradient to indicate how many points are in a bin. 
+
+So lighter blue indicates that more points are in the bin.
+
+:::
+
+---
+
+## Scatter Plot: Improve Readability
+
+**many points hard to see: combine in bins**
+
+```{r scatter-4C, eval=FALSE}
+ggplot(customer_ops_big, aes(training_hours, performance_index)) +
+  geom_hex(bins = 20) +
+  scale_fill_gradient(low = "grey90", high = "grey20") #<
+```
+
+---
+
+## Scatter Plot: Improve Readability
+
+**many points hard to see: combine in bins**
+
+```{r scatter-4C, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=6.5}
+```
+
+::: notes
+
+And just as a reminder, we can always override those color choices manually. 
+
+:::
+
+
+---
+
+## Scatter Plot: Add Distributions
+
+**distribution of each variable**
+
+```{r scatter-5A, eval=FALSE}
+ggplot(customer_ops, aes(training_hours, performance_index)) +
+  geom_point(alpha = 0.4)
+```
+
+```{r scatter-5A, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+Going back to this basic plot - we can see here the relationship between the two variables, but what if we also wanted to look at the distribution of each one?
+
+We can kind of try do do this ourselves - just look visually at distribution along x-axis and distribution along y-axis. But it's hard, the relationship is emphasized.
+
+It would be possible to have separate plots of distributions.
+
+PROMPT: can people remember types of distribution plots???
+
+:::
+
+
+---
+
+## Scatter Plot: Add Distributions
+
+**distribution of each variable**
+
+```{r scatter-5B, eval=FALSE}
+library(ggExtra)
+
+p <- ggplot(customer_ops, aes(training_hours, performance_index)) +
+  geom_point(alpha = 0.4) #< store the plot
+
+ggMarginal(p, type = "histogram") #< add histograms
+
+```
+
+---
+
+## Scatter Plot: Add Distributions
+
+**distribution of each variable**
+
+```{r scatter-5B, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+Load an additional package 
+
+:::
+
+---
+
+## Today
+
+<br>
+
+- Scatterplots in depth
+- **Adding trend lines**
+- Differences across categorical groups
+- Correlation matrices
+
+Will include:
+
+- Joining relational data
+
+::: notes
+
+:::
+
+---
+
+## Scatter Plot: Trend Lines
+
+**display relationship as a line**
+
+```{r scatter-lines1A, include=FALSE} 
+ggplot(customer_ops, aes(task_switch_hours, performance_index)) +
+  geom_point(alpha = 0.5)
+```
+
+
+```{r scatter-lines1A, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+Going back to this basic scatterplot.
+
+We see this cloud of points. And we can kind of see the relationship - roughly as switch ours increase, performance decreases. It looks like a negative relationship.
+
+But we have to do the work of squinting and seeing that ourselves.
+
+We can make it easier by adding a best fit line.
+
+PROMPT: can anyone think back to analysis techniques, and think of what the analysis is called when we try to fit a line that captures the relationship between two variables?
+
+REGRESSION
+WHEN BETWEEN TWO VARIABLES, SAME AS CORRELATION
+
+WE COULD fit a regression model, extract the line, and add it to the plot...
+
+:::
+
+
+---
+
+## Scatter Plot: Trend Lines
+
+**display relationship as a line**
+
+```{r scatter-lines1B, eval=FALSE} 
+ggplot(customer_ops, aes(task_switch_hours, performance_index)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm") #< add a line using "linear model" regression
+```
+
+
+```{r scatter-lines1B, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+But ggplot has built-in functions for fitting lines to data.
+
+:::
+
+---
+
+## Scatter Plot: Trend Lines
+
+**bonus: add statistic**
+
+```{r load-ggpubr, eval=FALSE} 
+library(ggpubr)
+```
+
+```{r scatter-lines1C, eval=FALSE} 
+ggplot(customer_ops, aes(task_switch_hours, performance_index)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm") + #< add a line using "linear model" regression
+  stat_cor()
+```
+
+
+```{r scatter-lines1C, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+Package ggpubr extends functionality of ggplot and allows you to add a stat layer with correlation stat
+
+:::
+
+---
+
+## Today
+
+<br>
+
+- Scatterplots in depth
+- Adding trend lines
+- **Differences across categorical groups**
+- Correlation matrices
+
+Will include:
+
+- Joining relational data
+
+---
+
+## Differences across Categorical Groups
+
+```{r head-customer-ops, echo=FALSE}
+```
+
+::: notes
+
+Going back to our dataset...
+
+So far we've been looking at relationships between these two variables for EVERYONE in the dataset.
+
+But these people fall into different groups. As in the job_role variable, people have different jobs.
+
+Maybe that relationship varies across the groups.
+
+:::
+
+---
+
+## Why plot relationships between continuous variables?
+
+- See how changes in one variable are associated with changes in another
+
+- **See how relationships between continuous variables differ across categorical groups**
+
+- Displays the patterns analyzed in correlations, regression
+
+
+::: notes
+
+So now we want to tackle this issue. How do these relationships differ across groups?
+
+:::
+
+---
+
+
+## Scatter Plot: Category Differences
+
+**distinguish between groups**
+
+```{r scatter-cat-1A, include=FALSE} 
+ggplot(customer_ops, aes(task_switch_hours, performance_index)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm")
+```
+
+
+```{r scatter-cat-1A, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
+```
+
+::: notes
+
+Let's go back to this basic plot.
+
+PROMPT: can anyone think of how we might add to or change our basic scatterplot to visually distinguish between the groups, between people with different job_roles?
+
+(color, facets)
+
+:::
+
+---
+
+## Scatter Plot: Category Differences
+
+**distinguish between groups: `aes(color = cat_var)`**
+
+```{r scatter-cat-1B, eval=FALSE}
+ggplot(customer_ops, aes(task_switch_hours, performance_index)) +
+  geom_point(aes(color = job_role), alpha = 0.5) + #< add aes(color = )
+  geom_smooth(aes(color = job_role), method = "lm") #< add aes(color = )
+```
+
+--- 
+
+## Scatter Plot: Category Differences
+
+**distinguish between groups: `aes(color = cat_var)`**
+
+```{r scatter-cat-1B, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=8}
+```
+
+::: notes
+
+This is pretty good. It already gives us a sense that that relationship differs between groups.
+
+But it's also kind of busy. How about trying to split this into different graphs
+
+:::
+
+---
+
+
+## Scatter Plot: Category Differences
+
+**distinguish between groups: `facet_wrap(~cat_var)`**
+
+```{r scatter-cat-1C, eval=FALSE}
+ggplot(customer_ops, aes(task_switch_hours, performance_index)) +
+  facet_wrap(~job_role) + #< separate facets for job_role
+  geom_point(alpha = 0.5) + 
+  geom_smooth(method = "lm") 
+```
+
+--- 
+
+## Scatter Plot: Category Differences
+
+**distinguish between groups: `facet_wrap(~cat_var)`**
+
+```{r scatter-cat-1C, echo=FALSE, fig.align="center", fig.height=5.2}
+```
+
+::: notes
+
+Now we see differences clearly.
+
+To connect up to analysis - what kind of analysis might you use to capture these patterns, and what effects would you see?
+
+:::
+
+---
+
+## Today
+
+<br>
+
+- Scatterplots in depth
+- Adding trend lines
+- **Differences across categorical groups**
+- Correlation matrices
+
+Will include:
+
+- **Joining relational data**
+
+---
+
+## Relational Data
+
+
+```{r relational-data-head-1, echo=FALSE}
+customer_ops %>% 
+  select(employee_id, job_role, training_hours, client_contacts, task_switch_hours, performance_index) %>%
+  head(5) %>% 
+  kable("html") %>%
+  kable_styling(font_size = 22, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+
+```
+
+<br>
+
+```{r relational-data-head-2, echo=FALSE}
+ops_sat %>%
+  select(employee_id, region, tenure_months, sat_90d) %>%
+  head(5) %>%
+  kable("html") %>%
+  kable_styling(font_size = 22, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Relational Data
+
+**combine using `left_join()`**
+
+```{r relational-data-join-1}
+ops_joined <- customer_ops %>%
+  left_join(ops_sat, by = "employee_id")
+```
+
+<br>
+
+```{r relational-data-join-2, echo=FALSE}
+# quick peek (subset of columns to fit slide)
+ops_joined %>%
+  select(employee_id, job_role, region, tenure_months, sat_90d, performance_index) %>%
+  head(8) %>%
+  kable("html") %>%
+  kable_styling(font_size = 18, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Relational Data
+
+**discretise new variable using `mutate()`**
+
+```{r relational-data-join-3}
+ops_joined <- ops_joined %>%
+  mutate(tenure_band = case_when(
+    tenure_months < 12  ~ "<1 yr",
+    tenure_months < 60  ~ "1–5 yrs",
+    TRUE                ~ "5+ yrs"
+  )) %>%
+  mutate(tenure_band = factor(tenure_band, levels = c("<1 yr","1–5 yrs","5+ yrs")))
+```
+
+<br>
+
+```{r relational-data-join-4, echo=FALSE}
+ops_joined %>%
+  select(employee_id, job_role, region, tenure_band, sat_90d, performance_index) %>%
+  head(5) %>%
+  kable("html") %>%
+  kable_styling(font_size = 18, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Scatter Plot: Category Differences
+
+**distinguish between groups: `facet_wrap(~cat_var)`**
+
+```{r scatter-cat-2, eval=FALSE}
+ggplot(ops_joined, aes(training_hours, performance_index)) +
+  facet_wrap(~ tenure_band) +
+  geom_point(alpha = 0.45, size = 1.8) +
+  geom_smooth(method = "lm", se = FALSE) 
+```
+
+--- 
+
+## Scatter Plot: Category Differences
+
+**distinguish between groups: `facet_wrap(~cat_var)`**
+
+```{r scatter-cat-2, echo=FALSE, fig.align="center", fig.height=5.2}
+```
+
+::: notes
+
+:::
+
+
+---
+
+## Today
+
+<br>
+
+- Scatterplots in depth
+- Adding trend lines
+- Differences across categorical groups
+- **Correlation matrices**
+
+Will include:
+
+- Joining relational data
+
+---
+
+## Correlation Matrices
+
+**many continuous variables**
+
+```{r relational-data-continuous-1, echo=FALSE}
+ops_joined %>%
+  head(10) %>%
+  kable("html") %>%
+  kable_styling(font_size = 18, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+::: notes
+
+Explore relationships, esp. with performance index and sat_90d
+
+:::
+
+---
+
+## Correlation Matrices
+
+**select continuous variables**
+
+```{r relational-data-continuous-2}
+ops_continuous <- ops_joined %>%
+  dplyr::select(where(is.numeric))
+```
+
+<br>
+
+```{r relational-data-continuous-3, echo=FALSE}
+# quick peek (subset of columns to fit slide)
+ops_continuous %>%
+  head(10) %>%
+  kable("html") %>%
+  kable_styling(font_size = 18, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+::: notes
+
+select just numeric variables
+
+:::
+
+---
+
+## Correlation Matrices
+
+**select continuous variables**
+
+```{r relational-data-cor-mat-1A}
+cor_mat <- cor(ops_continuous, use = "pairwise.complete.obs") %>% 
+  round(digits = 2)
+```
+
+```{r relational-data-cor-mat-1B, echo=FALSE}
+kable(cor_mat) %>%
+  kable_styling(font_size = 18) %>%
+  scroll_box(width = "100%", height = "800px")
+```
+
+---
+
+## Correlation Matrices
+
+**tidy format: each row is a pair of variables and its correlation**
+
+```{r relational-data-cor-mat-2}
+cor_tidy <- cor_mat %>%
+  as.data.frame() %>%
+  mutate(var1 = row.names(cor_mat)) %>%
+  pivot_longer(cols = -var1, names_to = "var2", values_to = "r")
+
+head(cor_tidy)
+```
+
+---
+
+## Correlation Matrices
+
+**correlations as heatmap**
+
+```{r relational-data-cor-mat-3, eval=FALSE}
+ggplot(cor_tidy, aes(var1, var2, fill = r)) +
+  geom_tile()
+
+```
+
+```{r relational-data-cor-mat-3, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=8}
+```
+
+---
+
+## Correlation Matrices
+
+**correlations as heatmap**
+
+```{r relational-data-cor-mat-4, eval=FALSE}
+ggplot(cor_tidy, aes(var1, var2, fill = r)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red",
+                       midpoint = 0, limits = c(-1, 1)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+---
+
+## Correlation Matrices
+
+**correlations as heatmap**
+
+
+```{r relational-data-cor-mat-5, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=7.5}
+```
+
+
+---
+
+---
+
+## Correlation Matrices
+
+**beyond ggplot2: `corrplot`**
+
+```{r load-corrplot, eval=FALSE}
+library(corrplot)
+```
+
+
+```{r relational-data-cor-mat-6, eval=FALSE}
+corrplot(cor_mat, method = "color",
+         addCoef.col = "black",
+         order = "hclust")
+```
+
+---
+
+## Correlation Matrices
+
+**beyond ggplot2: `corrplot`**
+
+
+```{r relational-data-cor-mat-6, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=7.5}
+```
+
+
+::: notes
+
+Takes correlation matrix directly (without turning into tidy format) and adds a lot of features
+
+:::
+
+---
+
+## Summary: Relationships between Variables
+
+- Scatterplots are the core tool
+  - Improve readability with transparency, jitter, or binning
+  - Add distributions with marginal plots
+  - Trend lines highlight overall patterns (e.g., linear regression)
+
+- Group comparisons
+  - Color and/or facets show differences across categorical groups
+  
+- Correlational matrices
+  - Visualise many correlations at once
+  
+---
+
+
+## Summary: Relationships between Variables
+
+- Relational data
+  - Data might be stored in multiple sources
+  - Join by common identifiers
+  
+::: notes
+
+Not just continuous, any kind of variables
+
+:::
+
+---
+
+## Up Next
+
+- Lines and time series
