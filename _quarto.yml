@@ -95,18 +95,18 @@ website:
                text: Practical
              - href: data-vis/week-4/study_after4.qmd
                text: Consolidate!
-          # - section: "Week 5: Relationships between Variables"
-          #   contents:
-          #    - href: data-vis/week-5/overview5.qmd
-          #      text: About
-          #    - href: data-vis/week-5/study_before5.qmd
-          #      text: Prepare!
-          #    - href: data-vis/week-5/seminar5.qmd
-          #      text: Seminar
-          #    - href: data-vis/week-5/practical5.qmd
-          #      text: Practical
-          #    - href: data-vis/week-5/study_after5.qmd
-          #      text: Consolidate!
+          - section: "Week 5: Relationships between Variables"
+            contents:
+             - href: data-vis/week-5/overview5.qmd
+               text: About
+             - href: data-vis/week-5/study_before5.qmd
+               text: Prepare!
+             - href: data-vis/week-5/seminar5.qmd
+               text: Seminar
+             - href: data-vis/week-5/practical5.qmd
+               text: Practical
+             - href: data-vis/week-5/study_after5.qmd
+               text: Consolidate!
           # - section: "Week 6: Time Series and Line Plots"
           #   contents:
           #    - href: data-vis/week-6/overview6.qmd
@@ -174,8 +174,8 @@ execute:
   output: true
   error: true
   collapse: true
-  freeze: auto
-  cache: true
+  #freeze: auto
+  #cache: true
 
 engine: knitr
 
