@@ -219,13 +219,96 @@ psych_df %>%
 
 ---
 
+## Useful functions: select
+
+**select certain columns**
+
+<br>
+
+```{r select-1A}
+psych_df %>% 
+  select(diagnosis)
+```
+
+---
+
+## Useful functions: select
+
+**select certain columns**
+
+<br>
+
+```{r select-1B}
+psych_df$diagnosis
+```
+
+
+::: notes
+
+Note base R equivalent
+
+:::
+
+---
+
+## Useful functions: select
+
+**select certain columns**
+
+
+<br>
+
+```{r select-1C}
+psych_df[,"diagnosis"]
+```
+
+
+::: notes
+
+Note base R equivalent
+
+:::
+
+---
+
 ## Useful functions: filter
 
 **filter rows that match a certain condition**
 
 <br>
 
-```{r filter-1}
+```{r filter-1A}
+psych_df %>% 
+  filter(diagnosis == "Anxiety")
+```
+
+---
+
+## Useful functions: filter
+
+**filter rows that match a certain condition**
+
+<br>
+
+```{r filter-1B}
+psych_df[psych_df$diagnosis == "Anxiety", ]
+```
+
+::: notes
+
+Note base R equivalent
+
+:::
+
+---
+
+## Useful functions: filter
+
+**filter rows that match a certain condition**
+
+<br>
+
+```{r filter-1C}
 psych_df %>% 
   filter(diagnosis == "Anxiety") %>% 
   count(diagnosis)
