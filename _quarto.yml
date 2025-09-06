@@ -107,18 +107,18 @@ website:
                text: Practical
              - href: data-vis/week-5/study_after5.qmd
                text: Consolidate!
-          # - section: "Week 6: Time Series and Line Plots"
-          #   contents:
-          #    - href: data-vis/week-6/overview6.qmd
-          #      text: About
-          #    - href: data-vis/week-6/study_before6.qmd
-          #      text: Prepare!
-          #    - href: data-vis/week-6/seminar6.qmd
-          #      text: Seminar
-          #    - href: data-vis/week-6/practical6.qmd
-          #      text: Practical
-          #    - href: data-vis/week-6/study_after6.qmd
-          #      text: Consolidate!
+          - section: "Week 6: Time Series and Line Plots"
+            contents:
+             - href: data-vis/week-6/overview6.qmd
+               text: About
+             - href: data-vis/week-6/study_before6.qmd
+               text: Prepare!
+             - href: data-vis/week-6/seminar6.qmd
+               text: Seminar
+             - href: data-vis/week-6/practical6.qmd
+               text: Practical
+             - href: data-vis/week-6/study_after6.qmd
+               text: Consolidate!
           # - section: "Week 7: Advanced Customizations"
           #   contents:
           #    - href: data-vis/week-7/overview7.qmd
