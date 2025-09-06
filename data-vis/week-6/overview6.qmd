@@ -1,0 +1,17 @@
+---
+title: Overview
+subtitle: "Time Series and Line Graphs"
+toc: true
+toc-location: right
+---
+
+This week you will learn how to use lines to visualize changes over time. We will cover basic line graphs, emphasizing differences in trends between groups, and working with date and time variables. **Note** that the preparation for this week includes a DataCamp course that will go more in depth into date and time variables.
+
+
+### Learning objectives
+
+The successful student will be able to:
+
+-   generate line graphs to show trends over time
+-   use color, facets, and highlights to emphasize differences in trends between categorical groups
+-   manipulate date and time variables for clear visualization

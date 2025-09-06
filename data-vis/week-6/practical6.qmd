@@ -1,0 +1,316 @@
+---
+title: "Practical"
+subtitle: "Time Series & Line Graphs"
+toc: true
+toc-location: right
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(here)
+```
+
+# Introduction
+
+## Session overview
+
+In this practical you will work with a **tutoring** dataset to: (1) create line graphs for values over time, (2) avoid “spaghetti plots” using grouping, faceting, and highlighting, (3) add uncertainty bands, and (4) parse and plot time values stored as strings such as `"MM:SS.s"` using `lubridate` and `hms`.
+
+## Philosophy
+
+Practicals are not a test. It is expected that you often don't know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips
+
+-   don't worry about making mistakes
+-   don't let what you can not do interfere with what you can do
+-   discussing code with your neighbours will help
+-   look things up in the independent study material
+-   look things up in your own code from earlier workshops
+-   there are no stupid questions
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. Record your answers in your script for future reference.
+:::
+
+# Getting started
+
+![](images/do_on_your_computer.png) Start RStudio from the Start menu.
+
+![](images/do_in_R.png) Go the **Files** tab in the lower right pane and click on the `...` on the right. This will open a "Go to folder" window. Navigate to a place on your computer where you keep your work. Click **Open**.
+
+![](images/do_in_R.png) Also on the Files tab click on **New Folder**. Type `data-visualisation-in-r` into the box. This will be the folder that we work in throughout.
+
+![](images/do_in_R.png) Make an RStudio project for this workshop by clicking on the drop-down menu on top right where it says `Project: (None)` and choosing **New Project**, then **New Directory**, then **New Project**. Name the RStudio Project **`week-6`**.
+
+![](images/do_in_R.png) Make a new script then save it with a name like `time-series.R` to carry out the rest of the work.
+
+# Exercises
+
+## Today’s data
+
+We'll use one CSV called **tutoring.csv** which contains simulated data about a university tutoring service. Each row corresponds to data for one tutor in one term.
+
+Key columns you’ll use today:
+
+- `tutor_id` (integer identifier)
+- `experience` (novice, mid, expert)
+- `year` (integer year, e.g., 2021)
+- `term` (winter, spring, summer, autumn)
+- `policy` (**human** vs **ai_assist**)
+- `student_satisfaction` (0–100 scale)
+- `metric` (**wait_time** or **session_time**)
+- `mmss` (character string like `"03:48.4"` or `"29:55.8"`)
+
+### Load the data
+
+![](images/do_on_your_computer.png) Save this file in your `week-6` folder:
+
+- [tutor.csv](../data/tutor.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run. **Note** that we will specify `col_types` in `read_csv` to force the `mmss` variable to be read in as a character string. If we did not do this, `read_csv` might try to read it in as a time but parse it incorrectly, leading to `NA` values. To do this, we need to specify the type for each column:
+
+```{r}
+#| eval: false
+tutor <- read_csv("tutor.csv",
+                  col_types = list(col_integer,   # tutor_id
+                                   col_factor,    # experience
+                                   col_integer,   # year
+                                   col_factor,    # term
+                                   col_factor,    # policy
+                                   col_double,    # student_satisfaction
+                                   col_factor,   # metric
+                                   col_character) # mmss
+                  ) 
+```
+
+```{r}
+#| include: false
+tutor <- read_csv(here("data-vis", "data", "tutor.csv"),
+                  col_types = "ififfdfc")  # force mmss to character (last 'c')
+```
+
+## Look at the data
+
+![](images/do_in_R.png) Examine the variables and first few rows of `tutor` using `head()`.
+
+```{r}
+head(tutor)
+```
+
+## Tidy factor order
+
+In this dataset, `experience` has a natural order from junior to senior and `term` has a natural order from winter to autumn.
+
+![](images/do_in_R.png) Reorder the levels of `experience` and `season`.
+
+```{r}
+tutor <- tutor %>%
+  mutate(experience = factor(experience,
+                             levels = c("novice","mid","expert")),
+         term = factor(term,
+                             levels = c("winter", "spring", "summer", "autumn")))
+```
+
+![](images/answer.png) Why is it helpful to make the order explicit before plotting?
+
+## Create a date from `year` and `term`
+
+We'll create a single **date** column representing the first month of each academic term (Winter=Jan, Spring=Apr, Summer=Jul, Autumn=Oct).
+
+![](images/do_in_R.png) Use `case_when()` to map term → month, then combine with `ym()`.
+
+```{r}
+tutor <- tutor %>%
+  mutate(month = case_when(
+    term == "winter" ~ 1,
+    term == "spring" ~ 4,
+    term == "summer" ~ 7,
+    term == "autumn" ~ 10
+  ),
+  year_month = ym(paste(year, month)))  # Date at first-of-month
+```
+
+![](images/do_in_R.png) Check the new variable.
+
+```{r}
+tutor %>% 
+  select(year, term, month, year_month) %>% 
+  head()
+```
+
+## Exercise 1: Mean satisfaction over time
+
+![](images/do_in_R.png) Plot how `student_satisfaction` changes over `year_month` with a line and a light uncertainty ribbon depicting `mean_se` (standard error of the mean). Label the x-axis date as year-month.
+
+```{r}
+#| echo: false
+ggplot(tutor, aes(x = year_month, y = student_satisfaction)) +
+  stat_summary(fun = "mean", geom = "line", linewidth = 1) +
+  stat_summary(fun.data = "mean_se", geom = "ribbon", alpha = 0.15) +
+  scale_x_date(date_labels = "%Y-%b")
+```
+
+![](images/answer.png) Does satisfaction tend to increase or decrease across years? Any clear term-to-term pattern?
+
+## Exercise 2: Compare policies over time
+
+![](images/do_in_R.png) Plot how `student_satisfaction` changes over `year` with different lines / uncertainty ribbons in different colors for `policy`.
+
+```{r}
+#| echo: false
+ggplot(tutor, aes(year, student_satisfaction)) +
+  stat_summary(aes(color = policy), fun = "mean", geom = "line", linewidth = 1) +
+  stat_summary(aes(fill = policy), fun.data = "mean_se", geom = "ribbon", alpha = 0.15)
+```
+
+![](images/answer.png) Do the policies diverge or converge over time? 
+
+## Exercise 3: Avoiding spaghetti — facet by experience
+
+What if we wanted to look at how the change in `student_satisfaction` by `policy` over `year` *differs* across tutors with different levels of `experience`? This would be a lot to cram into one plot - multiple lines would overlap and make them difficult to disentangle.
+
+When multiple groups overlap, it can be easier to **facet**.
+
+![](images/do_in_R.png) Adapt your code from the previous exercise to facet by `experience`. Recall that the default facets will show plots horizontally side-by-side, but you can show them vertically by setting `nrow` to the number of facets (here, the number of `experience` levels, which is 3). Consider whether it is easier to perceive trends and differences when panels are organized horizontally versus vertically.
+
+```{r}
+#| include: false
+ggplot(tutor, aes(x = year, y = student_satisfaction)) +
+  facet_wrap(~ experience) +
+  stat_summary(aes(color = policy), fun = "mean", geom = "line", linewidth = 1) +
+  stat_summary(aes(fill = policy), fun.data = "mean_se", geom = "ribbon", alpha = 0.15)
+```
+
+![](images/answer.png) Do the different experience levels show similar effects of policy over time? How does uncertainty / variability influence your perception of effects (if any)?
+
+## Exercise 4: Parse `"mmss"` into a time variable
+
+The `mmss` column is a **character** string like `"03:48.4"`. We'll parse it into a proper **time** class for plotting.
+
+![](images/do_in_R.png) Generate a new variable in the `tutor` dataset: use `lubridate::ms()` (minutes/seconds) to create a variable called `mmss_period` for nice axis formatting.
+
+```{r}
+#| include: false
+tutor <- tutor %>%
+  mutate(
+    mmss_period = lubridate::ms(mmss),    # "MM:SS.s" -> Period (minutes/seconds)
+  )
+```
+
+```{r}
+tutor %>% 
+  select(metric, mmss, mmss_period) %>% 
+  head()
+```
+
+![](images/answer.png) Why did we **force `mmss` to character** when reading the CSV? What could go wrong if the import guessed a time type automatically?
+
+## Exercise 5: Plot time metrics over years
+
+Look at how wait time changes from one year to the next
+
+![](images/do_in_R.png) Filter the tutor dataset to just `metric == "wait_time"` and plot mean `mmss_period` by `year` with a ribbon.
+
+```{r}
+#| echo: false
+tutor %>%
+  filter(metric == "wait_time") %>%
+  ggplot(aes(x = year, y = mmss_period)) +
+  stat_summary(fun = "mean", geom = "line", linewidth = 1) +
+  stat_summary(fun.data = "mean_se", geom = "ribbon", alpha = 0.15) +
+  scale_y_time(name = "Wait time (HH:MM:SS)")
+```
+
+## Exercise 6: Compare **wait_time** vs **session_time**
+
+We’ll use the `metric` column to show how `wait_time` and `session_time` change over `year`.
+
+Note that the ranges of `wait_time` and `session_time` are different: `wait_time` tends to be on the order of days, whereas `session_time` tends to be on the order of minutes. This will cause problems if we use a common y-axis for both. Here, first create the problematic plot, then edit it to solve the problem.
+
+![](images/do_in_R.png) Plot means and uncertainty ribbons for `mmss_period` by `year`, faceting by `metric` so that `wait_time` and `session_time` appear as different panels. 
+
+```{r}
+#| echo: false
+tutor %>%
+  ggplot(aes(x = year, y = mmss_period)) +
+  facet_wrap(~metric) +
+  stat_summary(fun = "mean", geom = "line", linewidth = 1) +
+  stat_summary(fun.data = "mean_se", geom = "ribbon", alpha = 0.15) +
+  scale_y_time(name = "Wait time (HH:MM:SS)")
+```
+
+![](images/answer.png) See how it is very difficult to see changes in `session_time`, and the large amount of blank white space for `wait_time`. Why does this happen?
+
+![](images/do_in_R.png) Within `facet_wrap`, set `scales = "free_y"` to allow different y-axis ranges for the two panels.
+
+```{r}
+#| echo: false
+tutor %>%
+  ggplot(aes(x = year, y = mmss_period)) +
+  facet_wrap(~metric, scales = "free_y") +
+  stat_summary(fun = "mean", geom = "line", linewidth = 1) +
+  stat_summary(fun.data = "mean_se", geom = "ribbon", alpha = 0.15) +
+  scale_y_time(name = "Wait time (HH:MM:SS)")
+```
+
+
+## Exercise 7: Facet by metric, color by experience
+
+Now let's add separate lines to see trends in wait_time and session_time for each experience level.
+
+![](images/do_in_R.png) Adapt your code for the previous exercise to color the lines and fill the ribbons based on `experience`. 
+
+```{r}
+#| echo: false
+tutor %>%
+  ggplot(aes(x = year, y = mmss_period)) +
+  facet_wrap(~metric, scales = "free_y") +
+  stat_summary(aes(color = experience), fun = "mean", geom = "line", linewidth = 1) +
+  stat_summary(aes(fill = experience), fun.data = "mean_se", geom = "ribbon", alpha = 0.15) +
+  scale_y_time(name = "Wait time (HH:MM:SS)")
+```
+
+![](images/answer.png) How do changes in `wait_time` and `session_time` differ across `experience`?
+
+## Exercise 8: Drawing attention with highlighting
+
+What if we want to focus on experts versus non-experts, and de-emphasize differences between tutors with `mid` or `novice` levels of experience?
+
+![](images/do_in_R.png) Create a new variable to highlight `expert` vs others using `mutate` and `ifelse`. Adapt your plot from the previous exercise to: (1) color and fill based on your new highlighting variable, and (2) group lines based on the `experience` variable. Set the `scale_color_manual()` and `scale_fill_manual()` values to choose colors that emphasize experts (e.g., expert in blue, non-experts in gray).
+
+```{r}
+#| echo: false
+tutor %>%
+  mutate(expertise = ifelse(experience == "expert", "expert", "non-expert")) %>%
+  ggplot(aes(x = year, y = mmss_period)) +
+  facet_wrap(~metric, scales = "free_y") +
+  stat_summary(aes(color = expertise, group = experience), fun = "mean", geom = "line", linewidth = 1) +
+  stat_summary(aes(fill = expertise, group = experience), fun.data = "mean_se", geom = "ribbon", alpha = 0.15) +
+  scale_y_time(name = "Wait time (HH:MM:SS)") +
+  scale_color_manual(values = c("blue", "gray")) +
+  scale_fill_manual(values = c("blue", "gray"))
+```
+
+![](images/answer.png) Do experts differ systematically from other groups in `wait_time` and `sesion_time` trends?
+
+
+
+# You're finished! 🎉
+
+[Consolidate](study_after6.qmd)
+
+# The Code file
+
+This contains all the code needed in the workshop even where it is not visible on the webpage.
+
+The `practical6.qmd` file is the file used to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interwoven to produce well‑formatted reports including webpages.

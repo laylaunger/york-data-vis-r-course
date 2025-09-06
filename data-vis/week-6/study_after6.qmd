@@ -1,0 +1,127 @@
+---
+title: "Independent Study to Consolidate"
+subtitle: "Time Series & Line Graphs"
+toc: true
+toc-location: right
+---
+
+# Practice
+
+Continue working on the **`tidyverse`** course on DataCamp if not yet complete.
+
+# Exercises
+
+```{r}
+#| include: false
+# Load packages
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(here)
+})
+
+# Load data
+# Force `mmss` to character so we can parse it ourselves
+telehealth <- read_csv(here("data-vis", "data", "telehealth.csv"),col_types = 
+                 list(col_integer(),
+                 col_factor(),
+                 col_integer(),
+                 col_factor(),
+                 col_factor(),
+                 col_double(),
+                 col_factor(),
+                 col_character()))
+```
+
+## Set up
+
+If you have just opened RStudio you will want to load the **`tidyverse`** package.
+
+
+## Reading in data
+
+![](images/do_on_your_computer.png) Save this file in your `week-6` folder:  
+
+- Telehealth dataset: [telehealth.csv](../data/telehealth.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+```{r}
+#| eval: false
+telehealth <- read_csv("telehealth.csv", 
+                 col_types = list(
+                 col_integer(),
+                 col_factor(),
+                 col_integer(),
+                 col_factor(),
+                 col_factor(),
+                 col_double(),
+                 col_factor(),
+                 col_character()))
+```
+
+```{r}
+head(telehealth)
+```
+
+---
+
+
+## Exercise 1: Satisfaction over time
+
+Let's start out by looking at changes in satisfaction over time.
+
+![](images/do_in_R.png) Generate a plot that shows how `patient_satisfaction` changes over `year`.
+
+Reflect: Do you see satisfaction trending up, down, or flat across years?
+
+
+## Exercise 2: Policy comparison
+
+Now let's see how the changes differ across the two policies.
+
+![](images/do_in_R.png) Use different-colored lines and ribbons to show how the change in `patient_satisfaction` over `year` differs across policies.
+
+Reflect: Do the policies **diverge** or **converge** over the years?
+
+
+
+## Exercise 3: Faceting by seniority
+
+Now let's see how differences between policies in trends over time differ across agents with different levels of seniority.
+
+First, we'll want to order the levels of the `seniority` variable from least to most seniority.
+
+![](images/do_in_R.png) Use `mutate` to specify the order of the `seniority` factor levels as `junior`, `mid`, `senior`. 
+
+
+![](images/do_in_R.png) Use facets to contrast the changes in `patient_satisfaction` over years for the different policies across levels of seniority. 
+
+Reflect: Does the effect of policy differ across junior, mid, and senior agents?
+
+
+
+## Exercise 4: Parse time values
+
+The `mmss` column stores durations like `"06:30.7"` or `"116:08.0"` as **character** strings.
+
+![](images/do_in_R.png) Convert `mmss` into a time variable called `mmss_period` using `ms()`, then convert `mmss_period` into an h:m:s-format time variable using `hms::hms()`.
+
+
+Reflect: Why did we import `mmss` as **character** instead of letting `read_csv` guess a time type? What goes wrong for strings like `"116:08.0"`?
+
+
+
+
+## Exercise 5: Compare all metrics
+
+The dataset has three time metrics (`first_response`, `handle_time`, `resolution_time`) on very different scales.
+
+Let's visualize trends in the three metrics in different panels.
+
+![](images/do_in_R.png) Plot the changes in `mmss_hms` over year with separate lines for `policy` and separate facets for `metric`. Free up the y-axis ranges as needed.
+
+Reflect: Why is `scales = "free_y"` helpful here? What happens without it?
+
+
+
+# 🥳 Well Done! 🎉

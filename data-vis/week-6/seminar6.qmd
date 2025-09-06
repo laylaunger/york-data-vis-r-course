@@ -1,0 +1,605 @@
+---
+title: "Week 6 Seminar: Time Series and Line Graphs"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    highlight-style: github
+    width: 1200
+execute:
+  freeze: false
+---
+
+```{r setup, include=FALSE}
+#| context: setup
+library(kableExtra)
+library(tidyverse)
+library(here)
+library(showtext)
+library(knitr)
+options(knitr.kable.NA = '')
+knitr::opts_chunk$set(fig.retina = 3)
+
+theme_set(theme_bw(base_size = 18) +
+          theme(panel.grid = element_blank()))
+
+# Load telehealth dataset
+telehealth <- read_csv(here("data-vis", "data", "telehealth.csv"),
+                       col_types = "ififfdfc")
+
+telehealth$seniority <- factor(telehealth$seniority, levels = c("junior", "mid", "senior"))
+```
+
+---
+
+## From last time
+
+- Scatterplots for relationships between continuous variables
+- Adding trend lines, group differences, correlation matrices
+
+::: notes
+Last week we focused on *relationships between continuous variables* using scatterplots.
+This week we move on to *relationships over time*, using line graphs.
+:::
+
+---
+
+## Today
+
+- Line graphs for time series data  
+- Multiple groups and avoiding "spaghetti plots"  
+- Working with dates and times using `lubridate` and `hms`
+- Other uses of line graphs
+
+---
+
+## Today’s data
+
+`telehealth` dataset
+
+```{r head-telehealth, echo=FALSE}
+telehealth %>%
+  select(agent_id, seniority, year, season, policy, patient_satisfaction, metric, mmss) %>%
+  head(8) %>%
+  kable("html") %>%
+  kable_styling(font_size = 18, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Why line graphs?
+
+- Show how values change **over time**
+- Emphasize *trends* rather than individual data points
+
+---
+
+## Why line graphs?
+
+Change in satisfaction over time?
+
+```{r head-telehealth, echo=FALSE}
+```
+
+---
+
+## Why line graphs?
+
+**mean satisfaction per year**
+
+```{r bar-1, echo=FALSE, fig.align="center", fig.height=5.25}
+ggplot(telehealth, aes(x = year, y = patient_satisfaction)) +
+  stat_summary(fun = "mean", geom = "bar")
+```
+
+::: notes
+Could use bar graph, but not great for trends - don't capture continuous nature of change, always start at 0
+
+:::
+
+---
+
+## Why line graphs?
+
+**mean satisfaction per year**
+
+```{r bar-2, echo=FALSE, fig.align="center", fig.height=5.25}
+ggplot(telehealth, aes(x = year, y = patient_satisfaction)) +
+  stat_summary(aes(fill = seniority), fun = "mean", geom = "bar", position = "dodge")
+```
+
+::: notes
+Especially for comparing trends across multiple groups
+
+:::
+
+
+---
+
+## Today
+
+- **Line graphs for time series data** 
+- Multiple groups and avoiding "spaghetti plots"  
+- Working with dates and times using `lubridate` and `hms`
+- Other uses of line graphs
+
+::: notes
+As we'll see, lines are better
+
+:::
+
+---
+
+## Line Graph: Basic
+
+**mean satisfaction per year**
+
+```{r line-1, eval=FALSE}
+ggplot(telehealth, aes(x = year, y = patient_satisfaction)) +
+  stat_summary(fun = "mean", geom = "line") #< summary to aggregate
+```
+
+```{r line-1, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+::: notes
+We use `stat_summary(fun = "mean", geom = "line")` to draw a line of yearly averages.
+
+If we had just one patient_satisfaction value per year, we wouldn't need to aggregate and would use geom_line.
+
+
+:::
+
+---
+
+## Line Graph: Add uncertainty
+
+**line + ribbon**
+
+```{r line-2A, eval=FALSE}
+ggplot(telehealth, aes(x = year, y = patient_satisfaction)) +
+  stat_summary(fun = "mean", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "ribbon", alpha = 0.2)
+```
+
+---
+
+```{r line-2A, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Line Graph: Add uncertainty
+
+**line + pointrange**
+
+```{r line-2B, eval=FALSE}
+ggplot(telehealth, aes(x = year, y = patient_satisfaction)) +
+  stat_summary(fun = "mean", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "pointrange")
+```
+
+---
+
+```{r line-2B, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+
+## Today
+
+- Line graphs for time series data
+- **Multiple groups and avoiding "spaghetti plots"**  
+- Working with dates and times using `lubridate` and `hms` 
+- Other uses of line graphs
+
+::: notes
+
+:::
+
+---
+
+## Multiple groups
+
+**compare policies over time**
+
+```{r line-3, eval=FALSE}
+ggplot(telehealth, aes(x = year, y = patient_satisfaction)) +
+  stat_summary(aes(color = policy),  #< note hidden "group" aes()
+               fun = "mean", geom = "line") +
+  stat_summary(aes(fill = policy),   #< note hidden "group" aes()
+               fun.data = "mean_se", geom = "ribbon", alpha = 0.2)
+```
+
+---
+
+```{r line-3, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+::: notes
+
+Can incorporate another variable as an aesthetic to compare trends in groups
+
+Note that there is another aes called "group" that ggplot uses to decide which points to connect into a line. If you don't set it manually, ggplot will use whatever discrete variable you've used for another aesthetic to determine group. 
+
+:::
+
+---
+
+
+## Multiple groups: Spaghetti plots
+
+**compare seniority over time**
+
+```{r line-4, eval=FALSE}
+ggplot(telehealth, aes(x = year, y = patient_satisfaction)) +
+  stat_summary(aes(color = seniority), 
+               fun = "mean", geom = "line") +
+  stat_summary(aes(fill = seniority), 
+               fun.data = "mean_se", geom = "ribbon", alpha = 0.2)
+```
+
+---
+
+```{r line-4, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+::: notes
+When we plot multiple groups, lines may overlap and the graph can get messy.
+We need strategies to reduce “spaghetti plots.”
+:::
+
+---
+
+## Reducing spaghetti plots
+
+**faceting**
+
+```{r line-5A, eval=FALSE}
+ggplot(telehealth, aes(x = year, y = patient_satisfaction)) +
+  facet_wrap(~seniority) + 
+  stat_summary(fun = "mean", geom = "line", color = "blue") +
+  stat_summary(fun.data = "mean_se", geom = "ribbon", alpha = 0.2)
+```
+
+---
+
+```{r line-5A, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+
+::: notes
+:::
+
+
+---
+
+## Reducing spaghetti plots
+
+**faceting: nrow**
+
+```{r line-5B, eval=FALSE}
+ggplot(telehealth, aes(x = year, y = patient_satisfaction)) +
+  facet_wrap(~seniority, nrow = 3) + #< override default using nrow
+  stat_summary(fun = "mean", geom = "line", color = "blue") +
+  stat_summary(fun.data = "mean_se", geom = "ribbon", alpha = 0.2)
+```
+
+---
+
+```{r line-5B, echo=FALSE, fig.align="center", fig.height=6, fig.width=4}
+```
+
+
+::: notes
+Note nrow
+:::
+
+
+---
+
+## Reducing spaghetti plots
+
+**highlighting**
+
+```{r line-6, eval=FALSE}
+telehealth %>%
+  mutate(highlight = ifelse(seniority == "senior", "highlight", "standard")) %>%
+  ggplot(aes(x = year, y = patient_satisfaction)) +
+  stat_summary(aes(group = seniority, color = highlight),
+               fun = "mean", geom = "line") +
+  stat_summary(aes(group = seniority, fill = highlight), 
+               fun.data = "mean_se", geom = "ribbon", alpha = 0.2) +
+  scale_color_manual(values = c("blue", "gray", "gray")) +
+  scale_fill_manual(values = c("blue", "gray", "gray"))
+```
+
+---
+
+```{r line-6, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+
+## Today
+
+- Line graphs for time series data
+- Multiple groups and avoiding "spaghetti plots"  
+- **Working with dates and times using `lubridate` and `hms`**
+- Other uses of line graphs
+
+::: notes
+
+:::
+
+
+---
+
+## Working with dates
+
+`lubridate` and `hms` come with tidyverse
+
+![](images/lubridate.png)
+---
+
+## Working with dates
+
+**combine year and season into date**
+
+
+```{r head-telehealth-2, echo=FALSE}
+telehealth %>%
+  select(year, season) %>%
+  head(8) %>%
+  kable("html") %>%
+  kable_styling(font_size = 18, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Working with dates
+
+**combine year and season into date**
+
+```{r lubridate-1A}
+telehealth <- telehealth %>%
+  mutate(month = case_when(
+    season == "winter" ~ 1, #< set month to first month of season (numeric)
+    season == "spring" ~ 4,
+    season == "summer" ~ 7,
+    season == "autumn" ~ 10
+  ),
+  year_month = ym(paste(year, month))) #< ym from lubridate
+```
+
+---
+
+## Working with dates
+
+**combine year and season into date**
+
+```{r lubridate-1B}
+telehealth %>%
+  select(year, season, month, year_month)
+```
+
+
+---
+
+## Working with dates
+
+**access parts of date variable: as dates**
+
+```{r lubridate-2A}
+class(telehealth$year_month)
+```
+
+<br>
+
+```{r lubridate-2B}
+head(year(telehealth$year_month))
+head(month(telehealth$year_month))
+```
+
+---
+
+## Working with dates
+
+**access parts of date variable: as strings (base R)**
+
+
+```{r lubridate-3A}
+head(strftime(telehealth$year_month, format = "%Y"))
+head(strftime(telehealth$year_month, format = "%b"))
+```
+
+<br>
+
+```{r lubridate-3B, eval = FALSE}
+?strftime
+```
+
+---
+
+
+## Line Graph: with date variable
+
+**date variable on x-axis**
+
+```{r lubridate-4A, eval=FALSE}
+ggplot(telehealth, aes(x = year_month, y = patient_satisfaction)) +
+  stat_summary(fun = "mean", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "ribbon", alpha = 0.2) 
+```
+
+---
+
+```{r lubridate-4A, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+
+---
+
+
+## Line Graph: with date variable
+
+**format x-axis date variable**
+
+```{r lubridate-4B, eval=FALSE}
+ggplot(telehealth, aes(x = year_month, y = patient_satisfaction)) +
+  stat_summary(fun = "mean", geom = "line") +
+  stat_summary(fun.data = "mean_se", geom = "ribbon", alpha = 0.2) +
+  scale_x_date(date_labels = "%Y-%b") #< uses strftime under the hood
+```
+
+---
+
+```{r lubridate-4B, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Working with times
+
+**mmss encodes times**
+
+```{r mmss-peek-1, echo=FALSE}
+telehealth %>%
+  select(metric, mmss, policy, year, seniority) %>%
+  head(8) %>%
+  kable("html") %>%
+  kable_styling(font_size = 18, position = "center", full_width = FALSE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+::: notes
+Remember: `mmss` encodes **minutes:seconds** (e.g., `"06:30"`, `"116:08.0"`). We’ll parse it with `lubridate::ms()`, which is robust to > 59 minutes.
+:::
+
+---
+
+## Working with times
+
+**mmss is currently a character column**
+
+
+```{r mmss-peek-2}
+class(telehealth$mmss)
+```
+
+---
+
+## Working with times
+
+**parse `mmss` with `lubridate::ms()` and `hms::hms()`**
+
+```{r mmss-parse}
+telehealth <- telehealth %>%
+  mutate(
+    mmss_period = ms(mmss), # Parse "mm:ss" (or "mm:ss.s") into a 'Period'
+    mmss_time = hms::hms(mmss_period), # Convert into hours:minutes:seconds (hms) format
+  )
+
+telehealth %>%
+  select(metric, mmss, mmss_period, mmss_time)
+```
+
+::: notes
+If you ever see unexpected `NA`s here, it’s often due to the file being read with `mmss` guessed as a time type. A robust import is to **force `mmss` to character** on read, then parse with `ms()`:
+:::
+
+---
+
+## Line Graph: with time variable
+
+**mmss_time on y-axis**
+
+```{r mmss-plot-overall, eval=FALSE}
+telehealth %>%
+  filter(metric == "resolution_time") %>% #<- focus just on resolution time
+ggplot(aes(x = year, y = mmss_time)) +
+  stat_summary(fun = mean, geom = "line", linewidth = 1) +
+  stat_summary(fun.data = mean_se, geom = "ribbon", alpha = 0.2) 
+```
+
+---
+
+```{r mmss-plot-overall, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Today
+
+- Line graphs for time series data
+- Multiple groups and avoiding "spaghetti plots"  
+- Working with dates and times using `lubridate` and `hms`
+- **Other uses of line graphs**
+
+::: notes
+
+:::
+
+---
+
+## Lines for variables with a natural continuous order
+
+- Time is a variable with a natural, continuous order from one point to the next
+- Other variables with similar characteristics:
+  - dose/concentration of a drug
+  - distance from a point
+  - stimulus intensity (e.g., brightness)
+
+::: notes
+
+:::
+
+---
+
+## Lines for variables with a natural continuous order
+
+
+```{r head-toothgrowth, echo=FALSE}
+ToothGrowth %>%
+  head(8) %>%
+  kable("html") %>%
+  kable_styling(font_size = 18, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+::: notes
+
+:::
+
+---
+
+## Line Graph: continuous ordered variable
+
+```{r toothgrowth-plot}
+ggplot(ToothGrowth, aes(x = dose, y = len)) +
+  stat_summary(aes(color = supp), fun = "mean", geom = "line") +
+  stat_summary(aes(fill = supp), fun.data = "mean_se", geom = "ribbon", alpha = 0.2) 
+```
+
+
+---
+
+## Summary
+
+- Line graphs are best for time series and ordered data  
+- Add confidence bands to show uncertainty  
+- Use `stat_summary` to avoid manual aggregation
+- Watch out for “spaghetti plots” — simplify or facet  
+- `lubridate` makes working with dates and times much easier  
+
+---
+
+## Up Next
+
+- We've been using graphs to **explore** data
+- Move on to customizing the format to **explain** data

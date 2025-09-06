@@ -1,0 +1,13 @@
+---
+title: "Independent Study to Prepare"
+subtitle: "Time Series and Line Graphs"
+toc: true
+toc-location: right
+---
+
+# Time Series and Line Graphs
+
+To prepare for diving into this week's topic, time series and line graphs:
+
+- Complete DataCamp: Ch 1-2 Working with Dates and Times in R
+- Read [Data Visualization Ch 13.1 - 13.2](https://clauswilke.com/dataviz/)
