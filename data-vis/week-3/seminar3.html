@@ -430,19 +430,164 @@
 </div>
 </div>
 </section>
+<section id="useful-functions-select" class="slide level2">
+<h2>Useful functions: select</h2>
+<p><strong>select certain columns</strong></p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a></a>  <span class="fu">select</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 300 × 1
+   diagnosis 
+   &lt;fct&gt;     
+ 1 Anxiety   
+ 2 None      
+ 3 Depression
+ 4 None      
+ 5 None      
+ 6 Anxiety   
+ 7 Depression
+ 8 None      
+ 9 Depression
+10 Depression
+# ℹ 290 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="useful-functions-select-1" class="slide level2">
+<h2>Useful functions: select</h2>
+<p><strong>select certain columns</strong></p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>psych_df<span class="sc">$</span>diagnosis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] Anxiety    None       Depression None       None       Anxiety   
+  [7] Depression None       Depression Depression None       Depression
+ [13] Depression Depression Anxiety    None       Anxiety    Anxiety   
+ [19] Anxiety    None       None       Depression Depression None      
+ [25] Depression None       Depression Depression Anxiety    Anxiety   
+ [31] None       None       Depression None       Anxiety    Depression
+ [37] None       Anxiety    Anxiety    Anxiety    Anxiety    Depression
+ [43] Depression Depression Anxiety    Anxiety    Anxiety    Depression
+ [49] Anxiety    None       Anxiety    Depression None       Anxiety   
+ [55] Depression Anxiety    Anxiety    None       None       Depression
+ [61] Depression Anxiety    Depression Anxiety    None       Depression
+ [67] None       None       None       Depression None       Depression
+ [73] None       Anxiety    Depression Anxiety    Depression Depression
+ [79] Depression Anxiety    Anxiety    Depression Depression None      
+ [85] Anxiety    Depression None       None       None       Anxiety   
+ [91] Anxiety    Depression Anxiety    Depression Anxiety    Anxiety   
+ [97] None       Anxiety    Depression Depression Depression Anxiety   
+[103] Depression None       Depression None       None       Depression
+[109] Depression Anxiety    None       Anxiety    Anxiety    None      
+[115] None       Anxiety    Depression None       Depression Depression
+[121] Depression Anxiety    Anxiety    Anxiety    Depression None      
+[127] Anxiety    Anxiety    Anxiety    Depression Depression None      
+[133] Depression None       Depression Depression None       None      
+[139] None       Depression Anxiety    Depression Anxiety    Anxiety   
+[145] None       Anxiety    Anxiety    Anxiety    Anxiety    None      
+[151] None       Depression Depression Anxiety    Anxiety    Depression
+[157] Depression Anxiety    Depression Anxiety    Depression Depression
+[163] Depression Depression Depression Depression None       Anxiety   
+[169] Depression Anxiety    Depression Anxiety    None       None      
+[175] Depression Depression Depression Depression None       Depression
+[181] None       Anxiety    None       Anxiety    Depression Depression
+[187] Anxiety    Depression None       None       Anxiety    Anxiety   
+[193] None       Depression None       Depression Depression Depression
+[199] Anxiety    Depression Anxiety    None       Depression Depression
+[205] Depression None       Depression Anxiety    Anxiety    Anxiety   
+[211] Depression Anxiety    Anxiety    Depression Anxiety    None      
+[217] Depression Depression None       None       Anxiety    None      
+[223] None       Depression Anxiety    Depression Depression Depression
+[229] Depression None       Depression Depression Depression Anxiety   
+[235] Anxiety    Depression Anxiety    None       Anxiety    None      
+[241] Depression Depression Anxiety    Depression Anxiety    None      
+[247] Depression None       None       None       Anxiety    Anxiety   
+[253] Depression Anxiety    Depression None       Anxiety    Depression
+[259] Depression None       None       None       Depression None      
+[265] Depression Depression Anxiety    Anxiety    Anxiety    Depression
+[271] None       Anxiety    Anxiety    Anxiety    None       None      
+[277] None       Depression Anxiety    Depression None       Anxiety   
+[283] Depression Anxiety    Anxiety    Depression Anxiety    Anxiety   
+[289] Anxiety    Depression Anxiety    Anxiety    Anxiety    None      
+[295] None       None       None       Anxiety    Anxiety    None      
+Levels: None Anxiety Depression</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Note base R equivalent</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="useful-functions-select-2" class="slide level2">
+<h2>Useful functions: select</h2>
+<p><strong>select certain columns</strong></p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>psych_df[,<span class="st">"diagnosis"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 300 × 1
+   diagnosis 
+   &lt;fct&gt;     
+ 1 Anxiety   
+ 2 None      
+ 3 Depression
+ 4 None      
+ 5 None      
+ 6 Anxiety   
+ 7 Depression
+ 8 None      
+ 9 Depression
+10 Depression
+# ℹ 290 more rows</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Note base R equivalent</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="useful-functions-filter" class="slide level2">
 <h2>Useful functions: filter</h2>
 <p><strong>filter rows that match a certain condition</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a></a>  <span class="fu">filter</span>(diagnosis <span class="sc">==</span> <span class="st">"Anxiety"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a></a>  <span class="fu">filter</span>(diagnosis <span class="sc">==</span> <span class="st">"Anxiety"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  diagnosis     n
-  &lt;fct&gt;     &lt;int&gt;
-1 Anxiety     102</code></pre>
+<pre><code># A tibble: 102 × 8
+   diagnosis clinic stress_score sleep_hours activity_score   BMI sex     year
+   &lt;fct&gt;     &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;
+ 1 Anxiety   South          26.4        6.81           55.8  26.6 Female  2020
+ 2 Anxiety   North          26.0        6.25           64.1  28.5 Female  2020
+ 3 Anxiety   South          32.6        7.19           45.6  31.0 Female  2019
+ 4 Anxiety   East           42.0        9.30           68.4  29.4 Female  2020
+ 5 Anxiety   North          24.4        9.33           50.0  28.7 Male    2020
+ 6 Anxiety   North          34.1        5.28           62.2  27.4 Female  2020
+ 7 Anxiety   North          33.9        7.90           74.0  28.2 Female  2019
+ 8 Anxiety   North          25.4        7.40           88.9  30.3 Female  2020
+ 9 Anxiety   North          30.4        6.92           51.5  25.1 Female  2018
+10 Anxiety   East           33.2        6.80           61.2  24.5 Male    2020
+# ℹ 92 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -451,32 +596,51 @@
 <p><strong>filter rows that match a certain condition</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">filter</span>(diagnosis <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Anxiety"</span>,<span class="st">"Depression"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>psych_df[psych_df<span class="sc">$</span>diagnosis <span class="sc">==</span> <span class="st">"Anxiety"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  diagnosis      n
-  &lt;fct&gt;      &lt;int&gt;
-1 Anxiety      102
-2 Depression   114</code></pre>
+<pre><code># A tibble: 102 × 8
+   diagnosis clinic stress_score sleep_hours activity_score   BMI sex     year
+   &lt;fct&gt;     &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;
+ 1 Anxiety   South          26.4        6.81           55.8  26.6 Female  2020
+ 2 Anxiety   North          26.0        6.25           64.1  28.5 Female  2020
+ 3 Anxiety   South          32.6        7.19           45.6  31.0 Female  2019
+ 4 Anxiety   East           42.0        9.30           68.4  29.4 Female  2020
+ 5 Anxiety   North          24.4        9.33           50.0  28.7 Male    2020
+ 6 Anxiety   North          34.1        5.28           62.2  27.4 Female  2020
+ 7 Anxiety   North          33.9        7.90           74.0  28.2 Female  2019
+ 8 Anxiety   North          25.4        7.40           88.9  30.3 Female  2020
+ 9 Anxiety   North          30.4        6.92           51.5  25.1 Female  2018
+10 Anxiety   East           33.2        6.80           61.2  24.5 Male    2020
+# ℹ 92 more rows</code></pre>
 </div>
 </div>
+<aside class="notes">
+<p>Note base R equivalent</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="useful-functions-filter-2" class="slide level2">
 <h2>Useful functions: filter</h2>
 <p><strong>filter rows that match a certain condition</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">filter</span>(diagnosis <span class="sc">==</span> <span class="st">"Anxiety"</span> <span class="sc">|</span> diagnosis <span class="sc">==</span> <span class="st">"Depression"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a></a>  <span class="fu">filter</span>(diagnosis <span class="sc">==</span> <span class="st">"Anxiety"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  diagnosis      n
-  &lt;fct&gt;      &lt;int&gt;
-1 Anxiety      102
-2 Depression   114</code></pre>
+<pre><code># A tibble: 1 × 2
+  diagnosis     n
+  &lt;fct&gt;     &lt;int&gt;
+1 Anxiety     102</code></pre>
 </div>
 </div>
 </section>
@@ -485,9 +649,9 @@
 <p><strong>filter rows that match a certain condition</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a></a>  <span class="fu">filter</span>(diagnosis <span class="sc">!=</span> <span class="st">"None"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a></a>  <span class="fu">filter</span>(diagnosis <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Anxiety"</span>,<span class="st">"Depression"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   diagnosis      n
@@ -502,9 +666,43 @@
 <p><strong>filter rows that match a certain condition</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(diagnosis)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a></a>  <span class="fu">filter</span>(diagnosis <span class="sc">==</span> <span class="st">"Anxiety"</span> <span class="sc">|</span> diagnosis <span class="sc">==</span> <span class="st">"Depression"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  diagnosis      n
+  &lt;fct&gt;      &lt;int&gt;
+1 Anxiety      102
+2 Depression   114</code></pre>
+</div>
+</div>
+</section>
+<section id="useful-functions-filter-5" class="slide level2">
+<h2>Useful functions: filter</h2>
+<p><strong>filter rows that match a certain condition</strong></p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">filter</span>(diagnosis <span class="sc">!=</span> <span class="st">"None"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  diagnosis      n
+  &lt;fct&gt;      &lt;int&gt;
+1 Anxiety      102
+2 Depression   114</code></pre>
+</div>
+</div>
+</section>
+<section id="useful-functions-filter-6" class="slide level2">
+<h2>Useful functions: filter</h2>
+<p><strong>filter rows that match a certain condition</strong></p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(diagnosis)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a></a>  <span class="fu">count</span>(diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   diagnosis      n
@@ -520,9 +718,9 @@
 <p><strong>generate additional variables</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a></a>  <span class="fu">mutate</span>(<span class="at">activity_BMI =</span> activity_score <span class="sc">/</span> BMI) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a></a>  <span class="fu">select</span>(diagnosis, activity_score, BMI, activity_BMI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a></a>  <span class="fu">mutate</span>(<span class="at">activity_BMI =</span> activity_score <span class="sc">/</span> BMI) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">select</span>(diagnosis, activity_score, BMI, activity_BMI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 300 × 4
    diagnosis  activity_score   BMI activity_BMI
@@ -546,10 +744,10 @@
 <p><strong>generate additional variables</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a></a>  <span class="fu">mutate</span>(<span class="at">activity_BMI =</span> activity_score <span class="sc">/</span> BMI,</span>
-<span id="cb16-3"><a></a>         <span class="at">activity_sleep =</span> activity_score <span class="sc">/</span> sleep_hours)<span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a></a>  <span class="fu">select</span>(diagnosis, activity_score, BMI, activity_BMI, activity_sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a></a>  <span class="fu">mutate</span>(<span class="at">activity_BMI =</span> activity_score <span class="sc">/</span> BMI,</span>
+<span id="cb26-3"><a></a>         <span class="at">activity_sleep =</span> activity_score <span class="sc">/</span> sleep_hours)<span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a></a>  <span class="fu">select</span>(diagnosis, activity_score, BMI, activity_BMI, activity_sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 300 × 5
    diagnosis  activity_score   BMI activity_BMI activity_sleep
@@ -573,10 +771,10 @@
 <p><strong>generate additional variables by group</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stress_diagnosis =</span> <span class="fu">mean</span>(stress_score)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a></a>  <span class="fu">select</span>(diagnosis, stress_score, stress_diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stress_diagnosis =</span> <span class="fu">mean</span>(stress_score)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a></a>  <span class="fu">select</span>(diagnosis, stress_score, stress_diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 300 × 3
 # Groups:   diagnosis [3]
@@ -601,10 +799,10 @@
 <p><strong>generate additional variables by group</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a></a>  <span class="fu">group_by</span>(diagnosis, clinic) <span class="sc">%&gt;%</span></span>
-<span id="cb20-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stress_diagnosis =</span> <span class="fu">mean</span>(stress_score))<span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a></a>  <span class="fu">select</span>(diagnosis, clinic, stress_score, stress_diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a></a>  <span class="fu">group_by</span>(diagnosis, clinic) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stress_diagnosis =</span> <span class="fu">mean</span>(stress_score))<span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a></a>  <span class="fu">select</span>(diagnosis, clinic, stress_score, stress_diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 300 × 4
 # Groups:   diagnosis, clinic [9]
@@ -629,11 +827,11 @@
 <p><strong>generate additional variables by group</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stress_diagnosis =</span> <span class="fu">mean</span>(stress_score),</span>
-<span id="cb22-4"><a></a>         <span class="at">stress_binary =</span> <span class="fu">ifelse</span>(stress_score <span class="sc">&gt;</span> stress_diagnosis, <span class="st">"high"</span>, <span class="st">"typical"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a></a>  <span class="fu">select</span>(diagnosis, stress_score, stress_diagnosis, stress_binary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a></a>  <span class="fu">mutate</span>(<span class="at">stress_diagnosis =</span> <span class="fu">mean</span>(stress_score),</span>
+<span id="cb32-4"><a></a>         <span class="at">stress_binary =</span> <span class="fu">ifelse</span>(stress_score <span class="sc">&gt;</span> stress_diagnosis, <span class="st">"high"</span>, <span class="st">"typical"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb32-5"><a></a>  <span class="fu">select</span>(diagnosis, stress_score, stress_diagnosis, stress_binary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 300 × 4
 # Groups:   diagnosis [3]
@@ -658,9 +856,9 @@
 <p><strong>calculating summaries for groups</strong></p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-3"><a></a>  <span class="fu">summarise</span>(<span class="at">stress_mean =</span> <span class="fu">mean</span>(stress_score))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-3"><a></a>  <span class="fu">summarise</span>(<span class="at">stress_mean =</span> <span class="fu">mean</span>(stress_score))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   diagnosis  stress_mean
@@ -699,9 +897,26 @@
 <section id="why-distributions" class="slide level2">
 <h2>Why distributions?</h2>
 <p><br></p>
-<p>Distributions show the overall shape and spread of data that single summary statistics (like the mean) can miss</p>
+<ul>
+<li>Distributions show the overall shape and spread of data that single summary statistics (like the mean) can miss</li>
+</ul>
 <p><br></p>
-<p>Help spot skew and outliers, which inform choices of appropriate analyses</p>
+<ul>
+<li>Help spot skew and outliers, which inform choices of appropriate analyses</li>
+</ul>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="visualizing-distributions" class="slide level2">
 <h2>Visualizing distributions</h2>
@@ -748,82 +963,95 @@
 <section id="histograms-1" class="slide level2">
 <h2>1. Histograms</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb26-3"><a></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb36-3"><a></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="seminar3_files/figure-html/histogram-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/histogram-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"><aside class="notes">
+<p>Note - in previous lectures, when I was setting up the lectures, I put in some code that you couldn’t see that customized the appearance of the plots, such as the text size, background color, etc. But from now on we’re going to be looking closely at the code for generating plots, so I’ve only done minimal formatting to make sure that the font size is visible and the background is plain.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="histograms-2" class="slide level2">
 <h2>1. Histograms</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb27-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb37-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="seminar3_files/figure-html/histogram-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/histogram-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="histograms-3" class="slide level2">
 <h2>1. Histograms</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb28-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb38-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="seminar3_files/figure-html/histogram-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/histogram-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="histograms-4" class="slide level2">
 <h2>1. Histograms</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb29-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb39-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="seminar3_files/figure-html/histogram-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/histogram-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="histograms-5" class="slide level2">
 <h2>1. Histograms</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb30-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb40-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="seminar3_files/figure-html/histogram-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/histogram-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="histograms-6" class="slide level2">
 <h2>1. Histograms</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb31-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb31-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb41-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="seminar3_files/figure-html/histogram-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/histogram-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="histograms-7" class="slide level2">
 <h2>1. Histograms</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb32-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb32-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>,  <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb42-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>,  <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
 
 
-<img data-src="seminar3_files/figure-html/histogram-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/histogram-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="histograms-8" class="slide level2">
 <h2>1. Histograms</h2>
 <p><strong>comparing distributions</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">fill =</span> diagnosis)) <span class="sc">+</span></span>
-<span id="cb33-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">fill =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb43-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
 
 
-<img data-src="seminar3_files/figure-html/histogram-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/histogram-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="todays-agenda-2" class="slide level2">
 <h2>Today’s agenda</h2>
 <p><br></p>
@@ -851,80 +1079,153 @@
 <section id="density-plots-1" class="slide level2">
 <h2>2. Density plots</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb34-3"><a></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb44-3"><a></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="seminar3_files/figure-html/density-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/density-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="density-plots-2" class="slide level2">
 <h2>2. Density plots</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb35-3"><a></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="st">`</span><span class="at">alpha</span><span class="st">`</span> <span class="ot">=</span> <span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb45-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb45-3"><a></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="st">`</span><span class="at">alpha</span><span class="st">`</span> <span class="ot">=</span> <span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="seminar3_files/figure-html/density-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/density-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="density-plots-3" class="slide level2">
 <h2>2. Density plots</h2>
 <p><strong>overlaying a histogram</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb36-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
-<span id="cb36-3"><a></a>  <span class="co"># the y argument scales down the histogram </span></span>
-<span id="cb36-4"><a></a>  <span class="co"># to match the density curve</span></span>
-<span id="cb36-5"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, </span>
-<span id="cb36-6"><a></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
-<span id="cb36-7"><a></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb46-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
+<span id="cb46-3"><a></a>  <span class="co"># the y argument scales down the histogram </span></span>
+<span id="cb46-4"><a></a>  <span class="co"># to match the density curve</span></span>
+<span id="cb46-5"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, </span>
+<span id="cb46-6"><a></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb46-7"><a></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="density-plots-4" class="slide level2">
 <h2>2. Density plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/density-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/density-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="density-plots-5" class="slide level2">
 <h2>2. Density plots</h2>
-<p><strong>comparing two distributions</strong></p>
+<p><strong>comparing multiple distributions</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">fill =</span> diagnosis)) <span class="sc">+</span></span>
-<span id="cb37-3"><a></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb47-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">fill =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb47-3"><a></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="density-plots-6" class="slide level2">
 <h2>2. Density plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/density-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/density-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"><aside class="notes">
+<p>NOTICE: when we used a variable to set the fill color, ggplot chose the color SCALE automatically.</p>
+<p>It uses this default color scale.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="density-plots-7" class="slide level2">
 <h2>2. Density plots</h2>
+<p><strong>comparing multiple distributions</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb38-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">color =</span> diagnosis)) <span class="sc">+</span></span>
-<span id="cb38-3"><a></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb48-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">fill =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb48-3"><a></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb48-4"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"gray"</span>, <span class="st">"lightyellow"</span>, <span class="st">"lightblue"</span>)) <span class="sc">+</span></span>
+<span id="cb48-5"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="density-plots-8" class="slide level2">
 <h2>2. Density plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/density-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/density-4B-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"><aside class="notes">
+<p>We can override these colors manually by adding a scale layer.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="density-plots-9" class="slide level2">
 <h2>2. Density plots</h2>
+<p><strong>comparing multiple distributions</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb39-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb39-3"><a></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb39-4"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb49-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">color =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb49-3"><a></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb49-4"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"gray"</span>, <span class="st">"lightyellow"</span>, <span class="st">"lightblue"</span>)) <span class="sc">+</span></span>
+<span id="cb49-5"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="density-plots-10" class="slide level2">
 <h2>2. Density plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/density-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/density-4C-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"><aside class="notes">
+<p>Same thing for overriding color scale.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="density-plots-11" class="slide level2">
+<h2>2. Density plots</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb50-3"><a></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb50-4"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>But this example also highlights an issue here. We want to see those distributions, but the overlap makes that difficult</p>
+<p>So instead of filling them with different colors, we could split them across different facets.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="density-plots-12" class="slide level2">
+<h2>2. Density plots</h2>
+<p><br></p>
+
+<img data-src="seminar3_files/figure-revealjs/density-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="todays-agenda-3" class="slide level2">
 <h2>Today’s agenda</h2>
 <p><br></p>
@@ -955,93 +1256,93 @@
 <section id="box-plots-1" class="slide level2">
 <h2>3. Box plots</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb40-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb40-3"><a></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb51-3"><a></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="box-plots-2" class="slide level2">
 <h2>3. Box plots</h2>
 
-<img data-src="seminar3_files/figure-html/box-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/box-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="box-plots-3" class="slide level2">
 <h2>3. Box plots</h2>
 <p><strong>modifying outliers</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb41-3"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"gray"</span>, <span class="at">outlier.color =</span> <span class="st">"blue"</span>, </span>
-<span id="cb41-4"><a></a>               <span class="at">outlier.shape =</span> <span class="st">"circle open"</span>, <span class="at">outlier.size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb52-3"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"gray"</span>, <span class="at">outlier.color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb52-4"><a></a>               <span class="at">outlier.shape =</span> <span class="st">"circle open"</span>, <span class="at">outlier.size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="box-plots-4" class="slide level2">
 <h2>3. Box plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/box-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/box-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="box-plots-5" class="slide level2">
 <h2>3. Box plots</h2>
 <p><strong>marking the mean</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb42-3"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"gray"</span>) <span class="sc">+</span></span>
-<span id="cb42-4"><a></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="co">#&lt;&lt;</span></span>
-<span id="cb42-5"><a></a>               <span class="at">shape =</span> <span class="st">"square"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
+<span id="cb53-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb53-3"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"gray"</span>) <span class="sc">+</span></span>
+<span id="cb53-4"><a></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="co">#&lt;&lt;</span></span>
+<span id="cb53-5"><a></a>               <span class="at">shape =</span> <span class="st">"square"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="box-plots-6" class="slide level2">
 <h2>3. Box plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/box-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/box-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="box-plots-7" class="slide level2">
 <h2>3. Box plots</h2>
 <p><strong>adding jittered points</strong></p>
 <p>Conveys a sense of the distribution of data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb43-3"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb43-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(), <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb54-3"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb54-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(), <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="box-plots-8" class="slide level2">
 <h2>3. Box plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/box-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/box-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="box-plots-9" class="slide level2">
 <h2>3. Box plots</h2>
 <p><strong>adding jittered points</strong></p>
 <p>Conveys a sense of the distribution of data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
-<span id="cb44-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb44-3"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb44-4"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb55-3"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb55-4"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="box-plots-10" class="slide level2">
 <h2>3. Box plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/box-6b-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/box-6b-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="box-plots-11" class="slide level2">
 <h2>3. Box plots</h2>
 <p><strong>suppressing outliers</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
-<span id="cb45-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
-<span id="cb45-3"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
-<span id="cb45-4"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a>psych_df <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span></span>
+<span id="cb56-3"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb56-4"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="box-plots-12" class="slide level2">
 <h2>3. Box plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/box-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/box-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="todays-agenda-4" class="slide level2">
 <h2>Today’s agenda</h2>
 <p><br></p>
@@ -1062,31 +1363,31 @@
 <section id="violin-plots-1" class="slide level2">
 <h2>4. Violin plots</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb46-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span> </span>
-<span id="cb46-3"><a></a>  <span class="fu">geom_violin</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb57-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span> </span>
+<span id="cb57-3"><a></a>  <span class="fu">geom_violin</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
 
 
-<img data-src="seminar3_files/figure-html/violin-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/violin-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="violin-plots-2" class="slide level2">
 <h2>4. Violin plots</h2>
 <p><strong>overlaying a boxplot</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb47-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span> </span>
-<span id="cb47-3"><a></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb47-4"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">color =</span> <span class="st">"grey"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
-<span id="cb47-5"><a></a>               <span class="at">outlier.colour =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb58-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> diagnosis, <span class="at">x =</span> stress_score)) <span class="sc">+</span> </span>
+<span id="cb58-3"><a></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb58-4"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">color =</span> <span class="st">"grey"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb58-5"><a></a>               <span class="at">outlier.colour =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="violin-plots-3" class="slide level2">
 <h2>4. Violin plots</h2>
 <p><br></p>
 
-<img data-src="seminar3_files/figure-html/violin-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/violin-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="todays-agenda-5" class="slide level2">
 <h2>Today’s agenda</h2>
 <p><br></p>
@@ -1110,93 +1411,93 @@
 <section id="ridgeline-plots-1" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb48-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
-<span id="cb48-3"><a></a>  <span class="fu">geom_density_ridges</span>() <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb59-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb59-3"><a></a>  <span class="fu">geom_density_ridges</span>() <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ridgeline-plots-2" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 
-<img data-src="seminar3_files/figure-html/ridge-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/ridge-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="ridgeline-plots-3" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb49-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
-<span id="cb49-3"><a></a>  <span class="fu">geom_density_ridges</span>(<span class="at">stat =</span> <span class="st">"binline"</span>, <span class="at">binwidth =</span> <span class="dv">1</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb60-3"><a></a>  <span class="fu">geom_density_ridges</span>(<span class="at">stat =</span> <span class="st">"binline"</span>, <span class="at">binwidth =</span> <span class="dv">1</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ridgeline-plots-4" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 
-<img data-src="seminar3_files/figure-html/ridge-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/ridge-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="ridgeline-plots-5" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 <p><strong>ordering by mean</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb50-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
-<span id="cb50-3"><a></a>  <span class="fu">mutate</span>(<span class="at">diagnosis =</span> <span class="fu">fct_reorder</span>(diagnosis, stress_score, <span class="at">.fun =</span> mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb50-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
-<span id="cb50-5"><a></a>  <span class="fu">geom_density_ridges</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a></a>  <span class="fu">mutate</span>(<span class="at">diagnosis =</span> <span class="fu">fct_reorder</span>(diagnosis, stress_score, <span class="at">.fun =</span> mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb61-5"><a></a>  <span class="fu">geom_density_ridges</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ridgeline-plots-6" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 
-<img data-src="seminar3_files/figure-html/ridge-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/ridge-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="ridgeline-plots-7" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 <p><strong>adding jittered points</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb51-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
-<span id="cb51-3"><a></a>  <span class="fu">mutate</span>(<span class="at">diagnosis =</span> <span class="fu">fct_reorder</span>(diagnosis, stress_score, <span class="at">.fun =</span> mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb51-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
-<span id="cb51-5"><a></a>  <span class="fu">geom_density_ridges</span>(<span class="at">jittered_points =</span> <span class="cn">TRUE</span>, <span class="co">#&lt;&lt;</span></span>
-<span id="cb51-6"><a></a>                      <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">point_size =</span> <span class="fl">0.5</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb62-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a></a>  <span class="fu">mutate</span>(<span class="at">diagnosis =</span> <span class="fu">fct_reorder</span>(diagnosis, stress_score, <span class="at">.fun =</span> mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb62-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb62-5"><a></a>  <span class="fu">geom_density_ridges</span>(<span class="at">jittered_points =</span> <span class="cn">TRUE</span>, <span class="co">#&lt;&lt;</span></span>
+<span id="cb62-6"><a></a>                      <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">point_size =</span> <span class="fl">0.5</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ridgeline-plots-8" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 
-<img data-src="seminar3_files/figure-html/ridge-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/ridge-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="ridgeline-plots-9" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 <p><strong>adding a rug plot</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb52-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
-<span id="cb52-3"><a></a>  <span class="fu">mutate</span>(<span class="at">diagnosis =</span> <span class="fu">fct_reorder</span>(diagnosis, stress_score, <span class="at">.fun =</span> mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb52-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
-<span id="cb52-5"><a></a>  <span class="fu">geom_density_ridges</span>(<span class="at">jittered_points =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb52-6"><a></a>    <span class="at">position =</span> <span class="fu">position_points_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">height =</span> <span class="dv">0</span>),</span>
-<span id="cb52-7"><a></a>    <span class="at">point_shape =</span> <span class="st">'|'</span>, <span class="at">point_size =</span> <span class="dv">3</span>, <span class="at">point_alpha =</span> <span class="dv">1</span>, <span class="co">#&lt;&lt;</span></span>
-<span id="cb52-8"><a></a>    <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb63-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a></a>  <span class="fu">mutate</span>(<span class="at">diagnosis =</span> <span class="fu">fct_reorder</span>(diagnosis, stress_score, <span class="at">.fun =</span> mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb63-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb63-5"><a></a>  <span class="fu">geom_density_ridges</span>(<span class="at">jittered_points =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb63-6"><a></a>    <span class="at">position =</span> <span class="fu">position_points_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">height =</span> <span class="dv">0</span>),</span>
+<span id="cb63-7"><a></a>    <span class="at">point_shape =</span> <span class="st">'|'</span>, <span class="at">point_size =</span> <span class="dv">3</span>, <span class="at">point_alpha =</span> <span class="dv">1</span>, <span class="co">#&lt;&lt;</span></span>
+<span id="cb63-8"><a></a>    <span class="at">alpha =</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ridgeline-plots-10" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 
-<img data-src="seminar3_files/figure-html/ridge-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/ridge-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="ridgeline-plots-11" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 <p><strong>adding a raincloud plot</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
-<span id="cb53-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
-<span id="cb53-3"><a></a>  <span class="fu">mutate</span>(<span class="at">diagnosis =</span> <span class="fu">fct_reorder</span>(diagnosis, stress_score, <span class="at">.fun =</span> mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb53-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
-<span id="cb53-5"><a></a>  <span class="fu">geom_density_ridges</span>(<span class="at">jittered_points =</span> <span class="cn">TRUE</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb53-6"><a></a>                      <span class="at">point_size =</span> <span class="fl">0.5</span>, <span class="at">scale =</span> <span class="fl">0.6</span>,</span>
-<span id="cb53-7"><a></a>                      <span class="at">position =</span> <span class="st">"raincloud"</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>psych_df <span class="sc">%&gt;%</span> </span>
+<span id="cb64-2"><a></a>  <span class="fu">group_by</span>(diagnosis) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a></a>  <span class="fu">mutate</span>(<span class="at">diagnosis =</span> <span class="fu">fct_reorder</span>(diagnosis, stress_score, <span class="at">.fun =</span> mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb64-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stress_score, <span class="at">y =</span> diagnosis)) <span class="sc">+</span></span>
+<span id="cb64-5"><a></a>  <span class="fu">geom_density_ridges</span>(<span class="at">jittered_points =</span> <span class="cn">TRUE</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb64-6"><a></a>                      <span class="at">point_size =</span> <span class="fl">0.5</span>, <span class="at">scale =</span> <span class="fl">0.6</span>,</span>
+<span id="cb64-7"><a></a>                      <span class="at">position =</span> <span class="st">"raincloud"</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ridgeline-plots-12" class="slide level2">
 <h2>5. Ridgeline plots</h2>
 
-<img data-src="seminar3_files/figure-html/ridge-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4200"></section>
+<img data-src="seminar3_files/figure-revealjs/ridge-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="summary-distributions" class="slide level2">
 <h2>Summary: Distributions</h2>
 <p>What you’re showing:</p>
@@ -1442,6 +1743,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
@@ -1529,7 +1906,7 @@
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/laylaunger\.github\.io\/york-data-vis-r-course\/");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
