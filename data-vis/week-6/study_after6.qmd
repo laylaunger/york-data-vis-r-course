@@ -7,7 +7,7 @@ toc-location: right
 
 # Practice
 
-Continue working on the **`tidyverse`** course on DataCamp if not yet complete.
+Continue working on the date and time course on DataCamp if not yet complete.
 
 # Exercises
 

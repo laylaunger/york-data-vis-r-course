@@ -17,7 +17,7 @@ suppressPackageStartupMessages({
 })
 
 # Load data
-customer_ops <- read_csv(here("data-vis",  "data", "customer_ops.csv"))
+ops_df <- read_csv(here("data-vis",  "data", "customer_ops.csv"))
 ```
 
 ## Set up
