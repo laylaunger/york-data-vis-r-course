@@ -2384,7 +2384,7 @@
     "href": "data-vis/week-2/study_after2.html",
     "title": "Independent Study to Consolidate",
     "section": "",
-    "text": "Get started on the tidyverse course on DataCamp.",
+    "text": "Continue working on tidyverse lessons on DataCamp.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 2: Grammar of Graphics",
@@ -2612,7 +2612,7 @@
     "href": "data-vis/week-1/seminar1.html#module-objectives",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Module objectives",
-    "text": "Module objectives\n\nAccomplish great things",
+    "text": "Module objectives\n\nExplore and understand datasets by visualising distributions, relationships, and trends.\nDesign clear and comprehensible visualisations that avoid common pitfalls.\nCommunicate findings to diverse audiences through compelling storytelling.\nBuild interactive dashboards that combine multiple visualisations.\nApply these skills across your degree and in a wide range of careers.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2624,7 +2624,7 @@
     "href": "data-vis/week-1/seminar1.html#what-matters",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "What matters",
-    "text": "What matters\n\nMental health",
+    "text": "What matters\n\nWellbeing",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2888,7 +2888,7 @@
     "href": "data-vis/week-1/overview1.html",
     "title": "Overview",
     "section": "",
-    "text": "This week you will get an introduction to why we visualise data and what makes a good visualisation. There will be a short paper to read to prepare and a seminar. There will be no workshop this week!\n\nLearning objectives\nThe successful student will be able to:\n\nexplain the multiple uses of data visualisations\nexplain the key aspects of an effective visualisation\nevaluate whether a visualisation is good or bad",
+    "text": "This week you will get an introduction to why we visualise data and what makes a good visualisation. There will be a short paper to read to prepare and a seminar. There will be no practical this week!\n\nLearning objectives\nThe successful student will be able to:\n\nexplain the multiple uses of data visualisations\nexplain the key aspects of an effective visualisation\nevaluate whether a visualisation is good or bad",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2922,7 +2922,7 @@
     "href": "data-vis/data-vis.html#week-1-principles-of-data-visualisation",
     "title": "Data Visualisation",
     "section": "Week 1: Principles of Data Visualisation",
-    "text": "Week 1: Principles of Data Visualisation",
+    "text": "Week 1: Principles of Data Visualisation\nThis week you will read a short paper about what makes a good visualization, and we will discuss this topic further in the seminar. There will be no practical.",
     "crumbs": [
       "PSY00122M-A ",
       "Data Visualisation"
@@ -2933,7 +2933,7 @@
     "href": "data-vis/data-vis.html#week-2-grammar-of-graphics",
     "title": "Data Visualisation",
     "section": "Week 2: Grammar of Graphics",
-    "text": "Week 2: Grammar of Graphics",
+    "text": "Week 2: Grammar of Graphics\nThis week you will be introduced to the fundamental tool for building visualizations in R: the grammar of graphics. We will discuss elements of the grammar of graphics in the seminar, and you will practice using it in the practical. In preparation for this week, you will start working through lessons on DataCamp on wrangling data in R using the tidyverse.",
     "crumbs": [
       "PSY00122M-A ",
       "Data Visualisation"
@@ -2944,7 +2944,7 @@
     "href": "data-vis/data-vis.html#week-3-distributions",
     "title": "Data Visualisation",
     "section": "Week 3: Distributions",
-    "text": "Week 3: Distributions",
+    "text": "Week 3: Distributions\nThis week, we will dive into how to plot the shape and range of variables in data. We will discuss common plots including histograms, density plots, boxplots and violin plots, and you will gain practice creating these graphs in the practical. You will also continue working through tidyverse lessons on DataCamp.",
     "crumbs": [
       "PSY00122M-A ",
       "Data Visualisation"
@@ -2955,7 +2955,7 @@
     "href": "data-vis/data-vis.html#week-4-bar-plots-for-categorical-data",
     "title": "Data Visualisation",
     "section": "Week 4: Bar Plots for Categorical Data",
-    "text": "Week 4: Bar Plots for Categorical Data",
+    "text": "Week 4: Bar Plots for Categorical Data\nThis week, we will explore bar plots as a key tool for plotting characteristics of categorical data. We will discuss how to use bar plots to depict counts, proportions and summary statistics, and you will gain practice using bar plots in the practical.",
     "crumbs": [
       "PSY00122M-A ",
       "Data Visualisation"
@@ -2966,7 +2966,7 @@
     "href": "data-vis/data-vis.html#week-5-relationships-between-variables",
     "title": "Data Visualisation",
     "section": "Week 5: Relationships between Variables",
-    "text": "Week 5: Relationships between Variables",
+    "text": "Week 5: Relationships between Variables\nThis week, we will examine relationships between variables. We will do a deep dive into scatterplots, adding trend lines, depicting how relationships differ across categorical groups, and correlation matrices. The practical will walk you through building these plots. To prepare for the following week, you will complete lessons on working with date and time variables on DataCamp.",
     "crumbs": [
       "PSY00122M-A ",
       "Data Visualisation"
@@ -2977,7 +2977,7 @@
     "href": "data-vis/data-vis.html#tidyverse",
     "title": "Data Visualisation",
     "section": "Tidyverse",
-    "text": "Tidyverse\nData wrangling cheat sheet\nData wrangling in depth",
+    "text": "Tidyverse\nData wrangling cheat sheet\nData wrangling in depth\nDataCamp courses",
     "crumbs": [
       "PSY00122M-A ",
       "Data Visualisation"
@@ -5068,6 +5068,41 @@
       "PSY00122M-A ",
       "Week 6: Time Series and Line Plots",
       "Prepare!"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#week-6-time-series-and-line-graphs",
+    "href": "data-vis/data-vis.html#week-6-time-series-and-line-graphs",
+    "title": "Data Visualisation",
+    "section": "Week 6: Time Series and Line Graphs",
+    "text": "Week 6: Time Series and Line Graphs\nThis week, we will explore how to visualise changes over time using line graphs. We will discuss how to de-clutter and emphasize temporal trends and work with date and time variables in the seminar, and you will practice depicting temporal data in the practical.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#module-organization",
+    "href": "data-vis/week-1/seminar1.html#module-organization",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Module organization",
+    "text": "Module organization\n\nExplore\nExplain",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#up-next",
+    "href": "data-vis/week-1/seminar1.html#up-next",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Up Next",
+    "text": "Up Next\n\nDistributions",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
     ]
   }
 ]
