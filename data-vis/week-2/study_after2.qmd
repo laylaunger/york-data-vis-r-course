@@ -7,7 +7,7 @@ toc-location: right
 
 # Practice
 
-Get started on the **`tidyverse`** course on DataCamp.
+Continue working on **`tidyverse`** lessons on DataCamp.
 
 
 # Exercises
