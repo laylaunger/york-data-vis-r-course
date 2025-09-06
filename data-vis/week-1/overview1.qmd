@@ -5,7 +5,7 @@ toc: true
 toc-location: right
 ---
 
-This week you will get an introduction to why we visualise data and what makes a good visualisation. There will be a short paper to read to prepare and a seminar. There will be no workshop this week!
+This week you will get an introduction to why we visualise data and what makes a good visualisation. There will be a short paper to read to prepare and a seminar. There will be no practical this week!
 
 
 ### Learning objectives
