@@ -151,13 +151,29 @@ Students: Introductions
 
 ## Module objectives
 
--   Accomplish great things
+-   Explore and understand datasets by visualising distributions, relationships, and trends.
+
+-   Design clear and comprehensible visualisations that avoid common pitfalls.
+
+-   Communicate findings to diverse audiences through compelling storytelling.
+
+-   Build interactive dashboards that combine multiple visualisations.
+
+-   Apply these skills across your degree and in a wide range of careers.
+
+---
+
+## Module organization
+
+-   Explore
+
+-   Explain
 
 ---
 
 ## What matters
 
--   Mental health
+-   Wellbeing
 
 ---
 
@@ -487,6 +503,12 @@ knitr::include_graphics(here("data-vis","figs","unreadable_graph.png"))
 divergingx_palettes(palette = "Temps", plot = TRUE)
 
 ```
+
+---
+
+## Up Next
+
+-   Distributions
 
 ---
 
