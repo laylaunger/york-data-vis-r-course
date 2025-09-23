@@ -32,7 +32,7 @@
     "href": "data-vis/week-6/study_after6.html",
     "title": "Independent Study to Consolidate",
     "section": "",
-    "text": "Continue working on the tidyverse course on DataCamp if not yet complete.",
+    "text": "Continue working on the date and time course on DataCamp if not yet complete.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 6: Time Series and Line Plots",
@@ -2612,7 +2612,43 @@
     "href": "data-vis/week-1/seminar1.html#module-objectives",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Module objectives",
-    "text": "Module objectives\n\nExplore and understand datasets by visualising distributions, relationships, and trends.\nDesign clear and comprehensible visualisations that avoid common pitfalls.\nCommunicate findings to diverse audiences through compelling storytelling.\nBuild interactive dashboards that combine multiple visualisations.\nApply these skills across your degree and in a wide range of careers.",
+    "text": "Module objectives\n\n\nExplore and understand datasets by visualising distributions, relationships, and trends.\nDesign clear and comprehensible visualisations that avoid common pitfalls.\nCommunicate findings to diverse audiences through compelling storytelling.\nBuild interactive dashboards that combine multiple visualisations.\nApply these skills across your degree and in a wide range of careers.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#module-organization",
+    "href": "data-vis/week-1/seminar1.html#module-organization",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Module organization",
+    "text": "Module organization\n\nExplore\nExplain\n\n\nTo accomplish these objectives, the module will be roughly divided into two parts.\nIn the first several weeks, we’ll discuss using visualizations to EXPLORE data.\nSo we’ll go through the main types of graph you can use to get a sense of the patterns in your data. So the focus here will be more on giving you tools to understand the data for yourself.\nThen once you have a toolkit with lots of different kinds of graph, we’ll shift the focus to EXPLAINING data. So we’ll be seeing how to adapt the tools you’ve learned to make the patterns clear and compelling to an audience.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#module-components",
+    "href": "data-vis/week-1/seminar1.html#module-components",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Module components",
+    "text": "Module components\n\nSeminars\nPracticals\nAt-home preparation\nAt-home consolidation exercises\nAssessment",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#accessing-the-module",
+    "href": "data-vis/week-1/seminar1.html#accessing-the-module",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Accessing the module",
+    "text": "Accessing the module\n\nModule website\nVLE\nCommunication\nExtensions\nIntegrity\n\n\nGo to VLE and wiki\nALSO OPEN PALETTEER AND PRETTY GRAPHS",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2632,23 +2668,11 @@
     ]
   },
   {
-    "objectID": "data-vis/week-1/seminar1.html#module-components",
-    "href": "data-vis/week-1/seminar1.html#module-components",
+    "objectID": "data-vis/week-1/seminar1.html#onto-the-goals-of-visualisation",
+    "href": "data-vis/week-1/seminar1.html#onto-the-goals-of-visualisation",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
-    "section": "Module components",
-    "text": "Module components\n\nSeminars\nPracticals\nAt-home consolidation exercises\nAssessment",
-    "crumbs": [
-      "PSY00122M-A ",
-      "Week 1: Principles of Data Visualisation",
-      "Seminar"
-    ]
-  },
-  {
-    "objectID": "data-vis/week-1/seminar1.html#accessing-the-module",
-    "href": "data-vis/week-1/seminar1.html#accessing-the-module",
-    "title": "Week 1 Seminar: Principles of Data Visualisation",
-    "section": "Accessing the module",
-    "text": "Accessing the module\n\nModule website\nVLE\nCommunication\nExtensions\nRegrades\nIntegrity",
+    "section": "Onto the goals of visualisation",
+    "text": "Onto the goals of visualisation",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2672,7 +2696,7 @@
     "href": "data-vis/week-1/seminar1.html#why-visualise-data-1",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Why visualise data?",
-    "text": "Why visualise data?\n\n\n\n\n\n\nMean of x\nMean of y\n\n\n\n\n54.26327\n47.83225\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSD of x\nSD of y\n\n\n\n\n16.76514\n26.9354\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nMin\nMax\n\n\n\n\nx\n22.3077\n98.2051\n\n\ny\n2.9487\n99.4872",
+    "text": "Why visualise data?\n\n\n\n\n\n\nMean of x\nMean of y\n\n\n\n\n54.26327\n47.83225\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSD of x\nSD of y\n\n\n\n\n16.76514\n26.9354\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nMin\nMax\n\n\n\n\nx\n22.3077\n98.2051\n\n\ny\n2.9487\n99.4872\n\n\n\n\n\n\n\n\n\nSo, why visualize data?\nAt the start, you’ve got your pile of data. Lots of observations of maybe some things that have been measured out in the real world or in an experiment.\nTypically there’ll be lots of numbers here, maybe some categorical variables etc.\nOn their own, the raw data don’t tell you anything.\nNEXT\nYou can certainly gain some insight from summary statistics. Mean, SD, range.\nNEXT",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2696,7 +2720,7 @@
     "href": "data-vis/week-1/seminar1.html#why-visualise-data-3",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Why visualise data?",
-    "text": "Why visualise data?\n\n\n\n\n\nPatient\nAssessor\nTimepoint\nSymptom_Severity\n\n\n\n\na\nA\nPre-Treatment\n33\n\n\nb\nA\nPre-Treatment\n40\n\n\nc\nA\nPre-Treatment\n27\n\n\nd\nB\nPre-Treatment\n41\n\n\ne\nB\nPre-Treatment\n35\n\n\nf\nB\nPre-Treatment\n29\n\n\ng\nC\nPre-Treatment\n38\n\n\nh\nC\nPre-Treatment\n36\n\n\ni\nC\nPre-Treatment\n25\n\n\nj\nD\nPre-Treatment\n72",
+    "text": "Why visualise data?\n\n\n\n\n\nPatient\nAssessor\nTimepoint\nSymptom_Severity\n\n\n\n\na\nA\nPre-Treatment\n33\n\n\nb\nA\nPre-Treatment\n40\n\n\nc\nA\nPre-Treatment\n27\n\n\nd\nB\nPre-Treatment\n41\n\n\ne\nB\nPre-Treatment\n35\n\n\nf\nB\nPre-Treatment\n29\n\n\ng\nC\nPre-Treatment\n38\n\n\nh\nC\nPre-Treatment\n36\n\n\ni\nC\nPre-Treatment\n25\n\n\nj\nD\nPre-Treatment\n72\n\n\n\n\n\n\n\n\nA more real-world example.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2708,7 +2732,7 @@
     "href": "data-vis/week-1/seminar1.html#why-visualise-data-4",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Why visualise data?",
-    "text": "Why visualise data?\n\n\n\n\n\nTimepoint\nsymptom_mean\nsymptom_sd\n\n\n\n\nPre-Treatment\n44.83333\n20.91904\n\n\nPost-Treatment\n40.33333\n23.44562",
+    "text": "Why visualise data?\n\n\n\n\n\nTimepoint\nsymptom_mean\nsymptom_sd\n\n\n\n\nPre-Treatment\n44.83333\n20.91904\n\n\nPost-Treatment\n40.33333\n23.44562\n\n\n\n\n\n\n\n\nMaybe they’re different, maybe they’re not.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2720,7 +2744,7 @@
     "href": "data-vis/week-1/seminar1.html#why-visualise-data-5",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Why visualise data?",
-    "text": "Why visualise data?",
+    "text": "Why visualise data?\n\n\nTurn to a visual, and you immediately start seeing more.\nThis is something called a violin plot, with points added for individual data points [EXPLAIN]\nThis gives you both the sense that maybe the two groups differ, like the summary statistics.\nBUT ALSO we can see outliers.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2732,7 +2756,7 @@
     "href": "data-vis/week-1/seminar1.html#why-visualise-data-6",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Why visualise data?",
-    "text": "Why visualise data?",
+    "text": "Why visualise data?\n\n\nWe can enhance this further by adding lines to see trends in change over time, from pre to post.\nNow we can see that in this main group of participants, symptom severity mostly goes down over time.\nBut those outliers are outliers not just in severity, but in lack of change.\nAnd we can enhance this graph even further to get a sense of WHY those points are outliers.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2744,7 +2768,7 @@
     "href": "data-vis/week-1/seminar1.html#why-visualise-data-7",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Why visualise data?",
-    "text": "Why visualise data?",
+    "text": "Why visualise data?\n\n\nSo here I’ve colored the points by the person who assessed the patients. And we can see that the outliers were all assessed by the same person.\nBased on personal example.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2756,7 +2780,7 @@
     "href": "data-vis/week-1/seminar1.html#why-visualise-data-8",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Why visualise data?",
-    "text": "Why visualise data?\n\nTo explore: find patterns, outliers, structure\nTo diagnose: check assumptions, spot problems\nWhat else?",
+    "text": "Why visualise data?\n\n\nFinally, now that our exploration with visuals has revealed these outliers, we can do something about it.\nWe can regraph the data without the outliers. And now a clear trend pops out.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2768,7 +2792,7 @@
     "href": "data-vis/week-1/seminar1.html#why-visualise-data-9",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Why visualise data?",
-    "text": "Why visualise data?",
+    "text": "Why visualise data?\n\nTo explore: find patterns, outliers, structure\nTo diagnose: check assumptions, spot problems\nWhat else?\n\n\nExplain to others",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2778,6 +2802,18 @@
   {
     "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-10",
     "href": "data-vis/week-1/seminar1.html#why-visualise-data-10",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Why visualise data?",
+    "text": "Why visualise data?\n\n\nSuppose we had a larger dataset from a big study we’ve run looking at effects of an intervention.\nThe quickest way to show our audience the effects of that intervention is probably a visual.\nWhat does this graph tell us?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#why-visualise-data-11",
+    "href": "data-vis/week-1/seminar1.html#why-visualise-data-11",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "Why visualise data?",
     "text": "Why visualise data?\n\nTo explore: find patterns, outliers, structure\nTo diagnose: check assumptions, spot problems\nTo explain: communicate results to others",
@@ -2792,7 +2828,7 @@
     "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "What makes a good visualisation?",
-    "text": "What makes a good visualisation?\n\nAppropriate for the data\nFocus attention on key points\nReadable\nAppealing",
+    "text": "What makes a good visualisation?\n\n\nAppropriate for the data\nFocus attention on key points\nReadable\nAppealing\n\n\n\nTransition - what do I mean by these things?",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2804,7 +2840,7 @@
     "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-1",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "What makes a good visualisation?",
-    "text": "What makes a good visualisation?\n\nAppropriate for the data",
+    "text": "What makes a good visualisation?\n\nAppropriate for the data\n\n\n\nWhat if we had this situation, wanted to look at change over time.\nWe could make different choices at this point - some would really help us see that change over time, others would make it difficult.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2816,7 +2852,7 @@
     "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-2",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "What makes a good visualisation?",
-    "text": "What makes a good visualisation?\n\nAppropriate for the data",
+    "text": "What makes a good visualisation?\n\nAppropriate for the data\n\n\n\nWe might choose to show this using bars.\nBut you might also be able to tell that the TOTAL NUMBER of students seems to increase.\nSo it’s hard to see here - is peer support getting more students because actually it’s getting more popular in comparison to the other options, or just because there are more students? Really can’t tell.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2828,7 +2864,7 @@
     "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-3",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "What makes a good visualisation?",
-    "text": "What makes a good visualisation?\n\nAppropriate for the data",
+    "text": "What makes a good visualisation?\n\nAppropriate for the data\n\n\n\nInstead look at PROPORTIONS.\nFlip back and forth.\nSO NEED TO CHOOSE A VISUAL THAT IS APPROPRIATE FOR SHOWING KEY PATTERNS.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2840,7 +2876,7 @@
     "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-4",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "What makes a good visualisation?",
-    "text": "What makes a good visualisation?\n\nFocus attention on key points",
+    "text": "What makes a good visualisation?\n\nFocus attention on key points\n\n\n\nSimilarly, we also want to design our graph to focus attention on key points.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2852,7 +2888,7 @@
     "href": "data-vis/week-1/seminar1.html#what-makes-a-good-visualisation-5",
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "What makes a good visualisation?",
-    "text": "What makes a good visualisation?\n\nReadable",
+    "text": "What makes a good visualisation?\n\nReadable\n\n\n\nExample from student work.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2865,6 +2901,18 @@
     "title": "Week 1 Seminar: Principles of Data Visualisation",
     "section": "What makes a good visualisation?",
     "text": "What makes a good visualisation?\n\nAppealing",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 1: Principles of Data Visualisation",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-1/seminar1.html#up-next",
+    "href": "data-vis/week-1/seminar1.html#up-next",
+    "title": "Week 1 Seminar: Principles of Data Visualisation",
+    "section": "Up Next",
+    "text": "Up Next\n\nGrammar of Graphics",
     "crumbs": [
       "PSY00122M-A ",
       "Week 1: Principles of Data Visualisation",
@@ -2967,6 +3015,17 @@
     "title": "Data Visualisation",
     "section": "Week 5: Relationships between Variables",
     "text": "Week 5: Relationships between Variables\nThis week, we will examine relationships between variables. We will do a deep dive into scatterplots, adding trend lines, depicting how relationships differ across categorical groups, and correlation matrices. The practical will walk you through building these plots. To prepare for the following week, you will complete lessons on working with date and time variables on DataCamp.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Data Visualisation"
+    ]
+  },
+  {
+    "objectID": "data-vis/data-vis.html#week-6-time-series-and-line-graphs",
+    "href": "data-vis/data-vis.html#week-6-time-series-and-line-graphs",
+    "title": "Data Visualisation",
+    "section": "Week 6: Time Series and Line Graphs",
+    "text": "Week 6: Time Series and Line Graphs\nThis week, we will explore how to visualise changes over time using line graphs. We will discuss how to de-clutter and emphasize temporal trends and work with date and time variables in the seminar, and you will practice depicting temporal data in the practical.",
     "crumbs": [
       "PSY00122M-A ",
       "Data Visualisation"
@@ -5068,41 +5127,6 @@
       "PSY00122M-A ",
       "Week 6: Time Series and Line Plots",
       "Prepare!"
-    ]
-  },
-  {
-    "objectID": "data-vis/data-vis.html#week-6-time-series-and-line-graphs",
-    "href": "data-vis/data-vis.html#week-6-time-series-and-line-graphs",
-    "title": "Data Visualisation",
-    "section": "Week 6: Time Series and Line Graphs",
-    "text": "Week 6: Time Series and Line Graphs\nThis week, we will explore how to visualise changes over time using line graphs. We will discuss how to de-clutter and emphasize temporal trends and work with date and time variables in the seminar, and you will practice depicting temporal data in the practical.",
-    "crumbs": [
-      "PSY00122M-A ",
-      "Data Visualisation"
-    ]
-  },
-  {
-    "objectID": "data-vis/week-1/seminar1.html#module-organization",
-    "href": "data-vis/week-1/seminar1.html#module-organization",
-    "title": "Week 1 Seminar: Principles of Data Visualisation",
-    "section": "Module organization",
-    "text": "Module organization\n\nExplore\nExplain",
-    "crumbs": [
-      "PSY00122M-A ",
-      "Week 1: Principles of Data Visualisation",
-      "Seminar"
-    ]
-  },
-  {
-    "objectID": "data-vis/week-1/seminar1.html#up-next",
-    "href": "data-vis/week-1/seminar1.html#up-next",
-    "title": "Week 1 Seminar: Principles of Data Visualisation",
-    "section": "Up Next",
-    "text": "Up Next\n\nDistributions",
-    "crumbs": [
-      "PSY00122M-A ",
-      "Week 1: Principles of Data Visualisation",
-      "Seminar"
     ]
   }
 ]
