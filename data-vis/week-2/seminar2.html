@@ -256,17 +256,23 @@
 <p><br></p>
 <div style="font-size: 80%;">
 <p>A graphic…</p>
+<div>
 <ul>
-<li>maps <span style="color:blue; font-weight:bold;">variables in the data</span> +</li>
-<li>to the <span style="color:blue; font-weight:bold;">aesthetic attributes</span> +</li>
-<li>of <span style="color:blue; font-weight:bold;">geometric objects</span> +</li>
+<li class="fragment">maps <span style="color:blue; font-weight:bold;">variables in the data</span> +</li>
+<li class="fragment">to the <span style="color:blue; font-weight:bold;">aesthetic attributes</span> +</li>
+<li class="fragment">of <span style="color:blue; font-weight:bold;">geometric objects</span> +</li>
 </ul>
+</div>
+<div class="fragment">
 <p>with possible …</p>
+</div>
+<div>
 <ul>
-<li><span style="color:blue; font-weight:bold;">statistical transformations</span> +</li>
-<li>different <span style="color:blue; font-weight:bold;">coordinate systems</span> +</li>
-<li>and <span style="color:blue; font-weight:bold;">faceting</span> +</li>
+<li class="fragment"><span style="color:blue; font-weight:bold;">statistical transformations</span> +</li>
+<li class="fragment">different <span style="color:blue; font-weight:bold;">coordinate systems</span> +</li>
+<li class="fragment">and <span style="color:blue; font-weight:bold;">faceting</span></li>
 </ul>
+</div>
 </div>
 </section>
 <section id="how-do-we-map-data-to-a-graphic" class="slide level2">
@@ -437,17 +443,33 @@
 <p><br></p>
 <div style="font-size: 75%;">
 <p>Bulding blocks</p>
+<div>
 <ul>
-<li>data</li>
-<li>aesthetics: specify variables to use for axes, shapes</li>
-<li>geom: the shapes that will depict the data</li>
-<li>scales: customise how variables are used to depict axes, shapes</li>
-<li>statistical transformations: depict summaries (e.g., means) and model fits</li>
-<li>coord: customise axis ranges and appearance</li>
-<li>theme: customise features such as font size, background color, legend position</li>
-<li>facets: break graphic into subsets</li>
+<li class="fragment">data</li>
+<li class="fragment">aesthetics: specify variables to use for axes, shapes</li>
+<li class="fragment">geom: the shapes that will depict the data</li>
+<li class="fragment">scales: customise how variables are used to depict axes, shapes</li>
+<li class="fragment">statistical transformations: depict summaries (e.g., means) and model fits</li>
+<li class="fragment">coord: customise axis ranges and appearance</li>
+<li class="fragment">theme: customise features such as font size, background color, legend position</li>
+<li class="fragment">facets: break graphic into subsets</li>
 </ul>
 </div>
+</div>
+<aside class="notes">
+<p>TODAY I”M GIVING YOU AN OVERVIEW OF WHAT THESE BUILDING BLOCKS ARE AND HOW TO PUT THEM TOGETHER.</p>
+<p>YOU MAY NOT CATCH ALL THE DETAILS NOW. THIS IS WHY WE’LL BE DIVING IN TO HOW TO USE THESE BUILDING BLOCKS FOR THE NEXT 4 WEEKS.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="ggplot-3" class="slide level2">
 <h2>ggplot</h2>
@@ -589,6 +611,7 @@
 </div>
 <aside class="notes">
 <p>What if we don’t want to look at the full distribution - we just want to look at the average tendencies for each diagnosis? Well here we want a bar plot. But we need to calculate that average tendency somehow.</p>
+<p>One way to do that would be to use the data to calculate the averages first, and then plot them.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -916,6 +939,9 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section class="slide level2">
+
 
 <img data-src="seminar2_files/figure-revealjs/barplot-plot-theme1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="ggplot-28" class="slide level2">
@@ -932,7 +958,7 @@
 <span id="cb19-9"><a></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
-<p>We can add a theme() line and specify the appearance of various characteristics</p>
+<p>We can add a theme() code and specify the appearance of various characteristics</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -944,6 +970,9 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section class="slide level2">
+
 
 <img data-src="seminar2_files/figure-revealjs/barplot-plot-theme2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="ggplot-29" class="slide level2">
@@ -970,6 +999,9 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section class="slide level2">
+
 
 <img data-src="seminar2_files/figure-revealjs/barplot-plot-theme-bw-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="ggplot-30" class="slide level2">
@@ -988,6 +1020,19 @@
 <li><span style="color:blue; font-weight:bold;">facets</span>: break graphic into subsets</li>
 </ul>
 </div>
+<aside class="notes">
+<p>Facets are especially handy when we have some pattern of relationships between some variables, and we want to see how that pattern VARIES ACROSS DIFFERENT GROUPS.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="ggplot-31" class="slide level2">
 <h2>ggplot</h2>
@@ -997,7 +1042,7 @@
 <span id="cb21-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
-<p>What if we want to see how this relationship varies across another variable? Too much to combine into a single plot</p>
+<p>What if we want to see how this relationship varies across another variable? Like different diagnoses? Too much to combine into a single plot</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

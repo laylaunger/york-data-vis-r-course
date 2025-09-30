@@ -3142,7 +3142,7 @@
     "href": "data-vis/week-2/seminar2.html#ggplot-1",
     "title": "Week 2 Seminar: Grammar of Graphics",
     "section": "ggplot",
-    "text": "ggplot\n\n\nA graphic…\n\nmaps variables in the data +\nto the aesthetic attributes +\nof geometric objects +\n\nwith possible …\n\nstatistical transformations +\ndifferent coordinate systems +\nand faceting +",
+    "text": "ggplot\n\n\nA graphic…\n\n\nmaps variables in the data +\nto the aesthetic attributes +\nof geometric objects +\n\n\n\nwith possible …\n\n\n\nstatistical transformations +\ndifferent coordinate systems +\nand faceting",
     "crumbs": [
       "PSY00122M-A ",
       "Week 2: Grammar of Graphics",
@@ -3238,7 +3238,7 @@
     "href": "data-vis/week-2/seminar2.html#ggplot-2",
     "title": "Week 2 Seminar: Grammar of Graphics",
     "section": "ggplot",
-    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets",
+    "text": "ggplot\n\n\nBulding blocks\n\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets\n\n\n\n\nTODAY I”M GIVING YOU AN OVERVIEW OF WHAT THESE BUILDING BLOCKS ARE AND HOW TO PUT THEM TOGETHER.\nYOU MAY NOT CATCH ALL THE DETAILS NOW. THIS IS WHY WE’LL BE DIVING IN TO HOW TO USE THESE BUILDING BLOCKS FOR THE NEXT 4 WEEKS.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 2: Grammar of Graphics",
@@ -3358,7 +3358,7 @@
     "href": "data-vis/week-2/seminar2.html#ggplot-12",
     "title": "Week 2 Seminar: Grammar of Graphics",
     "section": "ggplot",
-    "text": "ggplot\n\npsych_df %&gt;%\n  group_by(diagnosis) %&gt;%\n  summarize(stress_score_mean = mean(stress_score)) %&gt;%\n  ggplot(aes(x = diagnosis, y = stress_score_mean)) +\n  geom_bar(stat = \"identity\")\n\n\nWhat if we don’t want to look at the full distribution - we just want to look at the average tendencies for each diagnosis? Well here we want a bar plot. But we need to calculate that average tendency somehow.",
+    "text": "ggplot\n\npsych_df %&gt;%\n  group_by(diagnosis) %&gt;%\n  summarize(stress_score_mean = mean(stress_score)) %&gt;%\n  ggplot(aes(x = diagnosis, y = stress_score_mean)) +\n  geom_bar(stat = \"identity\")\n\n\nWhat if we don’t want to look at the full distribution - we just want to look at the average tendencies for each diagnosis? Well here we want a bar plot. But we need to calculate that average tendency somehow.\nOne way to do that would be to use the data to calculate the averages first, and then plot them.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 2: Grammar of Graphics",
@@ -3550,7 +3550,7 @@
     "href": "data-vis/week-2/seminar2.html#ggplot-28",
     "title": "Week 2 Seminar: Grammar of Graphics",
     "section": "ggplot",
-    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(aes(color = diagnosis), size = 2) +\n  scale_color_manual(values = c(\"darkgray\", \"deeppink\", \"blue\")) +\n  scale_x_continuous(name = \"Sleep in Hours\", \n                     breaks = seq(0, 12, by = 2), limits = c(0, 12)) +\n  theme(legend.position = \"top\",\n        legend.title = element_blank(),\n        panel.grid = element_blank())\n\n\nWe can add a theme() line and specify the appearance of various characteristics",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sleep_hours, y = stress_score)) +\n  geom_point(aes(color = diagnosis), size = 2) +\n  scale_color_manual(values = c(\"darkgray\", \"deeppink\", \"blue\")) +\n  scale_x_continuous(name = \"Sleep in Hours\", \n                     breaks = seq(0, 12, by = 2), limits = c(0, 12)) +\n  theme(legend.position = \"top\",\n        legend.title = element_blank(),\n        panel.grid = element_blank())\n\n\nWe can add a theme() code and specify the appearance of various characteristics",
     "crumbs": [
       "PSY00122M-A ",
       "Week 2: Grammar of Graphics",
@@ -3574,7 +3574,7 @@
     "href": "data-vis/week-2/seminar2.html#ggplot-30",
     "title": "Week 2 Seminar: Grammar of Graphics",
     "section": "ggplot",
-    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets",
+    "text": "ggplot\n\n\nBulding blocks\n\ndata\naesthetics: specify variables to use for axes, shapes\ngeom: the shapes that will depict the data\nscales: customise how variables are used to depict axes, shapes\nstatistical transformations: depict summaries (e.g., means) and model fits\ncoord: customise axis ranges and appearance\ntheme: customise features such as font size, background color, legend position\nfacets: break graphic into subsets\n\n\n\nFacets are especially handy when we have some pattern of relationships between some variables, and we want to see how that pattern VARIES ACROSS DIFFERENT GROUPS.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 2: Grammar of Graphics",
@@ -3586,7 +3586,7 @@
     "href": "data-vis/week-2/seminar2.html#ggplot-31",
     "title": "Week 2 Seminar: Grammar of Graphics",
     "section": "ggplot",
-    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sex, y = stress_score)) +\n  geom_point(position = position_jitter(width = .1))\n\n\nWhat if we want to see how this relationship varies across another variable? Too much to combine into a single plot",
+    "text": "ggplot\n\npsych_df %&gt;%\n  ggplot(aes(x = sex, y = stress_score)) +\n  geom_point(position = position_jitter(width = .1))\n\n\nWhat if we want to see how this relationship varies across another variable? Like different diagnoses? Too much to combine into a single plot",
     "crumbs": [
       "PSY00122M-A ",
       "Week 2: Grammar of Graphics",
