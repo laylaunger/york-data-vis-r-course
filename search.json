@@ -3934,7 +3934,7 @@
     "href": "data-vis/week-4/seminar4.html#why-bars",
     "title": "Week 4 Seminar: Barplots",
     "section": "Why bars?",
-    "text": "Why bars?\n\nHeights of bars give us easy insights into categorical variables:\n\nCount how many values within each category there are\nSee how a continuous variable differs across the categorical groups\nDisplays relationships analyzed by ANOVA, regression\n\n\n\n\n\n\nintervention_id\nparticipant_group\nintervention_type\nsession_region\nlead_clinician\nsymptom_reduction\n\n\n\n\n1\nOlder Adults\nSupport Group\nSouth\nDr. Brown\n19.1\n\n\n2\nOlder Adults\nMedication\nEast\nDr. Smith\n20.1\n\n\n3\nOlder Adults\nMedication\nNorth\nDr. Chen\n19.4\n\n\n\n\n\n\n\n\nWe have categorical variables here like intervention type.\nHow many people in each intervention type group?\nHow did symptom reduction (continuous) differ acros intervention type groups?",
+    "text": "Why bars?\n\nHeights of bars give us easy insights into categorical variables:\n\n\nSee counts / proportions of observations within each category\n\nDisplays patterns analyzed by Chi square\n\nSummarise how a continuous variable differs across the categorical groups\n\nDisplays relationships analyzed by t-test, ANOVA, regression\n\n\n\n\n\n\n\n\nintervention_id\nparticipant_group\nintervention_type\nsession_region\nlead_clinician\nsymptom_reduction\n\n\n\n\n1\nOlder Adults\nSupport Group\nSouth\nDr. Brown\n19.1\n\n\n2\nOlder Adults\nMedication\nEast\nDr. Smith\n20.1\n\n\n3\nOlder Adults\nMedication\nNorth\nDr. Chen\n19.4\n\n\n\n\n\n\n\n\nWe have categorical variables here like intervention type.\nHow many people in each intervention type group?\nWhat are the proportion of people in each intervention type group?\nHow did symptom reduction (continuous) differ across intervention type groups?\nSo we can use heights of bars to show counts, proportions, and summary statistics.\nWe CAN calculate things like counts, proportions, and summary statistics ourselves e.g., using tidyverse, and then use them to specify the heights of bars.\nBut ggplot has ways of calculating things like counts proportions and summary statistics FOR US\nSo I’ll be showing both ways",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -3970,7 +3970,7 @@
     "href": "data-vis/week-4/seminar4.html#why-bars-1",
     "title": "Week 4 Seminar: Barplots",
     "section": "Why bars?",
-    "text": "Why bars?\n\nHeights of bars give us easy insights into categorical variables:\n\nCount how many values within each category there are\nSee how a continuous variable differs across the categorical groups",
+    "text": "Why bars?\n\nHeights of bars give us easy insights into categorical variables:\n\nSee counts / proportions of observations within each category \nSummarise how a continuous variable differs across the categorical groups",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4054,7 +4054,7 @@
     "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-6",
     "title": "Week 4 Seminar: Barplots",
     "section": "Standard barplot of counts",
-    "text": "Standard barplot of counts\nsplit counts by another variable\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group)) #&lt; add another variable to set fill by count \n\n\nUSE POINTER TO ILLUSTRATE WHAT A SEGMENT MEANS\nBy default, there’s an argument here called “position” that is set to “stack”. So this counts up the numbers and stacks them on top of each other.\nStacking makes it harder to use those heights to quickly “see” counts. Lets unstack them.",
+    "text": "Standard barplot of counts\nsplit counts by another variable\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group)) #&lt; add another variable to set fill by count",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4066,7 +4066,7 @@
     "href": "data-vis/week-4/seminar4.html#standard-barplot-of-counts-7",
     "title": "Week 4 Seminar: Barplots",
     "section": "Standard barplot of counts",
-    "text": "Standard barplot of counts\nunstack using position = “dodge”\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group), position = \"dodge\") #&lt; unstack \n\n\nUSE POINTER TO ILLUSTRATE THAT SEGMENT IS SAME VALUE AS BEFORE\nUnstacked",
+    "text": "Standard barplot of counts\nunstack using position = “dodge”\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group), position = \"dodge\") #&lt; unstack",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4114,7 +4114,7 @@
     "href": "data-vis/week-4/seminar4.html#barplot-of-proportions-1",
     "title": "Week 4 Seminar: Barplots",
     "section": "Barplot of proportions",
-    "text": "Barplot of proportions\nconvert counts to proportions\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group), position = \"fill\") + #&lt;\n  scale_y_continuous(name = \"prop\") #&lt; adjust the label from default \"count\"\n\n\nNow we’re still counting up the numbers, but now before stacking, we calculate the proportion of each count from the total.",
+    "text": "Barplot of proportions\nconvert counts to proportions\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group), position = \"fill\") + #&lt; this switches to proportions\n  scale_y_continuous(name = \"prop\") #&lt; adjust the label from default \"count\"\n\n\nNow we’re still counting up the numbers, but now before stacking, we calculate the proportion of each count from the total.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4126,7 +4126,7 @@
     "href": "data-vis/week-4/seminar4.html#barplot-of-proportions-2",
     "title": "Week 4 Seminar: Barplots",
     "section": "Barplot of proportions",
-    "text": "Barplot of proportions\nconvert counts to proportions\n\nggplot(mental_health, aes(intervention_type, fill = participant_group)) +\n  geom_bar(position = position_fill()) +\n  geom_text(aes(label = after_stat(count / sum(count))), #&lt; get \"count\" stat calculated in next line\n            stat = \"count\", #&lt; calculate counts per group\n            position = position_fill(vjust = 0.5)) + #&lt; centered within filled segments\n  scale_y_continuous(name = \"prop\")\n\n\nUse that count variable to label the props",
+    "text": "Barplot of proportions\nwrangling equivalent\n\nmental_health %&gt;%\n  count(session_region, participant_group, name = \"num_session\") %&gt;% #&lt; calculate counts\n  group_by(session_region) %&gt;% #&lt; for each session_region...\n  mutate(prop = num_session / sum(num_session)) %&gt;% #&lt; calculate proportion out of total count\n  ungroup() %&gt;%\n  ggplot(aes(x = session_region, y = prop)) +\n  geom_bar(aes(fill = participant_group), stat = \"identity\") #&lt; identity",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4138,7 +4138,7 @@
     "href": "data-vis/week-4/seminar4.html#barplot-of-proportions-3",
     "title": "Week 4 Seminar: Barplots",
     "section": "Barplot of proportions",
-    "text": "Barplot of proportions\nwrangling equivalent\n\nmental_health %&gt;%\n  count(session_region, participant_group, name = \"num_session\") %&gt;% #&lt; calculate counts\n  group_by(session_region) %&gt;% #&lt; for each session_region...\n  mutate(prop = num_session / sum(num_session)) %&gt;% #&lt; calculate proportion out of total count\n  ungroup() %&gt;%\n  ggplot(aes(x = session_region, y = prop)) +\n  geom_bar(aes(fill = participant_group), stat = \"identity\") #&lt;",
+    "text": "Barplot of proportions\nlabelling proportions\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group), position = \"fill\") +\n  scale_y_continuous(name = \"prop\") + \n  geom_text(aes(group = participant_group, #&lt; for each participant group...\n                label = after_stat(count / sum(count))), #&lt; get \"count\" stat calculated in next line\n            stat = \"count\", #&lt; calculate counts per group\n            position = position_fill(vjust = 0.5)) + #&lt; centered within filled segments\n  scale_y_continuous(name = \"prop\")\n\n\nUse that count variable to label the props",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4258,7 +4258,7 @@
     "href": "data-vis/week-4/seminar4.html#barplot-of-summary-stats-7",
     "title": "Week 4 Seminar: Barplots",
     "section": "Barplot of summary stats",
-    "text": "Barplot of summary stats\nhandy stat_summary\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(aes(fill = intervention_type), fun = \"mean\", geom = \"bar\", show.legend = F) +\n  stat_summary(fun.data = \"mean_se\", geom = \"linerange\") #&lt; add error bars",
+    "text": "Barplot of summary stats\nhandy stat_summary\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(aes(fill = intervention_type), fun = \"mean\", geom = \"bar\", show.legend = F) +\n  stat_summary(fun.data = \"mean_se\", geom = \"linerange\") #&lt; add error bars\n\n\nColor the bars",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4342,7 +4342,7 @@
     "href": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-4",
     "title": "Week 4 Seminar: Barplots",
     "section": "Grouped barplot of summary stats",
-    "text": "Grouped barplot of summary stats\nadd grouping variable\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(aes(fill = participant_group), #&lt; Now we fill by ANOTHER group\n               fun = \"mean\", geom = \"bar\", position = \"dodge\", #&lt; avoid stacking groups\n               show.legend = F)",
+    "text": "Grouped barplot of summary stats\nadd grouping variable\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(aes(fill = participant_group), #&lt; Now we fill by ANOTHER group\n               fun = \"mean\", geom = \"bar\", position = \"dodge\" #&lt; avoid stacking groups\n               )",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4354,7 +4354,7 @@
     "href": "data-vis/week-4/seminar4.html#grouped-barplot-of-summary-stats-5",
     "title": "Week 4 Seminar: Barplots",
     "section": "Grouped barplot of summary stats",
-    "text": "Grouped barplot of summary stats\nadd grouping variable\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(aes(fill = participant_group),\n               fun = \"mean\", geom = \"bar\", position = \"dodge\",\n               show.legend = F) +\n  stat_summary(aes(group = participant_group), \n               fun.data = \"mean_se\", geom = \"linerange\", position = position_dodge(width = .9)) #&lt; match bar width",
+    "text": "Grouped barplot of summary stats\nadd grouping variable\n\nmental_health %&gt;%\n  ggplot(aes(x = intervention_type, y = symptom_reduction)) +\n  stat_summary(aes(fill = participant_group),\n               fun = \"mean\", geom = \"bar\", position = \"dodge\") +\n  stat_summary(aes(group = participant_group), \n               fun.data = \"mean_se\", geom = \"linerange\", position = position_dodge(width = .9)) #&lt; match bar width",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4390,7 +4390,7 @@
     "href": "data-vis/week-4/seminar4.html#upcoming",
     "title": "Week 4 Seminar: Barplots",
     "section": "Upcoming",
-    "text": "Upcoming",
+    "text": "Upcoming\n\nRelationships between variables with scatterplots",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",

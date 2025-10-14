@@ -335,11 +335,18 @@
 <h2>Why bars?</h2>
 <p><br></p>
 <p>Heights of bars give us easy insights into categorical variables:</p>
+<div>
 <ul>
-<li><p>Count how many values within each category there are</p></li>
-<li><p>See how a continuous variable differs across the categorical groups</p></li>
-<li><p>Displays relationships analyzed by ANOVA, regression</p></li>
+<li class="fragment">See counts / proportions of observations within each category
+<ul>
+<li class="fragment">Displays patterns analyzed by Chi square</li>
+</ul></li>
+<li class="fragment">Summarise how a continuous variable differs across the categorical groups
+<ul>
+<li class="fragment">Displays relationships analyzed by t-test, ANOVA, regression</li>
+</ul></li>
 </ul>
+</div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table caption-top" data-quarto-postprocess="true" style="font-size: 24px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -387,7 +394,12 @@
 <aside class="notes">
 <p>We have categorical variables here like intervention type.</p>
 <p>How many people in each intervention type group?</p>
-<p>How did symptom reduction (continuous) differ acros intervention type groups?</p>
+<p>What are the proportion of people in each intervention type group?</p>
+<p>How did symptom reduction (continuous) differ across intervention type groups?</p>
+<p>So we can use heights of bars to show counts, proportions, and summary statistics.</p>
+<p>We CAN calculate things like counts, proportions, and summary statistics ourselves e.g., using tidyverse, and then use them to specify the heights of bars.</p>
+<p>But ggplot has ways of calculating things like counts proportions and summary statistics FOR US</p>
+<p>So I’ll be showing both ways</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -437,8 +449,8 @@
 <p><br></p>
 <p>Heights of bars give us easy insights into categorical variables:</p>
 <ul>
-<li><p><strong>Count how many values within each category there are</strong></p></li>
-<li><p>See how a continuous variable differs across the categorical groups</p></li>
+<li><p><strong>See counts / proportions of observations within each category </strong></p></li>
+<li><p>Summarise how a continuous variable differs across the categorical groups</p></li>
 </ul>
 </section>
 <section id="standard-barplot-of-counts" class="slide level2">
@@ -720,7 +732,12 @@
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(mental_health, <span class="fu">aes</span>(<span class="at">x =</span> session_region)) <span class="sc">+</span></span>
 <span id="cb5-2"><a></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> participant_group)) <span class="co">#&lt; add another variable to set fill by count </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<aside class="notes">
+</section>
+<section class="slide level2">
+
+
+<img data-src="seminar4_files/figure-revealjs/barplot-count4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"><aside class="notes">
+<p>FOR GRAPH</p>
 <p>USE POINTER TO ILLUSTRATE WHAT A SEGMENT MEANS</p>
 <p>By default, there’s an argument here called “position” that is set to “stack”. So this counts up the numbers and stacks them on top of each other.</p>
 <p>Stacking makes it harder to use those heights to quickly “see” counts. Lets unstack them.</p>
@@ -736,10 +753,6 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
-
-
-<img data-src="seminar4_files/figure-revealjs/barplot-count4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="standard-barplot-of-counts-7" class="slide level2">
 <h2>Standard barplot of counts</h2>
 <p><strong>unstack using position = “dodge”</strong></p>
@@ -747,7 +760,11 @@
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(mental_health, <span class="fu">aes</span>(<span class="at">x =</span> session_region)) <span class="sc">+</span></span>
 <span id="cb6-2"><a></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> participant_group), <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="co">#&lt; unstack </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<aside class="notes">
+</section>
+<section class="slide level2">
+
+
+<img data-src="seminar4_files/figure-revealjs/barplot-count5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"><aside class="notes">
 <p>USE POINTER TO ILLUSTRATE THAT SEGMENT IS SAME VALUE AS BEFORE</p>
 <p>Unstacked</p>
 <style type="text/css">
@@ -762,10 +779,6 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2">
-
-
-<img data-src="seminar4_files/figure-revealjs/barplot-count5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="standard-barplot-of-counts-8" class="slide level2">
 <h2>Standard barplot of counts</h2>
 <p><strong>unstack using position = “dodge”</strong></p>
@@ -831,7 +844,7 @@
 <p><strong>convert counts to proportions</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(mental_health, <span class="fu">aes</span>(<span class="at">x =</span> session_region)) <span class="sc">+</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> participant_group), <span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="co">#&lt;</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> participant_group), <span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="co">#&lt; this switches to proportions</span></span>
 <span id="cb8-3"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"prop"</span>) <span class="co">#&lt; adjust the label from default "count"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
@@ -867,57 +880,15 @@
 </section>
 <section id="barplot-of-proportions-2" class="slide level2">
 <h2>Barplot of proportions</h2>
-<p><strong>convert counts to proportions</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(mental_health, <span class="fu">aes</span>(intervention_type, <span class="at">fill =</span> participant_group)) <span class="sc">+</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_fill</span>()) <span class="sc">+</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">after_stat</span>(count <span class="sc">/</span> <span class="fu">sum</span>(count))), <span class="co">#&lt; get "count" stat calculated in next line</span></span>
-<span id="cb9-4"><a></a>            <span class="at">stat =</span> <span class="st">"count"</span>, <span class="co">#&lt; calculate counts per group</span></span>
-<span id="cb9-5"><a></a>            <span class="at">position =</span> <span class="fu">position_fill</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> <span class="co">#&lt; centered within filled segments</span></span>
-<span id="cb9-6"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"prop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<aside class="notes">
-<p>Use that count variable to label the props</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section class="slide level2">
-
-
-<img data-src="seminar4_files/figure-revealjs/barplot-prop1A-labels-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"><aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="barplot-of-proportions-3" class="slide level2">
-<h2>Barplot of proportions</h2>
 <p><strong>wrangling equivalent</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>mental_health <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">count</span>(session_region, participant_group, <span class="at">name =</span> <span class="st">"num_session"</span>) <span class="sc">%&gt;%</span> <span class="co">#&lt; calculate counts</span></span>
-<span id="cb10-3"><a></a>  <span class="fu">group_by</span>(session_region) <span class="sc">%&gt;%</span> <span class="co">#&lt; for each session_region...</span></span>
-<span id="cb10-4"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> num_session <span class="sc">/</span> <span class="fu">sum</span>(num_session)) <span class="sc">%&gt;%</span> <span class="co">#&lt; calculate proportion out of total count</span></span>
-<span id="cb10-5"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb10-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> session_region, <span class="at">y =</span> prop)) <span class="sc">+</span></span>
-<span id="cb10-7"><a></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> participant_group), <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="co">#&lt; </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>mental_health <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">count</span>(session_region, participant_group, <span class="at">name =</span> <span class="st">"num_session"</span>) <span class="sc">%&gt;%</span> <span class="co">#&lt; calculate counts</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">group_by</span>(session_region) <span class="sc">%&gt;%</span> <span class="co">#&lt; for each session_region...</span></span>
+<span id="cb9-4"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> num_session <span class="sc">/</span> <span class="fu">sum</span>(num_session)) <span class="sc">%&gt;%</span> <span class="co">#&lt; calculate proportion out of total count</span></span>
+<span id="cb9-5"><a></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> session_region, <span class="at">y =</span> prop)) <span class="sc">+</span></span>
+<span id="cb9-7"><a></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> participant_group), <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="co">#&lt; identity</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 
@@ -937,6 +908,50 @@
 
 
 <img data-src="seminar4_files/figure-revealjs/barplot-prop1B-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"><aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="barplot-of-proportions-3" class="slide level2">
+<h2>Barplot of proportions</h2>
+<p><strong>labelling proportions</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(mental_health, <span class="fu">aes</span>(<span class="at">x =</span> session_region)) <span class="sc">+</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> participant_group), <span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"prop"</span>) <span class="sc">+</span> </span>
+<span id="cb10-4"><a></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">group =</span> participant_group, <span class="co">#&lt; for each participant group...</span></span>
+<span id="cb10-5"><a></a>                <span class="at">label =</span> <span class="fu">after_stat</span>(count <span class="sc">/</span> <span class="fu">sum</span>(count))), <span class="co">#&lt; get "count" stat calculated in next line</span></span>
+<span id="cb10-6"><a></a>            <span class="at">stat =</span> <span class="st">"count"</span>, <span class="co">#&lt; calculate counts per group</span></span>
+<span id="cb10-7"><a></a>            <span class="at">position =</span> <span class="fu">position_fill</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> <span class="co">#&lt; centered within filled segments</span></span>
+<span id="cb10-8"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"prop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>Use that count variable to label the props</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+
+
+<img data-src="seminar4_files/figure-revealjs/barplot-prop1A-labels-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"><aside class="notes">
 
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1247,7 +1262,7 @@
 <span id="cb14-4"><a></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>, <span class="at">geom =</span> <span class="st">"linerange"</span>) <span class="co">#&lt; add error bars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
-
+<p>Color the bars</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1493,8 +1508,8 @@
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>mental_health <span class="sc">%&gt;%</span></span>
 <span id="cb16-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> intervention_type, <span class="at">y =</span> symptom_reduction)) <span class="sc">+</span></span>
 <span id="cb16-3"><a></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">fill =</span> participant_group), <span class="co">#&lt; Now we fill by ANOTHER group</span></span>
-<span id="cb16-4"><a></a>               <span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"bar"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>, <span class="co">#&lt; avoid stacking groups</span></span>
-<span id="cb16-5"><a></a>               <span class="at">show.legend =</span> F) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a></a>               <span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"bar"</span>, <span class="at">position =</span> <span class="st">"dodge"</span> <span class="co">#&lt; avoid stacking groups</span></span>
+<span id="cb16-5"><a></a>               ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 
@@ -1521,10 +1536,9 @@
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>mental_health <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> intervention_type, <span class="at">y =</span> symptom_reduction)) <span class="sc">+</span></span>
 <span id="cb17-3"><a></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">fill =</span> participant_group),</span>
-<span id="cb17-4"><a></a>               <span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"bar"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>,</span>
-<span id="cb17-5"><a></a>               <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb17-6"><a></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">group =</span> participant_group), </span>
-<span id="cb17-7"><a></a>               <span class="at">fun.data =</span> <span class="st">"mean_se"</span>, <span class="at">geom =</span> <span class="st">"linerange"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> .<span class="dv">9</span>)) <span class="co">#&lt; match bar width</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-4"><a></a>               <span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"bar"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">group =</span> participant_group), </span>
+<span id="cb17-6"><a></a>               <span class="at">fun.data =</span> <span class="st">"mean_se"</span>, <span class="at">geom =</span> <span class="st">"linerange"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> .<span class="dv">9</span>)) <span class="co">#&lt; match bar width</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 
@@ -1566,6 +1580,9 @@
 </section>
 <section id="upcoming" class="slide level2">
 <h2>Upcoming</h2>
+<ul>
+<li>Relationships between variables with scatterplots</li>
+</ul>
 
 
 </section>
@@ -1949,7 +1966,7 @@
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/laylaunger\.github\.io\/york-data-vis-r-course\/");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
