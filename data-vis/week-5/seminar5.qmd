@@ -124,11 +124,13 @@ Note relationship with primary dataset
 
 ## Why plot relationships between continuous variables?
 
+::: {.incremental}
 - See how changes in one variable are associated with changes in another
 
 - See how relationships between continuous variables differ across categorical groups
 
 - Displays the patterns analyzed in correlations, regression
+:::
 
 ```{r head-customer-ops-short, echo=FALSE}
 customer_ops %>% 
@@ -585,6 +587,11 @@ ggplot(customer_ops, aes(task_switch_hours, performance_index)) +
   stat_cor()
 ```
 
+---
+
+## Scatter Plot: Trend Lines
+
+**bonus: add statistic**
 
 ```{r scatter-lines1C, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=5.2}
 ```
@@ -774,6 +781,30 @@ ops_sat %>%
   row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
 ```
 
+::: notes
+
+Might have additional useful information about these employees.
+
+Such as the region where they work, how long they've worked there, 
+and some measure of how well they're performing at a 90 day review.
+
+USE PAINTING
+
+So there might be questions that we want to answer that involve data
+from these two sets. E.g., we were looking at the relationship between
+training huors and perfrmance befre. And we had seen that employees
+with more training hours had a higher performance index.
+
+But maybe that relationship differs across people who have been with the
+company for different amounts of time. For example, maybe completing more
+training hours is especially helpful for employees who are just starting out
+and have been with the company for less than a year.
+
+If we wanted to look at that, we need to pull information from BOTH 
+these datasets.
+
+:::
+
 ---
 
 ## Relational Data
@@ -823,6 +854,12 @@ ops_joined %>%
   kable_styling(font_size = 18, position = "center", full_width = F) %>%
   row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
 ```
+
+::: notes
+
+Showing just a subset of the columns using select
+
+:::
 
 ---
 
@@ -918,18 +955,42 @@ select just numeric variables
 
 ## Correlation Matrices
 
-**select continuous variables**
+**use `cor` to calculate correlations**
 
 ```{r relational-data-cor-mat-1A}
 cor_mat <- cor(ops_continuous, use = "pairwise.complete.obs") %>% 
   round(digits = 2)
 ```
 
+<br>
+
 ```{r relational-data-cor-mat-1B, echo=FALSE}
 kable(cor_mat) %>%
   kable_styling(font_size = 18) %>%
-  scroll_box(width = "100%", height = "800px")
+  scroll_box(width = "100%", height = "300px")
 ```
+
+::: notes
+
+Now this is what we want to VISUALIZE. 
+We've got this correlation matrix, and we can spend a while staring at the
+numbers and trying to interpret what they mean. For example...
+
+
+But wouldn't it be so much easier to grasp these correlations in
+a visual form? Like, what if we could use color to indicate
+whether a correlation was positive or negative, and how strong
+the correlation is?
+
+So that's our goal. Take this numeric matrix and turn it 
+into a more easy to grasp visual.
+
+At this point we have a couple different options. There are various 
+packages that people have written that visualize correlation matrices.
+
+:::
+
+
 
 ---
 
@@ -937,11 +998,130 @@ kable(cor_mat) %>%
 
 **tidy format: each row is a pair of variables and its correlation**
 
-```{r relational-data-cor-mat-2}
+```{r relational-data-cor-mat-1B-small, echo=FALSE}
+kable(cor_mat) %>%
+  kable_styling(font_size = 18) %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+
+::: fragment
+```{r relational-data-cor-mat-1C, echo=FALSE}
 cor_tidy <- cor_mat %>%
   as.data.frame() %>%
   mutate(var1 = row.names(cor_mat)) %>%
   pivot_longer(cols = -var1, names_to = "var2", values_to = "r")
+
+kable(cor_tidy) %>%
+  kable_styling(font_size = 18) %>%
+  scroll_box(width = "100%", height = "200px")
+```
+:::
+
+::: notes
+So I'm going to show you one option, which is to use our standard ggplot 
+package.
+
+And if we want to use ggplot, we need to get this matrix into a tidy format.
+
+As a reminder, a tidy format is one where each row is an observation,
+and each column is a variable.
+
+Currently this matrix isn't in tidy format. 
+
+:::
+
+
+---
+
+## Correlation Matrices
+
+**tidy format: each row is a pair of variables and its correlation**
+
+```{r pivot-wide-to-long, echo=FALSE,  fig.align = "center", fig.height = 6.5,}
+knitr::include_graphics(here("data-vis","figs","wide_to_long.png"))
+
+```
+
+
+---
+
+## Correlation Matrices
+
+**tidy format: each row is a pair of variables and its correlation**
+
+```{r relational-data-cor-mat-2A, eval=FALSE}
+cor_mat %>%
+  as.data.frame()
+```
+
+```{r relational-data-cor-mat-2B, echo=FALSE}
+cor_mat %>%
+  as.data.frame() %>%
+  kable() %>%
+  kable_styling(font_size = 18) %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+::: fragment
+```{r relational-data-cor-mat-2C, eval=FALSE}
+cor_mat %>%
+  as.data.frame() %>%
+  mutate(var1 = row.names(cor_mat))
+```
+
+
+```{r relational-data-cor-mat-2D, echo=FALSE}
+cor_mat %>%
+  as.data.frame() %>%
+  mutate(var1 = row.names(cor_mat)) %>%
+  kable() %>%
+  kable_styling(font_size = 18) %>%
+  scroll_box(width = "100%", height = "200px")
+```
+:::
+
+---
+
+## Correlation Matrices
+
+**tidy format: each row is a pair of variables and its correlation**
+
+```{r relational-data-cor-mat-2D, echo=FALSE}
+```
+
+::: fragment
+```{r relational-data-cor-mat-2E, eval=FALSE}
+cor_mat %>%
+  as.data.frame() %>%
+  mutate(var1 = row.names(cor_mat)) %>%
+  pivot_longer(cols = -var1, names_to = "var2", values_to = "r")
+```
+
+
+```{r relational-data-cor-mat-2F, echo=FALSE}
+cor_mat %>%
+  as.data.frame() %>%
+  mutate(var1 = row.names(cor_mat)) %>%
+  pivot_longer(cols = -var1, names_to = "var2", values_to = "r") %>%
+  kable() %>%
+  kable_styling(font_size = 18) %>%
+  scroll_box(width = "100%", height = "200px")
+```
+:::
+
+---
+
+## Correlation Matrices
+
+**tidy format: each row is a pair of variables and its correlation**
+
+```{r relational-data-cor-mat-2G}
+cor_tidy <- cor_mat %>%
+  as.data.frame() %>%
+  mutate(var1 = row.names(cor_mat)) %>%
+  pivot_longer(cols = -var1, names_to = "var2", values_to = "r")
+
 
 head(cor_tidy)
 ```
@@ -953,8 +1133,8 @@ head(cor_tidy)
 **correlations as heatmap**
 
 ```{r relational-data-cor-mat-3, eval=FALSE}
-ggplot(cor_tidy, aes(var1, var2, fill = r)) +
-  geom_tile()
+ggplot(cor_tidy, aes(x = var1, y = var2)) +
+  geom_tile(aes(fill = r))
 
 ```
 
@@ -968,8 +1148,8 @@ ggplot(cor_tidy, aes(var1, var2, fill = r)) +
 **correlations as heatmap**
 
 ```{r relational-data-cor-mat-4, eval=FALSE}
-ggplot(cor_tidy, aes(var1, var2, fill = r)) +
-  geom_tile() +
+ggplot(cor_tidy, aes(x = var1, y = var2)) +
+  geom_tile(aes(fill = r)) +
   scale_fill_gradient2(low = "blue", mid = "white", high = "red",
                        midpoint = 0, limits = c(-1, 1)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -983,11 +1163,8 @@ ggplot(cor_tidy, aes(var1, var2, fill = r)) +
 **correlations as heatmap**
 
 
-```{r relational-data-cor-mat-5, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=7.5}
+```{r relational-data-cor-mat-4, echo=FALSE, fig.align="center", fig.height=5.2, fig.width=7.5}
 ```
-
-
----
 
 ---
 

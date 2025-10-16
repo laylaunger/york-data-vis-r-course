@@ -10,3 +10,9 @@ toc-location: right
 To prepare for diving into this week's topic, relationships between variables:
 
 - Read [Data Visualization Ch 12.1 - 12.2](https://clauswilke.com/dataviz/)
+
+If you haven't already completed the Data Camp assignments for the preceding weeks, you absolutely should catch up! Seminars and practicals will assume familiarity with the contents of these assignments. As a reminder, they are:
+
+- Introduction to the Tidyverse
+- Categorical Data in the Tidyverse
+- Reshaping Data with tidyr

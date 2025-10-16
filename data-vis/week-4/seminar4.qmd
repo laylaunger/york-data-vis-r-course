@@ -117,11 +117,13 @@ mental_health %>%
 
 Heights of bars give us easy insights into categorical variables:
 
-- Count how many values within each category there are
+::: {.incremental}
+- See counts / proportions of observations within each category 
+  - Displays patterns analyzed by Chi square
+- Summarise how a continuous variable differs across the categorical groups
+  - Displays relationships analyzed by t-test, ANOVA, regression
+:::
 
-- See how a continuous variable differs across the categorical groups
-
-- Displays relationships analyzed by ANOVA, regression
 
 ```{r psych-data-short, echo=FALSE}
 # Display using kable
@@ -137,7 +139,21 @@ We have categorical variables here like intervention type.
 
 How many people in each intervention type group?
 
-How did symptom reduction (continuous) differ acros intervention type groups?
+What are the proportion of people in each intervention type group?
+
+How did symptom reduction (continuous) differ across intervention type groups?
+
+So we can use heights of bars to show counts, proportions, and summary statistics.
+
+We CAN calculate things like counts, proportions, and summary statistics ourselves
+e.g., using tidyverse, and then use them to specify the heights of bars.
+
+But ggplot has ways of calculating things like counts proportions and summary statistics
+FOR US
+
+So I'll be showing both ways
+
+
 :::
 
 
@@ -190,9 +206,9 @@ How did symptom reduction (continuous) differ acros intervention type groups?
 
 Heights of bars give us easy insights into categorical variables:
 
-- **Count how many values within each category there are**
+- **See counts / proportions of observations within each category **
 
-- See how a continuous variable differs across the categorical groups
+- Summarise how a continuous variable differs across the categorical groups
 
 ---
 
@@ -324,7 +340,15 @@ ggplot(mental_health, aes(x = session_region)) +
   geom_bar(aes(fill = participant_group)) #< add another variable to set fill by count 
 ```
 
+
+---
+
+```{r barplot-count4, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
 ::: notes
+FOR GRAPH
+
 USE POINTER TO ILLUSTRATE WHAT A SEGMENT MEANS
 
 By default, there's an argument here called "position" that is set to "stack". 
@@ -333,12 +357,6 @@ So this counts up the numbers and stacks them on top of each other.
 Stacking makes it harder to use those heights to quickly "see" counts. Lets unstack them.
 
 :::
-
----
-
-```{r barplot-count4, echo = FALSE, fig.align="center", fig.height = 5.25}
-```
-
 
 ---
 
@@ -351,17 +369,17 @@ ggplot(mental_health, aes(x = session_region)) +
   geom_bar(aes(fill = participant_group), position = "dodge") #< unstack 
 ```
 
+---
+
+```{r barplot-count5, echo = FALSE, fig.align="center", fig.height = 5.25}
+```
+
 ::: notes
 USE POINTER TO ILLUSTRATE THAT SEGMENT IS SAME VALUE AS BEFORE
 
 Unstacked
 
 :::
-
----
-
-```{r barplot-count5, echo = FALSE, fig.align="center", fig.height = 5.25}
-```
 
 ---
 
@@ -430,7 +448,7 @@ For this we need proportions.
 
 ```{r barplot-prop1A, eval = FALSE}
 ggplot(mental_health, aes(x = session_region)) +
-  geom_bar(aes(fill = participant_group), position = "fill") + #<
+  geom_bar(aes(fill = participant_group), position = "fill") + #< this switches to proportions
   scale_y_continuous(name = "prop") #< adjust the label from default "count"
 ```
 
@@ -438,38 +456,10 @@ ggplot(mental_health, aes(x = session_region)) +
 Now we're still counting up the numbers, but now before stacking, we calculate the proportion of each count from the total. 
 :::
 
+
 ---
 
 ```{r barplot-prop1A, echo = FALSE, fig.align="center", fig.height = 5.25}
-```
-
-::: notes
-:::
-
-
----
-
-## Barplot of proportions
-
-**convert counts to proportions**
-
-
-```{r barplot-prop1A-labels, eval = FALSE}
-ggplot(mental_health, aes(intervention_type, fill = participant_group)) +
-  geom_bar(position = position_fill()) +
-  geom_text(aes(label = after_stat(count / sum(count))), #< get "count" stat calculated in next line
-            stat = "count", #< calculate counts per group
-            position = position_fill(vjust = 0.5)) + #< centered within filled segments
-  scale_y_continuous(name = "prop")
-```
-
-::: notes
-Use that count variable to label the props
-:::
-
----
-
-```{r barplot-prop1A-labels, echo = FALSE, fig.align="center", fig.height = 5.25}
 ```
 
 ::: notes
@@ -488,7 +478,7 @@ mental_health %>%
   mutate(prop = num_session / sum(num_session)) %>% #< calculate proportion out of total count
   ungroup() %>%
   ggplot(aes(x = session_region, y = prop)) +
-  geom_bar(aes(fill = participant_group), stat = "identity") #< 
+  geom_bar(aes(fill = participant_group), stat = "identity") #< identity
 ```
 
 ::: notes
@@ -503,7 +493,10 @@ mental_health %>%
 ::: notes
 :::
 
+
 ---
+
+
 
 ## Barplots of proportions / counts
 
@@ -696,6 +689,8 @@ mental_health %>%
 
 ::: notes
 
+Color the bars
+
 :::
 
 ---
@@ -791,8 +786,7 @@ Multiple categorical variables related to an outcome:
 mental_health %>%
   ggplot(aes(x = intervention_type, y = symptom_reduction)) +
   stat_summary(aes(fill = participant_group), 
-               fun = "mean", geom = "bar", position = "dodge",
-               show.legend = F) +
+               fun = "mean", geom = "bar", position = "dodge") +
   stat_summary(aes(group = participant_group), 
                fun.data = "mean_se", geom = "linerange", position = position_dodge(width = .9))
 
@@ -814,8 +808,7 @@ Now we've plotted separate bars for each participant_group within intervention t
 mental_health %>%
   ggplot(aes(x = participant_group, y = symptom_reduction)) +
   stat_summary(aes(fill = intervention_type), 
-               fun = "mean", geom = "bar", position = "dodge",
-               show.legend = F) +
+               fun = "mean", geom = "bar", position = "dodge") +
   stat_summary(aes(group = intervention_type), 
                fun.data = "mean_se", geom = "linerange", position = position_dodge(width = .9))
 
@@ -838,8 +831,8 @@ We could switch around the x-axis and grouping variables - which is better?
 mental_health %>%
   ggplot(aes(x = intervention_type, y = symptom_reduction)) +
   stat_summary(aes(fill = participant_group), #< Now we fill by ANOTHER group
-               fun = "mean", geom = "bar", position = "dodge", #< avoid stacking groups
-               show.legend = F) 
+               fun = "mean", geom = "bar", position = "dodge" #< avoid stacking groups
+               ) 
 ```
 
 ::: notes
@@ -861,8 +854,7 @@ mental_health %>%
 mental_health %>%
   ggplot(aes(x = intervention_type, y = symptom_reduction)) +
   stat_summary(aes(fill = participant_group),
-               fun = "mean", geom = "bar", position = "dodge",
-               show.legend = F) +
+               fun = "mean", geom = "bar", position = "dodge") +
   stat_summary(aes(group = participant_group), 
                fun.data = "mean_se", geom = "linerange", position = position_dodge(width = .9)) #< match bar width
 ```
@@ -907,3 +899,5 @@ What bars are good for:
 ---
 
 ## Upcoming
+
+- Relationships between variables with scatterplots

@@ -140,7 +140,7 @@ In this dataset, `user_segment` is a factor with a natural order from junior to 
 
 ```{r}
 app_df <- app_df %>%
-  mutate(user_segment = factor(user_segment, levels = c("Student", "EarlyCareer","MidCareer", "Senior")))
+  mutate(user_segment = factor(user_segment, levels = c("Students", "EarlyCareer","MidCareer", "Senior")))
 ```
 
 ---

@@ -121,11 +121,21 @@ Graphing distributions: techniques and considerations
 ```{r psych-data, echo=FALSE}
 # Display using kable
 psych_df %>% 
+  dplyr::mutate(stress_score = round(stress_score, 1),
+                sleep_hours = round(sleep_hours, 1),
+                activity_score = round(activity_score, 1),
+                BMI = round(BMI, 0)) %>%
   head(10) %>% 
   kable("html") %>%
   kable_styling(font_size = 24, position = "center", full_width = F) %>%
   row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
 ```
+
+::: notes
+
+What are he continuous and categorical variables?
+
+:::
 
 ---
 
@@ -189,6 +199,27 @@ Data wrangling:
 
 [Reference](https://r4ds.had.co.nz/)
 
+::: notes
+
+FIRST VERSION OF R IN 2000, OVER 20 YEARS AGO. TIDYVERSE HAS EVOLVED SINCE AROUND 2016.
+
+BUILDS ON TOP OF BASE R.
+
+:::
+
+
+---
+
+## What is tidy data?
+
+```{r psych-data, echo=FALSE}
+```
+
+::: notes
+
+Expect data to be in this format
+
+:::
 
 ---
 
@@ -251,6 +282,7 @@ Note base R equivalent
 
 ---
 
+
 ## Useful functions: select
 
 **select certain columns**
@@ -270,6 +302,27 @@ Note base R equivalent
 :::
 
 ---
+
+
+## Useful functions: select
+
+**select certain columns**
+
+<br>
+
+```{r select-1D}
+psych_df %>% 
+  select(diagnosis, stress_score)
+```
+
+::: notes
+
+CAN KEEP ADDING COLUMNS
+
+:::
+
+---
+
 
 ## Useful functions: filter
 
@@ -313,6 +366,12 @@ psych_df %>%
   filter(diagnosis == "Anxiety") %>% 
   count(diagnosis)
 ```
+
+::: notes
+
+EXPLAIN BOOLEAN EXPRESSIONS
+
+:::
 
 ---
 
@@ -465,9 +524,6 @@ psych_df %>%
 
 ## Other useful data wrangling functions
   
-<br>
-
-`select()` is like `filter()` but for variables (columns) instead of observations (rows)
 
 <br>
 
@@ -828,35 +884,6 @@ We can override these colors manually by adding a scale layer.
 
 ## 2. Density plots
 
-**comparing multiple distributions**
-
-```{r density-4C, eval = FALSE}
-psych_df %>% 
-  ggplot(aes(x = stress_score, color = diagnosis)) +
-  geom_density(alpha = 0.5) +
-  scale_color_manual(values = c("gray", "lightyellow", "lightblue")) +
-  theme_bw()
-```
-
----
-
-## 2. Density plots
-
-<br>
-
-```{r density-4C, echo = FALSE, fig.align="center", fig.height = 5.5}
-```
-
-::: notes
-
-Same thing for overriding color scale.
-
-:::
-
----
-
-## 2. Density plots
-
 ```{r density-6, eval = FALSE}
 psych_df %>% 
   ggplot(aes(x = stress_score)) +
@@ -923,7 +950,7 @@ Compact depiction of:
 
 ```{r box-1, eval = FALSE}
 psych_df %>% 
-  ggplot(aes(y = diagnosis, x = stress_score)) +
+  ggplot(aes(x = diagnosis, y = stress_score)) +
   geom_boxplot()
 ```
 
@@ -931,7 +958,7 @@ psych_df %>%
 
 ## 3. Box plots
 
-```{r box-1, echo = FALSE, fig.align="center", fig.height = 4}
+```{r box-1, echo = FALSE, fig.align="center", fig.height = 5.25}
 ```
 
 ---
@@ -943,7 +970,7 @@ psych_df %>%
 
 ```{r box-3, eval = FALSE}
 psych_df %>%
-  ggplot(aes(y = diagnosis, x = stress_score)) +
+  ggplot(aes(x = diagnosis, y = stress_score)) +
   geom_boxplot(fill = "gray", outlier.color = "blue", 
                outlier.shape = "circle open", outlier.size = 2)
 ```
@@ -966,7 +993,7 @@ psych_df %>%
 
 ```{r box-5, eval = FALSE}
 psych_df %>%
-  ggplot(aes(y = diagnosis, x = stress_score)) +
+  ggplot(aes(x = diagnosis, y = stress_score)) +
   geom_boxplot(fill = "gray") +
   stat_summary(fun = mean, geom = "point", #<<
                shape = "square", size = 2, color = "red") #<<
@@ -991,7 +1018,7 @@ Conveys a sense of the distribution of data
 
 ```{r box-6, eval = FALSE}
 psych_df %>%
-  ggplot(aes(y = diagnosis, x = stress_score)) +
+  ggplot(aes(x = diagnosis, y = stress_score)) +
   geom_boxplot() +
   geom_point(position = position_jitter(), color = "black", size = 0.4, alpha = 0.5) #<<
 ```
@@ -1015,7 +1042,7 @@ Conveys a sense of the distribution of data
 
 ```{r box-6b, eval = FALSE}
 psych_df %>%
-  ggplot(aes(y = diagnosis, x = stress_score)) +
+  ggplot(aes(x = diagnosis, y = stress_score)) +
   geom_boxplot() +
   geom_jitter(color = "black", size = 0.4, alpha = 0.5) #<<
 ```
@@ -1038,7 +1065,7 @@ psych_df %>%
 
 ```{r box-7, eval = FALSE}
 psych_df %>%
-  ggplot(aes(y = diagnosis, x = stress_score)) +
+  ggplot(aes(x = diagnosis, y = stress_score)) +
   geom_boxplot(outlier.shape = NA) + #<<
   geom_jitter(color="black", size = 0.4, alpha = 0.5)
 ```
@@ -1085,13 +1112,13 @@ Useful when you have a lot of data and want to see the shape of the distribution
 
 ```{r violin-2, eval = FALSE}
 psych_df %>% 
-  ggplot(aes(y = diagnosis, x = stress_score)) + 
+  ggplot(aes(x = diagnosis, y = stress_score)) + 
   geom_violin()
 ```
 
 ---
 
-```{r violin-2, echo = FALSE, fig.align="center", fig.height = 4}
+```{r violin-2, echo = FALSE, fig.align="center", fig.height = 5.5}
 ```
 
 ---
@@ -1102,7 +1129,7 @@ psych_df %>%
 
 ```{r violin-3, eval = FALSE}
 psych_df %>% 
-  ggplot(aes(y = diagnosis, x = stress_score)) + 
+  ggplot(aes(x = diagnosis, y = stress_score)) + 
   geom_violin() +
   geom_boxplot(width = 0.1, color = "grey", alpha = 0.5,
                outlier.colour = "red")

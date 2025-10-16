@@ -151,6 +151,7 @@ Students: Introductions
 
 ## Module objectives
 
+::: incremental
 -   Explore and understand datasets by visualising distributions, relationships, and trends.
 
 -   Design clear and comprehensible visualisations that avoid common pitfalls.
@@ -160,6 +161,7 @@ Students: Introductions
 -   Build interactive dashboards that combine multiple visualisations.
 
 -   Apply these skills across your degree and in a wide range of careers.
+:::
 
 ---
 
@@ -169,11 +171,17 @@ Students: Introductions
 
 -   Explain
 
----
+::: notes
 
-## What matters
+To accomplish these objectives, the module will be roughly divided into two parts.
 
--   Wellbeing
+In the first several weeks, we'll discuss using visualizations to EXPLORE data.
+
+So we'll go through the main types of graph you can use to get a sense of the patterns in your data. So the focus here will be more on giving you tools to understand the data for yourself.
+
+Then once you have a toolkit with lots of different kinds of graph, we'll shift the focus to EXPLAINING data. So we'll be seeing how to adapt the tools you've learned to make the patterns clear and compelling to an audience.
+
+:::
 
 ---
 
@@ -181,6 +189,7 @@ Students: Introductions
 
 -   Seminars
 -   Practicals
+-   At-home preparation
 -   At-home consolidation exercises
 -   Assessment
 
@@ -192,8 +201,30 @@ Students: Introductions
 -   VLE
 -   Communication
 -   Extensions
--   Regrades
 -   Integrity
+
+::: notes 
+
+Go to VLE and wiki
+
+ALSO OPEN PALETTEER AND PRETTY GRAPHS
+
+:::
+
+---
+
+## What matters
+
+-   Wellbeing
+
+::: notes
+
+
+:::
+
+---
+
+## Onto the goals of visualisation
 
 ---
 
@@ -251,6 +282,26 @@ dino_data %>%
 ```
 :::
 
+
+::: notes
+
+So, why visualize data?
+
+At the start, you've got your pile of data. Lots of observations of maybe some things that have been measured out in the real world or in an experiment. 
+
+Typically there'll be lots of numbers here, maybe some categorical variables etc.
+
+On their own, the raw data don't tell you anything.
+
+NEXT
+
+You can certainly gain some insight from summary statistics. Mean, SD, range.
+
+NEXT
+
+
+:::
+
 ---
 
 ## Why visualise data?
@@ -280,6 +331,13 @@ patient_data %>%
   row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
 ```
 
+
+::: notes
+
+A more real-world example.
+
+:::
+
 ---
 
 ## Why visualise data?
@@ -293,6 +351,14 @@ patient_data %>%
   kable_styling(font_size = 24, position = "center", full_width = F) %>%
   row_spec(0, bold = T, color = "white", background = "#bb0000", align = "c")
 ```
+
+
+
+::: notes
+
+Maybe they're different, maybe they're not.
+
+:::
 
 ---
 
@@ -311,11 +377,54 @@ ggplot(patient_data, aes(x = Timepoint, y = Symptom_Severity)) +
 
 ```
 
+::: notes
+
+Turn to a visual, and you immediately start seeing more.
+
+This is something called a violin plot, with points added for individual data points [EXPLAIN]
+
+This gives you both the sense that maybe the two groups differ, like the summary statistics.
+
+BUT ALSO we can see outliers.
+
+:::
+
+
 ---
 
 ## Why visualise data?
 
 ```{r patient-graph-2, echo = FALSE, fig.align = "center", fig.height = 6.5}
+ggplot(patient_data, aes(x = Timepoint, y = Symptom_Severity)) +
+  geom_violin(color = "transparent", fill = rgb(0,0,1,.2)) +
+  geom_point() +
+  geom_line(aes(group = Patient)) +
+  labs(title = "Changes in Depression Symptoms with Treatment",
+       y = "Symptom Severity",
+       x = "Timepoint") +
+  base_theme() +
+  coord_cartesian(ylim = c(0, 100)) +
+  theme(panel.grid.major = element_blank())
+```
+
+::: notes
+
+We can enhance this further by adding lines to see trends in change over time, from pre to post. 
+
+Now we can see that in this main group of participants, symptom severity mostly goes down over time. 
+
+But those outliers are outliers not just in severity, but in lack of change.
+
+And we can enhance this graph even further to get a sense of WHY those points are outliers.
+
+:::
+
+
+---
+
+## Why visualise data?
+
+```{r patient-graph-3, echo = FALSE, fig.align = "center", fig.height = 6.5}
 ggplot(patient_data, aes(x = Timepoint, y = Symptom_Severity)) +
   geom_violin(color = "transparent", fill = rgb(0,0,1,.2)) +
   geom_point(aes(color = Assessor)) +
@@ -327,11 +436,20 @@ ggplot(patient_data, aes(x = Timepoint, y = Symptom_Severity)) +
   coord_cartesian(ylim = c(0, 100)) +
   theme(panel.grid.major = element_blank())
 ```
+
+::: notes
+
+So here I've colored the points by the person who assessed the patients. And we can see that the outliers were all assessed by the same person.
+
+Based on personal example.
+
+:::
+
 ---
 
 ## Why visualise data?
 
-```{r patient-graph-3, echo = FALSE, fig.align = "center", fig.height = 6.5}
+```{r patient-graph-4, echo = FALSE, fig.align = "center", fig.height = 6.5}
 ggplot(patient_data[patient_data$Assessor != "D",], aes(x = Timepoint, y = Symptom_Severity)) +
   geom_violin(color = "transparent", fill = rgb(0,0,1,.2)) +
   geom_point(aes(color = Assessor)) +
@@ -344,6 +462,14 @@ ggplot(patient_data[patient_data$Assessor != "D",], aes(x = Timepoint, y = Sympt
   theme(panel.grid.major = element_blank())
 ```
 
+::: notes
+
+Finally, now that our exploration with visuals has revealed these outliers, we can do something about it.
+
+We can regraph the data without the outliers. And now a clear trend pops out. 
+
+:::
+
 ---
 
 ## Why visualise data?
@@ -352,25 +478,45 @@ ggplot(patient_data[patient_data$Assessor != "D",], aes(x = Timepoint, y = Sympt
 -   To **diagnose**: check assumptions, spot problems
 -   What else?
 
+::: notes
+
+Explain to others
+
+:::
+
+
 ---
 
 ## Why visualise data?
 
 ```{r intervention-graph-1, echo = FALSE, fig.align = "center", fig.height = 6.5}
 ggplot(intervention_data, aes(x = Time, y = Score, group = ID, color = Group)) +
-  geom_line(alpha = 0.5) +
-  stat_summary(aes(group = Group), fun = mean, geom = "line", size = 1.5, color = "black") +
+  geom_line(alpha = 0.35) +
+  stat_summary(aes(group = Group, color = Group), fun = mean, geom = "line", size = 1.5) +
   labs(title = "Individual Changes in Depression Symptoms with Treatment",
        y = "Symptom Severity",
        x = "Timepoint") +
-  scale_color_manual(values = c("Treatment" = "#d95f02", "Control" = "#1b9e77")) +
+  scale_color_manual(values = c("Treatment" = "violetred", "Control" = "blue")) +
   base_theme() +
   theme(panel.grid.major = element_blank())
 ```
 
+::: notes
+
+Suppose we had a larger dataset from a big study we've run looking at effects of an intervention. 
+
+The quickest way to show our audience the effects of that intervention is probably a visual.
+
+What does this graph tell us?
+
+
+:::
+
+
 ---
 
 ## Why visualise data?
+
 
 -   To **explore**: find patterns, outliers, structure
 -   To **diagnose**: check assumptions, spot problems
@@ -380,10 +526,20 @@ ggplot(intervention_data, aes(x = Time, y = Score, group = ID, color = Group)) +
 
 ## What makes a good visualisation?
 
+
+::: incremental
 -   Appropriate for the data
 -   Focus attention on key points
 -   Readable
 -   Appealing
+:::
+
+
+::: notes
+
+Transition - what do I mean by these things?
+
+:::
 
 ---
 
@@ -417,6 +573,15 @@ student_help %>%
            fill = "white")
 ```
 
+::: notes
+
+What if we had this situation, wanted to look at change over time. 
+
+We could make different choices at this point - some would really help us see that change over time, others would make it difficult.
+
+:::
+
+
 ---
 
 ## What makes a good visualisation?
@@ -434,6 +599,16 @@ ggplot(student_help, aes(x = Year, y = Count, group = Category)) +
   base_theme() +
   theme(panel.grid.major = element_blank())
 ```
+
+::: notes
+
+We might choose to show this using bars.
+
+But you might also be able to tell that the TOTAL NUMBER of students seems to increase.
+
+So it's hard to see here - is peer support getting more students because actually it's getting more popular in comparison to the other options, or just because there are more students? Really can't tell.
+
+:::
 
 ---
 
@@ -456,6 +631,16 @@ student_help %>%
   base_theme()
 ```
 
+::: notes
+
+Instead look at PROPORTIONS.
+
+Flip back and forth.
+
+SO NEED TO CHOOSE A VISUAL THAT IS APPROPRIATE FOR SHOWING KEY PATTERNS.
+
+:::
+
 ---
 
 ## What makes a good visualisation?
@@ -465,14 +650,14 @@ student_help %>%
 ```{r therapy-graph-1, echo = FALSE, fig.align = "center", fig.height = 6.5, fig.width = 17}
 
 # Compare good versus bad assignment of variables to aes 
-therapy_plot_good <- ggplot(therapy, aes(x = Therapy, y = Stress, group = Time, color = Time)) +
+therapy_plot_bad <- ggplot(therapy, aes(x = Therapy, y = Stress, group = Time, color = Time)) +
   stat_summary(fun = mean, geom = "line", position = position_dodge(width = 0.2)) +
   stat_summary(fun = mean, geom = "point", position = position_dodge(width = 0.2)) +
   labs(title = "BAD: X-axis = Therapy Type", y = "Mean Stress Level") +
   base_theme()
 
 
-therapy_plot_bad <- ggplot(therapy, aes(x = Time, y = Stress, group = Therapy, color = Therapy)) +
+therapy_plot_good <- ggplot(therapy, aes(x = Time, y = Stress, group = Therapy, color = Therapy)) +
   stat_summary(fun = mean, geom = "line") +
   stat_summary(fun = mean, geom = "point") +
   labs(title = "GOOD: X-axis = Time", y = "Mean Stress Level") +
@@ -481,6 +666,12 @@ therapy_plot_bad <- ggplot(therapy, aes(x = Time, y = Stress, group = Therapy, c
 
 therapy_plot_good + therapy_plot_bad
 ```
+
+::: notes
+
+Similarly, we also want to design our graph to focus attention on key points.
+
+:::
 
 ---
 
@@ -492,6 +683,12 @@ therapy_plot_good + therapy_plot_bad
 knitr::include_graphics(here("data-vis","figs","unreadable_graph.png"))
 
 ```
+
+::: notes
+
+Example from student work.
+
+:::
 
 ---
 
@@ -508,7 +705,7 @@ divergingx_palettes(palette = "Temps", plot = TRUE)
 
 ## Up Next
 
--   Distributions
+-   Grammar of Graphics
 
 ---
 
