@@ -308,7 +308,7 @@
     "href": "data-vis/week-5/study_before5.html",
     "title": "Independent Study to Prepare",
     "section": "",
-    "text": "Relationships between Variables\nTo prepare for diving into this week’s topic, relationships between variables:\n\nRead Data Visualization Ch 12.1 - 12.2",
+    "text": "Relationships between Variables\nTo prepare for diving into this week’s topic, relationships between variables:\n\nRead Data Visualization Ch 12.1 - 12.2\n\nIf you haven’t already completed the Data Camp assignments for the preceding weeks, you absolutely should catch up! Seminars and practicals will assume familiarity with the contents of these assignments. As a reminder, they are:\n\nIntroduction to the Tidyverse\nCategorical Data in the Tidyverse\nReshaping Data with tidyr",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -368,7 +368,7 @@
     "href": "data-vis/week-5/seminar5.html#why-plot-relationships-between-continuous-variables",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Why plot relationships between continuous variables?",
-    "text": "Why plot relationships between continuous variables?\n\nSee how changes in one variable are associated with changes in another\nSee how relationships between continuous variables differ across categorical groups\nDisplays the patterns analyzed in correlations, regression\n\n\n\n\n\n\nemployee_id\njob_role\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\n\n\n\n\nE0001\naccount_manager\n6.1\n9.47\n9.0\n49.7\n\n\nE0002\nsupport_engineer\n6.1\n6.41\n5.9\n71.3\n\n\nE0003\nimplement_specialist\n7.0\n4.27\n5.0\n66.8\n\n\n\n\n\n\n\n\nWe have continuous variables here like number of training hours and the employee’s perfrmance index.\nAre they positively related? Does more training improve performance?\nWe also have task switch hours. How does that relate to performance? Is it negatively related?\nWe also have a categorical variable here, job role. Do relationships between those variables differ across groups? Maybe training helps performance for some roles but less for others.\nThese are the kinds of questions we’d analyze using correlations and regression. So we want to visualize these patterns to see what our analyses are capturing.",
+    "text": "Why plot relationships between continuous variables?\n\n\nSee how changes in one variable are associated with changes in another\nSee how relationships between continuous variables differ across categorical groups\nDisplays the patterns analyzed in correlations, regression\n\n\n\n\n\n\n\nemployee_id\njob_role\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\n\n\n\n\nE0001\naccount_manager\n6.1\n9.47\n9.0\n49.7\n\n\nE0002\nsupport_engineer\n6.1\n6.41\n5.9\n71.3\n\n\nE0003\nimplement_specialist\n7.0\n4.27\n5.0\n66.8\n\n\n\n\n\n\n\n\nWe have continuous variables here like number of training hours and the employee’s perfrmance index.\nAre they positively related? Does more training improve performance?\nWe also have task switch hours. How does that relate to performance? Is it negatively related?\nWe also have a categorical variable here, job role. Do relationships between those variables differ across groups? Maybe training helps performance for some roles but less for others.\nThese are the kinds of questions we’d analyze using correlations and regression. So we want to visualize these patterns to see what our analyses are capturing.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -656,7 +656,7 @@
     "href": "data-vis/week-5/seminar5.html#scatter-plot-trend-lines-2",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Scatter Plot: Trend Lines",
-    "text": "Scatter Plot: Trend Lines\nbonus: add statistic\n\nlibrary(ggpubr)\n\n\nggplot(customer_ops, aes(task_switch_hours, performance_index)) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\") + #&lt; add a line using \"linear model\" regression\n  stat_cor()\n\n\n\nPackage ggpubr extends functionality of ggplot and allows you to add a stat layer with correlation stat",
+    "text": "Scatter Plot: Trend Lines\nbonus: add statistic\n\nlibrary(ggpubr)\n\n\nggplot(customer_ops, aes(task_switch_hours, performance_index)) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\") + #&lt; add a line using \"linear model\" regression\n  stat_cor()",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -776,7 +776,7 @@
     "href": "data-vis/week-5/seminar5.html#relational-data",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Relational Data",
-    "text": "Relational Data\n\n\n\n\n\nemployee_id\njob_role\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\n\n\n\n\nE0001\naccount_manager\n6.1\n9.47\n9.0\n49.7\n\n\nE0002\nsupport_engineer\n6.1\n6.41\n5.9\n71.3\n\n\nE0003\nimplement_specialist\n7.0\n4.27\n5.0\n66.8\n\n\nE0004\naccount_manager\n5.7\n6.72\n8.7\n49.8\n\n\nE0005\nsupport_engineer\n6.4\n9.33\n7.0\n55.9\n\n\n\n\n\n\n\n\n\n\n\n\n\nemployee_id\nregion\ntenure_months\nsat_90d\n\n\n\n\nE0001\nLATAM\n11\n84.3\n\n\nE0002\nNorth_America\n29\n87.9\n\n\nE0003\nEMEA\n26\n94.0\n\n\nE0004\nNorth_America\n25\n72.1\n\n\nE0005\nAPAC\n17\n81.2",
+    "text": "Relational Data\n\n\n\n\n\nemployee_id\njob_role\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\n\n\n\n\nE0001\naccount_manager\n6.1\n9.47\n9.0\n49.7\n\n\nE0002\nsupport_engineer\n6.1\n6.41\n5.9\n71.3\n\n\nE0003\nimplement_specialist\n7.0\n4.27\n5.0\n66.8\n\n\nE0004\naccount_manager\n5.7\n6.72\n8.7\n49.8\n\n\nE0005\nsupport_engineer\n6.4\n9.33\n7.0\n55.9\n\n\n\n\n\n\n\n\n\n\n\n\n\nemployee_id\nregion\ntenure_months\nsat_90d\n\n\n\n\nE0001\nLATAM\n11\n84.3\n\n\nE0002\nNorth_America\n29\n87.9\n\n\nE0003\nEMEA\n26\n94.0\n\n\nE0004\nNorth_America\n25\n72.1\n\n\nE0005\nAPAC\n17\n81.2\n\n\n\n\n\n\n\n\nMight have additional useful information about these employees.\nSuch as the region where they work, how long they’ve worked there, and some measure of how well they’re performing at a 90 day review.\nUSE PAINTING\nSo there might be questions that we want to answer that involve data from these two sets. E.g., we were looking at the relationship between training huors and perfrmance befre. And we had seen that employees with more training hours had a higher performance index.\nBut maybe that relationship differs across people who have been with the company for different amounts of time. For example, maybe completing more training hours is especially helpful for employees who are just starting out and have been with the company for less than a year.\nIf we wanted to look at that, we need to pull information from BOTH these datasets.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -800,7 +800,7 @@
     "href": "data-vis/week-5/seminar5.html#relational-data-2",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Relational Data",
-    "text": "Relational Data\ndiscretise new variable using mutate()\n\nops_joined &lt;- ops_joined %&gt;%\n  mutate(tenure_band = case_when(\n    tenure_months &lt; 12  ~ \"&lt;1 yr\",\n    tenure_months &lt; 60  ~ \"1–5 yrs\",\n    TRUE                ~ \"5+ yrs\"\n  )) %&gt;%\n  mutate(tenure_band = factor(tenure_band, levels = c(\"&lt;1 yr\",\"1–5 yrs\",\"5+ yrs\")))\n\n\n\n\n\n\n\nemployee_id\njob_role\nregion\ntenure_band\nsat_90d\nperformance_index\n\n\n\n\nE0001\naccount_manager\nLATAM\n&lt;1 yr\n84.3\n49.7\n\n\nE0002\nsupport_engineer\nNorth_America\n1–5 yrs\n87.9\n71.3\n\n\nE0003\nimplement_specialist\nEMEA\n1–5 yrs\n94.0\n66.8\n\n\nE0004\naccount_manager\nNorth_America\n1–5 yrs\n72.1\n49.8\n\n\nE0005\nsupport_engineer\nAPAC\n1–5 yrs\n81.2\n55.9",
+    "text": "Relational Data\ndiscretise new variable using mutate()\n\nops_joined &lt;- ops_joined %&gt;%\n  mutate(tenure_band = case_when(\n    tenure_months &lt; 12  ~ \"&lt;1 yr\",\n    tenure_months &lt; 60  ~ \"1–5 yrs\",\n    TRUE                ~ \"5+ yrs\"\n  )) %&gt;%\n  mutate(tenure_band = factor(tenure_band, levels = c(\"&lt;1 yr\",\"1–5 yrs\",\"5+ yrs\")))\n\n\n\n\n\n\n\nemployee_id\njob_role\nregion\ntenure_band\nsat_90d\nperformance_index\n\n\n\n\nE0001\naccount_manager\nLATAM\n&lt;1 yr\n84.3\n49.7\n\n\nE0002\nsupport_engineer\nNorth_America\n1–5 yrs\n87.9\n71.3\n\n\nE0003\nimplement_specialist\nEMEA\n1–5 yrs\n94.0\n66.8\n\n\nE0004\naccount_manager\nNorth_America\n1–5 yrs\n72.1\n49.8\n\n\nE0005\nsupport_engineer\nAPAC\n1–5 yrs\n81.2\n55.9\n\n\n\n\n\n\n\n\nShowing just a subset of the columns using select",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -872,7 +872,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-2",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\nselect continuous variables\n\ncor_mat &lt;- cor(ops_continuous, use = \"pairwise.complete.obs\") %&gt;% \n  round(digits = 2)\n\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00",
+    "text": "Correlation Matrices\nuse cor to calculate correlations\n\ncor_mat &lt;- cor(ops_continuous, use = \"pairwise.complete.obs\") %&gt;% \n  round(digits = 2)\n\n\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00\n\n\n\n\n\n\n\n\nNow this is what we want to VISUALIZE. We’ve got this correlation matrix, and we can spend a while staring at the numbers and trying to interpret what they mean. For example…\nBut wouldn’t it be so much easier to grasp these correlations in a visual form? Like, what if we could use color to indicate whether a correlation was positive or negative, and how strong the correlation is?\nSo that’s our goal. Take this numeric matrix and turn it into a more easy to grasp visual.\nAt this point we have a couple different options. There are various packages that people have written that visualize correlation matrices.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -884,7 +884,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-3",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\ncor_tidy &lt;- cor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat)) %&gt;%\n  pivot_longer(cols = -var1, names_to = \"var2\", values_to = \"r\")\n\nhead(cor_tidy)\n\n# A tibble: 6 × 3\n  var1           var2                  r\n  &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;\n1 training_hours training_hours     1   \n2 training_hours client_contacts    0.26\n3 training_hours task_switch_hours -0.49\n4 training_hours performance_index  0.21\n5 training_hours tenure_months     -0.01\n6 training_hours sat_90d           -0.03",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar1\nvar2\nr\n\n\n\n\ntraining_hours\ntraining_hours\n1.00\n\n\ntraining_hours\nclient_contacts\n0.26\n\n\ntraining_hours\ntask_switch_hours\n-0.49\n\n\ntraining_hours\nperformance_index\n0.21\n\n\ntraining_hours\ntenure_months\n-0.01\n\n\ntraining_hours\nsat_90d\n-0.03\n\n\nclient_contacts\ntraining_hours\n0.26\n\n\nclient_contacts\nclient_contacts\n1.00\n\n\nclient_contacts\ntask_switch_hours\n-0.36\n\n\nclient_contacts\nperformance_index\n0.26\n\n\nclient_contacts\ntenure_months\n0.05\n\n\nclient_contacts\nsat_90d\n-0.02\n\n\ntask_switch_hours\ntraining_hours\n-0.49\n\n\ntask_switch_hours\nclient_contacts\n-0.36\n\n\ntask_switch_hours\ntask_switch_hours\n1.00\n\n\ntask_switch_hours\nperformance_index\n-0.26\n\n\ntask_switch_hours\ntenure_months\n0.01\n\n\ntask_switch_hours\nsat_90d\n0.05\n\n\nperformance_index\ntraining_hours\n0.21\n\n\nperformance_index\nclient_contacts\n0.26\n\n\nperformance_index\ntask_switch_hours\n-0.26\n\n\nperformance_index\nperformance_index\n1.00\n\n\nperformance_index\ntenure_months\n0.02\n\n\nperformance_index\nsat_90d\n-0.05\n\n\ntenure_months\ntraining_hours\n-0.01\n\n\ntenure_months\nclient_contacts\n0.05\n\n\ntenure_months\ntask_switch_hours\n0.01\n\n\ntenure_months\nperformance_index\n0.02\n\n\ntenure_months\ntenure_months\n1.00\n\n\ntenure_months\nsat_90d\n0.29\n\n\nsat_90d\ntraining_hours\n-0.03\n\n\nsat_90d\nclient_contacts\n-0.02\n\n\nsat_90d\ntask_switch_hours\n0.05\n\n\nsat_90d\nperformance_index\n-0.05\n\n\nsat_90d\ntenure_months\n0.29\n\n\nsat_90d\nsat_90d\n1.00\n\n\n\n\n\n\n\n\n\nSo I’m going to show you one option, which is to use our standard ggplot package.\nAnd if we want to use ggplot, we need to get this matrix into a tidy format.\nAs a reminder, a tidy format is one where each row is an observation, and each column is a variable.\nCurrently this matrix isn’t in tidy format.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -896,7 +896,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-4",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ncorrelations as heatmap\n\nggplot(cor_tidy, aes(var1, var2, fill = r)) +\n  geom_tile()",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -908,7 +908,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-5",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ncorrelations as heatmap\n\nggplot(cor_tidy, aes(var1, var2, fill = r)) +\n  geom_tile() +\n  scale_fill_gradient2(low = \"blue\", mid = \"white\", high = \"red\",\n                       midpoint = 0, limits = c(-1, 1)) +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\ncor_mat %&gt;%\n  as.data.frame()\n\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00\n\n\n\n\n\n\n\n\n\ncor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat))\n\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\nvar1\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\ntraining_hours\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\nclient_contacts\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\ntask_switch_hours\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\nperformance_index\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\ntenure_months\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00\nsat_90d",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -920,7 +920,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-6",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ncorrelations as heatmap",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\nvar1\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\ntraining_hours\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\nclient_contacts\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\ntask_switch_hours\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\nperformance_index\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\ntenure_months\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00\nsat_90d\n\n\n\n\n\n\n\n\n\ncor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat)) %&gt;%\n  pivot_longer(cols = -var1, names_to = \"var2\", values_to = \"r\")\n\n\n\n\n\n\n\nvar1\nvar2\nr\n\n\n\n\ntraining_hours\ntraining_hours\n1.00\n\n\ntraining_hours\nclient_contacts\n0.26\n\n\ntraining_hours\ntask_switch_hours\n-0.49\n\n\ntraining_hours\nperformance_index\n0.21\n\n\ntraining_hours\ntenure_months\n-0.01\n\n\ntraining_hours\nsat_90d\n-0.03\n\n\nclient_contacts\ntraining_hours\n0.26\n\n\nclient_contacts\nclient_contacts\n1.00\n\n\nclient_contacts\ntask_switch_hours\n-0.36\n\n\nclient_contacts\nperformance_index\n0.26\n\n\nclient_contacts\ntenure_months\n0.05\n\n\nclient_contacts\nsat_90d\n-0.02\n\n\ntask_switch_hours\ntraining_hours\n-0.49\n\n\ntask_switch_hours\nclient_contacts\n-0.36\n\n\ntask_switch_hours\ntask_switch_hours\n1.00\n\n\ntask_switch_hours\nperformance_index\n-0.26\n\n\ntask_switch_hours\ntenure_months\n0.01\n\n\ntask_switch_hours\nsat_90d\n0.05\n\n\nperformance_index\ntraining_hours\n0.21\n\n\nperformance_index\nclient_contacts\n0.26\n\n\nperformance_index\ntask_switch_hours\n-0.26\n\n\nperformance_index\nperformance_index\n1.00\n\n\nperformance_index\ntenure_months\n0.02\n\n\nperformance_index\nsat_90d\n-0.05\n\n\ntenure_months\ntraining_hours\n-0.01\n\n\ntenure_months\nclient_contacts\n0.05\n\n\ntenure_months\ntask_switch_hours\n0.01\n\n\ntenure_months\nperformance_index\n0.02\n\n\ntenure_months\ntenure_months\n1.00\n\n\ntenure_months\nsat_90d\n0.29\n\n\nsat_90d\ntraining_hours\n-0.03\n\n\nsat_90d\nclient_contacts\n-0.02\n\n\nsat_90d\ntask_switch_hours\n0.05\n\n\nsat_90d\nperformance_index\n-0.05\n\n\nsat_90d\ntenure_months\n0.29\n\n\nsat_90d\nsat_90d\n1.00",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -932,7 +932,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-7",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\nbeyond ggplot2: corrplot\n\nlibrary(corrplot)\n\n\ncorrplot(cor_mat, method = \"color\",\n         addCoef.col = \"black\",\n         order = \"hclust\")",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\ncor_tidy &lt;- cor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat)) %&gt;%\n  pivot_longer(cols = -var1, names_to = \"var2\", values_to = \"r\")\n\n\nhead(cor_tidy)\n\n# A tibble: 6 × 3\n  var1           var2                  r\n  &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;\n1 training_hours training_hours     1   \n2 training_hours client_contacts    0.26\n3 training_hours task_switch_hours -0.49\n4 training_hours performance_index  0.21\n5 training_hours tenure_months     -0.01\n6 training_hours sat_90d           -0.03",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -944,7 +944,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-8",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\nbeyond ggplot2: corrplot\n\n\nTakes correlation matrix directly (without turning into tidy format) and adds a lot of features",
+    "text": "Correlation Matrices\ncorrelations as heatmap\n\nggplot(cor_tidy, aes(x = var1, y = var2)) +\n  geom_tile(aes(fill = r))",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -1196,7 +1196,7 @@
     "href": "data-vis/week-4/practical4.html#reorder-the-values-of-product_engagement",
     "title": "Practical",
     "section": "Reorder the values of product_engagement\n",
-    "text": "Reorder the values of product_engagement\n\nIn R, categorical variables are often treated as a special type of variable called a “factor”.\nIn factors, the different values of the variable are called “levels”.\nBy default, the order of the levels is alphabetical.\nWe have discussed reordering the levels of a factor based on values of another variable. But, we can also manually specify an order that is appropriate for our data.\nIn this dataset, user_segment is a factor with a natural order from junior to senior: Students, EarlyCareer, MidCareer, Senior.\n Reorder the levels of user_segement.\n\napp_df &lt;- app_df %&gt;%\n  mutate(user_segment = factor(user_segment, levels = c(\"Student\", \"EarlyCareer\",\"MidCareer\", \"Senior\")))",
+    "text": "Reorder the values of product_engagement\n\nIn R, categorical variables are often treated as a special type of variable called a “factor”.\nIn factors, the different values of the variable are called “levels”.\nBy default, the order of the levels is alphabetical.\nWe have discussed reordering the levels of a factor based on values of another variable. But, we can also manually specify an order that is appropriate for our data.\nIn this dataset, user_segment is a factor with a natural order from junior to senior: Students, EarlyCareer, MidCareer, Senior.\n Reorder the levels of user_segement.\n\napp_df &lt;- app_df %&gt;%\n  mutate(user_segment = factor(user_segment, levels = c(\"Students\", \"EarlyCareer\",\"MidCareer\", \"Senior\")))",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -4138,7 +4138,7 @@
     "href": "data-vis/week-4/seminar4.html#barplot-of-proportions-3",
     "title": "Week 4 Seminar: Barplots",
     "section": "Barplot of proportions",
-    "text": "Barplot of proportions\nlabelling proportions\n\nggplot(mental_health, aes(x = session_region)) +\n  geom_bar(aes(fill = participant_group), position = \"fill\") +\n  scale_y_continuous(name = \"prop\") + \n  geom_text(aes(group = participant_group, #&lt; for each participant group...\n                label = after_stat(count / sum(count))), #&lt; get \"count\" stat calculated in next line\n            stat = \"count\", #&lt; calculate counts per group\n            position = position_fill(vjust = 0.5)) + #&lt; centered within filled segments\n  scale_y_continuous(name = \"prop\")\n\n\nUse that count variable to label the props",
+    "text": "Barplot of proportions\nlabeling proportions\n\nggplot(mental_health, aes(x = session_region, fill = participant_group)) +\n  geom_bar(position = \"fill\") +\n  geom_text(aes(group = participant_group, #&lt; for each participant group...\n                label = round(after_stat(prop), 2)), #&lt; get \"prop\" from counts calculated in next line\n    stat = \"count\",  #&lt; calculate counts per group\n    position = position_fill(vjust = 0.5) #&lt; centered within filled segments\n  ) +\n  scale_y_continuous(name = \"prop\")\n\n\nUse that count variable to label the props",
     "crumbs": [
       "PSY00122M-A ",
       "Week 4: Barplots for Categorical Data",
@@ -5150,6 +5150,66 @@
     "crumbs": [
       "PSY00122M-A ",
       "Week 3: Distributions",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-5/seminar5.html#scatter-plot-trend-lines-3",
+    "href": "data-vis/week-5/seminar5.html#scatter-plot-trend-lines-3",
+    "title": "Week 5 Seminar: Relationships between Variables",
+    "section": "Scatter Plot: Trend Lines",
+    "text": "Scatter Plot: Trend Lines\nbonus: add statistic\n\n\nPackage ggpubr extends functionality of ggplot and allows you to add a stat layer with correlation stat",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 5: Relationships between Variables",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-5/seminar5.html#correlation-matrices-9",
+    "href": "data-vis/week-5/seminar5.html#correlation-matrices-9",
+    "title": "Week 5 Seminar: Relationships between Variables",
+    "section": "Correlation Matrices",
+    "text": "Correlation Matrices\ncorrelations as heatmap\n\nggplot(cor_tidy, aes(x = var1, y = var2)) +\n  geom_tile(aes(fill = r)) +\n  scale_fill_gradient2(low = \"blue\", mid = \"white\", high = \"red\",\n                       midpoint = 0, limits = c(-1, 1)) +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 5: Relationships between Variables",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-5/seminar5.html#correlation-matrices-10",
+    "href": "data-vis/week-5/seminar5.html#correlation-matrices-10",
+    "title": "Week 5 Seminar: Relationships between Variables",
+    "section": "Correlation Matrices",
+    "text": "Correlation Matrices\ncorrelations as heatmap",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 5: Relationships between Variables",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-5/seminar5.html#correlation-matrices-11",
+    "href": "data-vis/week-5/seminar5.html#correlation-matrices-11",
+    "title": "Week 5 Seminar: Relationships between Variables",
+    "section": "Correlation Matrices",
+    "text": "Correlation Matrices\nbeyond ggplot2: corrplot\n\nlibrary(corrplot)\n\n\ncorrplot(cor_mat, method = \"color\",\n         addCoef.col = \"black\",\n         order = \"hclust\")",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 5: Relationships between Variables",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-5/seminar5.html#correlation-matrices-12",
+    "href": "data-vis/week-5/seminar5.html#correlation-matrices-12",
+    "title": "Week 5 Seminar: Relationships between Variables",
+    "section": "Correlation Matrices",
+    "text": "Correlation Matrices\nbeyond ggplot2: corrplot\n\n\nTakes correlation matrix directly (without turning into tidy format) and adds a lot of features",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 5: Relationships between Variables",
       "Seminar"
     ]
   }

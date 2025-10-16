@@ -463,11 +463,13 @@
 </section>
 <section id="why-plot-relationships-between-continuous-variables" class="slide level2">
 <h2>Why plot relationships between continuous variables?</h2>
+<div>
 <ul>
-<li><p>See how changes in one variable are associated with changes in another</p></li>
-<li><p>See how relationships between continuous variables differ across categorical groups</p></li>
-<li><p>Displays the patterns analyzed in correlations, regression</p></li>
+<li class="fragment"><p>See how changes in one variable are associated with changes in another</p></li>
+<li class="fragment"><p>See how relationships between continuous variables differ across categorical groups</p></li>
+<li class="fragment"><p>Displays the patterns analyzed in correlations, regression</p></li>
 </ul>
+</div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table caption-top" data-quarto-postprocess="true" style="font-size: 22px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -992,6 +994,10 @@
 <span id="cb13-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> <span class="co">#&lt; add a line using "linear model" regression</span></span>
 <span id="cb13-4"><a></a>  <span class="fu">stat_cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="scatter-plot-trend-lines-3" class="slide level2">
+<h2>Scatter Plot: Trend Lines</h2>
+<p><strong>bonus: add statistic</strong></p>
 
 <img data-src="seminar5_files/figure-revealjs/scatter-lines1C-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3120"><aside class="notes">
 <p>Package ggpubr extends functionality of ggplot and allows you to add a stat layer with correlation stat</p>
@@ -1363,6 +1369,24 @@
 
 </div>
 </div>
+<aside class="notes">
+<p>Might have additional useful information about these employees.</p>
+<p>Such as the region where they work, how long they’ve worked there, and some measure of how well they’re performing at a 90 day review.</p>
+<p>USE PAINTING</p>
+<p>So there might be questions that we want to answer that involve data from these two sets. E.g., we were looking at the relationship between training huors and perfrmance befre. And we had seen that employees with more training hours had a higher performance index.</p>
+<p>But maybe that relationship differs across people who have been with the company for different amounts of time. For example, maybe completing more training hours is especially helpful for employees who are just starting out and have been with the company for less than a year.</p>
+<p>If we wanted to look at that, we need to pull information from BOTH these datasets.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="relational-data-1" class="slide level2">
 <h2>Relational Data</h2>
@@ -1530,6 +1554,19 @@
 
 </div>
 </div>
+<aside class="notes">
+<p>Showing just a subset of the columns using select</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="scatter-plot-category-differences-5" class="slide level2">
 <h2>Scatter Plot: Category Differences</h2>
@@ -1858,14 +1895,15 @@
 </section>
 <section id="correlation-matrices-2" class="slide level2">
 <h2>Correlation Matrices</h2>
-<p><strong>select continuous variables</strong></p>
+<p><strong>use <code>cor</code> to calculate correlations</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>cor_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(ops_continuous, <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-2"><a></a>  <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><br></p>
 <div class="cell">
 <div class="cell-output-display">
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:800px; overflow-x: scroll; width:100%; ">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
@@ -1939,17 +1977,802 @@
 
 </div>
 </div>
+<aside class="notes">
+<p>Now this is what we want to VISUALIZE. We’ve got this correlation matrix, and we can spend a while staring at the numbers and trying to interpret what they mean. For example…</p>
+<p>But wouldn’t it be so much easier to grasp these correlations in a visual form? Like, what if we could use color to indicate whether a correlation was positive or negative, and how strong the correlation is?</p>
+<p>So that’s our goal. Take this numeric matrix and turn it into a more easy to grasp visual.</p>
+<p>At this point we have a couple different options. There are various packages that people have written that visualize correlation matrices.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="correlation-matrices-3" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>cor_tidy <span class="ot">&lt;-</span> cor_mat <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat)) <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>var1, <span class="at">names_to =</span> <span class="st">"var2"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>)</span>
-<span id="cb21-5"><a></a></span>
-<span id="cb21-6"><a></a><span class="fu">head</span>(cor_tidy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;"></th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">training_hours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">client_contacts</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">task_switch_hours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">performance_index</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">tenure_months</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">sat_90d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">-0.49</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">-0.03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.36</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.49</td>
+<td style="text-align: right;">-0.36</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">-0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">var1</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">var2</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">r</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">-0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">-0.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">-0.36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">-0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">-0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">-0.03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">-0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>So I’m going to show you one option, which is to use our standard ggplot package.</p>
+<p>And if we want to use ggplot, we need to get this matrix into a tidy format.</p>
+<p>As a reminder, a tidy format is one where each row is an observation, and each column is a variable.</p>
+<p>Currently this matrix isn’t in tidy format.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="correlation-matrices-4" class="slide level2">
+<h2>Correlation Matrices</h2>
+<p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
+
+<img data-src="../figs/wide_to_long.png" class="quarto-figure quarto-figure-center r-stretch" width="112"></section>
+<section id="correlation-matrices-5" class="slide level2">
+<h2>Correlation Matrices</h2>
+<p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a></a>  <span class="fu">as.data.frame</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;"></th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">training_hours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">client_contacts</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">task_switch_hours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">performance_index</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">tenure_months</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">sat_90d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">-0.49</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">-0.03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.36</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.49</td>
+<td style="text-align: right;">-0.36</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">-0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;"></th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">training_hours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">client_contacts</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">task_switch_hours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">performance_index</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">tenure_months</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">sat_90d</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">var1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">-0.49</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: left;">training_hours</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.36</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: left;">client_contacts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.49</td>
+<td style="text-align: right;">-0.36</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: left;">task_switch_hours</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: left;">performance_index</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: left;">tenure_months</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">sat_90d</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="correlation-matrices-6" class="slide level2">
+<h2>Correlation Matrices</h2>
+<p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;"></th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">training_hours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">client_contacts</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">task_switch_hours</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">performance_index</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">tenure_months</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">sat_90d</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">var1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">-0.49</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: left;">training_hours</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.36</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: left;">client_contacts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.49</td>
+<td style="text-align: right;">-0.36</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: left;">task_switch_hours</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: left;">performance_index</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: left;">tenure_months</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">sat_90d</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>var1, <span class="at">names_to =</span> <span class="st">"var2"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">var1</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">var2</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">r</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">-0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">-0.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">-0.36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">-0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">-0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">-0.03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">-0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="correlation-matrices-7" class="slide level2">
+<h2>Correlation Matrices</h2>
+<p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>cor_tidy <span class="ot">&lt;-</span> cor_mat <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>var1, <span class="at">names_to =</span> <span class="st">"var2"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>)</span>
+<span id="cb24-5"><a></a></span>
+<span id="cb24-6"><a></a></span>
+<span id="cb24-7"><a></a><span class="fu">head</span>(cor_tidy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   var1           var2                  r
@@ -1963,46 +2786,44 @@
 </div>
 </div>
 </section>
-<section id="correlation-matrices-4" class="slide level2">
+<section id="correlation-matrices-8" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>correlations as heatmap</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(cor_tidy, <span class="fu">aes</span>(var1, var2, <span class="at">fill =</span> r)) <span class="sc">+</span></span>
-<span id="cb23-2"><a></a>  <span class="fu">geom_tile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(cor_tidy, <span class="fu">aes</span>(<span class="at">x =</span> var1, <span class="at">y =</span> var2)) <span class="sc">+</span></span>
+<span id="cb26-2"><a></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <img data-src="seminar5_files/figure-revealjs/relational-data-cor-mat-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4800"></section>
-<section id="correlation-matrices-5" class="slide level2">
+<section id="correlation-matrices-9" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>correlations as heatmap</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(cor_tidy, <span class="fu">aes</span>(var1, var2, <span class="at">fill =</span> r)) <span class="sc">+</span></span>
-<span id="cb24-2"><a></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
-<span id="cb24-3"><a></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>,</span>
-<span id="cb24-4"><a></a>                       <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb24-5"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(cor_tidy, <span class="fu">aes</span>(<span class="at">x =</span> var1, <span class="at">y =</span> var2)) <span class="sc">+</span></span>
+<span id="cb27-2"><a></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> r)) <span class="sc">+</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>,</span>
+<span id="cb27-4"><a></a>                       <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb27-5"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="correlation-matrices-6" class="slide level2">
+<section id="correlation-matrices-10" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>correlations as heatmap</strong></p>
-</section>
-<section class="slide level2">
 
-</section>
-<section id="correlation-matrices-7" class="slide level2">
+<img data-src="seminar5_files/figure-revealjs/relational-data-cor-mat-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4500"></section>
+<section id="correlation-matrices-11" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>beyond ggplot2: <code>corrplot</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">corrplot</span>(cor_mat, <span class="at">method =</span> <span class="st">"color"</span>,</span>
-<span id="cb26-2"><a></a>         <span class="at">addCoef.col =</span> <span class="st">"black"</span>,</span>
-<span id="cb26-3"><a></a>         <span class="at">order =</span> <span class="st">"hclust"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">corrplot</span>(cor_mat, <span class="at">method =</span> <span class="st">"color"</span>,</span>
+<span id="cb29-2"><a></a>         <span class="at">addCoef.col =</span> <span class="st">"black"</span>,</span>
+<span id="cb29-3"><a></a>         <span class="at">order =</span> <span class="st">"hclust"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="correlation-matrices-8" class="slide level2">
+<section id="correlation-matrices-12" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>beyond ggplot2: <code>corrplot</code></strong></p>
 
@@ -2451,7 +3272,7 @@
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/laylaunger\.github\.io\/york-data-vis-r-course\/");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
