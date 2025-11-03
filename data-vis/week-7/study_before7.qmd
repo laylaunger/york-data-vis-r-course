@@ -1,0 +1,13 @@
+---
+title: "Independent Study to Prepare"
+subtitle: "Advanced Customizations"
+toc: true
+toc-location: right
+---
+
+# Advanced Customizations
+
+To prepare for diving into this week's topic, advanced customization:
+
+- Read [Data Visualization Ch 20 - 24](https://clauswilke.com/dataviz/)
+  - Note! This might seem like several chapters, but they are each very short.

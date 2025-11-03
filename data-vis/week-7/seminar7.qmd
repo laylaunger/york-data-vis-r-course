@@ -1,0 +1,801 @@
+---
+title: "Week 7 Seminar: Advanced Customizations"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    highlight-style: github
+    width: 1200
+execute:
+  freeze: false
+---
+
+```{r setup, include=FALSE}
+#| context: setup
+# Packages used in Seminars 1–6 plus a few for today
+suppressPackageStartupMessages({
+  library(kableExtra)
+  library(tidyverse)
+  library(here)
+  library(knitr)
+  library(scales)    # for label_* helpers
+  library(viridis)   # colorblind-friendly palettes
+  library(patchwork) # compose plots side-by-side
+  library(pals)
+})
+
+options(knitr.kable.NA = '')
+knitr::opts_chunk$set(fig.retina = 3)
+
+# Keep the same default theme style as Weeks 1–6
+theme_set(theme_bw(base_size = 18) +
+          theme(panel.grid = element_blank()))
+
+
+# Load telehealth dataset
+psych_df <- read_csv(here("data-vis", "data", "psych.csv"))
+
+psych_df$diagnosis = factor(psych_df$diagnosis, levels = c("None", "Anxiety", "Depression"))
+```
+
+---
+
+## From last time
+
+- Time series and line graphs
+- Multiple groups & avoiding “spaghetti” plots
+- Working with dates (`lubridate`)
+- Line graphs for ordered variables (dose, distance, intensity)
+
+---
+
+## Content so far: Explore
+
+:::{.incremental}
+- We've been learning how to create different *kinds* of plots
+- Focus has been on mechanics of getting data into a plot
+- The plots we've made so far are good enough if we want to explore data ourselves
+    - See what patterns exist in the data
+    - Probe for issues to consider in analyses, like outliers
+- But they haven't been optimised for communicating with other people
+:::
+
+---
+
+## Content going forward: Explain
+
+- Our plots should:
+  - Draw the viewer's eyes to the key pattern
+  - Be easy to understand
+
+---
+
+## Content going forward: Explain
+
+:::{.incremental}
+- Producing viewer-friendly plots:
+  - Use clear, readable labels
+  - Use elements like color to highlight key patterns
+  - Reduce clutter
+  - Avoid redundancy (e.g., same variable labeled in axis and legend)
+  - Use facets or multi-panel layouts to facilitate comparisons
+:::
+
+---
+
+
+## Today
+
+- Labels with `labs()`
+- `scale_*_*` to customize breaks, labels, limits, and colors
+- Polishing visuals with `theme()`
+- Annotations, text, and direct labeling for clarity
+- Faceting: `facet_wrap`, `facet_grid`, and patchwork
+
+---
+
+## Today’s data
+
+```{r data, echo=FALSE}
+psych_df |>
+  head(8) |>
+  kable("html") |>
+  kable_styling(font_size = 18, position = "center", full_width = FALSE) |>
+  row_spec(0, bold = TRUE, color = "white", background = "#bb0000", align = "c")
+```
+
+---
+
+## Two base plots
+
+```{r base-plots}
+# Scatter (continuous x/y + color by group)
+p_scatter <- psych_df %>%
+  ggplot(aes(x = stress_score, y = sleep_hours)) +
+  geom_point(aes(color = diagnosis))
+
+# Bar (grouped mean + fill by group)
+p_bar <- psych_df %>%
+  ggplot(aes(x = diagnosis, y = stress_score)) +
+  stat_summary(aes(fill = diagnosis), fun = "mean", geom = "bar")
+```
+
+---
+
+```{r base-plots-scatter, echo=F}
+p_scatter
+```
+
+---
+
+```{r base-plots-bar, echo=F}
+p_bar
+```
+
+---
+
+## Today
+
+- **Labels with `labs()`**
+- `scale_*_*` to customize breaks, labels, limits, and colors
+- Polishing visuals with `theme()`
+- Annotations, text, and direct labeling for clarity
+- Faceting: `facet_wrap`, `facet_grid`, and patchwork
+
+---
+
+## Labels with `labs()`
+
+**basic labels**
+
+```{r labs-basics, eval=FALSE}
+# Add title, subtitle, and axis labels
+p_scatter +
+  labs(
+    title    = "Stress vs. Sleep",
+    subtitle = "Color indicates diagnosis group",
+    x = "Stress score (0–100)",
+    y = "Sleep hours (per night)"
+  )
+```
+
+---
+
+```{r labs-basics, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Labels with `labs()`
+
+**label legend aes() variables**
+
+```{r labs-scatter-legend, eval=FALSE}
+# Can use labs for legends / aesthetics 
+p_scatter +
+  labs(
+    color   = "Diagnosis"
+  )
+```
+
+::: notes
+
+:::
+
+---
+
+```{r labs-scatter-legend, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Today
+
+Customize plots for clarity and appeal
+
+
+- Labels with `labs()`
+- **`scale_*_*` to customize breaks, labels, limits and colors**
+- Polishing visuals with `theme()`
+- Annotations, text, and direct labeling for clarity
+- Faceting: `facet_wrap`, `facet_grid`, and `patchwork`
+
+---
+
+## Continuous variables
+
+---
+
+## `scale_*_continuous`
+
+**continuous axes: breaks, labels and limits**
+
+```{r scales-continuous-breaks, eval=FALSE}
+# Tighter control over axis tick labels and range
+p_scatter +
+  scale_x_continuous(breaks = c(0, 20, 40)) +
+  scale_y_continuous(breaks = c(1,2,3,4,5,6,7,8,9,10))
+```
+
+---
+
+```{r scales-continuous-breaks, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Making vectors
+
+```{r make-vectors}
+
+c(1,2,3,4,5)
+
+1:5
+
+seq(1, 5, by = 1)
+
+
+seq(1, 10, by = 2)
+
+```
+
+---
+
+## `scale_*_continuous`
+
+**continuous axes: breaks, labels and limits**
+
+```{r scales-continuous-breaks-labels, eval=FALSE}
+# Tighter control over axis tick labels and range
+p_scatter +
+  scale_x_continuous(breaks = c(0, 20, 40)) +
+  scale_y_continuous(breaks = c(2,4,6,8), labels = c("2h", "4h", "6h", "8h"))
+``` 
+
+---
+
+```{r scales-continuous-breaks-labels, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## `scale_*_continuous`
+
+`scales` package offers more customisation:
+
+-   number of significant digits
+-   adding percent sign, dollar sign etc.
+
+
+---
+
+## `scale_*_continuous`
+
+**continuous axes: breaks, labels and limits**
+
+```{r scales-continuous-limits, eval=FALSE}
+p_scatter +
+  scale_y_continuous(limits = c(0, 12), breaks = seq(0, 12, by = 2))
+```
+
+---
+
+```{r scales-continuous-limits, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## `scale_*_continuous`
+
+**also alternative to labs()**
+
+```{r scales-continuous-name, eval=FALSE}
+p_scatter +
+  scale_y_continuous(limits = c(0, 12), breaks = seq(0, 12, by = 2), name = "Sleep Hours")
+```
+
+---
+
+```{r scales-continuous-name, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Categorical (discrete) variables
+
+---
+
+## `scale_*_discrete` for categorical variables
+
+**discrete axes: names, labels**
+
+```{r scales-discrete-labels, eval=FALSE}
+p_bar +
+  scale_x_discrete(name = "Diagnosis", labels = c("No Diag", "Anxiety", "Depression")) +
+  scale_fill_discrete(name = "Diagnosis", labels = c("No Diag", "Anxiety", "Depression"))
+```
+---
+
+```{r scales-discrete-labels, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Colors, fills, gradients
+
+---
+
+## `scale_*_*` for colors, fills, gradients
+
+**review**
+
+```{r scales-fill-manual, eval=F}
+p_bar +
+  scale_fill_manual(values = c("gray", "blue", "deeppink")) 
+```
+---
+
+```{r scales-fill-manual, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+
+---
+
+## `scale_*_*` for colors, fills, gradients
+
+**many color palettes: brewer**
+
+```{r, echo=F}
+RColorBrewer::display.brewer.all(type = "qual")
+```
+
+---
+
+## `scale_*_*` for colors, fills, gradients
+
+**many color palettes: brewer**
+
+```{r, echo=F}
+RColorBrewer::display.brewer.all(type = "seq")
+```
+---
+
+## `scale_*_*` for colors, fills, gradients
+
+**brewer example**
+
+```{r scales-brewer-example, eval=F}
+p_bar +
+  scale_fill_brewer(palette = "Set3")
+```
+
+---
+
+```{r scales-brewer-example, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## `scale_*_*` for colors, fills, gradients
+
+**many color palettes: viridis**
+
+
+```{r, echo=F}
+pal.bands(viridis, plasma, magma, inferno, cividis, mako, rocket, turbo,
+          main = "viridisLite palettes")
+```
+
+---
+
+## `scale_*_*` for colors, fills, gradients
+
+**viridis example**
+
+```{r scales-viridis-example-discrete, eval=F}
+p_bar +
+  scale_fill_viridis_d()
+```
+
+---
+
+```{r scales-viridis-example-discrete, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## `scale_*_*` for colors, fills, gradients
+
+**viridis example**
+
+```{r scales-viridis-example1, eval=F}
+ggplot(psych_df, aes(x = stress_score, y = diagnosis)) +
+  geom_point(aes(color = sleep_hours), position = position_jitter(height = .1))
+```
+
+---
+
+```{r scales-viridis-example1, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## `scale_*_*` for colors, fills, gradients
+
+**viridis example**
+
+```{r scales-viridis-example2, eval=F}
+ggplot(psych_df, aes(x = stress_score, y = diagnosis)) +
+  geom_point(aes(color = sleep_hours), position = position_jitter(height = .1)) +
+  scale_color_viridis()
+```
+
+---
+
+```{r scales-viridis-example2, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## `scale_*_*` for colors, fills, gradients
+
+**viridis example**
+
+```{r scales-viridis-example3, eval=F}
+ggplot(psych_df, aes(x = stress_score, y = diagnosis)) +
+  geom_point(aes(color = sleep_hours), position = position_jitter(height = .1)) +
+  scale_color_viridis(option = "turbo")
+```
+
+---
+
+```{r scales-viridis-example3, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Today
+
+- Labels with `labs()`
+- `scale_*_*` to customize breaks, labels, limits, and colors
+- **Polishing visuals with `theme()`**
+- Annotations, text, and direct labeling for clarity
+- Faceting: `facet_wrap`, `facet_grid`, and patchwork
+
+---
+
+## `theme()`
+
+**default ggplot appearance**
+
+```{r theme-remove, echo=FALSE}
+p_scatter +
+  theme_grey(base_size = 11)
+```
+
+---
+
+## `theme()`
+
+**built-in alternative themes**
+
+
+```{r theme-tune1, eval=FALSE}
+p_scatter +
+  theme_bw()
+```
+
+---
+
+```{r theme-tune1, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## `theme()`
+
+**altering and removing theme elements**
+
+
+```{r theme-tune2, eval=FALSE}
+p_scatter +
+  theme_bw() +
+  theme(
+    legend.position = "top",
+    axis.title = element_text(face = "bold"),
+    axis.text = element_text(color = "grey20"),
+    plot.title  = element_text(face = "bold"),
+    panel.grid = element_blank()
+  ) 
+```
+
+---
+
+```{r theme-tune2, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Today
+
+- Labels with `labs()`
+- `scale_*_*` to customize breaks, labels, limits, and colors
+- Polishing visuals with `theme()`
+- **Annotations, text, and direct labeling for clarity**
+- Faceting: `facet_wrap`, `facet_grid`, and patchwork
+
+---
+
+## Annotations & direct labeling
+
+```{r, echo=FALSE}
+p_bar
+```
+
+::: notes
+
+Right now, one of the things that leaps out from this plot is that
+people with a diagnosis of anxiety or depression have higher stress scores
+
+But if someone wanted to know what the exact scores for each group were,
+they'd need to try to mentally line up the heights of the bars with the
+y-axis.
+
+If we want those exact values to be something that's easy for the reader to
+see, we can label them on the graph.
+
+:::
+
+---
+
+## Annotations & direct labeling
+
+**`geom_text()`**
+
+```{r annotate-bar, eval=F}
+# Get mean stress scores for each group
+bar_means <- psych_df %>%
+  group_by(diagnosis) %>%
+  summarise(mean_stress = round(mean(stress_score, na.rm = TRUE), 1))
+
+# Add a geom_text 
+p_bar +
+  geom_text(data = bar_means, # use the tibble we generated
+            aes(x = diagnosis, y = mean_stress, label = mean_stress), # set the aes
+            vjust = -0.3, size = 5) # shift up and make bigger
+```
+
+---
+
+```{r annotate-bar, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Annotations & direct labeling
+
+```{r, echo=FALSE}
+p_scatter
+```
+
+::: notes
+
+Now let's go to this plot.
+
+Perhaps here, we want to make it really easy to see which points
+correspond to each diagnosis, without people having to look at the
+legend.
+
+So maybe we'd want to put nice clear labels in the middle of 
+each group to label it as anxiety, depression, none
+
+that geom_text might not be ideal because it might be difficult
+to read text on top of the points
+
+so we'll use something slightly different called geom_label
+to format the text in a nice labeled box
+
+:::
+
+---
+
+## Annotations & direct labeling
+
+**`geom_text()`**
+
+```{r annotate-scatter, eval=FALSE}
+# Calculate where the center of each group lies on the
+# stress_score (x-axis) and sleep_hours (y-axis) variables
+group_centers <- psych_df %>%
+  group_by(diagnosis) %>%
+  summarise(
+    stress_center = mean(stress_score, na.rm = TRUE),
+    sleep_center  = mean(sleep_hours,  na.rm = TRUE))
+
+p_scatter +
+  geom_label(data = group_centers,
+             aes(x = stress_center, y = sleep_center, label = diagnosis, color = diagnosis),
+             show.legend = FALSE, 
+             size = 5, label.size = 0.25) +
+  theme(legend.position = "none") # get rid of the redundant legend
+```
+
+---
+
+```{r annotate-scatter, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Today
+
+- Labels with `labs()`
+- `scale_*_*` to customize breaks, labels, limits and colors
+- Polishing visuals with `theme()`
+- Annotations, text, and direct labeling for clarity
+- **Faceting: `facet_wrap`, `facet_grid`, and `patchwork`**
+
+---
+
+## Faceting
+
+**compare groups without clutter**
+
+```{r scatter-groups-bad, eval=FALSE}
+p_scatter +
+  stat_smooth(aes(color = diagnosis), method = "lm") #add regression line per group
+```
+
+---
+
+```{r scatter-groups-bad, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Faceting: wrap
+
+**compare groups without clutter**
+
+
+```{r facet-wrap, eval=FALSE}
+p_scatter +
+  facet_wrap(~diagnosis) + #facet by diagnosis
+  stat_smooth(aes(color = diagnosis), method = "lm") +
+  theme(legend.position = "none", #facet labels make diagnosis legend redundant
+        strip.background = element_blank()) #remove gray background of facet labels 
+```
+
+---
+
+```{r facet-wrap, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+## Faceting: grid
+
+**compare groups without clutter**
+
+```{r facet-grid, eval=FALSE}
+p_scatter +
+  facet_grid(sex~diagnosis) + # rows and columns
+  stat_smooth(aes(color = diagnosis), method = "lm") + 
+  theme(legend.position = "none",
+        strip.background = element_blank())
+```
+
+---
+
+```{r facet-grid, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+## Faceting: grid
+
+**revise labels**
+
+```{r facet-grid-labels, eval=FALSE}
+p_scatter +
+  facet_grid(sex~diagnosis, 
+             labeller = labeller(sex = ~ paste("Sex:", .x))) + # label rows
+  stat_smooth(aes(color = diagnosis), method = "lm") + 
+  theme(legend.position = "none",
+        strip.background = element_blank())
+```
+
+---
+
+```{r facet-grid-labels, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Patchwork: combine multiple plots
+
+```{r}
+library(patchwork)
+```
+
+<br>
+
+```{r patchwork-icon, echo=FALSE,  fig.align = "center", fig.height = 6.5,}
+knitr::include_graphics(here("data-vis","figs","patchwork_icon.png"))
+```
+
+---
+
+## Patchwork: combine multiple plots
+
+**horizontal**
+
+```{r patchwork-horizontal, eval=FALSE}
+p_scatter + p_bar
+```
+
+::: notes
+
+Uses arithmetic-like notation to combine plots in a readable way
+
+:::
+
+---
+
+```{r patchwork-horizontal, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Patchwork: combine multiple plots
+
+**vertical**
+
+```{r patchwork-vertical, eval=FALSE}
+p_scatter / p_bar
+```
+
+---
+
+```{r patchwork-vertical, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Patchwork: combine multiple plots
+
+**nested**
+
+```{r patchwork-nest, eval=FALSE}
+p_scatter | (p_scatter / p_bar)
+```
+
+---
+
+```{r patchwork-nest, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Patchwork: combine multiple plots
+
+**label**
+
+```{r patchwork-label, eval=FALSE}
+p_scatter + p_bar +
+plot_annotation(tag_levels = 'A')
+```
+
+---
+
+```{r patchwork-label, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Summary
+
+- Use `labs()` to control **labels** (title, subtitle, caption, axes, legend titles).
+- Use `scale_*_*` to control how scales are used/shown 
+- Use `theme()` to control **presentation** (grid, legend, typography)  
+- Emphasize clarity with **annotations** and **direct labels**.  
+- Use **facets** and **patchwork** to structure comparisons
+
+

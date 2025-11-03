@@ -1,0 +1,370 @@
+---
+title: "Practical"  
+subtitle: "Week 7 Seminar: Advanced Customizations"  
+toc: true  
+toc-location: right  
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(here)
+library(viridis)   # viridis palettes
+library(RColorBrewer) # brewer palettes
+library(patchwork) # combine plots
+```
+
+# Introduction
+
+## Session overview
+
+In this practical you’ll start from basic plots and polish them using the strategies from **Seminar 7**:
+
+- Clear, reader-friendly **labels** with `labs()`
+- Smarter **scales** with `scale_*_*` (breaks, labels, limits, discrete & continuous colors)
+- Visual **polish** with `theme()`
+- **Annotations** and **direct labels** (`geom_text()` / `geom_label()`)
+- **Faceting** (`facet_wrap`, `facet_grid`) and **patchwork** for multi-panel figures
+
+## Philosophy
+
+Practicals are not a test. It is expected that you often don't know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips
+
+-   don't worry about making mistakes
+-   don't let what you can not do interfere with what you can do
+-   discussing code with your neighbours will help
+-   look things up in the independent study material
+-   look things up in your own code from earlier workshops
+-   there are no stupid questions
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. Record your answers in your script for future reference.
+:::
+
+
+# Getting started
+
+![](images/do_in_R.png) Go the **Files** tab in the lower right pane and click on the `...` on the right. This will open a "Go to folder" window. Navigate to a place on your computer where you keep your work. Click **Open**.
+
+![](images/do_in_R.png) Also on the Files tab click on **New Folder**. Type `data-visualisation-in-r` into the box. This will be the folder that we work in throughout.
+
+![](images/do_in_R.png) Make an RStudio project for this workshop by clicking on the drop-down menu on top right where it says `Project: (None)` and choosing **New Project**, then **New Directory**, then **New Project**. Name the RStudio Project **`week-7`**.
+
+![](images/do_in_R.png) Make a new script then save it with a name like `advanced-customization.R` to carry out the rest of the work.
+
+# Today’s data
+
+We’ll use **two** CSVs from previous weeks. Save these in your project:
+
+- **wellbeing.csv**  
+- **therapy.csv**
+
+### Load the data
+
+![](images/do_on_your_computer.png) Save this file in your `week-7` folder:
+
+- [wellbeing_dataset.csv](../data/wellbeing_dataset.csv)
+- [therapy_dataset.csv](../data/therapy_dataset.csv)
+
+
+### Load the data
+
+![](images/do_in_R.png) Add and run:
+
+```{r}
+#| eval: false
+wellbeing <- read_csv("wellbeing_dataset.csv")
+therapy <- read_csv("therapy_dataset.csv")
+```
+
+```{r}
+#| include: false
+wellbeing <- read_csv(here("data-vis", "data", "wellbeing_dataset.csv")) 
+therapy <- read_csv(here("data-vis", "data", "therapy_dataset.csv")) 
+```
+
+## Look at the data
+
+![](images/do_in_R.png) Examine the variables and first few rows of the datasets using `head()`.
+
+```{r}
+head(wellbeing)
+head(therapy)
+```
+
+## Load packages
+
+We'll be using some additional packages for today's exercises (and they will be useful for you in the future). 
+
+![](images/do_in_R.png) Load the packages below. If you get a message saying that the package does not exist, use `install.packages("name of package")` to install and then try loading again.
+
+
+```{r}
+library(viridis)   # viridis palettes
+library(RColorBrewer) # brewer palettes
+library(patchwork) # combine plots
+```
+
+
+# Exercises
+
+**Important:** In each exercise below you get **starter code** that makes a **basic plot**.  
+Your job is to **improve clarity, readability, and/or attractiveness** using the following techniques: 
+
+- `labs()`
+- `scale_*_*`
+- `theme()`
+- annotations/`geom_label()`/`geom_text()`
+- `facet_*`
+- `patchwork`
+
+
+## Exercise 1: Labels that communicate
+
+We’ll start with a simple scatterplot of **sleep vs wellbeing**.
+
+![](images/do_in_R.png) Start with this **base plot**:
+
+```{r}
+ggplot(wellbeing, aes(x = sleep_hours, y = wellbeing_index)) +
+  geom_point()
+```
+
+
+![](images/do_in_R.png) Improve the plot:
+
+- Use `labs()` to add a title and clearly label the axes (e.g., “Sleep (avg hours/night)”, “Wellbeing Index (0–100)”)
+- Make tick marks helpful: use coord_cartesian and set **breaks** for scale_*_continuous so that: (A) the x-axis ranges from 4 to 10 with tick marks every 1 hour, and (B) the y-axis ranges from 30 to 90 with tick marks every 15 pints.  
+- Improve baseline readability via built-in themes like `theme_bw()` and manual adjustments with `theme()` (e.g., font size, gridlines).
+
+```{r}
+ggplot(wellbeing, aes(x = sleep_hours, y = wellbeing_index)) +
+  geom_point() +
+  coord_cartesian(xlim = c(4, 10), ylim = c(30, 90)) +
+  scale_x_continuous(breaks = 4:10) +
+  scale_y_continuous(breaks = seq(30, 90, by = 15)) +
+  labs(x = "Sleep (avg hours/night)", y = "Wellbeing Index (0–100)") +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+  
+```
+
+![](images/answer.png) In one sentence: What is the **main take-home** from this scatter?
+
+---
+
+## Exercise 2: Discrete color with a legend that helps
+
+Color points by **participant_group** and make the legend useful.
+
+![](images/do_in_R.png) Color the points in the plot from Exercise 1 by `participant_group`
+
+```{r}
+ggplot(wellbeing, aes(x = sleep_hours, y = wellbeing_index)) +
+  geom_point(aes(color = participant_group))
+```
+
+![](images/do_in_R.png) Improve the use and labelling of color:
+
+- Use `labs()` to rename the legend title. Remember that any `aes()` you set is available to `labs()`  
+- Use either **viridis (discrete)** `scale_color_viridis_d()` or a **brewer qualitative** palette (e.g., `scale_color_brewer(palette = "Set2")`).  
+- Adjust legend placement with `theme(legend.position = "top")` (or another purposeful spot).  
+
+![](images/answer.png) Which palette did you choose and why?
+
+
+## Exercise 3: Explore available color palettes and tools
+
+We touched upon the brewer and viridis palettes. However, these are just some of the options. Many people have developed color palettes you can use in `R`, and you can create your own.
+
+![](images/do_on_internet.png) Look at the many palette options [on this website](https://github.com/EmilHvitfeldt/r-color-palettes)
+
+![](images/do_on_internet.png) Google "color picker". You should see a tool that allows you to pick colors and provides ways to specify the color you picked. For example, it provides the HEX reference (e.g., "#6a788f"), which you can use to label colors in ggplots (e.g., `geom_point(color = "#6a788f")`). 
+
+
+## Exercise 4: Discrete axes & readable bar summaries
+
+Make a bar plt of wellbeing by participant_group
+
+![](images/do_in_R.png) Start with this **base plot**:
+
+```{r}
+ggplot(wellbeing, aes(x = participant_group, y = wellbeing_index)) +
+  stat_summary(aes(fill = participant_group), fun = "mean", geom = "bar")
+```
+
+![](images/do_in_R.png) Improve the base plot by doing the following:
+
+- Use `labs()` for a clear title and axis titles
+- Rename x-axis group labels with `scale_x_discrete(labels = c(...))`, e.g., to be "Employed", "Retired" and "Student"
+- Use `brewer` or discrete `viridis` palette to alter the fill colors
+- Note that the legend is redundant with the x-axis. Use `theme()` to remove the legend by setting its position as `none`. In addition, improve the overall polish of the plot using built in themes and/or adding further adjustments within `theme()`
+
+## Exercise 5: Direct labels
+
+Switch to the **therapy** dataset and explore **loneliness vs wellbeing**, colored by **support_level** 
+
+![](images/do_in_R.png) Starter plot:
+
+```{r}
+ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
+  geom_point(aes(color = support_level))
+```
+
+Replace legend referencing with **direct labels** near group **centers**.
+
+![](images/do_in_R.png) Create a tibble that computes each group’s **center** using `group_by` and `summarise`. Store the tibble, e.g., as an object called `centers`.
+
+```{r}
+#| echo: false
+
+centers <- therapy %>%
+  group_by(support_level) %>%
+  summarise(
+    loneliness_center = mean(loneliness_score, na.rm = TRUE),
+    wellbeing_center = mean(wellbeing_score, na.rm = TRUE)
+  )
+
+centers
+```
+
+![](images/do_in_R.png) Use `geom_label` to use the tibble to label the groups. Note that because we are now using labels to identify the groups, using a legend to identify them would be redundant. Therefore, set `show.legend` to FALSE for both `geom_point` and `geom_label`.
+
+```{r}
+#| echo: false
+ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
+  geom_point(aes(color = support_level), show.legend = FALSE) +
+  geom_label(
+    data = centers,
+    aes(loneliness_center, wellbeing_center, label = support_level, color = support_level),
+    size = 5, show.legend = FALSE
+  ) +
+  labs(x = "Loneliness", y = "Wellbeing") +
+  theme_bw()
+```
+
+![](images/answer.png) Did direct labels make the plot faster to understand? Can you think of cases in which direct labels would make the plot harder to understand?
+
+
+## Exercise 6: Faceting to compare groups without clutter
+
+Explore how the **loneliness vs wellbeing** relation differs by group.
+
+![](images/do_in_R.png) Reorder the levels of the support_level factor using `mutate` and `factor` so that the order is: Low, Medium, High
+
+```{r}
+#| echo: false
+therapy <- therapy %>%
+  mutate(support_level = factor(support_level, levels = c("Low", "Medium", "High")))
+```
+
+
+![](images/do_in_R.png) Return to this basic scatterplot:
+
+```{r}
+ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
+  geom_point()
+```
+
+![](images/do_in_R.png) Add trendlines and split plot into facets to compare trends across groups
+
+- Add a `geom_smooth` line to the code to shows the linear regression line for the relationship between `sleep_hours` and `wellbeing_index` for each `participant_group`.
+- Use `facet_wrap` to create separate facets for each `participant_group`
+- Use built-in themes and `theme()` to remove the gray background from the plots and facet titles
+
+
+```{r}
+#| echo: false
+ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
+  facet_wrap(~support_level) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_bw() +
+  theme(strip.background = element_blank())
+```
+
+
+## Exercise 7: Continuous color scale (viridis) and 
+
+Switch to examining the **loneliness vs wellbeing** relationship by **sleep_quality** (continuous)
+
+![](images/do_in_R.png) Starter plot:
+
+```{r}
+ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
+  geom_point()
+```
+
+![](images/do_in_R.png) Color by `sleep_quality` and customize:
+
+- Within `geom_point`, color the points based on `sleep_quality`
+- Customize the colors used for `sleep_quality` using a `viridis` scale. Within this line:
+  - Use the `option` argument to choose one of the non-default color scales
+  - Set the name of the legend to something more readable
+  - Choose breaks that reduce legend clutter
+- Use `labs()` to improve the axis labels
+- Use `theme()` to place the legend in a different position
+
+```{r}
+#| echo: false
+ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
+  geom_point(aes(color = sleep_quality), alpha = .8) +
+  scale_color_viridis(name = "Sleep Quality", option = "magma", breaks = seq(2, 10, by = 2)) +
+  labs(x = "Loneliness", y = "Wellbeing") +
+  theme_bw() +
+  theme(strip.background = element_blank(),
+        legend.position = "top")
+```
+
+
+
+
+## Exercise 8: Facet grid for compact subgroup comparisons
+
+![](images/do_in_R.png) Compare the pattern in Exercise 7 by `sex` and `therapy`:
+
+- Use `facet_grid` to create facets with separate rows for `sex` and separate columns for `therapy`. Include a labeller to add a "Sex:" prefix to the row labels and a "Therapy:" prefix to the column labels.
+- Use built-in themes and `theme()` to customize the appearance of the plot, including removing the gray background from the plot and facet titles
+
+
+```{r}
+#| echo: false
+ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
+  facet_grid(sex ~ therapy, labeller = labeller(
+    therapy = ~ paste("Therapy:", .x),
+    sex     = ~ paste("Sex:", .x))) +
+  geom_point(aes(color = sleep_quality), alpha = .8) +
+  scale_color_viridis(name = "Sleep Quality", option = "magma", breaks = seq(2, 10, by = 2)) +
+  labs(x = "Loneliness", y = "Wellbeing") +
+  theme_bw() +
+  theme(strip.background = element_blank(),
+        legend.position = "top")
+```
+
+![](images/answer.png) Do the facets reveal effects of `sex` and/or `therapy`?
+
+
+## Exercise 9: Using patchwork to make tidy multi-panel figures
+
+Create two polished plots and combine them with `patchwork`.
+
+![](images/do_in_R.png) Use or modify **any two** of your improved plots from the preceding exercises that provide different insights into the same dataset (either wellbeing or therapy) and combine them with patchwork
+- Choose whether to align plots horizontally or vertically
+- Add `plot_annotation()` to auto-label panels **A**, **B** 
+- Ensure **consistent style** (font size, theme tweaks) across panels 
+
+![](images/answer.png) What patterns does each figure highlight, and how does combining them provide complementary insights into the data?
+
+---
+
+# You’re finished! 🎉
