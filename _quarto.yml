@@ -119,18 +119,18 @@ website:
                text: Practical
              - href: data-vis/week-6/study_after6.qmd
                text: Consolidate!
-          # - section: "Week 7: Advanced Customizations"
-          #   contents:
-          #    - href: data-vis/week-7/overview7.qmd
-          #      text: About
-          #    - href: data-vis/week-7/study_before7.qmd
-          #      text: Prepare!
-          #    - href: data-vis/week-7/seminar7.qmd
-          #      text: Seminar
-          #    - href: data-vis/week-7/practical7.qmd
-          #      text: Practical
-          #    - href: data-vis/week-7/study_after7.qmd
-          #      text: Consolidate!
+          - section: "Week 7: Advanced Customizations"
+            contents:
+             - href: data-vis/week-7/overview7.qmd
+               text: About
+             - href: data-vis/week-7/study_before7.qmd
+               text: Prepare!
+             - href: data-vis/week-7/seminar7.qmd
+               text: Seminar
+             - href: data-vis/week-7/practical7.qmd
+               text: Practical
+             - href: data-vis/week-7/study_after7.qmd
+               text: Consolidate!
           # - section: "Week 8: One-way ANOVA and Kruskal-Wallis"
           #   contents:
           #    - href: data-vis/week-8/overview8.qmd

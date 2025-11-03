@@ -144,15 +144,22 @@ in a consistent, structured way
 
 A graphic... 
 
+:::{.incremental}
 - maps  <span style="color:blue; font-weight:bold;">variables in the data</span> +
 - to the <span style="color:blue; font-weight:bold;">aesthetic attributes</span> +
 - of <span style="color:blue; font-weight:bold;">geometric objects</span> +
+:::
 
-with possible ... 
+:::{.fragment}
+with possible ...
+:::
 
+
+:::{.incremental}
 - <span style="color:blue; font-weight:bold;">statistical transformations</span> +
 - different <span style="color:blue; font-weight:bold;">coordinate systems</span> +
-- and <span style="color:blue; font-weight:bold;">faceting</span> +
+- and <span style="color:blue; font-weight:bold;">faceting</span>
+:::
 
 </div>
 
@@ -274,6 +281,7 @@ psych_df %>%
 
 Bulding blocks
 
+:::{.incremental}
 - data
 - aesthetics: specify variables to use for axes, shapes
 - geom: the shapes that will depict the data
@@ -282,8 +290,20 @@ Bulding blocks
 - coord: customise axis ranges and appearance
 - theme: customise features such as font size, background color, legend position
 - facets: break graphic into subsets
+:::
 
 </div>
+
+
+:::notes
+
+TODAY I"M GIVING YOU AN OVERVIEW OF WHAT THESE BUILDING BLOCKS ARE AND HOW TO 
+PUT THEM TOGETHER.
+
+YOU MAY NOT CATCH ALL THE DETAILS NOW. THIS IS WHY WE'LL BE DIVING IN TO
+HOW TO USE THESE BUILDING BLOCKS FOR THE NEXT 4 WEEKS.
+
+:::
 
 ---
 
@@ -468,6 +488,9 @@ What if we don't want to look at the full distribution - we just want to
 look at the average tendencies for each diagnosis? 
 Well here we want a bar plot. But we need to calculate that average tendency 
 somehow. 
+
+One way to do that would be to use the data to calculate the averages first, and
+then plot them.
 
 :::
 
@@ -832,6 +855,8 @@ We often want to control the other aspects of appearance, such as font size
 
 :::
 
+---
+
 
 ```{r barplot-plot-theme1, echo = FALSE, fig.align = 'center', fig.height = 5}
 ```
@@ -857,9 +882,12 @@ psych_df %>%
 
 ::: notes
 
-We can add a theme() line and specify the appearance of various characteristics
+We can add a theme() code and specify the appearance of various characteristics
 
 :::
+
+
+---
 
 
 ```{r barplot-plot-theme2, echo = FALSE, fig.align = 'center', fig.height = 5}
@@ -890,6 +918,9 @@ There are also built-in themes that control many characteristics at once
 :::
 
 
+---
+
+
 ```{r barplot-plot-theme-bw, echo = FALSE, fig.align = 'center', fig.height = 5}
 ```
 
@@ -915,6 +946,15 @@ Bulding blocks
 </div>
 
 
+
+::: notes
+
+Facets are especially handy when we have some pattern of relationships between some
+variables, and we want to see how that pattern VARIES ACROSS DIFFERENT GROUPS.
+
+:::
+
+
 ---
 
 ## ggplot
@@ -934,6 +974,7 @@ psych_df %>%
 ::: notes
 
 What if we want to see how this relationship varies across another variable? 
+Like different diagnoses?
 Too much to combine into a single plot
 
 :::
