@@ -65,6 +65,10 @@ This week, we will examine relationships between variables. We will do a deep di
 
 This week, we will explore how to visualise changes over time using line graphs. We will discuss how to de-clutter and emphasize temporal trends and work with date and time variables in the seminar, and you will practice depicting temporal data in the practical.
 
+## Week 7: Advanced Customisation
+
+Thus far, we have been exploring the different types of plots that can be used to illustrate different types of patterns. This week, we will transition customising the appearance of our plots for clarity and appeal. We will highlight several tools for improving plots including: customising and adding explanatory labels and annotations, formatting axes with appropriate breaks, effective use of color, reducing visual clutter, and combining multiple plots for comparison and synthesis. 
+
 # Resources
 
 ## Tidyverse 
