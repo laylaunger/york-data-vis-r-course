@@ -2299,9 +2299,16 @@
 <h2>Correlation Matrices</h2>
 <p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">as.data.frame</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">class</span>(cor_mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a></a>  <span class="fu">as.data.frame</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
 <div class="cell">
 <div class="cell-output-display">
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
@@ -2376,96 +2383,6 @@
 </table>
 </div>
 
-</div>
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
-<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;"></th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">training_hours</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">client_contacts</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">task_switch_hours</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">performance_index</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">tenure_months</th>
-<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">sat_90d</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">var1</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">training_hours</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">0.26</td>
-<td style="text-align: right;">-0.49</td>
-<td style="text-align: right;">0.21</td>
-<td style="text-align: right;">-0.01</td>
-<td style="text-align: right;">-0.03</td>
-<td style="text-align: left;">training_hours</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">client_contacts</td>
-<td style="text-align: right;">0.26</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">-0.36</td>
-<td style="text-align: right;">0.26</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">-0.02</td>
-<td style="text-align: left;">client_contacts</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">task_switch_hours</td>
-<td style="text-align: right;">-0.49</td>
-<td style="text-align: right;">-0.36</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">-0.26</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: left;">task_switch_hours</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">performance_index</td>
-<td style="text-align: right;">0.21</td>
-<td style="text-align: right;">0.26</td>
-<td style="text-align: right;">-0.26</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">-0.05</td>
-<td style="text-align: left;">performance_index</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">tenure_months</td>
-<td style="text-align: right;">-0.01</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">0.29</td>
-<td style="text-align: left;">tenure_months</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">sat_90d</td>
-<td style="text-align: right;">-0.03</td>
-<td style="text-align: right;">-0.02</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">-0.05</td>
-<td style="text-align: right;">0.29</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: left;">sat_90d</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-</div>
 </div>
 </div>
 </section>
@@ -2473,6 +2390,183 @@
 <h2>Correlation Matrices</h2>
 <p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"variable"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">variable</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">r</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">-0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">-0.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">-0.36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">-0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">-0.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">-0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">-0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">training_hours</td>
+<td style="text-align: right;">-0.03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">client_contacts</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">task_switch_hours</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance_index</td>
+<td style="text-align: right;">-0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tenure_months</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sat_90d</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="correlation-matrices-7" class="slide level2">
+<h2>Correlation Matrices</h2>
+<p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="cell">
 <div class="cell-output-display">
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
 <table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; margin-left: auto; margin-right: auto;">
@@ -2555,12 +2649,15 @@
 
 </div>
 </div>
-<div class="fragment">
+</section>
+<section id="correlation-matrices-8" class="slide level2">
+<h2>Correlation Matrices</h2>
+<p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>var1, <span class="at">names_to =</span> <span class="st">"var2"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>cor_mat <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>var1, <span class="at">names_to =</span> <span class="st">"var2"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2760,19 +2857,18 @@
 
 </div>
 </div>
-</div>
 </section>
-<section id="correlation-matrices-7" class="slide level2">
+<section id="correlation-matrices-9" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>tidy format: each row is a pair of variables and its correlation</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>cor_tidy <span class="ot">&lt;-</span> cor_mat <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>var1, <span class="at">names_to =</span> <span class="st">"var2"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>)</span>
-<span id="cb24-5"><a></a></span>
-<span id="cb24-6"><a></a></span>
-<span id="cb24-7"><a></a><span class="fu">head</span>(cor_tidy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>cor_tidy <span class="ot">&lt;-</span> cor_mat <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">mutate</span>(<span class="at">var1 =</span> <span class="fu">row.names</span>(cor_mat)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>var1, <span class="at">names_to =</span> <span class="st">"var2"</span>, <span class="at">values_to =</span> <span class="st">"r"</span>)</span>
+<span id="cb27-5"><a></a></span>
+<span id="cb27-6"><a></a></span>
+<span id="cb27-7"><a></a><span class="fu">head</span>(cor_tidy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   var1           var2                  r
@@ -2786,44 +2882,44 @@
 </div>
 </div>
 </section>
-<section id="correlation-matrices-8" class="slide level2">
+<section id="correlation-matrices-10" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>correlations as heatmap</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(cor_tidy, <span class="fu">aes</span>(<span class="at">x =</span> var1, <span class="at">y =</span> var2)) <span class="sc">+</span></span>
-<span id="cb26-2"><a></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">ggplot</span>(cor_tidy, <span class="fu">aes</span>(<span class="at">x =</span> var1, <span class="at">y =</span> var2)) <span class="sc">+</span></span>
+<span id="cb29-2"><a></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <img data-src="seminar5_files/figure-revealjs/relational-data-cor-mat-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4800"></section>
-<section id="correlation-matrices-9" class="slide level2">
+<section id="correlation-matrices-11" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>correlations as heatmap</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(cor_tidy, <span class="fu">aes</span>(<span class="at">x =</span> var1, <span class="at">y =</span> var2)) <span class="sc">+</span></span>
-<span id="cb27-2"><a></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> r)) <span class="sc">+</span></span>
-<span id="cb27-3"><a></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>,</span>
-<span id="cb27-4"><a></a>                       <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb27-5"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">ggplot</span>(cor_tidy, <span class="fu">aes</span>(<span class="at">x =</span> var1, <span class="at">y =</span> var2)) <span class="sc">+</span></span>
+<span id="cb30-2"><a></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> r)) <span class="sc">+</span></span>
+<span id="cb30-3"><a></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>,</span>
+<span id="cb30-4"><a></a>                       <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb30-5"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="correlation-matrices-10" class="slide level2">
+<section id="correlation-matrices-12" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>correlations as heatmap</strong></p>
 
 <img data-src="seminar5_files/figure-revealjs/relational-data-cor-mat-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="4500"></section>
-<section id="correlation-matrices-11" class="slide level2">
+<section id="correlation-matrices-13" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>beyond ggplot2: <code>corrplot</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">corrplot</span>(cor_mat, <span class="at">method =</span> <span class="st">"color"</span>,</span>
-<span id="cb29-2"><a></a>         <span class="at">addCoef.col =</span> <span class="st">"black"</span>,</span>
-<span id="cb29-3"><a></a>         <span class="at">order =</span> <span class="st">"hclust"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">corrplot</span>(cor_mat, <span class="at">method =</span> <span class="st">"color"</span>,</span>
+<span id="cb32-2"><a></a>         <span class="at">addCoef.col =</span> <span class="st">"black"</span>,</span>
+<span id="cb32-3"><a></a>         <span class="at">order =</span> <span class="st">"hclust"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="correlation-matrices-12" class="slide level2">
+<section id="correlation-matrices-14" class="slide level2">
 <h2>Correlation Matrices</h2>
 <p><strong>beyond ggplot2: <code>corrplot</code></strong></p>
 

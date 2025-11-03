@@ -908,7 +908,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-5",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\ncor_mat %&gt;%\n  as.data.frame()\n\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00\n\n\n\n\n\n\n\n\n\ncor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat))\n\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\nvar1\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\ntraining_hours\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\nclient_contacts\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\ntask_switch_hours\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\nperformance_index\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\ntenure_months\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00\nsat_90d",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\nclass(cor_mat)\n\n[1] \"matrix\" \"array\" \n\n\n\ncor_mat %&gt;%\n  as.data.frame()\n\n\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -920,7 +920,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-6",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\nvar1\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\ntraining_hours\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\nclient_contacts\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\ntask_switch_hours\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\nperformance_index\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\ntenure_months\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00\nsat_90d\n\n\n\n\n\n\n\n\n\ncor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat)) %&gt;%\n  pivot_longer(cols = -var1, names_to = \"var2\", values_to = \"r\")\n\n\n\n\n\n\n\nvar1\nvar2\nr\n\n\n\n\ntraining_hours\ntraining_hours\n1.00\n\n\ntraining_hours\nclient_contacts\n0.26\n\n\ntraining_hours\ntask_switch_hours\n-0.49\n\n\ntraining_hours\nperformance_index\n0.21\n\n\ntraining_hours\ntenure_months\n-0.01\n\n\ntraining_hours\nsat_90d\n-0.03\n\n\nclient_contacts\ntraining_hours\n0.26\n\n\nclient_contacts\nclient_contacts\n1.00\n\n\nclient_contacts\ntask_switch_hours\n-0.36\n\n\nclient_contacts\nperformance_index\n0.26\n\n\nclient_contacts\ntenure_months\n0.05\n\n\nclient_contacts\nsat_90d\n-0.02\n\n\ntask_switch_hours\ntraining_hours\n-0.49\n\n\ntask_switch_hours\nclient_contacts\n-0.36\n\n\ntask_switch_hours\ntask_switch_hours\n1.00\n\n\ntask_switch_hours\nperformance_index\n-0.26\n\n\ntask_switch_hours\ntenure_months\n0.01\n\n\ntask_switch_hours\nsat_90d\n0.05\n\n\nperformance_index\ntraining_hours\n0.21\n\n\nperformance_index\nclient_contacts\n0.26\n\n\nperformance_index\ntask_switch_hours\n-0.26\n\n\nperformance_index\nperformance_index\n1.00\n\n\nperformance_index\ntenure_months\n0.02\n\n\nperformance_index\nsat_90d\n-0.05\n\n\ntenure_months\ntraining_hours\n-0.01\n\n\ntenure_months\nclient_contacts\n0.05\n\n\ntenure_months\ntask_switch_hours\n0.01\n\n\ntenure_months\nperformance_index\n0.02\n\n\ntenure_months\ntenure_months\n1.00\n\n\ntenure_months\nsat_90d\n0.29\n\n\nsat_90d\ntraining_hours\n-0.03\n\n\nsat_90d\nclient_contacts\n-0.02\n\n\nsat_90d\ntask_switch_hours\n0.05\n\n\nsat_90d\nperformance_index\n-0.05\n\n\nsat_90d\ntenure_months\n0.29\n\n\nsat_90d\nsat_90d\n1.00",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\ncor_mat %&gt;%\n  as.data.frame() %&gt;%\n  pivot_longer(cols = everything(), names_to = \"variable\", values_to = \"r\") %&gt;%\n\n\n\n\n\n\n\n\nvariable\nr\n\n\n\n\ntraining_hours\n1.00\n\n\nclient_contacts\n0.26\n\n\ntask_switch_hours\n-0.49\n\n\nperformance_index\n0.21\n\n\ntenure_months\n-0.01\n\n\nsat_90d\n-0.03\n\n\ntraining_hours\n0.26\n\n\nclient_contacts\n1.00\n\n\ntask_switch_hours\n-0.36\n\n\nperformance_index\n0.26\n\n\ntenure_months\n0.05\n\n\nsat_90d\n-0.02\n\n\ntraining_hours\n-0.49\n\n\nclient_contacts\n-0.36\n\n\ntask_switch_hours\n1.00\n\n\nperformance_index\n-0.26\n\n\ntenure_months\n0.01\n\n\nsat_90d\n0.05\n\n\ntraining_hours\n0.21\n\n\nclient_contacts\n0.26\n\n\ntask_switch_hours\n-0.26\n\n\nperformance_index\n1.00\n\n\ntenure_months\n0.02\n\n\nsat_90d\n-0.05\n\n\ntraining_hours\n-0.01\n\n\nclient_contacts\n0.05\n\n\ntask_switch_hours\n0.01\n\n\nperformance_index\n0.02\n\n\ntenure_months\n1.00\n\n\nsat_90d\n0.29\n\n\ntraining_hours\n-0.03\n\n\nclient_contacts\n-0.02\n\n\ntask_switch_hours\n0.05\n\n\nperformance_index\n-0.05\n\n\ntenure_months\n0.29\n\n\nsat_90d\n1.00",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -932,7 +932,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-7",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\ncor_tidy &lt;- cor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat)) %&gt;%\n  pivot_longer(cols = -var1, names_to = \"var2\", values_to = \"r\")\n\n\nhead(cor_tidy)\n\n# A tibble: 6 × 3\n  var1           var2                  r\n  &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;\n1 training_hours training_hours     1   \n2 training_hours client_contacts    0.26\n3 training_hours task_switch_hours -0.49\n4 training_hours performance_index  0.21\n5 training_hours tenure_months     -0.01\n6 training_hours sat_90d           -0.03",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\ncor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat))\n\n\n\n\n\n\n\n\n\ntraining_hours\nclient_contacts\ntask_switch_hours\nperformance_index\ntenure_months\nsat_90d\nvar1\n\n\n\n\ntraining_hours\n1.00\n0.26\n-0.49\n0.21\n-0.01\n-0.03\ntraining_hours\n\n\nclient_contacts\n0.26\n1.00\n-0.36\n0.26\n0.05\n-0.02\nclient_contacts\n\n\ntask_switch_hours\n-0.49\n-0.36\n1.00\n-0.26\n0.01\n0.05\ntask_switch_hours\n\n\nperformance_index\n0.21\n0.26\n-0.26\n1.00\n0.02\n-0.05\nperformance_index\n\n\ntenure_months\n-0.01\n0.05\n0.01\n0.02\n1.00\n0.29\ntenure_months\n\n\nsat_90d\n-0.03\n-0.02\n0.05\n-0.05\n0.29\n1.00\nsat_90d",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -944,7 +944,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-8",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ncorrelations as heatmap\n\nggplot(cor_tidy, aes(x = var1, y = var2)) +\n  geom_tile(aes(fill = r))",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\ncor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat)) %&gt;%\n  pivot_longer(cols = -var1, names_to = \"var2\", values_to = \"r\")\n\n\n\n\n\n\n\nvar1\nvar2\nr\n\n\n\n\ntraining_hours\ntraining_hours\n1.00\n\n\ntraining_hours\nclient_contacts\n0.26\n\n\ntraining_hours\ntask_switch_hours\n-0.49\n\n\ntraining_hours\nperformance_index\n0.21\n\n\ntraining_hours\ntenure_months\n-0.01\n\n\ntraining_hours\nsat_90d\n-0.03\n\n\nclient_contacts\ntraining_hours\n0.26\n\n\nclient_contacts\nclient_contacts\n1.00\n\n\nclient_contacts\ntask_switch_hours\n-0.36\n\n\nclient_contacts\nperformance_index\n0.26\n\n\nclient_contacts\ntenure_months\n0.05\n\n\nclient_contacts\nsat_90d\n-0.02\n\n\ntask_switch_hours\ntraining_hours\n-0.49\n\n\ntask_switch_hours\nclient_contacts\n-0.36\n\n\ntask_switch_hours\ntask_switch_hours\n1.00\n\n\ntask_switch_hours\nperformance_index\n-0.26\n\n\ntask_switch_hours\ntenure_months\n0.01\n\n\ntask_switch_hours\nsat_90d\n0.05\n\n\nperformance_index\ntraining_hours\n0.21\n\n\nperformance_index\nclient_contacts\n0.26\n\n\nperformance_index\ntask_switch_hours\n-0.26\n\n\nperformance_index\nperformance_index\n1.00\n\n\nperformance_index\ntenure_months\n0.02\n\n\nperformance_index\nsat_90d\n-0.05\n\n\ntenure_months\ntraining_hours\n-0.01\n\n\ntenure_months\nclient_contacts\n0.05\n\n\ntenure_months\ntask_switch_hours\n0.01\n\n\ntenure_months\nperformance_index\n0.02\n\n\ntenure_months\ntenure_months\n1.00\n\n\ntenure_months\nsat_90d\n0.29\n\n\nsat_90d\ntraining_hours\n-0.03\n\n\nsat_90d\nclient_contacts\n-0.02\n\n\nsat_90d\ntask_switch_hours\n0.05\n\n\nsat_90d\nperformance_index\n-0.05\n\n\nsat_90d\ntenure_months\n0.29\n\n\nsat_90d\nsat_90d\n1.00",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -5170,7 +5170,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-9",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ncorrelations as heatmap\n\nggplot(cor_tidy, aes(x = var1, y = var2)) +\n  geom_tile(aes(fill = r)) +\n  scale_fill_gradient2(low = \"blue\", mid = \"white\", high = \"red\",\n                       midpoint = 0, limits = c(-1, 1)) +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "text": "Correlation Matrices\ntidy format: each row is a pair of variables and its correlation\n\ncor_tidy &lt;- cor_mat %&gt;%\n  as.data.frame() %&gt;%\n  mutate(var1 = row.names(cor_mat)) %&gt;%\n  pivot_longer(cols = -var1, names_to = \"var2\", values_to = \"r\")\n\n\nhead(cor_tidy)\n\n# A tibble: 6 × 3\n  var1           var2                  r\n  &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;\n1 training_hours training_hours     1   \n2 training_hours client_contacts    0.26\n3 training_hours task_switch_hours -0.49\n4 training_hours performance_index  0.21\n5 training_hours tenure_months     -0.01\n6 training_hours sat_90d           -0.03",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -5182,7 +5182,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-10",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\ncorrelations as heatmap",
+    "text": "Correlation Matrices\ncorrelations as heatmap\n\nggplot(cor_tidy, aes(x = var1, y = var2)) +\n  geom_tile(aes(fill = r))",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -5194,7 +5194,7 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-11",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
-    "text": "Correlation Matrices\nbeyond ggplot2: corrplot\n\nlibrary(corrplot)\n\n\ncorrplot(cor_mat, method = \"color\",\n         addCoef.col = \"black\",\n         order = \"hclust\")",
+    "text": "Correlation Matrices\ncorrelations as heatmap\n\nggplot(cor_tidy, aes(x = var1, y = var2)) +\n  geom_tile(aes(fill = r)) +\n  scale_fill_gradient2(low = \"blue\", mid = \"white\", high = \"red\",\n                       midpoint = 0, limits = c(-1, 1)) +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
@@ -5206,11 +5206,553 @@
     "href": "data-vis/week-5/seminar5.html#correlation-matrices-12",
     "title": "Week 5 Seminar: Relationships between Variables",
     "section": "Correlation Matrices",
+    "text": "Correlation Matrices\ncorrelations as heatmap",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 5: Relationships between Variables",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-5/seminar5.html#correlation-matrices-13",
+    "href": "data-vis/week-5/seminar5.html#correlation-matrices-13",
+    "title": "Week 5 Seminar: Relationships between Variables",
+    "section": "Correlation Matrices",
+    "text": "Correlation Matrices\nbeyond ggplot2: corrplot\n\nlibrary(corrplot)\n\n\ncorrplot(cor_mat, method = \"color\",\n         addCoef.col = \"black\",\n         order = \"hclust\")",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 5: Relationships between Variables",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-5/seminar5.html#correlation-matrices-14",
+    "href": "data-vis/week-5/seminar5.html#correlation-matrices-14",
+    "title": "Week 5 Seminar: Relationships between Variables",
+    "section": "Correlation Matrices",
     "text": "Correlation Matrices\nbeyond ggplot2: corrplot\n\n\nTakes correlation matrix directly (without turning into tidy format) and adds a lot of features",
     "crumbs": [
       "PSY00122M-A ",
       "Week 5: Relationships between Variables",
       "Seminar"
     ]
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#from-last-time",
+    "href": "data-vis/week-7/seminar7.html#from-last-time",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "From last time",
+    "text": "From last time\n\nTime series and line graphs\nMultiple groups & avoiding “spaghetti” plots\nWorking with dates (lubridate)\nLine graphs for ordered variables (dose, distance, intensity)"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#content-so-far-explore",
+    "href": "data-vis/week-7/seminar7.html#content-so-far-explore",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Content so far: Explore",
+    "text": "Content so far: Explore\n\n\nWe’ve been learning how to create different kinds of plots\nFocus has been on mechanics of getting data into a plot\nThe plots we’ve made so far are good enough if we want to explore data ourselves\n\nSee what patterns exist in the data\nProbe for issues to consider in analyses, like outliers\n\nBut they haven’t been optimised for communicating with other people"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#content-going-forward-explain",
+    "href": "data-vis/week-7/seminar7.html#content-going-forward-explain",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Content going forward: Explain",
+    "text": "Content going forward: Explain\n\nOur plots should:\n\nDraw the viewer’s eyes to the key pattern\nBe easy to understand"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#content-going-forward-explain-1",
+    "href": "data-vis/week-7/seminar7.html#content-going-forward-explain-1",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Content going forward: Explain",
+    "text": "Content going forward: Explain\n\n\nProducing viewer-friendly plots:\n\nUse clear, readable labels\nUse elements like color to highlight key patterns\nReduce clutter\nAvoid redundancy (e.g., same variable labeled in axis and legend)\nUse facets or multi-panel layouts to facilitate comparisons"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#today",
+    "href": "data-vis/week-7/seminar7.html#today",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Today",
+    "text": "Today\n\nLabels with labs()\nscale_*_* to customize breaks, labels, limits, and colors\nPolishing visuals with theme()\nAnnotations, text, and direct labeling for clarity\nFaceting: facet_wrap, facet_grid, and patchwork"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#todays-data",
+    "href": "data-vis/week-7/seminar7.html#todays-data",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Today’s data",
+    "text": "Today’s data\n\n\n\n\n\ndiagnosis\nstress_score\nsleep_hours\nactivity_score\nsex\nyear\n\n\n\n\nAnxiety\n36.2\n7.7\n41.0\nFemale\n2019\n\n\nNone\n10.8\n7.8\n71.6\nFemale\n2018\n\n\nDepression\n26.4\n5.1\n37.3\nMale\n2020\n\n\nNone\n14.4\n7.4\n60.1\nFemale\n2020\n\n\nNone\n3.6\n9.7\n70.8\nMale\n2020\n\n\nAnxiety\n25.2\n6.8\n41.8\nMale\n2019\n\n\nDepression\n30.2\n4.8\n41.6\nFemale\n2018\n\n\nNone\n11.6\n5.0\n63.8\nMale\n2019"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#two-base-plots",
+    "href": "data-vis/week-7/seminar7.html#two-base-plots",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Two base plots",
+    "text": "Two base plots\n\n# Scatter (continuous x/y + color by group)\np_scatter &lt;- psych_df %&gt;%\n  ggplot(aes(x = stress_score, y = sleep_hours)) +\n  geom_point(aes(color = diagnosis))\n\n# Bar (grouped mean + fill by group)\np_bar &lt;- psych_df %&gt;%\n  ggplot(aes(x = diagnosis, y = stress_score)) +\n  stat_summary(aes(fill = diagnosis), fun = \"mean\", geom = \"bar\")"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#today-1",
+    "href": "data-vis/week-7/seminar7.html#today-1",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Today",
+    "text": "Today\n\nLabels with labs()\nscale_*_* to customize breaks, labels, limits, and colors\nPolishing visuals with theme()\nAnnotations, text, and direct labeling for clarity\nFaceting: facet_wrap, facet_grid, and patchwork"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#labels-with-labs",
+    "href": "data-vis/week-7/seminar7.html#labels-with-labs",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Labels with labs()",
+    "text": "Labels with labs()\nbasic labels\n\n# Add title, subtitle, and axis labels\np_scatter +\n  labs(\n    title    = \"Stress vs. Sleep\",\n    subtitle = \"Color indicates diagnosis group\",\n    x = \"Stress score (0–100)\",\n    y = \"Sleep hours (per night)\"\n  )"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#labels-with-labs-1",
+    "href": "data-vis/week-7/seminar7.html#labels-with-labs-1",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Labels with labs()",
+    "text": "Labels with labs()\nlabel legend aes() variables\n\n# Can use labs for legends / aesthetics \np_scatter +\n  labs(\n    color   = \"Diagnosis\"\n  )"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#today-2",
+    "href": "data-vis/week-7/seminar7.html#today-2",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Today",
+    "text": "Today\nCustomize plots for clarity and appeal\n\nLabels with labs()\nscale_*_* to customize breaks, labels, limits and colors\nPolishing visuals with theme()\nAnnotations, text, and direct labeling for clarity\nFaceting: facet_wrap, facet_grid, and patchwork"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__continuous",
+    "href": "data-vis/week-7/seminar7.html#scale__continuous",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_continuous",
+    "text": "scale_*_continuous\ncontinuous axes: breaks, labels and limits\n\n# Tighter control over axis tick labels and range\np_scatter +\n  scale_x_continuous(breaks = c(0, 20, 40)) +\n  scale_y_continuous(breaks = c(1,2,3,4,5,6,7,8,9,10))"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#making-vectors",
+    "href": "data-vis/week-7/seminar7.html#making-vectors",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Making vectors",
+    "text": "Making vectors\n\nc(1,2,3,4,5)\n\n[1] 1 2 3 4 5\n\n1:5\n\n[1] 1 2 3 4 5\n\nseq(1, 5, by = 1)\n\n[1] 1 2 3 4 5\n\nseq(1, 10, by = 2)\n\n[1] 1 3 5 7 9"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__continuous-1",
+    "href": "data-vis/week-7/seminar7.html#scale__continuous-1",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_continuous",
+    "text": "scale_*_continuous\ncontinuous axes: breaks, labels and limits\n\n# Tighter control over axis tick labels and range\np_scatter +\n  scale_x_continuous(breaks = c(0, 20, 40)) +\n  scale_y_continuous(breaks = c(2,4,6,8), labels = c(\"2h\", \"4h\", \"6h\", \"8h\"))"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__continuous-2",
+    "href": "data-vis/week-7/seminar7.html#scale__continuous-2",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_continuous",
+    "text": "scale_*_continuous\nscales package offers more customisation:\n\nnumber of significant digits\nadding percent sign, dollar sign etc."
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__continuous-3",
+    "href": "data-vis/week-7/seminar7.html#scale__continuous-3",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_continuous",
+    "text": "scale_*_continuous\ncontinuous axes: breaks, labels and limits\n\np_scatter +\n  scale_y_continuous(limits = c(0, 12), breaks = seq(0, 12, by = 2))"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__continuous-4",
+    "href": "data-vis/week-7/seminar7.html#scale__continuous-4",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_continuous",
+    "text": "scale_*_continuous\nalso alternative to labs()\n\np_scatter +\n  scale_y_continuous(limits = c(0, 12), breaks = seq(0, 12, by = 2), name = \"Sleep Hours\")"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__discrete-for-categorical-variables",
+    "href": "data-vis/week-7/seminar7.html#scale__discrete-for-categorical-variables",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_discrete for categorical variables",
+    "text": "scale_*_discrete for categorical variables\ndiscrete axes: names, labels\n\np_bar +\n  scale_x_discrete(name = \"Diagnosis\", labels = c(\"No Diag\", \"Anxiety\", \"Depression\")) +\n  scale_fill_discrete(name = \"Diagnosis\", labels = c(\"No Diag\", \"Anxiety\", \"Depression\"))"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients",
+    "href": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_* for colors, fills, gradients",
+    "text": "scale_*_* for colors, fills, gradients\nreview\n\np_bar +\n  scale_fill_manual(values = c(\"gray\", \"blue\", \"deeppink\"))"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-1",
+    "href": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-1",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_* for colors, fills, gradients",
+    "text": "scale_*_* for colors, fills, gradients\nmany color palettes: brewer"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-2",
+    "href": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-2",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_* for colors, fills, gradients",
+    "text": "scale_*_* for colors, fills, gradients\nmany color palettes: brewer"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-3",
+    "href": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-3",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_* for colors, fills, gradients",
+    "text": "scale_*_* for colors, fills, gradients\nbrewer example\n\np_bar +\n  scale_fill_brewer(palette = \"Set3\")"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-4",
+    "href": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-4",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_* for colors, fills, gradients",
+    "text": "scale_*_* for colors, fills, gradients\nmany color palettes: viridis"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-5",
+    "href": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-5",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_* for colors, fills, gradients",
+    "text": "scale_*_* for colors, fills, gradients\nviridis example\n\np_bar +\n  scale_fill_viridis_d()"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-6",
+    "href": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-6",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_* for colors, fills, gradients",
+    "text": "scale_*_* for colors, fills, gradients\nviridis example\n\nggplot(psych_df, aes(x = stress_score, y = diagnosis)) +\n  geom_point(aes(color = sleep_hours), position = position_jitter(height = .1))"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-7",
+    "href": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-7",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_* for colors, fills, gradients",
+    "text": "scale_*_* for colors, fills, gradients\nviridis example\n\nggplot(psych_df, aes(x = stress_score, y = diagnosis)) +\n  geom_point(aes(color = sleep_hours), position = position_jitter(height = .1)) +\n  scale_color_viridis()"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-8",
+    "href": "data-vis/week-7/seminar7.html#scale__-for-colors-fills-gradients-8",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "scale_*_* for colors, fills, gradients",
+    "text": "scale_*_* for colors, fills, gradients\nviridis example\n\nggplot(psych_df, aes(x = stress_score, y = diagnosis)) +\n  geom_point(aes(color = sleep_hours), position = position_jitter(height = .1)) +\n  scale_color_viridis(option = \"turbo\")"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#today-3",
+    "href": "data-vis/week-7/seminar7.html#today-3",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Today",
+    "text": "Today\n\nLabels with labs()\nscale_*_* to customize breaks, labels, limits, and colors\nPolishing visuals with theme()\nAnnotations, text, and direct labeling for clarity\nFaceting: facet_wrap, facet_grid, and patchwork"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#theme",
+    "href": "data-vis/week-7/seminar7.html#theme",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "theme()",
+    "text": "theme()\ndefault ggplot appearance"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#theme-1",
+    "href": "data-vis/week-7/seminar7.html#theme-1",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "theme()",
+    "text": "theme()\nbuilt-in alternative themes\n\np_scatter +\n  theme_bw()"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#theme-2",
+    "href": "data-vis/week-7/seminar7.html#theme-2",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "theme()",
+    "text": "theme()\naltering and removing theme elements\n\np_scatter +\n  theme_bw() +\n  theme(\n    legend.position = \"top\",\n    axis.title = element_text(face = \"bold\"),\n    axis.text = element_text(color = \"grey20\"),\n    plot.title  = element_text(face = \"bold\"),\n    panel.grid = element_blank()\n  )"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#today-4",
+    "href": "data-vis/week-7/seminar7.html#today-4",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Today",
+    "text": "Today\n\nLabels with labs()\nscale_*_* to customize breaks, labels, limits, and colors\nPolishing visuals with theme()\nAnnotations, text, and direct labeling for clarity\nFaceting: facet_wrap, facet_grid, and patchwork"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#annotations-direct-labeling",
+    "href": "data-vis/week-7/seminar7.html#annotations-direct-labeling",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Annotations & direct labeling",
+    "text": "Annotations & direct labeling\n\n\nRight now, one of the things that leaps out from this plot is that people with a diagnosis of anxiety or depression have higher stress scores\nBut if someone wanted to know what the exact scores for each group were, they’d need to try to mentally line up the heights of the bars with the y-axis.\nIf we want those exact values to be something that’s easy for the reader to see, we can label them on the graph."
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#annotations-direct-labeling-1",
+    "href": "data-vis/week-7/seminar7.html#annotations-direct-labeling-1",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Annotations & direct labeling",
+    "text": "Annotations & direct labeling\ngeom_text()\n\n# Get mean stress scores for each group\nbar_means &lt;- psych_df %&gt;%\n  group_by(diagnosis) %&gt;%\n  summarise(mean_stress = round(mean(stress_score, na.rm = TRUE), 1))\n\n# Add a geom_text \np_bar +\n  geom_text(data = bar_means, # use the tibble we generated\n            aes(x = diagnosis, y = mean_stress, label = mean_stress), # set the aes\n            vjust = -0.3, size = 5) # shift up and make bigger"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#annotations-direct-labeling-2",
+    "href": "data-vis/week-7/seminar7.html#annotations-direct-labeling-2",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Annotations & direct labeling",
+    "text": "Annotations & direct labeling\n\n\nNow let’s go to this plot.\nPerhaps here, we want to make it really easy to see which points correspond to each diagnosis, without people having to look at the legend.\nSo maybe we’d want to put nice clear labels in the middle of each group to label it as anxiety, depression, none\nthat geom_text might not be ideal because it might be difficult to read text on top of the points\nso we’ll use something slightly different called geom_label to format the text in a nice labeled box"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#annotations-direct-labeling-3",
+    "href": "data-vis/week-7/seminar7.html#annotations-direct-labeling-3",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Annotations & direct labeling",
+    "text": "Annotations & direct labeling\ngeom_text()\n\n# Calculate where the center of each group lies on the\n# stress_score (x-axis) and sleep_hours (y-axis) variables\ngroup_centers &lt;- psych_df %&gt;%\n  group_by(diagnosis) %&gt;%\n  summarise(\n    stress_center = mean(stress_score, na.rm = TRUE),\n    sleep_center  = mean(sleep_hours,  na.rm = TRUE))\n\np_scatter +\n  geom_label(data = group_centers,\n             aes(x = stress_center, y = sleep_center, label = diagnosis, color = diagnosis),\n             show.legend = FALSE, \n             size = 5, label.size = 0.25) +\n  theme(legend.position = \"none\") # get rid of the redundant legend"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#today-5",
+    "href": "data-vis/week-7/seminar7.html#today-5",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Today",
+    "text": "Today\n\nLabels with labs()\nscale_*_* to customize breaks, labels, limits and colors\nPolishing visuals with theme()\nAnnotations, text, and direct labeling for clarity\nFaceting: facet_wrap, facet_grid, and patchwork"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#faceting",
+    "href": "data-vis/week-7/seminar7.html#faceting",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Faceting",
+    "text": "Faceting\ncompare groups without clutter\n\np_scatter +\n  stat_smooth(aes(color = diagnosis), method = \"lm\") #add regression line per group"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#faceting-wrap",
+    "href": "data-vis/week-7/seminar7.html#faceting-wrap",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Faceting: wrap",
+    "text": "Faceting: wrap\ncompare groups without clutter\n\np_scatter +\n  facet_wrap(~diagnosis) + #facet by diagnosis\n  stat_smooth(aes(color = diagnosis), method = \"lm\") +\n  theme(legend.position = \"none\", #facet labels make diagnosis legend redundant\n        strip.background = element_blank()) #remove gray background of facet labels"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#faceting-grid",
+    "href": "data-vis/week-7/seminar7.html#faceting-grid",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Faceting: grid",
+    "text": "Faceting: grid\ncompare groups without clutter\n\np_scatter +\n  facet_grid(sex~diagnosis) + # rows and columns\n  stat_smooth(aes(color = diagnosis), method = \"lm\") + \n  theme(legend.position = \"none\",\n        strip.background = element_blank())"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots",
+    "href": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Patchwork: combine multiple plots",
+    "text": "Patchwork: combine multiple plots\n\nlibrary(patchwork)"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots-1",
+    "href": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots-1",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Patchwork: combine multiple plots",
+    "text": "Patchwork: combine multiple plots\nhorizontal\n\np_scatter + p_bar\n\n\nUses arithmetic-like notation to combine plots in a readable way"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots-2",
+    "href": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots-2",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Patchwork: combine multiple plots",
+    "text": "Patchwork: combine multiple plots\nvertical\n\np_scatter / p_bar"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots-3",
+    "href": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots-3",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Patchwork: combine multiple plots",
+    "text": "Patchwork: combine multiple plots\nnested\n\np_scatter | (p_scatter / p_bar)"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots-4",
+    "href": "data-vis/week-7/seminar7.html#patchwork-combine-multiple-plots-4",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Patchwork: combine multiple plots",
+    "text": "Patchwork: combine multiple plots\nlabel\n\np_scatter + p_bar +\nplot_annotation(tag_levels = 'A')"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#summary",
+    "href": "data-vis/week-7/seminar7.html#summary",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Summary",
+    "text": "Summary\n\nUse labs() to control labels (title, subtitle, caption, axes, legend titles).\nUse scale_*_* to control how scales are used/shown\nUse theme() to control presentation (grid, legend, typography)\n\nEmphasize clarity with annotations and direct labels.\n\nUse facets and patchwork to structure comparisons"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#continuous-variables",
+    "href": "data-vis/week-7/seminar7.html#continuous-variables",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Continuous variables",
+    "text": "Continuous variables"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#categorical-discrete-variables",
+    "href": "data-vis/week-7/seminar7.html#categorical-discrete-variables",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Categorical (discrete) variables",
+    "text": "Categorical (discrete) variables"
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#colors-fills-gradients",
+    "href": "data-vis/week-7/seminar7.html#colors-fills-gradients",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Colors, fills, gradients",
+    "text": "Colors, fills, gradients"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html",
+    "href": "data-vis/week-7/practical7.html",
+    "title": "Practical",
+    "section": "",
+    "text": "In this practical you’ll start from basic plots and polish them using the strategies from Seminar 7:\n\nClear, reader-friendly labels with labs()\n\nSmarter scales with scale_*_* (breaks, labels, limits, discrete & continuous colors)\nVisual polish with theme()\n\n\nAnnotations and direct labels (geom_text() / geom_label())\n\nFaceting (facet_wrap, facet_grid) and patchwork for multi-panel figures\n\nPracticals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference."
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#session-overview",
+    "href": "data-vis/week-7/practical7.html#session-overview",
+    "title": "Practical",
+    "section": "",
+    "text": "In this practical you’ll start from basic plots and polish them using the strategies from Seminar 7:\n\nClear, reader-friendly labels with labs()\n\nSmarter scales with scale_*_* (breaks, labels, limits, discrete & continuous colors)\nVisual polish with theme()\n\n\nAnnotations and direct labels (geom_text() / geom_label())\n\nFaceting (facet_wrap, facet_grid) and patchwork for multi-panel figures"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#philosophy",
+    "href": "data-vis/week-7/practical7.html#philosophy",
+    "title": "Practical",
+    "section": "",
+    "text": "Practicals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference."
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#look-at-the-data",
+    "href": "data-vis/week-7/practical7.html#look-at-the-data",
+    "title": "Practical",
+    "section": "Look at the data",
+    "text": "Look at the data\n Examine the variables and first few rows of the datasets using head().\n\nhead(wellbeing)\n\n# A tibble: 6 × 4\n  participant_id participant_group sleep_hours wellbeing_index\n  &lt;chr&gt;          &lt;chr&gt;                   &lt;dbl&gt;           &lt;dbl&gt;\n1 P0001          retired                   7.1            44.9\n2 P0002          employed                  7.2            54.9\n3 P0003          employed                  6.2            53.2\n4 P0004          retired                   8.7            70.2\n5 P0005          student                   5.9            55.3\n6 P0006          employed                  7              53.9\n\nhead(therapy)\n\n# A tibble: 6 × 8\n  support_level therapy   age loneliness_score wellbeing_score sleep_quality\n  &lt;chr&gt;         &lt;chr&gt;   &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;\n1 Medium        Yes        23             68.9            62.8             3\n2 Medium        Yes        31             46.2            88.9             8\n3 High          Yes        35             46.4            80               8\n4 Low           No         29             40.4            45.9             5\n5 Low           Yes        34             39.6            68.7             9\n6 Low           No         25             67.5            38.1             6\n# ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#load-packages",
+    "href": "data-vis/week-7/practical7.html#load-packages",
+    "title": "Practical",
+    "section": "Load packages",
+    "text": "Load packages\nWe’ll be using some additional packages for today’s exercises (and they will be useful for you in the future).\n Load the packages below. If you get a message saying that the package does not exist, use install.packages(\"name of package\") to install and then try loading again.\n\nlibrary(viridis)   # viridis palettes\nlibrary(RColorBrewer) # brewer palettes\nlibrary(patchwork) # combine plots"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#exercise-1-labels-that-communicate",
+    "href": "data-vis/week-7/practical7.html#exercise-1-labels-that-communicate",
+    "title": "Practical",
+    "section": "Exercise 1: Labels that communicate",
+    "text": "Exercise 1: Labels that communicate\nWe’ll start with a simple scatterplot of sleep vs wellbeing.\n Start with this base plot:\n\nggplot(wellbeing, aes(x = sleep_hours, y = wellbeing_index)) +\n  geom_point()\n\n\n\n\n\n\n\n Improve the plot:\n\nUse labs() to add a title and clearly label the axes (e.g., “Sleep (avg hours/night)”, “Wellbeing Index (0–100)”)\nMake tick marks helpful: use coord_cartesian and set breaks for scale_*_continuous so that: (A) the x-axis ranges from 4 to 10 with tick marks every 1 hour, and (B) the y-axis ranges from 30 to 90 with tick marks every 15 pints.\n\nImprove baseline readability via built-in themes like theme_bw() and manual adjustments with theme() (e.g., font size, gridlines).\n\n\nggplot(wellbeing, aes(x = sleep_hours, y = wellbeing_index)) +\n  geom_point() +\n  coord_cartesian(xlim = c(4, 10), ylim = c(30, 90)) +\n  scale_x_continuous(breaks = 4:10) +\n  scale_y_continuous(breaks = seq(30, 90, by = 15)) +\n  labs(x = \"Sleep (avg hours/night)\", y = \"Wellbeing Index (0–100)\") +\n  theme_bw() +\n  theme(panel.grid = element_blank())\n\n\n\n\n\n\n\n In one sentence: What is the main take-home from this scatter?"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#exercise-2-discrete-color-with-a-legend-that-helps",
+    "href": "data-vis/week-7/practical7.html#exercise-2-discrete-color-with-a-legend-that-helps",
+    "title": "Practical",
+    "section": "Exercise 2: Discrete color with a legend that helps",
+    "text": "Exercise 2: Discrete color with a legend that helps\nColor points by participant_group and make the legend useful.\n Color the points in the plot from Exercise 1 by participant_group\n\nggplot(wellbeing, aes(x = sleep_hours, y = wellbeing_index)) +\n  geom_point(aes(color = participant_group))\n\n\n\n\n\n\n\n Improve the use and labelling of color:\n\nUse labs() to rename the legend title. Remember that any aes() you set is available to labs()\n\nUse either viridis (discrete) scale_color_viridis_d() or a brewer qualitative palette (e.g., scale_color_brewer(palette = \"Set2\")).\n\nAdjust legend placement with theme(legend.position = \"top\") (or another purposeful spot).\n\n Which palette did you choose and why?"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#exercise-3-explore-available-color-palettes-and-tools",
+    "href": "data-vis/week-7/practical7.html#exercise-3-explore-available-color-palettes-and-tools",
+    "title": "Practical",
+    "section": "Exercise 3: Explore available color palettes and tools",
+    "text": "Exercise 3: Explore available color palettes and tools\nWe touched upon the brewer and viridis palettes. However, these are just some of the options. Many people have developed color palettes you can use in R, and you can create your own.\n Look at the many palette options on this website\n Google “color picker”. You should see a tool that allows you to pick colors and provides ways to specify the color you picked. For example, it provides the HEX reference (e.g., “#6a788f”), which you can use to label colors in ggplots (e.g., geom_point(color = \"#6a788f\"))."
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#exercise-4-discrete-axes-readable-bar-summaries",
+    "href": "data-vis/week-7/practical7.html#exercise-4-discrete-axes-readable-bar-summaries",
+    "title": "Practical",
+    "section": "Exercise 4: Discrete axes & readable bar summaries",
+    "text": "Exercise 4: Discrete axes & readable bar summaries\nMake a bar plt of wellbeing by participant_group\n Start with this base plot:\n\nggplot(wellbeing, aes(x = participant_group, y = wellbeing_index)) +\n  stat_summary(aes(fill = participant_group), fun = \"mean\", geom = \"bar\")\n\n\n\n\n\n\n\n Improve the base plot by doing the following:\n\nUse labs() for a clear title and axis titles\nRename x-axis group labels with scale_x_discrete(labels = c(...)), e.g., to be “Employed”, “Retired” and “Student”\nUse brewer or discrete viridis palette to alter the fill colors\nNote that the legend is redundant with the x-axis. Use theme() to remove the legend by setting its position as none. In addition, improve the overall polish of the plot using built in themes and/or adding further adjustments within theme()"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#exercise-5-direct-labels",
+    "href": "data-vis/week-7/practical7.html#exercise-5-direct-labels",
+    "title": "Practical",
+    "section": "Exercise 5: Direct labels",
+    "text": "Exercise 5: Direct labels\nSwitch to the therapy dataset and explore loneliness vs wellbeing, colored by support_level\n Starter plot:\n\nggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +\n  geom_point(aes(color = support_level))\n\n\n\n\n\n\n\nReplace legend referencing with direct labels near group centers.\n Create a tibble that computes each group’s center using group_by and summarise. Store the tibble, e.g., as an object called centers.\n\n\n# A tibble: 3 × 3\n  support_level loneliness_center wellbeing_center\n  &lt;chr&gt;                     &lt;dbl&gt;            &lt;dbl&gt;\n1 High                       21.0             86.2\n2 Low                        59.2             48.9\n3 Medium                     42.2             67.3\n\n\n Use geom_label to use the tibble to label the groups. Note that because we are now using labels to identify the groups, using a legend to identify them would be redundant. Therefore, set show.legend to FALSE for both geom_point and geom_label.\n\n\n\n\n\n\n\n\n Did direct labels make the plot faster to understand? Can you think of cases in which direct labels would make the plot harder to understand?"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#exercise-6-faceting-to-compare-groups-without-clutter",
+    "href": "data-vis/week-7/practical7.html#exercise-6-faceting-to-compare-groups-without-clutter",
+    "title": "Practical",
+    "section": "Exercise 6: Faceting to compare groups without clutter",
+    "text": "Exercise 6: Faceting to compare groups without clutter\nExplore how the loneliness vs wellbeing relation differs by group.\n Reorder the levels of the support_level factor using mutate and factor so that the order is: Low, Medium, High\n Return to this basic scatterplot:\n\nggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +\n  geom_point()\n\n\n\n\n\n\n\n Add trendlines and split plot into facets to compare trends across groups\n\nAdd a geom_smooth line to the code to shows the linear regression line for the relationship between sleep_hours and wellbeing_index for each participant_group.\nUse facet_wrap to create separate facets for each participant_group\n\nUse built-in themes and theme() to remove the gray background from the plots and facet titles"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#exercise-7-continuous-color-scale-viridis-and",
+    "href": "data-vis/week-7/practical7.html#exercise-7-continuous-color-scale-viridis-and",
+    "title": "Practical",
+    "section": "Exercise 7: Continuous color scale (viridis) and",
+    "text": "Exercise 7: Continuous color scale (viridis) and\nSwitch to examining the loneliness vs wellbeing relationship by sleep_quality (continuous)\n Starter plot:\n\nggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +\n  geom_point()\n\n\n\n\n\n\n\n Color by sleep_quality and customize:\n\nWithin geom_point, color the points based on sleep_quality\n\nCustomize the colors used for sleep_quality using a viridis scale. Within this line:\n\nUse the option argument to choose one of the non-default color scales\nSet the name of the legend to something more readable\nChoose breaks that reduce legend clutter\n\n\nUse labs() to improve the axis labels\nUse theme() to place the legend in a different position"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#exercise-8-facet-grid-for-compact-subgroup-comparisons",
+    "href": "data-vis/week-7/practical7.html#exercise-8-facet-grid-for-compact-subgroup-comparisons",
+    "title": "Practical",
+    "section": "Exercise 8: Facet grid for compact subgroup comparisons",
+    "text": "Exercise 8: Facet grid for compact subgroup comparisons\n Compare the pattern in Exercise 7 by sex and therapy:\n\nUse facet_grid to create facets with separate rows for sex and separate columns for therapy. Include a labeller to add a “Sex:” prefix to the row labels and a “Therapy:” prefix to the column labels.\nUse built-in themes and theme() to customize the appearance of the plot, including removing the gray background from the plot and facet titles\n\n\n\n\n\n\n\n\n\n Do the facets reveal effects of sex and/or therapy?"
+  },
+  {
+    "objectID": "data-vis/week-7/practical7.html#exercise-9-using-patchwork-to-make-tidy-multi-panel-figures",
+    "href": "data-vis/week-7/practical7.html#exercise-9-using-patchwork-to-make-tidy-multi-panel-figures",
+    "title": "Practical",
+    "section": "Exercise 9: Using patchwork to make tidy multi-panel figures",
+    "text": "Exercise 9: Using patchwork to make tidy multi-panel figures\nCreate two polished plots and combine them with patchwork.\n Use or modify any two of your improved plots from the preceding exercises that provide different insights into the same dataset (either wellbeing or therapy) and combine them with patchwork - Choose whether to align plots horizontally or vertically - Add plot_annotation() to auto-label panels A, B - Ensure consistent style (font size, theme tweaks) across panels\n What patterns does each figure highlight, and how does combining them provide complementary insights into the data?"
+  },
+  {
+    "objectID": "data-vis/week-7/study_before7.html",
+    "href": "data-vis/week-7/study_before7.html",
+    "title": "Independent Study to Prepare",
+    "section": "",
+    "text": "Advanced Customizations\nTo prepare for diving into this week’s topic, advanced customization:\n\nRead Data Visualization Ch 20 - 24\n\nNote! This might seem like several chapters, but they are each very short."
+  },
+  {
+    "objectID": "data-vis/week-7/seminar7.html#faceting-grid-1",
+    "href": "data-vis/week-7/seminar7.html#faceting-grid-1",
+    "title": "Week 7 Seminar: Advanced Customizations",
+    "section": "Faceting: grid",
+    "text": "Faceting: grid\nrevise labels\n\np_scatter +\n  facet_grid(sex~diagnosis, \n             labeller = labeller(sex = ~ paste(\"Sex:\", .x))) + # label rows\n  stat_smooth(aes(color = diagnosis), method = \"lm\") + \n  theme(legend.position = \"none\",\n        strip.background = element_blank())"
+  },
+  {
+    "objectID": "data-vis/week-7/overview7.html",
+    "href": "data-vis/week-7/overview7.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This week you will learn how to use lines to visualize changes over time. We will cover basic line graphs, emphasizing differences in trends between groups, and working with date and time variables. Note that the preparation for this week includes a DataCamp course that will go more in depth into date and time variables.\n\nLearning objectives\nThe successful student will be able to:\n\ngenerate line graphs to show trends over time\nuse color, facets, and highlights to emphasize differences in trends between categorical groups\nmanipulate date and time variables for clear visualization"
+  },
+  {
+    "objectID": "data-vis/week-7/study_after7.html",
+    "href": "data-vis/week-7/study_after7.html",
+    "title": "Independent Study to Consolidate",
+    "section": "",
+    "text": "Continue working on the date and time course on DataCamp if not yet complete."
+  },
+  {
+    "objectID": "data-vis/week-7/study_after7.html#set-up",
+    "href": "data-vis/week-7/study_after7.html#set-up",
+    "title": "Independent Study to Consolidate",
+    "section": "Set up",
+    "text": "Set up\nIf you have just opened RStudio you will want to load the tidyverse package."
+  },
+  {
+    "objectID": "data-vis/week-7/study_after7.html#reading-in-data",
+    "href": "data-vis/week-7/study_after7.html#reading-in-data",
+    "title": "Independent Study to Consolidate",
+    "section": "Reading in data",
+    "text": "Reading in data\n Save this file in your week-6 folder:\n\nTelehealth dataset: telehealth.csv\n\n\n Add the following code to your R script and run:\n\ntelehealth &lt;- read_csv(\"telehealth.csv\", \n                 col_types = list(\n                 col_integer(),\n                 col_factor(),\n                 col_integer(),\n                 col_factor(),\n                 col_factor(),\n                 col_double(),\n                 col_factor(),\n                 col_character()))\n\n\nhead(telehealth)\n\n# A tibble: 6 × 8\n  agent_id seniority  year season policy    patient_satisfaction metric    mmss \n     &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;  &lt;fct&gt;                    &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;\n1        1 mid        2021 winter hybrid_ai                 55.2 first_re… 06:3…\n2        1 mid        2021 winter hybrid_ai                 55.2 handle_t… 21:1…\n3        1 mid        2021 winter hybrid_ai                 55.2 resoluti… 116:…\n4        1 mid        2021 spring hybrid_ai                 64.4 first_re… 04:5…\n5        1 mid        2021 spring hybrid_ai                 64.4 handle_t… 17:0…\n6        1 mid        2021 spring hybrid_ai                 64.4 resoluti… 85:5…"
+  },
+  {
+    "objectID": "data-vis/week-7/study_after7.html#exercise-1-satisfaction-over-time",
+    "href": "data-vis/week-7/study_after7.html#exercise-1-satisfaction-over-time",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 1: Satisfaction over time",
+    "text": "Exercise 1: Satisfaction over time\nLet’s start out by looking at changes in satisfaction over time.\n Generate a plot that shows how patient_satisfaction changes over year.\nReflect: Do you see satisfaction trending up, down, or flat across years?"
+  },
+  {
+    "objectID": "data-vis/week-7/study_after7.html#exercise-2-policy-comparison",
+    "href": "data-vis/week-7/study_after7.html#exercise-2-policy-comparison",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 2: Policy comparison",
+    "text": "Exercise 2: Policy comparison\nNow let’s see how the changes differ across the two policies.\n Use different-colored lines and ribbons to show how the change in patient_satisfaction over year differs across policies.\nReflect: Do the policies diverge or converge over the years?"
+  },
+  {
+    "objectID": "data-vis/week-7/study_after7.html#exercise-3-faceting-by-seniority",
+    "href": "data-vis/week-7/study_after7.html#exercise-3-faceting-by-seniority",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 3: Faceting by seniority",
+    "text": "Exercise 3: Faceting by seniority\nNow let’s see how differences between policies in trends over time differ across agents with different levels of seniority.\nFirst, we’ll want to order the levels of the seniority variable from least to most seniority.\n Use mutate to specify the order of the seniority factor levels as junior, mid, senior.\n Use facets to contrast the changes in patient_satisfaction over years for the different policies across levels of seniority.\nReflect: Does the effect of policy differ across junior, mid, and senior agents?"
+  },
+  {
+    "objectID": "data-vis/week-7/study_after7.html#exercise-4-parse-time-values",
+    "href": "data-vis/week-7/study_after7.html#exercise-4-parse-time-values",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 4: Parse time values",
+    "text": "Exercise 4: Parse time values\nThe mmss column stores durations like \"06:30.7\" or \"116:08.0\" as character strings.\n Convert mmss into a time variable called mmss_period using ms(), then convert mmss_period into an h:m:s-format time variable using hms::hms().\nReflect: Why did we import mmss as character instead of letting read_csv guess a time type? What goes wrong for strings like \"116:08.0\"?"
+  },
+  {
+    "objectID": "data-vis/week-7/study_after7.html#exercise-5-compare-all-metrics",
+    "href": "data-vis/week-7/study_after7.html#exercise-5-compare-all-metrics",
+    "title": "Independent Study to Consolidate",
+    "section": "Exercise 5: Compare all metrics",
+    "text": "Exercise 5: Compare all metrics\nThe dataset has three time metrics (first_response, handle_time, resolution_time) on very different scales.\nLet’s visualize trends in the three metrics in different panels.\n Plot the changes in mmss_hms over year with separate lines for policy and separate facets for metric. Free up the y-axis ranges as needed.\nReflect: Why is scales = \"free_y\" helpful here? What happens without it?"
   }
 ]
