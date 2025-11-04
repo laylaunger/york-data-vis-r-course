@@ -449,11 +449,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
 <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a></li>
   <li><a href="#reading-in-data" id="toc-reading-in-data" class="nav-link" data-scroll-target="#reading-in-data">Reading in data</a></li>
-  <li><a href="#exercise-1-satisfaction-over-time" id="toc-exercise-1-satisfaction-over-time" class="nav-link" data-scroll-target="#exercise-1-satisfaction-over-time">Exercise 1: Satisfaction over time</a></li>
-  <li><a href="#exercise-2-policy-comparison" id="toc-exercise-2-policy-comparison" class="nav-link" data-scroll-target="#exercise-2-policy-comparison">Exercise 2: Policy comparison</a></li>
-  <li><a href="#exercise-3-faceting-by-seniority" id="toc-exercise-3-faceting-by-seniority" class="nav-link" data-scroll-target="#exercise-3-faceting-by-seniority">Exercise 3: Faceting by seniority</a></li>
-  <li><a href="#exercise-4-parse-time-values" id="toc-exercise-4-parse-time-values" class="nav-link" data-scroll-target="#exercise-4-parse-time-values">Exercise 4: Parse time values</a></li>
-  <li><a href="#exercise-5-compare-all-metrics" id="toc-exercise-5-compare-all-metrics" class="nav-link" data-scroll-target="#exercise-5-compare-all-metrics">Exercise 5: Compare all metrics</a></li>
+  <li><a href="#ordering-factor-levels" id="toc-ordering-factor-levels" class="nav-link" data-scroll-target="#ordering-factor-levels">Ordering factor levels</a></li>
+  <li><a href="#exercise-1-make-a-polished-bar-plot" id="toc-exercise-1-make-a-polished-bar-plot" class="nav-link" data-scroll-target="#exercise-1-make-a-polished-bar-plot">Exercise 1: Make a polished bar plot</a></li>
+  <li><a href="#exercise-2-try-out-direct-labels-as-an-alternative" id="toc-exercise-2-try-out-direct-labels-as-an-alternative" class="nav-link" data-scroll-target="#exercise-2-try-out-direct-labels-as-an-alternative">Exercise 2: Try out <strong>direct labels</strong> as an alternative</a></li>
+  <li><a href="#exercise-3-combining-facets-and-plots-to-facilitate-comparisons" id="toc-exercise-3-combining-facets-and-plots-to-facilitate-comparisons" class="nav-link" data-scroll-target="#exercise-3-combining-facets-and-plots-to-facilitate-comparisons">Exercise 3: Combining facets and plots to facilitate comparisons</a></li>
   </ul>
 </li>
   <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
@@ -462,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-7/overview7.html">Week 7: Advanced Customizations</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-7/study_after7.html">Consolidate!</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Independent Study to Consolidate</h1>
-<p class="subtitle lead">Time Series &amp; Line Graphs</p>
+<p class="subtitle lead">Advanced Customisation</p>
 </div>
 
 
@@ -477,66 +476,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="practice" class="level1"><h1>Practice</h1>
-<p>Continue working on the date and time course on DataCamp if not yet complete.</p>
+<p>Continue working on the rmarkdown DataCamp course if not yet complete.</p>
 </section><section id="exercises" class="level1"><h1>Exercises</h1>
 <section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set up</h2>
-<p>If you have just opened RStudio you will want to load the <strong><code>tidyverse</code></strong> package.</p>
+<p>If you have just opened RStudio you will want to load the <strong><code>tidyverse</code></strong>, <strong><code>RColorBrewer</code></strong>, <strong><code>viridis</code></strong> and <strong><code>patchwork</code></strong> packages.</p>
 </section><section id="reading-in-data" class="level2"><h2 class="anchored" data-anchor-id="reading-in-data">Reading in data</h2>
 <p><img src="images/do_on_your_computer.png" class="img-fluid"> Save this file in your <code>week-6</code> folder:</p>
 <ul>
-<li>Telehealth dataset: <a href="../data/telehealth.csv">telehealth.csv</a>
+<li>App engagement dataset: <a href="../data/app_engagement.csv">app_engagement.csv</a>
+</li>
+<li>Customer ops dataset: <a href="../data/customer_ops.csv">customer_ops.csv</a>
 </li>
 </ul>
 <p><img src="images/do_in_R.png" class="img-fluid"> Add the following code to your R script and run:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">telehealth</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"telehealth.csv"</span>, </span>
-<span>                 col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
-<span>                 <span class="fu">col_integer</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                 <span class="fu">col_factor</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                 <span class="fu">col_integer</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                 <span class="fu">col_factor</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                 <span class="fu">col_factor</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                 <span class="fu">col_double</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                 <span class="fu">col_factor</span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                 <span class="fu">col_character</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">engagement</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"app_engagement.csv"</span><span class="op">)</span></span>
+<span><span class="va">ops</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"customer_ops.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">telehealth</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">engagement</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 8
-  agent_id seniority  year season policy    patient_satisfaction metric    mmss 
-     &lt;int&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;  &lt;fct&gt;                    &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;
-1        1 mid        2021 winter hybrid_ai                 55.2 first_re… 06:3…
-2        1 mid        2021 winter hybrid_ai                 55.2 handle_t… 21:1…
-3        1 mid        2021 winter hybrid_ai                 55.2 resoluti… 116:…
-4        1 mid        2021 spring hybrid_ai                 64.4 first_re… 04:5…
-5        1 mid        2021 spring hybrid_ai                 64.4 handle_t… 17:0…
-6        1 mid        2021 spring hybrid_ai                 64.4 resoluti… 85:5…</code></pre>
+<pre><code># A tibble: 6 × 5
+  user_id user_segment device_type acquisition_channel product_engagement
+    &lt;dbl&gt; &lt;fct&gt;        &lt;fct&gt;       &lt;chr&gt;                            &lt;dbl&gt;
+1       1 MidCareer    Mobile      Organic                           55.8
+2       2 EarlyCareer  Desktop     Organic                           89.9
+3       3 Students     Desktop     Organic                           40.6
+4       4 Senior       Mobile      Organic                           48.7
+5       5 MidCareer    Mobile      Ads                               51.1
+6       6 Students     Mobile      Referral                          79.1</code></pre>
+</div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">ops</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+  employee_id job_role          training_hours client_contacts task_switch_hours
+  &lt;chr&gt;       &lt;fct&gt;                      &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;
+1 E0001       account_manager              6.1            9.47               9  
+2 E0002       support_engineer             6.1            6.41               5.9
+3 E0003       implement_specia…            7              4.27               5  
+4 E0004       account_manager              5.7            6.72               8.7
+5 E0005       support_engineer             6.4            9.33               7  
+6 E0006       account_manager              6.6            7.62               6.2
+# ℹ 1 more variable: performance_index &lt;dbl&gt;</code></pre>
 </div>
 </div>
-<hr></section><section id="exercise-1-satisfaction-over-time" class="level2"><h2 class="anchored" data-anchor-id="exercise-1-satisfaction-over-time">Exercise 1: Satisfaction over time</h2>
-<p>Let’s start out by looking at changes in satisfaction over time.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Generate a plot that shows how <code>patient_satisfaction</code> changes over <code>year</code>.</p>
-<p>Reflect: Do you see satisfaction trending up, down, or flat across years?</p>
-</section><section id="exercise-2-policy-comparison" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-policy-comparison">Exercise 2: Policy comparison</h2>
-<p>Now let’s see how the changes differ across the two policies.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Use different-colored lines and ribbons to show how the change in <code>patient_satisfaction</code> over <code>year</code> differs across policies.</p>
-<p>Reflect: Do the policies <strong>diverge</strong> or <strong>converge</strong> over the years?</p>
-</section><section id="exercise-3-faceting-by-seniority" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-faceting-by-seniority">Exercise 3: Faceting by seniority</h2>
-<p>Now let’s see how differences between policies in trends over time differ across agents with different levels of seniority.</p>
-<p>First, we’ll want to order the levels of the <code>seniority</code> variable from least to most seniority.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Use <code>mutate</code> to specify the order of the <code>seniority</code> factor levels as <code>junior</code>, <code>mid</code>, <code>senior</code>.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Use facets to contrast the changes in <code>patient_satisfaction</code> over years for the different policies across levels of seniority.</p>
-<p>Reflect: Does the effect of policy differ across junior, mid, and senior agents?</p>
-</section><section id="exercise-4-parse-time-values" class="level2"><h2 class="anchored" data-anchor-id="exercise-4-parse-time-values">Exercise 4: Parse time values</h2>
-<p>The <code>mmss</code> column stores durations like <code>"06:30.7"</code> or <code>"116:08.0"</code> as <strong>character</strong> strings.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Convert <code>mmss</code> into a time variable called <code>mmss_period</code> using <code>ms()</code>, then convert <code>mmss_period</code> into an h:m:s-format time variable using <code><a href="https://hms.tidyverse.org/reference/hms.html">hms::hms()</a></code>.</p>
-<p>Reflect: Why did we import <code>mmss</code> as <strong>character</strong> instead of letting <code>read_csv</code> guess a time type? What goes wrong for strings like <code>"116:08.0"</code>?</p>
-</section><section id="exercise-5-compare-all-metrics" class="level2"><h2 class="anchored" data-anchor-id="exercise-5-compare-all-metrics">Exercise 5: Compare all metrics</h2>
-<p>The dataset has three time metrics (<code>first_response</code>, <code>handle_time</code>, <code>resolution_time</code>) on very different scales.</p>
-<p>Let’s visualize trends in the three metrics in different panels.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Plot the changes in <code>mmss_hms</code> over year with separate lines for <code>policy</code> and separate facets for <code>metric</code>. Free up the y-axis ranges as needed.</p>
-<p>Reflect: Why is <code>scales = "free_y"</code> helpful here? What happens without it?</p>
+</section><section id="ordering-factor-levels" class="level2"><h2 class="anchored" data-anchor-id="ordering-factor-levels">Ordering factor levels</h2>
+<p>Some of the factors in the dataset have natural orders that we should enforce.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Use <code>mutate</code> and <code>factor</code> to reorder the levels of the following factors:</p>
+<p><code>engagement</code> dataset:</p>
+<ul>
+<li>
+<code>user_segment</code>: levels = Students, EarlyCareer, MidCareer, Senior</li>
+<li>
+<code>device_type</code>: levels = Desktop, Mobile</li>
+</ul>
+<p><code>ops</code> dataset:</p>
+<ul>
+<li>
+<code>job_role</code>: levels = support_engineer, implement_specialist, account_manager</li>
+</ul>
+<hr></section><section id="exercise-1-make-a-polished-bar-plot" class="level2"><h2 class="anchored" data-anchor-id="exercise-1-make-a-polished-bar-plot">Exercise 1: Make a polished bar plot</h2>
+<p>Using <strong><code>engagement</code></strong>, create a bar plot of <code>product_engagement</code> by <code>user_segment</code>, with points for individual values.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Use color, labels, and themes to polish the appearance of the plot. The plot below is just an example to illustrate an approach you could take (with your own choice of labels).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="study_after7_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="4200"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr></section><section id="exercise-2-try-out-direct-labels-as-an-alternative" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-try-out-direct-labels-as-an-alternative">Exercise 2: Try out <strong>direct labels</strong> as an alternative</h2>
+<p>Compute group centers and place labels directly on the plot.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Create a tibble of <code>user_segment</code> means, then label them with <code>geom_label()</code>. Hide redundant legends.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="study_after7_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="4200"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr></section><section id="exercise-3-combining-facets-and-plots-to-facilitate-comparisons" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-combining-facets-and-plots-to-facilitate-comparisons">Exercise 3: Combining facets and plots to facilitate comparisons</h2>
+<p>Practice using facets to compare groups and combining plots to compare patterns.</p>
+<p><strong>Note</strong>: The plots below are just an example of what to aim for - your plots can look different.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Switch to the <code>ops</code> dataset and illustrate two relationships: <code>training_hours</code> vs <code>performance_index</code> and (2) <code>task_switch_hours</code> vs <code>performance_index</code>. Improve these plots by:</p>
+<ul>
+<li>Adding nicely formatted labels to the <code>job_role</code> factor (modify the <code>job_role</code> factor using <code>mutate</code> and <code>factor</code>)</li>
+<li>Adding trend lines</li>
+<li>Faceting by <code>job_role</code> to compare patterns across <code>job_role</code> groups</li>
+<li>Choosing informative titles and axis labels</li>
+<li>Combining the plots using <code>patchwork</code>
+</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="study_after7_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="4200"></p>
+</figure>
+</div>
+</div>
+</div>
 </section></section><section id="well-done" class="level1"><h1>🥳 Well Done! 🎉</h1>
 
 
