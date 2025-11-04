@@ -1,1 +1,0 @@
-Sitemap: https://laylaunger.github.io/york-data-vis-r-course/sitemap.xml

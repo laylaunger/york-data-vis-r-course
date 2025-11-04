@@ -394,6 +394,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 7: Advanced Customizations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-7/overview7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-7/study_before7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prepare!</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-7/seminar7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seminar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-7/practical7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-7/study_after7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consolidate!</span></a>
+  </div>
+</li>
+      </ul>
+</li>
     </ul>
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
@@ -519,14 +560,14 @@ Key
 <p><img src="images/do_in_R.png" class="img-fluid"> Add the following code to your R script and run. <strong>Note</strong> that we will specify <code>col_types</code> in <code>read_csv</code> to force the <code>mmss</code> variable to be read in as a character string. If we did not do this, <code>read_csv</code> might try to read it in as a time but parse it incorrectly, leading to <code>NA</code> values. To do this, we need to specify the type for each column:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tutor</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"tutor.csv"</span>,</span>
-<span>                  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">col_integer</span>,   <span class="co"># tutor_id</span></span>
-<span>                                   <span class="va">col_factor</span>,    <span class="co"># experience</span></span>
-<span>                                   <span class="va">col_integer</span>,   <span class="co"># year</span></span>
-<span>                                   <span class="va">col_factor</span>,    <span class="co"># term</span></span>
-<span>                                   <span class="va">col_factor</span>,    <span class="co"># policy</span></span>
-<span>                                   <span class="va">col_double</span>,    <span class="co"># student_satisfaction</span></span>
-<span>                                   <span class="va">col_factor</span>,   <span class="co"># metric</span></span>
-<span>                                   <span class="va">col_character</span><span class="op">)</span> <span class="co"># mmss</span></span>
+<span>                  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">col_integer</span><span class="op">(</span><span class="op">)</span>,   <span class="co"># tutor_id</span></span>
+<span>                                   <span class="fu">col_factor</span><span class="op">(</span><span class="op">)</span>,    <span class="co"># experience</span></span>
+<span>                                   <span class="fu">col_integer</span><span class="op">(</span><span class="op">)</span>,   <span class="co"># year</span></span>
+<span>                                   <span class="fu">col_factor</span><span class="op">(</span><span class="op">)</span>,    <span class="co"># term</span></span>
+<span>                                   <span class="fu">col_factor</span><span class="op">(</span><span class="op">)</span>,    <span class="co"># policy</span></span>
+<span>                                   <span class="fu">col_double</span><span class="op">(</span><span class="op">)</span>,    <span class="co"># student_satisfaction</span></span>
+<span>                                   <span class="fu">col_factor</span><span class="op">(</span><span class="op">)</span>,   <span class="co"># metric</span></span>
+<span>                                   <span class="fu">col_character</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># mmss</span></span>
 <span>                  <span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="look-at-the-data" class="level2"><h2 class="anchored" data-anchor-id="look-at-the-data">Look at the data</h2>
