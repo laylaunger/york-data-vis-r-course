@@ -32,7 +32,7 @@
     "href": "data-vis/week-7/study_after7.html",
     "title": "Independent Study to Consolidate",
     "section": "",
-    "text": "Continue working on the rmarkdown DataCamp course if not yet complete.",
+    "text": "If you have just opened RStudio you will want to load the tidyverse, RColorBrewer, viridis and patchwork packages.\n\n Save this file in your week-6 folder:\n\nApp engagement dataset: app_engagement.csv\n\nCustomer ops dataset: customer_ops.csv\n\n\n Add the following code to your R script and run:\n\nengagement &lt;- read_csv(\"app_engagement.csv\")\nops &lt;- read_csv(\"customer_ops.csv\")\n\n\nhead(engagement)\n\n# A tibble: 6 × 5\n  user_id user_segment device_type acquisition_channel product_engagement\n    &lt;dbl&gt; &lt;fct&gt;        &lt;fct&gt;       &lt;chr&gt;                            &lt;dbl&gt;\n1       1 MidCareer    Mobile      Organic                           55.8\n2       2 EarlyCareer  Desktop     Organic                           89.9\n3       3 Students     Desktop     Organic                           40.6\n4       4 Senior       Mobile      Organic                           48.7\n5       5 MidCareer    Mobile      Ads                               51.1\n6       6 Students     Mobile      Referral                          79.1\n\nhead(ops)\n\n# A tibble: 6 × 6\n  employee_id job_role          training_hours client_contacts task_switch_hours\n  &lt;chr&gt;       &lt;fct&gt;                      &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;\n1 E0001       account_manager              6.1            9.47               9  \n2 E0002       support_engineer             6.1            6.41               5.9\n3 E0003       implement_specia…            7              4.27               5  \n4 E0004       account_manager              5.7            6.72               8.7\n5 E0005       support_engineer             6.4            9.33               7  \n6 E0006       account_manager              6.6            7.62               6.2\n# ℹ 1 more variable: performance_index &lt;dbl&gt;\n\n\n\nSome of the factors in the dataset have natural orders that we should enforce.\n Use mutate and factor to reorder the levels of the following factors:\nengagement dataset:\n\n\nuser_segment: levels = Students, EarlyCareer, MidCareer, Senior\n\ndevice_type: levels = Desktop, Mobile\n\nops dataset:\n\n\njob_role: levels = support_engineer, implement_specialist, account_manager\n\n\nUsing engagement, create a bar plot of product_engagement by user_segment, with points for individual values.\n Use color, labels, and themes to polish the appearance of the plot. The plot below is just an example to illustrate an approach you could take (with your own choice of labels).\n\n\n\n\n\n\n\n\n\nCompute group centers and place labels directly on the plot.\n Create a tibble of user_segment means, then label them with geom_label(). Hide redundant legends.\n\n\n\n\n\n\n\n\n\nPractice using facets to compare groups and combining plots to compare patterns.\nNote: The plots below are just an example of what to aim for - your plots can look different.\n Switch to the ops dataset and illustrate two relationships: training_hours vs performance_index and (2) task_switch_hours vs performance_index. Improve these plots by:\n\nAdding nicely formatted labels to the job_role factor (modify the job_role factor using mutate and factor)\nAdding trend lines\nFaceting by job_role to compare patterns across job_role groups\nChoosing informative titles and axis labels\nCombining the plots using patchwork",
     "crumbs": [
       "PSY00122M-A ",
       "Week 7: Advanced Customizations",
@@ -43,8 +43,8 @@
     "objectID": "data-vis/week-7/study_after7.html#set-up",
     "href": "data-vis/week-7/study_after7.html#set-up",
     "title": "Independent Study to Consolidate",
-    "section": "Set up",
-    "text": "Set up\nIf you have just opened RStudio you will want to load the tidyverse, RColorBrewer, viridis and patchwork packages.",
+    "section": "",
+    "text": "If you have just opened RStudio you will want to load the tidyverse, RColorBrewer, viridis and patchwork packages.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 7: Advanced Customizations",
@@ -55,8 +55,8 @@
     "objectID": "data-vis/week-7/study_after7.html#reading-in-data",
     "href": "data-vis/week-7/study_after7.html#reading-in-data",
     "title": "Independent Study to Consolidate",
-    "section": "Reading in data",
-    "text": "Reading in data\n Save this file in your week-6 folder:\n\nApp engagement dataset: app_engagement.csv\n\nCustomer ops dataset: customer_ops.csv\n\n\n Add the following code to your R script and run:\n\nengagement &lt;- read_csv(\"app_engagement.csv\")\nops &lt;- read_csv(\"customer_ops.csv\")\n\n\nhead(engagement)\n\n# A tibble: 6 × 5\n  user_id user_segment device_type acquisition_channel product_engagement\n    &lt;dbl&gt; &lt;fct&gt;        &lt;fct&gt;       &lt;chr&gt;                            &lt;dbl&gt;\n1       1 MidCareer    Mobile      Organic                           55.8\n2       2 EarlyCareer  Desktop     Organic                           89.9\n3       3 Students     Desktop     Organic                           40.6\n4       4 Senior       Mobile      Organic                           48.7\n5       5 MidCareer    Mobile      Ads                               51.1\n6       6 Students     Mobile      Referral                          79.1\n\nhead(ops)\n\n# A tibble: 6 × 6\n  employee_id job_role          training_hours client_contacts task_switch_hours\n  &lt;chr&gt;       &lt;fct&gt;                      &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;\n1 E0001       account_manager              6.1            9.47               9  \n2 E0002       support_engineer             6.1            6.41               5.9\n3 E0003       implement_specia…            7              4.27               5  \n4 E0004       account_manager              5.7            6.72               8.7\n5 E0005       support_engineer             6.4            9.33               7  \n6 E0006       account_manager              6.6            7.62               6.2\n# ℹ 1 more variable: performance_index &lt;dbl&gt;",
+    "section": "",
+    "text": "Save this file in your week-6 folder:\n\nApp engagement dataset: app_engagement.csv\n\nCustomer ops dataset: customer_ops.csv\n\n\n Add the following code to your R script and run:\n\nengagement &lt;- read_csv(\"app_engagement.csv\")\nops &lt;- read_csv(\"customer_ops.csv\")\n\n\nhead(engagement)\n\n# A tibble: 6 × 5\n  user_id user_segment device_type acquisition_channel product_engagement\n    &lt;dbl&gt; &lt;fct&gt;        &lt;fct&gt;       &lt;chr&gt;                            &lt;dbl&gt;\n1       1 MidCareer    Mobile      Organic                           55.8\n2       2 EarlyCareer  Desktop     Organic                           89.9\n3       3 Students     Desktop     Organic                           40.6\n4       4 Senior       Mobile      Organic                           48.7\n5       5 MidCareer    Mobile      Ads                               51.1\n6       6 Students     Mobile      Referral                          79.1\n\nhead(ops)\n\n# A tibble: 6 × 6\n  employee_id job_role          training_hours client_contacts task_switch_hours\n  &lt;chr&gt;       &lt;fct&gt;                      &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;\n1 E0001       account_manager              6.1            9.47               9  \n2 E0002       support_engineer             6.1            6.41               5.9\n3 E0003       implement_specia…            7              4.27               5  \n4 E0004       account_manager              5.7            6.72               8.7\n5 E0005       support_engineer             6.4            9.33               7  \n6 E0006       account_manager              6.6            7.62               6.2\n# ℹ 1 more variable: performance_index &lt;dbl&gt;",
     "crumbs": [
       "PSY00122M-A ",
       "Week 7: Advanced Customizations",
@@ -6093,7 +6093,7 @@
     "href": "data-vis/week-7/study_before7.html",
     "title": "Independent Study to Prepare",
     "section": "",
-    "text": "Advanced Customizations\nTo prepare for diving into this week’s topic, advanced customization:\n\nRead Data Visualization Ch 20 - 24\n\nNote! This might seem like several chapters, but they are each very short.",
+    "text": "Advanced Customizations\nTo prepare for diving into this week’s topic, advanced customization:\n\nRead Data Visualization Ch 20 - 24\n\nNote: This might seem like several chapters, but they are each very short\n\n\nYou may also make progress on the DataCamp assignment for the following week: - Communicating with Data in the Tidyverse - Chapter 3 Introduction to RMarkdown",
     "crumbs": [
       "PSY00122M-A ",
       "Week 7: Advanced Customizations",
@@ -6104,8 +6104,8 @@
     "objectID": "data-vis/week-7/study_after7.html#ordering-factor-levels",
     "href": "data-vis/week-7/study_after7.html#ordering-factor-levels",
     "title": "Independent Study to Consolidate",
-    "section": "Ordering factor levels",
-    "text": "Ordering factor levels\nSome of the factors in the dataset have natural orders that we should enforce.\n Use mutate and factor to reorder the levels of the following factors:\nengagement dataset:\n\n\nuser_segment: levels = Students, EarlyCareer, MidCareer, Senior\n\ndevice_type: levels = Desktop, Mobile\n\nops dataset:\n\n\njob_role: levels = support_engineer, implement_specialist, account_manager",
+    "section": "",
+    "text": "Some of the factors in the dataset have natural orders that we should enforce.\n Use mutate and factor to reorder the levels of the following factors:\nengagement dataset:\n\n\nuser_segment: levels = Students, EarlyCareer, MidCareer, Senior\n\ndevice_type: levels = Desktop, Mobile\n\nops dataset:\n\n\njob_role: levels = support_engineer, implement_specialist, account_manager",
     "crumbs": [
       "PSY00122M-A ",
       "Week 7: Advanced Customizations",
@@ -6116,8 +6116,8 @@
     "objectID": "data-vis/week-7/study_after7.html#exercise-1-make-a-polished-bar-plot",
     "href": "data-vis/week-7/study_after7.html#exercise-1-make-a-polished-bar-plot",
     "title": "Independent Study to Consolidate",
-    "section": "Exercise 1: Make a polished bar plot",
-    "text": "Exercise 1: Make a polished bar plot\nUsing engagement, create a bar plot of product_engagement by user_segment, with points for individual values.\n Use color, labels, and themes to polish the appearance of the plot. The plot below is just an example to illustrate an approach you could take (with your own choice of labels).",
+    "section": "",
+    "text": "Using engagement, create a bar plot of product_engagement by user_segment, with points for individual values.\n Use color, labels, and themes to polish the appearance of the plot. The plot below is just an example to illustrate an approach you could take (with your own choice of labels).",
     "crumbs": [
       "PSY00122M-A ",
       "Week 7: Advanced Customizations",
@@ -6128,8 +6128,8 @@
     "objectID": "data-vis/week-7/study_after7.html#exercise-2-try-out-direct-labels-as-an-alternative",
     "href": "data-vis/week-7/study_after7.html#exercise-2-try-out-direct-labels-as-an-alternative",
     "title": "Independent Study to Consolidate",
-    "section": "Exercise 2: Try out direct labels as an alternative",
-    "text": "Exercise 2: Try out direct labels as an alternative\nCompute group centers and place labels directly on the plot.\n Create a tibble of user_segment means, then label them with geom_label(). Hide redundant legends.",
+    "section": "",
+    "text": "Compute group centers and place labels directly on the plot.\n Create a tibble of user_segment means, then label them with geom_label(). Hide redundant legends.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 7: Advanced Customizations",
@@ -6140,8 +6140,8 @@
     "objectID": "data-vis/week-7/study_after7.html#exercise-3-combining-facets-and-plots-to-facilitate-comparisons",
     "href": "data-vis/week-7/study_after7.html#exercise-3-combining-facets-and-plots-to-facilitate-comparisons",
     "title": "Independent Study to Consolidate",
-    "section": "Exercise 3: Combining facets and plots to facilitate comparisons",
-    "text": "Exercise 3: Combining facets and plots to facilitate comparisons\nPractice using facets to compare groups and combining plots to compare patterns.\nNote: The plots below are just an example of what to aim for - your plots can look different.\n Switch to the ops dataset and illustrate two relationships: training_hours vs performance_index and (2) task_switch_hours vs performance_index. Improve these plots by:\n\nAdding nicely formatted labels to the job_role factor (modify the job_role factor using mutate and factor)\nAdding trend lines\nFaceting by job_role to compare patterns across job_role groups\nChoosing informative titles and axis labels\nCombining the plots using patchwork",
+    "section": "",
+    "text": "Practice using facets to compare groups and combining plots to compare patterns.\nNote: The plots below are just an example of what to aim for - your plots can look different.\n Switch to the ops dataset and illustrate two relationships: training_hours vs performance_index and (2) task_switch_hours vs performance_index. Improve these plots by:\n\nAdding nicely formatted labels to the job_role factor (modify the job_role factor using mutate and factor)\nAdding trend lines\nFaceting by job_role to compare patterns across job_role groups\nChoosing informative titles and axis labels\nCombining the plots using patchwork",
     "crumbs": [
       "PSY00122M-A ",
       "Week 7: Advanced Customizations",
