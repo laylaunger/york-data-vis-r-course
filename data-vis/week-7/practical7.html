@@ -596,7 +596,7 @@ Key
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span> <span class="co"># combine plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="exercises" class="level1"><h1>Exercises</h1>
-<p><strong>Important:</strong> In each exercise below you get <strong>starter code</strong> that makes a <strong>basic plot</strong>.<br>
+<p><strong>Important:</strong> In each exercise below you get starter code that makes a basic plot.<br>
 Your job is to <strong>improve clarity, readability, and/or attractiveness</strong> using the following techniques:</p>
 <ul>
 <li><code>labs()</code></li>
@@ -628,14 +628,6 @@ Your job is to <strong>improve clarity, readability, and/or attractiveness</stro
 <li>Improve baseline readability via built-in themes like <code>theme_bw()</code> and manual adjustments with <code>theme()</code> (e.g., font size, gridlines).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">wellbeing</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sleep_hours</span>, y <span class="op">=</span> <span class="va">wellbeing_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_cartesian</span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">10</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">90</span>, by <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Sleep (avg hours/night)"</span>, y <span class="op">=</span> <span class="st">"Wellbeing Index (0–100)"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="4200"></p>
@@ -648,7 +640,7 @@ Your job is to <strong>improve clarity, readability, and/or attractiveness</stro
 <p>Color points by <strong>participant_group</strong> and make the legend useful.</p>
 <p><img src="images/do_in_R.png" class="img-fluid"> Color the points in the plot from Exercise 1 by <code>participant_group</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">wellbeing</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sleep_hours</span>, y <span class="op">=</span> <span class="va">wellbeing_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">wellbeing</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sleep_hours</span>, y <span class="op">=</span> <span class="va">wellbeing_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">participant_group</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -674,7 +666,7 @@ Your job is to <strong>improve clarity, readability, and/or attractiveness</stro
 <p>Make a bar plt of wellbeing by participant_group</p>
 <p><img src="images/do_in_R.png" class="img-fluid"> Start with this <strong>base plot</strong>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">wellbeing</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">participant_group</span>, y <span class="op">=</span> <span class="va">wellbeing_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">wellbeing</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">participant_group</span>, y <span class="op">=</span> <span class="va">wellbeing_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">stat_summary</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">participant_group</span><span class="op">)</span>, fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -694,7 +686,7 @@ Your job is to <strong>improve clarity, readability, and/or attractiveness</stro
 <p>Switch to the <strong>therapy</strong> dataset and explore <strong>loneliness vs wellbeing</strong>, colored by <strong>support_level</strong></p>
 <p><img src="images/do_in_R.png" class="img-fluid"> Starter plot:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">therapy</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">loneliness_score</span>, y <span class="op">=</span> <span class="va">wellbeing_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">therapy</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">loneliness_score</span>, y <span class="op">=</span> <span class="va">wellbeing_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">support_level</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -730,7 +722,7 @@ Your job is to <strong>improve clarity, readability, and/or attractiveness</stro
 <p><img src="images/do_in_R.png" class="img-fluid"> Reorder the levels of the support_level factor using <code>mutate</code> and <code>factor</code> so that the order is: Low, Medium, High</p>
 <p><img src="images/do_in_R.png" class="img-fluid"> Return to this basic scatterplot:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">therapy</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">loneliness_score</span>, y <span class="op">=</span> <span class="va">wellbeing_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">therapy</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">loneliness_score</span>, y <span class="op">=</span> <span class="va">wellbeing_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -758,7 +750,7 @@ Your job is to <strong>improve clarity, readability, and/or attractiveness</stro
 <p>Switch to examining the <strong>loneliness vs wellbeing</strong> relationship by <strong>sleep_quality</strong> (continuous)</p>
 <p><img src="images/do_in_R.png" class="img-fluid"> Starter plot:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">therapy</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">loneliness_score</span>, y <span class="op">=</span> <span class="va">wellbeing_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">therapy</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">loneliness_score</span>, y <span class="op">=</span> <span class="va">wellbeing_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -804,6 +796,7 @@ Your job is to <strong>improve clarity, readability, and/or attractiveness</stro
 </div>
 </div>
 <p><img src="images/answer.png" class="img-fluid"> Do the facets reveal effects of <code>sex</code> and/or <code>therapy</code>?</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Look at the documentation for the labeller function using <code>?labeller</code> to see the many ways to customise <code>facet_wrap</code> and <code>facet_grid</code> labels</p>
 </section><section id="exercise-9-using-patchwork-to-make-tidy-multi-panel-figures" class="level2"><h2 class="anchored" data-anchor-id="exercise-9-using-patchwork-to-make-tidy-multi-panel-figures">Exercise 9: Using patchwork to make tidy multi-panel figures</h2>
 <p>Create two polished plots and combine them with <code>patchwork</code>.</p>
 <p><img src="images/do_in_R.png" class="img-fluid"> Use or modify <strong>any two</strong> of your improved plots from the preceding exercises that provide different insights into the same dataset (either wellbeing or therapy) and combine them with patchwork - Choose whether to align plots horizontally or vertically - Add <code><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation()</a></code> to auto-label panels <strong>A</strong>, <strong>B</strong> - Ensure <strong>consistent style</strong> (font size, theme tweaks) across panels</p>

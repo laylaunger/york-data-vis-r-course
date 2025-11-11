@@ -834,7 +834,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>p_scatter <span class="sc">+</span></span>
 <span id="cb30-2"><a></a>  <span class="fu">facet_grid</span>(sex<span class="sc">~</span>diagnosis, </span>
-<span id="cb30-3"><a></a>             <span class="at">labeller =</span> <span class="fu">labeller</span>(<span class="at">sex =</span> <span class="sc">~</span> <span class="fu">paste</span>(<span class="st">"Sex:"</span>, .x))) <span class="sc">+</span> <span class="co"># label rows</span></span>
+<span id="cb30-3"><a></a>             <span class="at">labeller =</span> <span class="fu">labeller</span>(<span class="at">sex =</span> <span class="fu">c</span>(<span class="at">Female =</span> <span class="st">"Sex: Female"</span>, <span class="at">Male =</span> <span class="st">"Sex: Male"</span>)) ) <span class="sc">+</span> <span class="co"># label rows</span></span>
 <span id="cb30-4"><a></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> diagnosis), <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
 <span id="cb30-5"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
 <span id="cb30-6"><a></a>        <span class="at">strip.background =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -843,11 +843,27 @@
 <section class="slide level2">
 
 
-<img data-src="seminar7_files/figure-revealjs/facet-grid-labels-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
+<img data-src="seminar7_files/figure-revealjs/facet-grid-labels1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
+<section id="faceting-grid-2" class="slide level2">
+<h2>Faceting: grid</h2>
+<p><strong>revise labels</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>p_scatter <span class="sc">+</span></span>
+<span id="cb31-2"><a></a>  <span class="fu">facet_grid</span>(sex<span class="sc">~</span>diagnosis, </span>
+<span id="cb31-3"><a></a>             <span class="at">labeller =</span> <span class="fu">labeller</span>(<span class="at">sex =</span> <span class="sc">~</span> <span class="fu">paste</span>(<span class="st">"Sex:"</span>, .x))) <span class="sc">+</span> <span class="co"># label rows</span></span>
+<span id="cb31-4"><a></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> diagnosis), <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
+<span id="cb31-5"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb31-6"><a></a>        <span class="at">strip.background =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="seminar7_files/figure-revealjs/facet-grid-labels2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="6000"></section>
 <section id="patchwork-combine-multiple-plots" class="slide level2">
 <h2>Patchwork: combine multiple plots</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 
@@ -856,7 +872,7 @@
 <h2>Patchwork: combine multiple plots</h2>
 <p><strong>horizontal</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>p_scatter <span class="sc">+</span> p_bar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>p_scatter <span class="sc">+</span> p_bar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>Uses arithmetic-like notation to combine plots in a readable way</p>
@@ -880,7 +896,7 @@
 <h2>Patchwork: combine multiple plots</h2>
 <p><strong>vertical</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>p_scatter <span class="sc">/</span> p_bar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>p_scatter <span class="sc">/</span> p_bar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
@@ -891,7 +907,7 @@
 <h2>Patchwork: combine multiple plots</h2>
 <p><strong>nested</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>p_scatter <span class="sc">|</span> (p_scatter <span class="sc">/</span> p_bar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>p_scatter <span class="sc">|</span> (p_scatter <span class="sc">/</span> p_bar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
@@ -902,8 +918,8 @@
 <h2>Patchwork: combine multiple plots</h2>
 <p><strong>label</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>p_scatter <span class="sc">+</span> p_bar <span class="sc">+</span></span>
-<span id="cb35-2"><a></a><span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">'A'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>p_scatter <span class="sc">+</span> p_bar <span class="sc">+</span></span>
+<span id="cb36-2"><a></a><span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">'A'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
