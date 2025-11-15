@@ -118,7 +118,7 @@ library(patchwork) # combine plots
 
 # Exercises
 
-**Important:** In each exercise below you get **starter code** that makes a **basic plot**.  
+**Important:** In each exercise below you get starter code that makes a basic plot.  
 Your job is to **improve clarity, readability, and/or attractiveness** using the following techniques: 
 
 - `labs()`
@@ -148,6 +148,7 @@ ggplot(wellbeing, aes(x = sleep_hours, y = wellbeing_index)) +
 - Improve baseline readability via built-in themes like `theme_bw()` and manual adjustments with `theme()` (e.g., font size, gridlines).
 
 ```{r}
+#| echo: false
 ggplot(wellbeing, aes(x = sleep_hours, y = wellbeing_index)) +
   geom_point() +
   coord_cartesian(xlim = c(4, 10), ylim = c(30, 90)) +
@@ -242,6 +243,7 @@ centers
 
 ```{r}
 #| echo: false
+
 ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
   geom_point(aes(color = support_level), show.legend = FALSE) +
   geom_label(
@@ -283,7 +285,7 @@ ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
 - Use built-in themes and `theme()` to remove the gray background from the plots and facet titles
 
 
-```{r}
+```{r, fig.height=3.25}
 #| echo: false
 ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
   facet_wrap(~support_level) +
@@ -353,6 +355,7 @@ ggplot(therapy, aes(x = loneliness_score, y = wellbeing_score)) +
 
 ![](images/answer.png) Do the facets reveal effects of `sex` and/or `therapy`?
 
+![](images/do_in_R.png) Look at the documentation for the labeller function using `?labeller` to see the many ways to customise `facet_wrap` and `facet_grid` labels
 
 ## Exercise 9: Using patchwork to make tidy multi-panel figures
 

@@ -1,0 +1,185 @@
+---
+title: "Independent Study to Consolidate"
+subtitle: "Advanced Customisation"
+toc: true
+toc-location: right
+---
+
+# Exercises
+
+```{r}
+#| include: false
+# Load packages
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(readr)
+  library(here)
+  library(viridis)      # colorblind-friendly palettes
+  library(RColorBrewer) # brewer palettes
+  library(patchwork)    # combine plots
+})
+
+# Load data
+engagement <- read_csv(here("data-vis", "data", "app_engagement.csv"))
+ops <- read_csv(here("data-vis", "data", "customer_ops.csv"))
+
+# Helpful factors (optional)
+engagement <- engagement %>%
+  mutate(
+    user_segment = factor(user_segment, 
+                          levels = c("Students","EarlyCareer","MidCareer","Senior")),
+    device_type = factor(device_type, levels = c("Desktop","Mobile"))
+  )
+
+ops <- ops %>% 
+  mutate(job_role = factor(job_role, levels = c("support_engineer","implement_specialist","account_manager")))
+```
+
+## Set up
+
+If you have just opened RStudio you will want to load the **`tidyverse`**, **`RColorBrewer`**, **`viridis`** and **`patchwork`** packages.
+
+
+## Reading in data
+
+![](images/do_on_your_computer.png) Save this file in your `week-6` folder:  
+
+- App engagement dataset: [app_engagement.csv](../data/app_engagement.csv)
+- Customer ops dataset: [customer_ops.csv](../data/customer_ops.csv)
+
+![](images/do_in_R.png) Add the following code to your R script and run:
+
+```{r}
+#| eval: false
+engagement <- read_csv("app_engagement.csv")
+ops <- read_csv("customer_ops.csv")
+```
+
+```{r}
+head(engagement)
+head(ops)
+```
+
+## Ordering factor levels
+
+Some of the factors in the dataset have natural orders that we should enforce. 
+
+![](images/do_in_R.png) Use `mutate` and `factor` to reorder the levels of the following factors:
+
+`engagement` dataset:
+
+- `user_segment`: levels = Students, EarlyCareer, MidCareer, Senior
+- `device_type`: levels = Desktop, Mobile
+
+`ops` dataset:
+
+- `job_role`: levels = support_engineer, implement_specialist, account_manager
+
+---
+
+## Exercise 1: Make a polished bar plot
+
+Using **`engagement`**, create a bar plot of `product_engagement` by `user_segment`, with points for individual values.
+
+![](images/do_in_R.png) Use color, labels, and themes to polish the appearance of the plot. The plot below is just an example to illustrate an approach you could take (with your own choice of labels).
+
+```{r}
+#| echo: false
+ggplot(engagement, aes(x = user_segment, y = product_engagement)) +
+  stat_summary(aes(fill = user_segment), fun = "mean", geom = "bar", alpha = 0.6, show.legend = FALSE) + 
+  geom_jitter(aes(fill = user_segment), alpha = 0.3, width = 0.15, shape = 21, show.legend = FALSE) +
+  stat_summary(fun.data = "mean_se", geom = "linerange", linewidth = 1.1) + 
+  scale_x_discrete(labels = c("Students", "Early-Career", "Mid-Career", "Senior")) +
+  scale_fill_viridis_d() +
+  labs(
+  title = "Clear title",
+  x = "Clear x-axis title",
+  y = "Clear y-axis title"
+) +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+```
+
+---
+
+## Exercise 2: Try out **direct labels** as an alternative
+
+Compute group centers and place labels directly on the plot.
+
+![](images/do_in_R.png) Create a tibble of `user_segment` means, then label them with `geom_label()`. Hide redundant legends.
+
+```{r}
+#| echo: false
+segment_means <- engagement %>%
+  group_by(user_segment) %>%
+  summarise(mean_eng = mean(product_engagement, na.rm = TRUE))
+
+ggplot(engagement, aes(user_segment, product_engagement)) +
+  geom_jitter(aes(color = user_segment), width = .15, alpha = .25, show.legend = FALSE) +
+  geom_label(data = segment_means,
+             aes(x = user_segment, y = mean_eng, label = round(mean_eng,1)),
+             label.size = .25, size = 5, show.legend = FALSE) +
+  labs(title = "Direct labels make the key values obvious", x = "Segment", y = "Engagement") +
+  scale_x_discrete(labels = c("Students", "Early-Career", "Mid-Career", "Senior")) +
+  scale_color_viridis_d() +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+```
+
+---
+
+## Exercise 3: Combining facets and plots to facilitate comparisons
+
+Practice using facets to compare groups and combining plots to compare patterns.
+
+**Note**: The plots below are just an example of what to aim for - your plots can look different.
+
+
+![](images/do_in_R.png) Switch to the `ops` dataset and illustrate two relationships: `training_hours` vs `performance_index` and (2) `task_switch_hours` vs `performance_index`. Improve these plots by:
+
+- Adding nicely formatted labels to the `job_role` factor (modify the `job_role` factor using `mutate` and `factor`)
+- Adding trend lines
+- Faceting by `job_role` to compare patterns across `job_role` groups
+- Choosing informative titles and axis labels
+- Combining the plots using `patchwork`
+
+
+
+```{r}
+#| echo: false
+
+ops <- ops %>% 
+  mutate(job_role = factor(job_role, levels = c("support_engineer","implement_specialist","account_manager"),
+                           labels = c("Support Engineer", "Implement Specialist", "Account Manager")))
+
+
+p1 <- ggplot(ops, aes(training_hours, performance_index)) +
+  facet_wrap(~job_role) +
+  geom_point(alpha = .3) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(title = "More training hours associate with higher performance",
+       x = "Training Hours", y = "Performance Index") +
+  theme_bw() +
+  theme(panel.grid = element_blank(),
+        strip.background = element_blank())
+
+p2 <- ggplot(ops, aes(task_switch_hours, performance_index)) +
+  facet_wrap(~job_role) +
+  geom_point(alpha = .3) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(title = "More task switches associate with lower performance",
+       x = "Task Switch Hours", y = "Performance Index") +
+  scale_x_continuous(breaks = seq(0, 12, by = 2)) +
+  theme_bw() +
+  theme(panel.grid = element_blank(),
+        strip.background = element_blank())
+```
+
+```{r, fig.height = 6.5}
+#| echo: false
+p1 / p2
+```
+
+
+
+# 🥳 Well Done! 🎉

@@ -206,17 +206,6 @@ ggplot(app_df, aes(x = user_segment)) +
   scale_y_continuous(name = "proportion")
 ```
 
-![](images/do_in_R.png) Add **labels** inside segments using `after_stat()`:
-
-```{r}
-#| echo: false
-ggplot(app_df, aes(user_segment, fill = acquisition_channel)) +
-  geom_bar(position = position_fill()) +
-  geom_text(aes(label = round(after_stat(count / sum(count)), 2)),
-            stat = "count",
-            position = position_fill(vjust = 0.5)) +
-  scale_y_continuous(name = "proportion")
-```
 
 ![](images/answer.png) Why are proportions sometimes more informative than raw counts?
 

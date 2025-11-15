@@ -9,5 +9,9 @@ toc-location: right
 
 To prepare for diving into this week's topic, advanced customization:
 
-- Read [Data Visualization Ch 20 - 24](https://clauswilke.com/dataviz/)
-  - Note! This might seem like several chapters, but they are each very short.
+- Read [Data Visualization Ch 20 - 24](https://clauswilke.com/dataviz/). **Note**: This might seem like several chapters, but they are each very short.
+  
+  
+You may also make progress on the DataCamp assignment for the following week:
+
+  - Communicating with Data in the Tidyverse - Chapter 3 Introduction to RMarkdown

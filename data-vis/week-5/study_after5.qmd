@@ -45,7 +45,8 @@ head(ops_df)
 
 ## Exercise 1: Scatterplot
 
-![](images/do_in_R.png) Make a scatterplot of `sleep_hours` (x-axis) versus `wellbeing_index` (y-axis).  
+![](images/do_in_R.png) Make a scatterplot of `training_hours` (x-axis) versus `performance_index` (y-axis).  
+
 Add some transparency to the points using `alpha`.
 
 Reflect: Does the relationship look positive, negative, or flat?
@@ -61,7 +62,7 @@ Reflect: What does the slope suggest about the relationship?
 
 ## Exercise 3: Group differences
 
-![](images/do_in_R.png) Plot `social_hours` vs `wellbeing_index`, colouring points by `participant_group`.  Add group-specific trend lines.
+![](images/do_in_R.png) Plot `training_hours` vs `wellbeing_index`, colouring points by `participant_group`.  Add group-specific trend lines.
 
 Reflect: Which group appears most negatively affected by social media hours?
 
@@ -69,7 +70,7 @@ Reflect: Which group appears most negatively affected by social media hours?
 
 ## Exercise 4: Faceting
 
-![](images/do_in_R.png) Re-make the plot of `social_hours` vs `wellbeing_index`, but facet by `participant_group`.  Try `scales = "free_x"` inside `facet_wrap()`.
+![](images/do_in_R.png) Re-make the plot of `social_hours` vs `performance_index`, but facet by `job_role`.  Try `scales = "free_x"` inside `facet_wrap()`.
 
 Reflect: Why might faceting make patterns easier to compare?
 
@@ -80,7 +81,7 @@ Reflect: Why might faceting make patterns easier to compare?
 
 ![](images/do_in_R.png) Select the numeric columns of your dataset. Compute a correlation matrix with `cor()`.  Plot it with `geom_tile()` and customise the gradient scale.
 
-Reflect: Which variables are most strongly related to `wellbeing_index`?
+Reflect: Which variables are most strongly related to `performance_index`?
 
 
 

@@ -689,11 +689,33 @@ p_scatter +
 ```{r facet-grid, echo=FALSE, fig.align="center", fig.height=5.25}
 ```
 
+---
+
 ## Faceting: grid
 
 **revise labels**
 
-```{r facet-grid-labels, eval=FALSE}
+```{r facet-grid-labels1, eval=FALSE}
+p_scatter +
+  facet_grid(sex~diagnosis, 
+             labeller = labeller(sex = c(Female = "Sex: Female", Male = "Sex: Male")) ) + # label rows
+  stat_smooth(aes(color = diagnosis), method = "lm") + 
+  theme(legend.position = "none",
+        strip.background = element_blank())
+```
+
+---
+
+```{r facet-grid-labels1, echo=FALSE, fig.align="center", fig.height=5.25}
+```
+
+---
+
+## Faceting: grid
+
+**revise labels**
+
+```{r facet-grid-labels2, eval=FALSE}
 p_scatter +
   facet_grid(sex~diagnosis, 
              labeller = labeller(sex = ~ paste("Sex:", .x))) + # label rows
@@ -704,7 +726,7 @@ p_scatter +
 
 ---
 
-```{r facet-grid-labels, echo=FALSE, fig.align="center", fig.height=5.25}
+```{r facet-grid-labels2, echo=FALSE, fig.align="center", fig.height=5.25}
 ```
 
 ---

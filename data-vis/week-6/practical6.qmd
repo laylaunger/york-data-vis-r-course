@@ -82,14 +82,14 @@ Key columns you’ll use today:
 ```{r}
 #| eval: false
 tutor <- read_csv("tutor.csv",
-                  col_types = list(col_integer,   # tutor_id
-                                   col_factor,    # experience
-                                   col_integer,   # year
-                                   col_factor,    # term
-                                   col_factor,    # policy
-                                   col_double,    # student_satisfaction
-                                   col_factor,   # metric
-                                   col_character) # mmss
+                  col_types = list(col_integer(),   # tutor_id
+                                   col_factor(),    # experience
+                                   col_integer(),   # year
+                                   col_factor(),    # term
+                                   col_factor(),    # policy
+                                   col_double(),    # student_satisfaction
+                                   col_factor(),   # metric
+                                   col_character()) # mmss
                   ) 
 ```
 

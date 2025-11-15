@@ -1,6 +1,6 @@
 ---
 title: Overview
-subtitle: "Time Series and Line Graphs"
+subtitle: "Advanced Customisation"
 toc: true
 toc-location: right
 ---
