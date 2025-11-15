@@ -1,0 +1,437 @@
+---
+title: "Practical"  
+subtitle: "Week 8 Seminar: Quarto Reports"  
+toc: true  
+toc-location: right  
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(here)
+library(viridis)
+library(patchwork)
+
+# Load wellbeing dataset so that any example code in this practical can run
+wellbeing_df <- readr::read_csv(here("data-vis", "data", "wellbeing_dataset.csv"))
+
+wellbeing_df <- wellbeing_df |>
+  mutate(
+    participant_group = factor(participant_group,
+                               levels = c("student", "employed", "retired"))
+  )
+
+theme_set(theme_minimal(base_size = 14))
+```
+
+# Introduction
+
+## Session overview
+
+In this practical you’ll **build a small Quarto project** from scratch and create a mini HTML report based on the **wellbeing dataset**, using the ideas from **Seminar 8**:
+
+- Setting up a **project folder** with a subfolder for data
+- Creating a **`.qmd` report file** inside an RStudio project
+- Writing a **YAML header** for an HTML report
+- Adding a **setup chunk** that loads packages and data
+- Writing sections using **Markdown** (headings, paragraphs, lists)
+- Adding **code chunks** that generate tables and figures
+- Using **chunk options** (`echo`, `include`, `fig-cap`, `out-width`)  
+- Inserting **inline code** (e.g., for sample sizes) in the text
+- Rendering the report and dealing with common errors
+
+By the end, you should have your **first complete Quarto report** for this module, using a dataset on **sleep and wellbeing**.
+
+## Philosophy
+
+Practicals are not a test. It is expected that you often don't know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips:
+
+- don't worry about making mistakes  
+- don't let what you can not do interfere with what you can do  
+- discussing code with your neighbours will help  
+- look things up in the independent study material  
+- look things up in your own code from earlier workshops  
+- there are no stupid questions  
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. Record your answers in your report or script for future reference.
+:::
+
+# Exercises
+
+**Important:** For Week 8, the **project setup is part of the exercises**.  
+Follow the steps carefully so that your project structure matches the pattern we used in the seminar and that you will use for the assessment.
+
+---
+
+## Exercise 1: Create a Quarto project folder
+
+In this exercise you will create a **new folder** for a mini Quarto project, add a `data/` subfolder for the CSV, and turn it into an **RStudio project**.
+
+![](images/do_in_R.png) In the **Files** tab in the lower right pane, click on the `...` on the right (this should say "Go to directory" when you hover over it). Clicking the '...' will open the *Go to folder* window. Navigate to a place on your computer where you keep your work for this module (for example your `data-visualisation-in-r` folder). Click **Open**.
+
+![](images/do_in_R.png) In the Files tab, click on **New Folder**. Give the folder a short, sensible name for this project, such as `week-8-report`.  
+
+We’ll refer to this folder as **`project_name/`** in the instructions below.
+
+This is the first step for setting up the structure for your project folder. Upon completing the steps below, your project folder should ultimately look like this:
+
+````
+project_name/
+  project_name.Rproj
+  wellbeing_report.qmd
+  data/
+    wellbeing_dataset.csv
+````
+
+![](images/do_in_R.png) In RStudio, follow these steps create an RStudio project **inside this existing folder**:
+
+- Click on the drop-down menu on the top right where you see a little blue cube and the words `Project: (None)` (alternatively, if you already opened a project, you will see the name of your current project here)  
+- Choose **New Project**  
+- Choose **Existing Directory**  
+- Browse to your new `project_name/` folder and select it  
+- Click **Create Project**
+
+RStudio will create a file called something like `project_name.Rproj` inside your folder.
+
+![](images/do_in_R.png) The **Files** tab in the bottom right pane will now be rooted at `project_name/`. Click **New Folder** again and create a subfolder called `data`.  
+
+You should now have:
+
+````
+project_name/
+  project_name.Rproj
+  data/
+````
+
+![](images/do_on_internet.png) Download the wellbeing dataset:
+
+- [wellbeing_dataset.csv](../data/wellbeing_dataset.csv)
+
+![](images/do_on_your_computer.png) Save `wellbeing_dataset.csv` **inside the `data` subfolder** of your new project:
+
+````
+project_name/
+  project_name.Rproj
+  data/
+    wellbeing_dataset.csv
+````
+
+![](images/answer.png) Why is it helpful to keep the data file **inside** the project folder, rather than somewhere else on your computer?
+
+
+## Exercise 2: Create a Quarto report file
+
+Next, you’ll create a new **Quarto document** (a `.qmd` file) inside the project.
+
+![](images/do_in_R.png) In RStudio, go to **File → New File → Quarto Document…**
+
+- Under *Title*, enter: **Sleep and Wellbeing Across Groups**  
+- Under *Author*, you can put your name (remember your final assessment should use your exam number)
+- Make sure **HTML** is selected as the output format  
+- Click **Create**
+
+![](images/do_in_R.png) Save this file in your `project_name/` folder with a short, sensible name such as `wellbeing_report.qmd`.  
+
+You should now have:
+
+````
+project_name/
+  project_name.Rproj
+  wellbeing_report.qmd
+  data/
+    wellbeing_dataset.csv
+````
+
+![](images/do_in_R.png) For now, keep the Quarto file that RStudio created, but we will **replace** its contents in the next exercise.
+
+
+## Exercise 3: Replace the YAML header
+
+We will now replace the default YAML at the top of your `.qmd` file with a version similar to the one used in the seminar.
+
+![](images/do_in_R.png) In your `wellbeing_report.qmd` file, **select and delete** the default YAML block at the very top (everything between the first pair of `---` lines).
+
+![](images/do_in_R.png) Replace it with the following YAML header:
+
+```yaml
+---
+title: "Sleep and Wellbeing Across Groups"
+author: "YOUR NAME"
+date: "2025-11-15"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    self-contained: true
+execute:
+  message: false
+  warning: false
+---
+```
+
+Make sure the indents in your .qmd file look just like the code above! Sometimes copying and pasting code into a .qmd file changes the indentation of lines.
+
+Then make the following edits:
+
+- Enter your name (remember that your final assessment should use your exam number).  
+- Update the date string to today’s date.
+
+![](images/answer.png) In one or two sentences: What does the `format:` section of the YAML control?
+
+
+## Exercise 4: Add a setup chunk that loads packages and data
+
+Underneath the YAML header, we now want to add a **setup chunk** like the one shown in the seminar. This chunk will:
+
+- Load the packages you need
+- Read the wellbeing dataset from `data/wellbeing_dataset.csv`
+- Do some simple recoding
+- Set a default theme
+
+
+![](images/do_in_R.png) In your `wellbeing_report.qmd`, underneath the YAML header, add the following code chunk:
+
+````
+```{{r}}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(patchwork)
+library(viridis)
+library(RColorBrewer)
+
+wellbeing_df <- readr::read_csv("data/wellbeing_dataset.csv")
+
+wellbeing_df <- wellbeing_df |>
+  mutate(
+    participant_group = factor(participant_group,
+                               levels = c("student", "employed", "retired"))
+  )
+
+theme_set(theme_minimal(base_size = 14))
+```
+````
+
+A few things to notice:
+
+- `label: setup` gives the chunk a clear name for error messages.  
+- `include: false` means the code will run, but will **not appear** in the report, and any printed output from this chunk will be hidden.  
+- The path `"data/wellbeing_dataset.csv"` is **relative** to the location of your `.qmd` file inside `project_name/`.
+
+![](images/do_in_R.png) Run the code chunk by clicking the green arrow in the upper right of the chunk. This runs the code within your RStudio session, so that you'll be able to test run the code chunks you develop below.
+
+
+![](images/do_in_R.png) **Save** the file, then click **Render** in RStudio.
+
+- If you get an error about a package not being found, use `install.packages()`, then try rendering again.  
+- If you get a “file not found” error, double-check:
+  - that `wellbeing_dataset.csv` is inside a folder called `data`  
+  - that the `data` folder is in the **same folder** as your report `.qmd` and `.Rproj`  
+
+![](images/answer.png) Once your report renders successfully, what do you see in the HTML document at this point?
+
+
+## Exercise 5: Add basic sections using Markdown
+
+Next, you’ll add a simple **section structure** to your report using Markdown headers.
+
+![](images/do_in_R.png) In `wellbeing_report.qmd`, underneath the setup chunk, add the following section skeleton:
+
+```markdown
+# Introduction
+
+
+# Data overview
+
+
+# Group differences in wellbeing and sleep
+
+
+# Wellbeing and sleep
+
+
+# Summary
+
+```
+
+![](images/do_in_R.png) Save the file and Render again. Check that your HTML report now shows the section headings.
+
+![](images/answer.png) How do the headings you just added relate to the **table of contents** that appears in the HTML report?
+
+
+## Exercise 6: Add a data overview chunk
+
+We now want a short code chunk in the **Data overview** section that displays basic information about the data.
+
+![](images/do_in_R.png) In the **# Data overview** section, add a new R chunk that prints the first few rows of the dataset:
+
+````
+```{{r}}
+#| label: data-overview
+#| echo: false
+
+head(wellbeing_df)
+
+```
+````
+
+```{r}
+#| label: data-overview
+#| echo: false
+
+head(wellbeing_df)
+
+```
+
+![](images/do_in_R.png) Run the code by clicking the green arrow in the code chunk. You should see the first six rows printed out below your chunk. 
+
+![](images/answer.png) What are the variables? 
+
+![](images/do_in_R.png) Add text within your **# Data overview** section to briefly describe the dataset. 
+
+![](images/do_in_R.png) Render the report and check that:
+
+- The heading **Data overview** appears  
+- Within this section, you see the printed first few rows of the tibble and your brief description.  
+
+
+## Exercise 7: Create a multi-panel figure with chunk options
+
+Now you’ll create a **two-panel figure** that explores how wellbeing and sleep differ by group.
+
+![](images/do_in_R.png) In the section **# Group differences in wellbeing and sleep**, add a new R chunk like the one below.
+
+Edit the `ggplot(...)` contents to create bar plots with error bars showing wellbeing for each group and sleep for each group, as in the examples below. 
+
+Edit the `fig-cap` to include a brief, descriptive caption.
+
+````
+```{{r}}
+#| label: fig-group-outcomes
+#| echo: false
+#| fig-cap: "..."
+#| out-width: "80%"
+#| fig-align: "center"
+
+group_wellbeing <- ggplot(...)
+
+group_sleep <- ggplot(...)
+
+group_wellbeing / group_sleep
+```
+````
+
+```{r}
+#| label: fig-group-outcomes
+#| echo: false
+#| fig-cap: "Wellbeing and sleep in participant groups."
+#| fig-height: 6.5
+#| out-width: "70%"
+#| fig-align: "center"
+
+group_wellbeing <- ggplot(wellbeing_df, aes(x = participant_group, y = wellbeing_index)) +
+  stat_summary(aes(fill = participant_group), fun = "mean", geom = "bar", show.legend = F) +
+  stat_summary(fun.data = "mean_se", geom = "linerange") +
+  scale_fill_brewer(palette = "Blues") +
+  labs(x = "",
+       y = "Wellbeing Index")
+
+group_sleep <- ggplot(wellbeing_df, aes(x = participant_group, y = sleep_hours)) +
+  stat_summary(aes(fill = participant_group), fun = "mean", geom = "bar", show.legend = F) +
+  stat_summary(fun.data = "mean_se", geom = "linerange") +
+  scale_fill_brewer(palette = "Blues") +
+  labs(x = "Participant Group",
+       y = "Sleep Hours")
+
+
+group_wellbeing / group_sleep
+
+```
+![](images/do_in_R.png) Test run the code by clicking the green arrow in the code chunk. You should see your plots (or an error message that you will need to fix). Try editing the code for your plots to polish them, e.g., by editing the axis labels, colors, etc, and running using the green arrow again until you're happy with your choices.
+
+![](images/answer.png) What patterns do you see in these plots? How do wellbeing and sleep vary across groups? 
+
+
+![](images/do_in_R.png) Add Markdown text within this section to briefly describe the key patterns in these plots. 
+
+![](images/do_in_R.png) Render the report and inspect:
+
+- Both the figures and text appear in this section
+- The code is hidden (`echo: false`)  
+- The figure appears with a caption  
+- The figure is not full-width because of `out-width: "80%"`  
+- The figure is centered due to `fig-align: "center"`
+
+![](images/do_in_R.png) Experiment with different values of `#| out-width:` (e.g., `"50%"`, `"90%"`). You can additionally add a line to control the figure height like this: `#| fig-height:` (e.g., 6, 7). Try rendering again with different values.  Which width feels most readable in the rendered HTML report, and why?
+
+
+## Exercise 8: Add another plot to expand the story
+
+Now you’ll create a figure that explores the relationship between wellbeing and sleep.
+
+![](images/do_in_R.png) In the section **# Wellbeing and sleep**, add a new R chunk following the same format as in Exercise 7, with its own label and caption.
+
+In this chunk, generate a scatterplot showing wellbeing on the x-axis and sleep on the y-axis, similar to the example below.  
+
+```{r}
+#| label: fig-scatter
+#| echo: false
+#| fig-cap: "Sleep–wellbeing relationship."
+#| out-width: "60%"
+#| fig-align: "center"
+
+ggplot(wellbeing_df, aes(x = wellbeing_index, y = sleep_hours)) +
+  geom_point(aes(fill = participant_group), shape = 21, alpha = .8) +
+  scale_fill_brewer(palette = "Blues") +
+  labs(x = "Wellbeing Index",
+       y = "Sleep Hours",
+       fill = "Participant Group")
+
+```
+![](images/do_in_R.png) As in the previous exercise, run the code by clicking the green arrow in the code chunk, and try editing it to change the appearance until you're happy with your choices.
+
+![](images/answer.png) As in the previous exercise, inspect the pattern you see in this plot. How does wellbeing relate to sleep? 
+
+![](images/do_in_R.png) Add text within this section to briefly describe the key pattern. 
+
+![](images/do_in_R.png) As in the previous exercise, render the report and evaluate how it appears, then change the `out-width` and/or `fig-height` to be more readable if needed. 
+
+
+## Exercise 8: Fill out the Introduction and Summary
+
+Considering your inspection of the dataset and the patterns:
+
+- Add a few sentences to the **# Introduction** section to introduce the dataset and the patterns that the report will depict. 
+
+- Try including a sentence that notes the number of participants in the dataset with inline code using `nrow(wellbeing_df)`. 
+
+- Add a few sentences to the **# Summary** section to summarise the patterns shown in the plots. 
+
+
+![](images/do_in_R.png) Save the file and Render again. Check that the inline code has been replaced with an actual number in the HTML report.
+
+
+
+# You’re finished! 🎉
+
+You have now:
+
+- Created a **project folder** with a `data/` subfolder
+- Built an RStudio project and a **Quarto report** inside it
+- Written a **YAML header**, **setup chunk**, and **Markdown sections**
+- Added code chunks with **chunk options** and **inline code**
+- Rendered an HTML report that you can submit as part of a future assessment
+
+You can keep this mini project as a template you can adapt for your final assessment.

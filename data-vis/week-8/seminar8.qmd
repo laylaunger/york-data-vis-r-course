@@ -1,0 +1,700 @@
+---
+title: "Week 8 Seminar: Quarto Reports"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    highlight-style: github
+    width: 1200
+execute:
+  freeze: false
+---
+
+```{r setup, include=FALSE}
+#| context: setup
+# Packages used for the slides
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(here)
+  library(knitr)
+  library(viridis)
+  library(patchwork)
+  library(kableExtra)
+})
+
+options(knitr.kable.NA = "")
+knitr::opts_chunk$set(fig.retina = 3)
+
+# Keep the same default theme style as previous weeks
+theme_set(theme_bw(base_size = 18) +
+            theme(panel.grid = element_blank()))
+
+# Load therapy dataset (for any examples we might want to run)
+therapy_df <- readr::read_csv(here("data-vis", "data", "therapy_dataset.csv"))
+
+therapy_df <- therapy_df |>
+  mutate(
+    support_level = factor(support_level, levels = c("Low", "Medium", "High")),
+    therapy = factor(therapy, levels = c("Yes", "No")),
+    sex = factor(sex)
+  )
+```
+
+---
+
+## From last time
+
+- Labels with `labs()`
+- `scale_*_*` to customise breaks, labels, limits, and colours
+- Polishing visuals with `theme()`
+- Annotations, text, and direct labelling for clarity
+- Faceting and multi-panel layouts with `facet_*` and **patchwork**
+
+::: notes
+Remind students very briefly what we did in Week 7: we focused on 
+**explaining** with plots, not just exploring.
+
+Emphasise that the therapy report we will look at today uses many of those
+ideas: clear labels, sensible scales, consistent themes, and multi-panel
+patchwork layouts.
+:::
+
+---
+
+## Today
+
+- Why build a report?
+- Inspect a finished Quarto report 
+- Basic anatomy of a Quarto report
+  - Header
+  - Setup
+  - Body combining text, code, and code-generated figures
+- How to build a Quarto report
+- Project structure and workflow
+
+::: notes
+
+- What a Quarto report looks like
+- The parts that build a report
+:::
+
+---
+
+## Today
+
+- **Why build a report?**
+
+---
+
+## Why build a report?
+
+- Quarto reports tell a story by combining:
+  - **Prose** (context, narrative, explanations)
+  - **Code** (R for data wrangling and plots)
+  - **Figures and tables** (output from the code)
+
+::: notes
+
+
+
+:::
+
+---
+
+## Why build a report?
+
+- Everything lives in one `.qmd` file:
+  - Combines code, output, and interpretation
+  - Reproducible!
+
+::: notes
+Emphasise reproducibility: if someone presses "Render" on their report, they
+should get the same HTML they submitted.
+:::
+
+---
+
+## Today
+
+- **Inspect a finished Quarto report**
+
+
+---
+
+## A finished example
+
+- Our example report for this week:
+  - Uses the **therapy dataset**
+  - Contains a short introduction, two main figure panels, and a summary
+
+```{r head-therapy, echo=FALSE}
+therapy_df %>%
+  head(6) %>%
+  kable("html", digits = 0) %>%
+  kable_styling(font_size = 18, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, align = "c") %>%
+  column_spec(c(1,2,4,5), background = "yellow")
+```
+
+
+---
+
+## A finished example
+
+- Our example report for this week:
+  - Uses the **therapy dataset**
+  - Contains a header, short introduction, two main figure panels, and a summary
+
+Full report:
+<a href="seminar_example8.html" target="_blank">Example Quarto report</a>
+
+::: notes
+
+Emphasize components:
+- Title and author at the top
+- Introductory text
+- First multi-panel figure showing outcomes by support level.
+:::
+
+---
+
+## Today
+
+- **Basic anatomy of a Quarto report**
+
+
+---
+
+## Anatomy of a Quarto report: Overview
+
+A file with extension **`.qmd`**
+
+Contains:
+
+  - **YAML header**: at the top
+  - **Setup code chunk**: load packages, data
+  - **Body** including sections written in **Markdown** and **code chunks** that generate output (tables, plots) integrated with section text
+  
+---
+
+## Anatomy of a Quarto report: Example
+
+Let's look at our example report and inspect: 
+
+  - **YAML header**
+  - **Setup chunk**
+  - **Body**
+
+::: notes
+
+:::
+  
+---
+
+## Anatomy of a Quarto report: Overview
+
+- When you click **Render** in RStudio, Quarto:
+  - Formats the Markdown text and runs the code
+  - Integrates the code outputs with the text
+  - Produces an HTML report
+
+::: notes
+Reassure students that this is very similar to what they saw in the DataCamp
+RMarkdown chapter: Markdown + code + output.
+
+Highlight that the main differences are:
+- The file extension is `.qmd`.
+- The YAML uses `format:` instead of `output:`.
+- Quarto supports more output types, but we'll use HTML here.
+:::
+
+
+
+---
+
+## Today
+
+- **How to build a Quarto report**
+
+---
+
+## Today
+
+- **How to build a Quarto report**
+  - YAML header
+
+---
+
+## YAML header
+
+```yaml
+---
+title: "Social Support, Therapy, and Wellbeing"
+author: "Exam number 123456"
+date: "2025-11-13"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    self-contained: true
+execute:
+  message: false
+  warning: false
+---
+```
+
+::: notes
+Go through each part:
+
+- `title`, `author`, `date` are what show up at the top of the report.
+- `format: html:` controls how the HTML looks:
+  - `toc: true` adds a table of contents,
+  - `self-contained: true` bundles everything into a single HTML file.
+- `execute:` controls default behaviour of code:
+  - Here we're hiding messages and warnings globally.
+
+Emphasise that for the assessment, they should have a sensible title and use
+their exam number as the author.
+:::
+
+
+---
+
+## Today
+
+- **How to build a Quarto report**
+  - YAML header
+  - Embedded code chunks (setup and body)
+
+---
+
+## Embedded code chunk basics
+
+Wrapper:
+
+
+```{{r}}
+```
+
+
+Label:
+
+````
+#| label: chunk-name
+````
+
+Options to control how code is run:
+
+````
+#| echo: true
+````
+
+The code itself:
+
+````
+library(tidyverse)
+1+1
+````
+
+::: notes
+
+- Wrap code chunk in ticks and {r} to identify as R code
+- include a label - short and meaningful (e.g., `fig-support`).
+- options to control how chunk is run
+- code
+:::
+
+---
+
+## Embedded code label
+
+<br>
+
+Each chunk should have a different label
+
+- You will get an error if you try to render and there are duplicate chunk labels
+
+Labels are useful for figuring out where errors come from
+
+- Error messages from code bugs will include chunk label
+
+
+---
+
+## Embedded code chunk options
+
+<br>
+
+Show the code, but **do not run it**
+
+````
+#| eval: false
+````
+
+
+Run the code, show only the output (e.g., a plot)
+
+````
+#| echo: false
+````
+
+Run the code, show **nothing** (no code, no output)
+
+````
+#| include: false
+````
+
+::: notes
+Give concrete examples:
+
+- Setup chunk uses `include: false` so the reader never sees the plumbing.
+- They might use `eval: false` if they want to include example code that
+  doesn't need to run (less common in the final report, more for teaching).
+
+Reassure them that for most chunks in their report, the main choice is
+simply whether they want to show or hide the code (`echo`).
+:::
+
+---
+
+## Embedded code chunk figure control
+
+<br>
+
+Caption shown under the figure
+
+````
+#| fig-cap: "A helpful caption."
+````
+
+How wide the figure appears in the HTML column
+
+````
+#| out-width: "50%"
+````
+
+Alignment
+
+````
+#| fig-align: "left", "center", or "right"
+````
+
+::: notes
+Clarify the difference between:
+
+- `fig-width` / `fig-height` (the size of the drawing device in inches),
+- `out-width` (how wide the figure appears in the HTML document).
+
+Explain that in this example, the first patchwork figure is set to be
+60% of the text width so it doesn't feel oversized.
+:::
+
+---
+
+## Test run your chunk in RStudio
+
+<br> 
+
+Before rendering, you can (and should) try running your code as you write it
+
+```{r echo=FALSE,  fig.align = "center", fig.height = 6.5,}
+knitr::include_graphics(here("data-vis","figs","quarto_run_chunk.jpg"))
+```
+
+---
+
+## Setup chunk
+
+```{{r}}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(here)
+library(patchwork)
+library(viridis)
+
+therapy_df <- read_csv("data/therapy_dataset.csv")
+
+therapy_df <- therapy_df |>
+  mutate(
+    support_level = factor(support_level, levels = c("Low", "Medium", "High")),
+    therapy = factor(therapy, levels = c("Yes", "No"))
+  )
+
+theme_set(theme_minimal(base_size = 14))
+```
+
+::: notes
+Clarify the role of the setup chunk:
+
+- It runs **once**, near the start of the document.
+- It loads packages used throughout the report.
+- It reads in the data and does any basic recoding.
+- `include: false` means:
+  - The code runs, but does not appear in the report.
+  - No output from this chunk is shown.
+
+Highlight the use of a **relative path** into the `data` folder,
+which lives inside of the same folder as the quarto report, so the
+quarto report will be able to find it.
+Matches the project structure they will use for assessment.
+:::
+
+---
+
+## Body: Overview
+
+- Combine code chunks with Markdown to format section headers and text
+
+---
+
+## Body: Sections using Markdown
+
+Arrange report into high-level sections with headers:
+
+```markdown
+# Introduction
+
+...
+
+# Data overview
+
+...
+
+# Support level affects wellbeing and loneliness
+
+...
+
+# Summary
+
+...
+```
+
+::: notes
+Explain that each top-level heading begins with `#`.
+
+For the assessment, encourage students to have:
+- A short Introduction
+- A concise Data/Methods overview
+- 2–3 main Results sections (each tied to one or two key figures)
+- A short Summary/Discussion.
+
+Point out that headings drive the table of contents automatically.
+:::
+
+---
+
+## Body: Text using Markdown 
+
+**Headings**
+
+`# Main section`
+
+`## Subsection`
+
+**Emphasis**
+
+`*italic*` → *italic*
+
+`**bold**` → **bold**
+
+**Lists**
+
+`- First point`
+
+`- Second point`
+
+::: notes
+Keep this light: the goal is just to remind them that the text part of a
+Quarto report is written in Markdown.
+
+Mention that the DataCamp chapter they did covers more markdown tricks,
+and they can refer back to it if needed.
+:::
+
+
+---
+
+
+
+## Body: sections, text and code chunks
+
+A typical section might look like:
+
+````
+# Support level affects wellbeing and loneliness
+
+We first examine wellbeing and loneliness scores by support level. 
+The pattern is clear: participants with low perceived support report 
+the lowest wellbeing and highest loneliness. As support increases, 
+wellbeing also increases, whereas loneliness decreases.
+
+
+```{{r}}
+#| label: fig-support-outcomes
+#| echo: false
+#| fig-cap: "Wellbeing scores by perceived support level."
+#| out-width: "60%"
+#| fig-align: "center"
+supp_wellbeing <- ggplot(...)
+supp_loneliness <- ggplot(...) 
+supp_wellbeing / supp_loneliness 
+```
+````
+
+::: notes
+
+Emphasise the pattern:
+
+Short paragraph to introduce the figure and describe the key pattern.
+Then a code chunk that produces the figure.
+
+Note that the reader doesn't see the code for the figure, only the result,
+because echo: false hides the code.
+
+:::
+
+
+---
+
+## Before and after: figure layout
+
+
+```{r echo=FALSE,  fig.align = "center", fig.height = 6.5,}
+knitr::include_graphics(here("data-vis","figs","quarto_bad_width_fig.jpg"))
+```
+
+---
+
+## Before and after: figure layout
+
+```{r echo=FALSE,  fig.align = "center", fig.height = 6.5,}
+knitr::include_graphics(here("data-vis","figs","quarto_good_width_fig.jpg"))
+```
+
+
+---
+
+## Inline code
+
+We can also insert small pieces of R output directly in the text:
+
+<br>
+
+This report uses data from `` `r
+nrow(therapy_df)` `` participants.
+
+
+<br>
+
+This report uses data from `r nrow(therapy_df)` participants.
+
+
+::: notes
+Explain:
+
+Backticks with r ... inside tell Quarto to run the R code and insert
+  the result.
+This is useful for things like sample sizes, means, or percentages.
+
+Reassure them that inline code is optional, but can help keep numbers in
+the text in sync with the analysis.
+:::
+
+
+---
+
+## Today
+
+- **Project structure and workflow**
+
+---
+
+## Project structure for reports
+
+A simple recommended structure:
+
+````
+project_name/
+  project_name.Rproj
+  project_name_report.qmd
+  data/
+    data_file.csv
+````
+
+::: notes
+
+Have an overall folder for the project
+Include your qmd file inside
+Include a subfolder with data. This makes it easy to find/read the data within your qmd
+
+:::
+
+---
+
+## Typical workflow
+
+1. Create / open the RStudio **project** for your assessment
+2. Create / open your `report.qmd`
+3. Make changes to:
+   - Text, headings, and interpretations
+   - Code chunks and chunk options
+4. Save the file
+5. Click **Render** to regenerate the HTML report
+6. Check that the figures and text look as expected
+
+::: notes
+Emphasise the importance of saving before rendering.
+
+Suggest that they render frequently while working on the report, rather than
+only at the very end — it's easier to catch small issues early.
+:::
+
+---
+
+## Troubleshooting: common issues
+
+- **Package not found**  
+  - Install the package, add `library(package)` in the setup chunk
+- **File not found**  
+  - Check the path to your data file and that it's inside the project
+- **Object not found**  
+  - Check chunk order and spelling of variable names
+- **Plot not appearing**  
+  - Make sure the chunk is being evaluated (no `eval: false`)
+
+::: notes
+Encourage students not to panic when the render fails — the error message
+will usually tell them which chunk label failed and why.
+
+Remind them they can always comment out a troublesome chunk temporarily
+and rerender to isolate the problem.
+:::
+
+---
+
+## Summary
+
+<br>
+
+A Quarto report is a **`.qmd` file** with:
+
+- YAML header
+- Setup chunk
+- Sections combining Markdown narrative, code chunks
+- Code chunks can generate figures to show in the report
+- Chunk options control what is visible and how figures are displayed
+
+::: notes
+Finish by connecting back to the assessment:
+
+- What they saw today is essentially the style and level of polish we are
+  looking for in the final report.
+- The practical is where they can start turning their own analysis into a
+  Quarto report in a low-stakes setting.
+
+Invite questions about anything that still feels mysterious about Quarto
+before moving on.
+:::

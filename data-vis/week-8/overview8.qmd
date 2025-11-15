@@ -1,0 +1,19 @@
+---
+title: Overview
+subtitle: "Quarto Reports"
+toc: true
+toc-location: right
+---
+
+This week you will learn how to build a report that embeds code and figures within a narrative. Reports are a useful tool for walking another person through your findings and ensuring that your work is reproducible.
+
+
+### Learning objectives
+
+The successful student will be able to:
+
+- explain what a Quarto report is and why it is useful for reproducible data analysis
+
+- build the structure of a Quarto report, and flesh it out with a combination of narrative text, code chunks, and figures to walk the reader through a project in the rendered report 
+
+- polish the appearance of the report using Markdown to format the narrative text, and code chunk controls to control code visibility and the appearance of figures

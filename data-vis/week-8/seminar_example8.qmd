@@ -1,0 +1,138 @@
+---
+title: "Social Support, Therapy, and Wellbeing"
+author: "Exam number 123456"
+date: "2025-11-13"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    self-contained: true
+execute:
+  message: false
+  warning: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(here)
+library(patchwork)
+library(viridis)
+
+therapy_df <- readr::read_csv(here("data-vis", "data", "therapy_dataset.csv"))
+
+therapy_df <- therapy_df |>
+  mutate(
+    support_level = factor(support_level, levels = c("Low", "Medium", "High")),
+    therapy = factor(therapy, levels = c("Yes", "No")),
+    sex = factor(sex)
+  )
+
+theme_set(theme_minimal(base_size = 14))
+```
+
+# Introduction
+
+Social support and access to therapy are both thought to play an important role in protecting mental health. This short report uses a simulated dataset of `r nrow(therapy_df)` adults to explore how perceived support and therapy use relate to wellbeing and loneliness.
+
+Participants reported their **support level** (low, medium, or high), whether they were currently in **therapy**, and completed assessments of **wellbeing** and **loneliness** that were subsequently scored. The aim of the report is to summarise how these variables relate to one another.
+
+This report first examines how wellbeing and loneliness differ across support levels, and then reveals the impact of therapy.
+
+# Data overview
+
+The dataset contains the following key variables:
+
+- **Support level** (`support_level`): perceived social support (Low, Medium, High).
+- **Therapy** (`therapy`): whether the participant is currently receiving therapy (Yes/No).
+- **Loneliness score** (`loneliness_score`): higher values indicate greater loneliness.
+- **Wellbeing score** (`wellbeing_score`): higher values indicate better wellbeing.
+
+In what follows, I focus on how wellbeing and loneliness vary across levels of support and therapy.
+
+# Support level affects wellbeing and loneliness
+
+We first examine wellbeing and loneliness scores by support level. The pattern is clear: participants with low perceived support report the lowest wellbeing and highest loneliness. As support increases, wellbeing also increases, whereas loneliness decreases. Thus, support improves wellbeing and decreases loneliness.
+
+
+```{r}
+#| label: fig-support-outcomes
+#| echo: false
+#| fig-cap: "Wellbeing scores by perceived support level."
+#| fig-width: 3.75
+#| fig-height: 6.5
+#| out-width: "60%"
+#| fig-align: "center"
+supp_wellbeing <- therapy_df |>
+  ggplot(aes(x = support_level, y = wellbeing_score)) +
+  geom_boxplot(aes(fill = support_level), alpha = 0.8, width = 0.6, show.legend = F) +
+  scale_fill_viridis_d(option = "plasma") +
+  labs(
+    x = "",
+    y = "Wellbeing score"
+  ) +
+  coord_cartesian(ylim = c(0, 100)) +
+  guides(fill = "none")
+
+supp_loneliness <- therapy_df |>
+  ggplot(aes(x = support_level, y = loneliness_score)) +
+  geom_boxplot(aes(fill = support_level), alpha = 0.8, width = 0.6, show.legend = F) +
+  scale_fill_viridis_d(option = "plasma") +
+  labs(
+    x = "Support",
+    y = "Loneliness score"
+  ) +
+  coord_cartesian(ylim = c(0, 100))
+
+supp_wellbeing / supp_loneliness
+
+```
+
+
+
+# Therapy partially mitigates effects of support
+
+We next compare wellbeing for participants who are and are not in therapy. On average, those in therapy report higher wellbeing than those who are not, across all levels of support. However, therapy does not affect reported levels of loneliness.
+
+```{r}
+#| label: fig-therapy-wellbeing
+#| echo: false
+#| fig-cap: "Wellbeing scores for participants in therapy and not in therapy."
+#| fig-width: 9
+#| fig-height: 7
+#| fig-align: "center"
+therapy_wellbeing <- therapy_df |>
+  ggplot(aes(x = therapy, y = wellbeing_score)) +
+  facet_wrap(~ support_level, labeller = labeller(support_level = c(Low = "Support: Low", Medium = "Support: Medium", High = "Support: High"))) +
+  geom_boxplot(aes(fill = therapy), alpha = 0.8, width = 0.6, show.legend = F) +
+  scale_fill_manual(values = c("#3935a1", "gray")) +
+  labs(
+    x = "",
+    y = "Wellbeing score"
+  )
+
+
+therapy_loneliness <- therapy_df |>
+  ggplot(aes(x = therapy, y = loneliness_score)) +
+  facet_wrap(~ support_level, labeller = labeller(support_level = c(Low = "Support: Low", Medium = "Support: Medium", High = "Support: High"))) +
+  geom_boxplot(aes(fill = therapy), alpha = 0.8, width = 0.6, show.legend = F) +
+  scale_fill_manual(values = c("#3935a1", "gray")) +
+  labs(
+    x = "Currently in Therapy",
+    y = "Loneliness score"
+  )
+
+therapy_wellbeing / therapy_loneliness
+
+```
+
+
+
+
+# Summary
+
+This short report used a simulated dataset to explore how social support, therapy, and sleep quality relate to wellbeing and loneliness. Key patterns emerged. First, higher perceived support is associated with higher wellbeing and lower loneliness. In addition, participants in therapy report somewhat higher wellbeing than those not in therapy. However, therapy has no apparent effect on reported loneliness.
+
+The report demonstrates how Quarto can combine text, code, and figures to tell a coherent data story. In a full analysis, one might extend these descriptive findings using formal statistical models and explore additional predictors, such as age or sex. Here, the focus has been on producing a clear, reproducible summary that highlights key patterns in the data.

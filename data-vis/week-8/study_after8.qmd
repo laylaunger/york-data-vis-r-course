@@ -1,0 +1,207 @@
+---
+title: "Independent Study to Consolidate"
+subtitle: "Quarto Reports"
+toc: true
+toc-location: right
+---
+
+# Overview
+
+So far, your consolidation exercises have been similar to the practical exercises, but with less guidance. To help you gain more independence in your work, this week's consolidation exercise will be more open-ended. 
+
+In these consolidation exercises, you will **take code from an earlier week** and turn it into a **short Quarto report**, using the structure introduced in Week 8 and customization strategies introduced in Week 7. Practicing how to build a polished Quarto report will be useful preparation for both the final assessment and for communicating your work with other people.
+
+You will:
+
+- Adapt plots and wrangling code from **one earlier week**: Week 3, 4, 5, or 6
+- Set up a **project folder** with a `data/` subfolder
+- Create a **Quarto report** with a YAML header, setup chunk, and sections
+- Add **chunk labels**, **chunk options**, and **inline code**
+- Write short **plain-language interpretations** of your plots
+
+You do not need to invent entirely new visualizations here. The goal is to practice turning code you have already written into a clear, reproducible report. To accomplish this goal, you can harness the polishing strategies from week 7 and the Quarto report approaches from week 8.
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. Record your answers in your report or script for future reference.
+:::
+
+---
+
+## Exercise 1: Choose your earlier work
+
+Choose an earlier practical or consolidation as the basis for this Week 8 report, such as:
+
+- Week 4 — **Barplots**  
+- Week 5 — **Relationships**   
+- Week 6 — **Time series & line graphs** 
+
+![](images/do_in_R.png) Open the R script from that week. Quickly skim what you did.
+
+![](images/answer.png) In a sentence or two, jot down:
+- Which dataset you plan to use
+- Which **2–3 plots** you want to showcase in your report.
+
+You can keep this plan outline short; it’s just to orient yourself.
+
+
+## Exercise 2: Set up a new project folder
+
+Now you will create a **fresh project** specifically for this consolidation report, using the same structure as in the Week 8 practical.
+
+![](images/do_in_R.png) In RStudio, in the **Files** tab (Rstudio bottom right panel), create a new folder somewhere sensible (for example inside `data-visualisation-in-r`). Give it a clear name that relates to the graphs you will use in the report, such as `consolidate8_barplots`.
+
+We will refer to this as **`project_name/`**.
+
+This is the first step for building your project structure. Once you finish the additional setup steps below, your project structure should look like this:
+
+```text
+project_name/
+  project_name.Rproj
+  consolidate8_report.qmd
+  data/
+    <one or more CSV files>
+  
+```
+
+![](images/do_in_R.png) Turn this folder into an **RStudio Project**:
+
+- Click the project dropdown in the top-right of RStudio (see the little icon with the blue cube)  
+- Choose **New Project → Existing Directory**  
+- Select your new `project_name/` folder and click **Create Project**.
+
+![](images/do_in_R.png) Inside this project, create a subfolder called `data`.
+
+![](images/do_on_your_computer.png) Copy the relevant CSV file(s) from the original week into this `data` folder. For example:
+
+![](images/answer.png) Why is it helpful to keep **all files needed for your report** (data, `.qmd`, project file) together in one project folder?
+
+
+## Exercise 3: Create a Quarto report file with a YAML header
+
+Now you will create the **skeleton Quarto report**.
+
+![](images/do_in_R.png) In RStudio (inside your new project):
+
+- Go to **File → New File → Quarto Document…**  
+- Give it a clear title that mentions your topic and dataset, e.g.:
+  - *Engagement Across User Segments and Devices*  
+- List yourself as the author
+- Choose **HTML** as the format.  
+- Click **Create**, then immediately **save** the file as `consolidate8_report.qmd` inside `project_name/`.
+
+![](images/do_in_R.png) Replace the default YAML at the top of the new `.qmd` with something similar to:
+
+```yaml
+---
+title: "Engagement Across User Segments and Devices"
+author: "XXX"
+date: "2025-11-15"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    self-contained: true
+execute:
+  message: false
+  warning: false
+---
+```
+
+![](images/answer.png) What does the `format:` section of the YAML control?
+
+
+## Exercise 4: Add a setup chunk (using your dataset)
+
+Underneath the YAML, you now need a **setup chunk** that:
+
+- Loads any packages you need  
+- Reads in the relevant dataset(s) from the `data/` folder  
+- Does any basic recoding (e.g., factor ordering) or processing  
+- Optionally sets a default theme
+
+
+
+![](images/do_in_R.png) Test run the chunk within RStudio (using the green arrow). Fix any errors about missing packages or incorrect file paths.
+
+
+![](images/do_in_R.png) Save and **Render** your report. 
+
+![](images/answer.png) After your setup chunk runs successfully, what (if anything) do you see in the HTML report? Why?
+
+
+## Exercise 5: Build a section structure for your report
+
+Next, you’ll add a clear **section structure** using Markdown headings.
+
+![](images/do_in_R.png) Underneath your setup chunk, add headings like:
+
+```markdown
+# Introduction
+
+# Data overview
+
+# [key result 1]
+
+# [key result 2]
+
+# Summary
+```
+
+You can adapt the key results to your topic, e.g., **# App engagement by user segment**
+
+## Exercise 6: Data overview
+
+![](images/do_in_R.png) In the **# Data overview** section, add a code chunk that shows the top few rows of the dataset and a brief Markdown description. Test run the chunk and render the file to check that everything runs / displays as intended.
+
+
+## Exercise 7: Translate your earlier code into key results
+
+Now the main step: **adapt plots from your earlier script** and translate them into Quarto chunks inside your report.
+
+Aim for at least **two** plots that form a coherent story (e.g., different views of the same phenomenon, or related outcomes).
+
+![](images/do_in_R.png) For each plot you want to include:
+
+1. Copy the ggplot code from your original script.
+2. Paste it into an R chunk in the appropriate section of your report.
+3. Add a **chunk label** and useful **chunk options**
+4. Test run it to see how it looks.
+5. Polish the plot using strategies from Advanced Customisation (Week 7)
+6. Render and try adjusting the options controlling figure appearance until you're happy with how it looks.
+7. Add a brief description of the key result to the section.
+
+![](images/do_in_R.png) Repeat this for your other chosen plots. Remember that each of your code chunks should have a **different label**.
+
+
+## Exercise 8: Fill out the Introduction and Summary
+
+Considering your inspection of the dataset and the patterns:
+
+- Add a few sentences to the **# Introduction** section to introduce the dataset and the patterns that the report will depict. 
+
+- Try including a sentence that notes the number of participants in the dataset (or some other useful bit of information) with inline code.
+
+- Add a few sentences to the **# Summary** section to summarise the patterns shown in the plots. 
+
+
+## Exercise 9: Reflect
+
+![](images/answer.png) Render your report and read it through from beginning to end. Imagine you are reading this report for the first time and are unfamiliar with the data / results. 
+
+- Does it tell a clear and compelling story?
+- Are the figures easy to read?
+- Could you change anything to improve the narrative or plots further?
+
+
+# You're finished! 🎉

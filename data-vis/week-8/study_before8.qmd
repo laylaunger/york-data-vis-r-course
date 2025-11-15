@@ -1,0 +1,12 @@
+---
+title: "Independent Study to Prepare"
+subtitle: "Quarto Reports"
+toc: true
+toc-location: right
+---
+
+# Quarto Reports
+
+To prepare for diving into this week's topic, Quarto reports, complete the DataCamp assignment for this week:
+
+  - Communicating with Data in the Tidyverse - Chapter 3 Introduction to RMarkdown
