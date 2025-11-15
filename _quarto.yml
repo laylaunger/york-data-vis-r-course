@@ -131,19 +131,19 @@ website:
                text: Practical
              - href: data-vis/week-7/study_after7.qmd
                text: Consolidate!
-          # - section: "Week 8: One-way ANOVA and Kruskal-Wallis"
-          #   contents:
-          #    - href: data-vis/week-8/overview8.qmd
-          #      text: About
-          #    - href: data-vis/week-8/study_before8.qmd
-          #      text: Prepare!
-          #    - href: data-vis/week-8/seminar8.qmd
-          #      text: Seminar
-          #    - href: data-vis/week-8/practical8.qmd
-          #      text: Practical
-          #    - href: data-vis/week-8/study_after8.qmd
-          #      text: Consolidate!
-          # - section: "Week 9: Introduction to the Assessment"
+          - section: "Week 8: Quarto Reports"
+            contents:
+             - href: data-vis/week-8/overview8.qmd
+               text: About
+             - href: data-vis/week-8/study_before8.qmd
+               text: Prepare!
+             - href: data-vis/week-8/seminar8.qmd
+               text: Seminar
+             - href: data-vis/week-8/practical8.qmd
+               text: Practical
+             - href: data-vis/week-8/study_after8.qmd
+               text: Consolidate!
+          # - section: "Week 9: Shiny Dashboards Part 1"
           #   contents:
           #    - href: data-vis/week-9/overview9.qmd
           #      text: About
@@ -155,7 +155,7 @@ website:
           #      text: Practical
           #    - href: data-vis/week-9/study_after9.qmd
           #      text: Consolidate!
-          # - section: "Week 10: Reproducible Reporting"
+          # - section: "Week 10: Shiny Dashboards Part 2"
           #   contents:
           #    - href: data-vis/week-9/overview10.qmd
           #      text: About
