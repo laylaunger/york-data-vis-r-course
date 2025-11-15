@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.6.42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Layla Unger">
-<title>Independent Study to Consolidate – Data Visualisation</title>
+<title>Practical – Data Visualisation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-4/overview4.html">Week 4: Barplots for Categorical Data</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-4/study_after4.html">Consolidate!</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-8/overview8.html">Week 8: Quarto Reports</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-8/practical8.html">Practical</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -306,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-4/study_after4.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../data-vis/week-4/study_after4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Consolidate!</span></a>
   </div>
 </li>
@@ -464,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-8/practical8.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-vis/week-8/practical8.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Practical</span></a>
   </div>
 </li>
@@ -484,27 +484,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#practice" id="toc-practice" class="nav-link active" data-scroll-target="#practice">Practice</a></li>
+<li>
+<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+<li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
+  <li><a href="#philosophy" id="toc-philosophy" class="nav-link" data-scroll-target="#philosophy">Philosophy</a></li>
+  </ul>
+</li>
   <li>
 <a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-<li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a></li>
-  <li><a href="#reading-in-data" id="toc-reading-in-data" class="nav-link" data-scroll-target="#reading-in-data">Reading in data</a></li>
-  <li><a href="#exercise-1-bar-plot-of-counts" id="toc-exercise-1-bar-plot-of-counts" class="nav-link" data-scroll-target="#exercise-1-bar-plot-of-counts">Exercise 1: Bar plot of counts</a></li>
-  <li><a href="#exercise-2-stacked-bar-plot" id="toc-exercise-2-stacked-bar-plot" class="nav-link" data-scroll-target="#exercise-2-stacked-bar-plot">Exercise 2: Stacked bar plot</a></li>
-  <li><a href="#exercise-3-proportions" id="toc-exercise-3-proportions" class="nav-link" data-scroll-target="#exercise-3-proportions">Exercise 3: Proportions</a></li>
-  <li><a href="#exercise-4-wrangling-equivalent" id="toc-exercise-4-wrangling-equivalent" class="nav-link" data-scroll-target="#exercise-4-wrangling-equivalent">Exercise 4: Wrangling equivalent</a></li>
-  <li><a href="#exercise-5-summary-bar-plot" id="toc-exercise-5-summary-bar-plot" class="nav-link" data-scroll-target="#exercise-5-summary-bar-plot">Exercise 5: Summary bar plot</a></li>
-  <li><a href="#exercise-6-grouped-summary-bar-plot" id="toc-exercise-6-grouped-summary-bar-plot" class="nav-link" data-scroll-target="#exercise-6-grouped-summary-bar-plot">Exercise 6: Grouped summary bar plot</a></li>
+<li><a href="#exercise-1-create-a-quarto-project-folder" id="toc-exercise-1-create-a-quarto-project-folder" class="nav-link" data-scroll-target="#exercise-1-create-a-quarto-project-folder">Exercise 1: Create a Quarto project folder</a></li>
+  <li><a href="#exercise-2-create-a-quarto-report-file" id="toc-exercise-2-create-a-quarto-report-file" class="nav-link" data-scroll-target="#exercise-2-create-a-quarto-report-file">Exercise 2: Create a Quarto report file</a></li>
+  <li><a href="#exercise-3-replace-the-yaml-header" id="toc-exercise-3-replace-the-yaml-header" class="nav-link" data-scroll-target="#exercise-3-replace-the-yaml-header">Exercise 3: Replace the YAML header</a></li>
+  <li><a href="#exercise-4-add-a-setup-chunk-that-loads-packages-and-data" id="toc-exercise-4-add-a-setup-chunk-that-loads-packages-and-data" class="nav-link" data-scroll-target="#exercise-4-add-a-setup-chunk-that-loads-packages-and-data">Exercise 4: Add a setup chunk that loads packages and data</a></li>
+  <li><a href="#exercise-5-add-basic-sections-using-markdown" id="toc-exercise-5-add-basic-sections-using-markdown" class="nav-link" data-scroll-target="#exercise-5-add-basic-sections-using-markdown">Exercise 5: Add basic sections using Markdown</a></li>
+  <li><a href="#exercise-6-add-a-data-overview-chunk" id="toc-exercise-6-add-a-data-overview-chunk" class="nav-link" data-scroll-target="#exercise-6-add-a-data-overview-chunk">Exercise 6: Add a data overview chunk</a></li>
+  <li><a href="#exercise-7-create-a-multi-panel-figure-with-chunk-options" id="toc-exercise-7-create-a-multi-panel-figure-with-chunk-options" class="nav-link" data-scroll-target="#exercise-7-create-a-multi-panel-figure-with-chunk-options">Exercise 7: Create a multi-panel figure with chunk options</a></li>
+  <li><a href="#exercise-8-add-another-plot-to-expand-the-story" id="toc-exercise-8-add-another-plot-to-expand-the-story" class="nav-link" data-scroll-target="#exercise-8-add-another-plot-to-expand-the-story">Exercise 8: Add another plot to expand the story</a></li>
+  <li><a href="#exercise-8-fill-out-the-introduction-and-summary" id="toc-exercise-8-fill-out-the-introduction-and-summary" class="nav-link" data-scroll-target="#exercise-8-fill-out-the-introduction-and-summary">Exercise 8: Fill out the Introduction and Summary</a></li>
   </ul>
 </li>
-  <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
+  <li><a href="#youre-finished" id="toc-youre-finished" class="nav-link" data-scroll-target="#youre-finished">You’re finished! 🎉</a></li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-4/overview4.html">Week 4: Barplots for Categorical Data</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-4/study_after4.html">Consolidate!</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Independent Study to Consolidate</h1>
-<p class="subtitle lead">Bar Plots</p>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-8/overview8.html">Week 8: Quarto Reports</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-8/practical8.html">Practical</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Practical</h1>
+<p class="subtitle lead">Week 8 Seminar: Quarto Reports</p>
 </div>
 
 
@@ -518,53 +525,332 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="practice" class="level1"><h1>Practice</h1>
-<p>Continue working on the <strong><code>tidyverse</code></strong> course on DataCamp if not yet complete.</p>
-</section><section id="exercises" class="level1"><h1>Exercises</h1>
-<section id="set-up" class="level2"><h2 class="anchored" data-anchor-id="set-up">Set up</h2>
-<p>If you have just opened RStudio you will want to load the <strong><code>tidyverse</code></strong> package.</p>
-</section><section id="reading-in-data" class="level2"><h2 class="anchored" data-anchor-id="reading-in-data">Reading in data</h2>
-<p><img src="images/do_on_your_computer.png" class="img-fluid"> Save this file in your <code>week-4</code> folder:</p>
+</header><section id="introduction" class="level1"><h1>Introduction</h1>
+<section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
+<p>In this practical you’ll <strong>build a small Quarto project</strong> from scratch and create a mini HTML report based on the <strong>wellbeing dataset</strong>, using the ideas from <strong>Seminar 8</strong>:</p>
 <ul>
-<li>Data from fictional stress study: <a href="../data/stress_data.csv">stress_data.csv</a>
+<li>Setting up a <strong>project folder</strong> with a subfolder for data</li>
+<li>Creating a <strong><code>.qmd</code> report file</strong> inside an RStudio project</li>
+<li>Writing a <strong>YAML header</strong> for an HTML report</li>
+<li>Adding a <strong>setup chunk</strong> that loads packages and data</li>
+<li>Writing sections using <strong>Markdown</strong> (headings, paragraphs, lists)</li>
+<li>Adding <strong>code chunks</strong> that generate tables and figures</li>
+<li>Using <strong>chunk options</strong> (<code>echo</code>, <code>include</code>, <code>fig-cap</code>, <code>out-width</code>)<br>
+</li>
+<li>Inserting <strong>inline code</strong> (e.g., for sample sizes) in the text</li>
+<li>Rendering the report and dealing with common errors</li>
+</ul>
+<p>By the end, you should have your <strong>first complete Quarto report</strong> for this module, using a dataset on <strong>sleep and wellbeing</strong>.</p>
+</section><section id="philosophy" class="level2"><h2 class="anchored" data-anchor-id="philosophy">Philosophy</h2>
+<p>Practicals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips:</p>
+<ul>
+<li>don’t worry about making mistakes<br>
+</li>
+<li>don’t let what you can not do interfere with what you can do<br>
+</li>
+<li>discussing code with your neighbours will help<br>
+</li>
+<li>look things up in the independent study material<br>
+</li>
+<li>look things up in your own code from earlier workshops<br>
+</li>
+<li>there are no stupid questions</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.</p>
+<p><img src="images/do_on_your_computer.png" class="img-fluid"> Something you need to do on your computer. It may be opening programs or documents or locating a file.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.</p>
+<p><img src="images/do_on_internet.png" class="img-fluid"> Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.</p>
+<p><img src="images/answer.png" class="img-fluid"> A question for you to think about and answer. Record your answers in your report or script for future reference.</p>
+</div>
+</div>
+</section></section><section id="exercises" class="level1"><h1>Exercises</h1>
+<p><strong>Important:</strong> For Week 8, the <strong>project setup is part of the exercises</strong>.<br>
+Follow the steps carefully so that your project structure matches the pattern we used in the seminar and that you will use for the assessment.</p>
+<hr>
+<section id="exercise-1-create-a-quarto-project-folder" class="level2"><h2 class="anchored" data-anchor-id="exercise-1-create-a-quarto-project-folder">Exercise 1: Create a Quarto project folder</h2>
+<p>In this exercise you will create a <strong>new folder</strong> for a mini Quarto project, add a <code>data/</code> subfolder for the CSV, and turn it into an <strong>RStudio project</strong>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the <strong>Files</strong> tab in the lower right pane, click on the <code>...</code> on the right (this should say “Go to directory” when you hover over it). Clicking the ‘…’ will open the <em>Go to folder</em> window. Navigate to a place on your computer where you keep your work for this module (for example your <code>data-visualisation-in-r</code> folder). Click <strong>Open</strong>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the Files tab, click on <strong>New Folder</strong>. Give the folder a short, sensible name for this project, such as <code>week-8-report</code>.</p>
+<p>We’ll refer to this folder as <strong><code>project_name/</code></strong> in the instructions below.</p>
+<p>This is the first step for setting up the structure for your project folder. Upon completing the steps below, your project folder should ultimately look like this:</p>
+<pre><code>project_name/
+  project_name.Rproj
+  wellbeing_report.qmd
+  data/
+    wellbeing_dataset.csv</code></pre>
+<p><img src="images/do_in_R.png" class="img-fluid"> In RStudio, follow these steps create an RStudio project <strong>inside this existing folder</strong>:</p>
+<ul>
+<li>Click on the drop-down menu on the top right where you see a little blue cube and the words <code>Project: (None)</code> (alternatively, if you already opened a project, you will see the name of your current project here)<br>
+</li>
+<li>Choose <strong>New Project</strong><br>
+</li>
+<li>Choose <strong>Existing Directory</strong><br>
+</li>
+<li>Browse to your new <code>project_name/</code> folder and select it<br>
+</li>
+<li>Click <strong>Create Project</strong>
 </li>
 </ul>
-<p><img src="images/do_in_R.png" class="img-fluid"> Add the following code to your R script and run:</p>
+<p>RStudio will create a file called something like <code>project_name.Rproj</code> inside your folder.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> The <strong>Files</strong> tab in the bottom right pane will now be rooted at <code>project_name/</code>. Click <strong>New Folder</strong> again and create a subfolder called <code>data</code>.</p>
+<p>You should now have:</p>
+<pre><code>project_name/
+  project_name.Rproj
+  data/</code></pre>
+<p><img src="images/do_on_internet.png" class="img-fluid"> Download the wellbeing dataset:</p>
+<ul>
+<li><a href="../data/wellbeing_dataset.csv">wellbeing_dataset.csv</a></li>
+</ul>
+<p><img src="images/do_on_your_computer.png" class="img-fluid"> Save <code>wellbeing_dataset.csv</code> <strong>inside the <code>data</code> subfolder</strong> of your new project:</p>
+<pre><code>project_name/
+  project_name.Rproj
+  data/
+    wellbeing_dataset.csv</code></pre>
+<p><img src="images/answer.png" class="img-fluid"> Why is it helpful to keep the data file <strong>inside</strong> the project folder, rather than somewhere else on your computer?</p>
+</section><section id="exercise-2-create-a-quarto-report-file" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-create-a-quarto-report-file">Exercise 2: Create a Quarto report file</h2>
+<p>Next, you’ll create a new <strong>Quarto document</strong> (a <code>.qmd</code> file) inside the project.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In RStudio, go to <strong>File → New File → Quarto Document…</strong></p>
+<ul>
+<li>Under <em>Title</em>, enter: <strong>Sleep and Wellbeing Across Groups</strong><br>
+</li>
+<li>Under <em>Author</em>, you can put your name (remember your final assessment should use your exam number)</li>
+<li>Make sure <strong>HTML</strong> is selected as the output format<br>
+</li>
+<li>Click <strong>Create</strong>
+</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save this file in your <code>project_name/</code> folder with a short, sensible name such as <code>wellbeing_report.qmd</code>.</p>
+<p>You should now have:</p>
+<pre><code>project_name/
+  project_name.Rproj
+  wellbeing_report.qmd
+  data/
+    wellbeing_dataset.csv</code></pre>
+<p><img src="images/do_in_R.png" class="img-fluid"> For now, keep the Quarto file that RStudio created, but we will <strong>replace</strong> its contents in the next exercise.</p>
+</section><section id="exercise-3-replace-the-yaml-header" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-replace-the-yaml-header">Exercise 3: Replace the YAML header</h2>
+<p>We will now replace the default YAML at the top of your <code>.qmd</code> file with a version similar to the one used in the seminar.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In your <code>wellbeing_report.qmd</code> file, <strong>select and delete</strong> the default YAML block at the very top (everything between the first pair of <code>---</code> lines).</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Replace it with the following YAML header:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Sleep and Wellbeing Across Groups"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"YOUR NAME"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2025-11-15"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Make sure the indents in your .qmd file look just like the code above! Sometimes copying and pasting code into a .qmd file changes the indentation of lines.</p>
+<p>Then make the following edits:</p>
+<ul>
+<li>Enter your name (remember that your final assessment should use your exam number).<br>
+</li>
+<li>Update the date string to today’s date.</li>
+</ul>
+<p><img src="images/answer.png" class="img-fluid"> In one or two sentences: What does the <code>format:</code> section of the YAML control?</p>
+</section><section id="exercise-4-add-a-setup-chunk-that-loads-packages-and-data" class="level2"><h2 class="anchored" data-anchor-id="exercise-4-add-a-setup-chunk-that-loads-packages-and-data">Exercise 4: Add a setup chunk that loads packages and data</h2>
+<p>Underneath the YAML header, we now want to add a <strong>setup chunk</strong> like the one shown in the seminar. This chunk will:</p>
+<ul>
+<li>Load the packages you need</li>
+<li>Read the wellbeing dataset from <code>data/wellbeing_dataset.csv</code>
+</li>
+<li>Do some simple recoding</li>
+<li>Set a default theme</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> In your <code>wellbeing_report.qmd</code>, underneath the YAML header, add the following code chunk:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: setup</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| include: false</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">library(patchwork)</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">library(viridis)</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">library(RColorBrewer)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="in">wellbeing_df &lt;- readr::read_csv("data/wellbeing_dataset.csv")</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="in">wellbeing_df &lt;- wellbeing_df |&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="in">    participant_group = factor(participant_group,</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="in">                               levels = c("student", "employed", "retired"))</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="in">theme_set(theme_minimal(base_size = 14))</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A few things to notice:</p>
+<ul>
+<li>
+<code>label: setup</code> gives the chunk a clear name for error messages.<br>
+</li>
+<li>
+<code>include: false</code> means the code will run, but will <strong>not appear</strong> in the report, and any printed output from this chunk will be hidden.<br>
+</li>
+<li>The path <code>"data/wellbeing_dataset.csv"</code> is <strong>relative</strong> to the location of your <code>.qmd</code> file inside <code>project_name/</code>.</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Run the code chunk by clicking the green arrow in the upper right of the chunk. This runs the code within your RStudio session, so that you’ll be able to test run the code chunks you develop below.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"><strong>Save</strong> the file, then click <strong>Render</strong> in RStudio.</p>
+<ul>
+<li>If you get an error about a package not being found, use <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>, then try rendering again.<br>
+</li>
+<li>If you get a “file not found” error, double-check:
+<ul>
+<li>that <code>wellbeing_dataset.csv</code> is inside a folder called <code>data</code><br>
+</li>
+<li>that the <code>data</code> folder is in the <strong>same folder</strong> as your report <code>.qmd</code> and <code>.Rproj</code>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="images/answer.png" class="img-fluid"> Once your report renders successfully, what do you see in the HTML document at this point?</p>
+</section><section id="exercise-5-add-basic-sections-using-markdown" class="level2"><h2 class="anchored" data-anchor-id="exercise-5-add-basic-sections-using-markdown">Exercise 5: Add basic sections using Markdown</h2>
+<p>Next, you’ll add a simple <strong>section structure</strong> to your report using Markdown headers.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In <code>wellbeing_report.qmd</code>, underneath the setup chunk, add the following section skeleton:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data overview</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># Group differences in wellbeing and sleep</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Wellbeing and sleep</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save the file and Render again. Check that your HTML report now shows the section headings.</p>
+<p><img src="images/answer.png" class="img-fluid"> How do the headings you just added relate to the <strong>table of contents</strong> that appears in the HTML report?</p>
+</section><section id="exercise-6-add-a-data-overview-chunk" class="level2"><h2 class="anchored" data-anchor-id="exercise-6-add-a-data-overview-chunk">Exercise 6: Add a data overview chunk</h2>
+<p>We now want a short code chunk in the <strong>Data overview</strong> section that displays basic information about the data.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the <strong># Data overview</strong> section, add a new R chunk that prints the first few rows of the dataset:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: data-overview</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="in">head(wellbeing_df)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stress_df</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"stress_data.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">stress_df</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 8
-  diagnosis  clinic stress_score sleep_hours activity_score   BMI sex     year
-  &lt;chr&gt;      &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
-1 Depression East           28.2        5.95           39.2  24.7 Male    2020
-2 Depression South          27.8        4.99           32.7  26.6 Female  2018
-3 None       North          18.5        6.94           56.2  20.9 Male    2018
-4 None       North          12.9        7.44           88.4  23.6 Female  2019
-5 Depression East           24.6        4.16           54.8  28.1 Female  2020
-6 Depression South          17.5        5.10           25.9  27.0 Male    2020</code></pre>
+<pre><code># A tibble: 6 × 4
+  participant_id participant_group sleep_hours wellbeing_index
+  &lt;chr&gt;          &lt;fct&gt;                   &lt;dbl&gt;           &lt;dbl&gt;
+1 P0001          retired                   7.1            44.9
+2 P0002          employed                  7.2            54.9
+3 P0003          employed                  6.2            53.2
+4 P0004          retired                   8.7            70.2
+5 P0005          student                   5.9            55.3
+6 P0006          employed                  7              53.9</code></pre>
 </div>
 </div>
-</section><section id="exercise-1-bar-plot-of-counts" class="level2"><h2 class="anchored" data-anchor-id="exercise-1-bar-plot-of-counts">Exercise 1: Bar plot of counts</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Create a bar plot showing how many participants are in each <code>diagnosis</code> group.</p>
-<p>Reflect: Which diagnosis group has the largest number of participants?</p>
-</section><section id="exercise-2-stacked-bar-plot" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-stacked-bar-plot">Exercise 2: Stacked bar plot</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Make a stacked bar plot of <code>diagnosis</code> by <code>sex</code>.</p>
-<p>Then, re-plot using <code>position = "dodge"</code>.</p>
-<p>Reflect: When is the stacked version more informative, and when is the dodged version clearer?</p>
-</section><section id="exercise-3-proportions" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-proportions">Exercise 3: Proportions</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Create a stacked barplot of proportions for <code>sex</code> (<code>position = "fill"</code>) within each <code>diagnosis</code>. Remember to label the y-axis appropriately.</p>
-<p>Reflect: What does this plot tell you that the count plots do not?</p>
-</section><section id="exercise-4-wrangling-equivalent" class="level2"><h2 class="anchored" data-anchor-id="exercise-4-wrangling-equivalent">Exercise 4: Wrangling equivalent</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Use <code>count()</code> and <code>mutate()</code> to calculate proportions of <code>sex</code> within each <code>diagnosis</code>. Plot the proportions using <code>geom_bar(stat = "identity")</code>.</p>
-</section><section id="exercise-5-summary-bar-plot" class="level2"><h2 class="anchored" data-anchor-id="exercise-5-summary-bar-plot">Exercise 5: Summary bar plot</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Plot the <strong>mean stress_score</strong> (y-axis) for each <code>diagnosis</code> group (x-axis) with error bars showing standard error.</p>
-</section><section id="exercise-6-grouped-summary-bar-plot" class="level2"><h2 class="anchored" data-anchor-id="exercise-6-grouped-summary-bar-plot">Exercise 6: Grouped summary bar plot</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Create a grouped bar plot comparing mean <code>stress_score</code> across both <code>diagnosis</code> (x-axis) and <code>sex</code> (fill).</p>
-<p>Add error bars for standard error and make sure bars and error bars are aligned by using <code>position_dodge()</code>.</p>
-</section></section><section id="well-done" class="level1"><h1>🥳 Well Done! 🎉</h1>
+<p><img src="images/do_in_R.png" class="img-fluid"> Run the code by clicking the green arrow in the code chunk. You should see the first six rows printed out below your chunk.</p>
+<p><img src="images/answer.png" class="img-fluid"> What are the variables?</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Add text within your <strong># Data overview</strong> section to briefly describe the dataset.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Render the report and check that:</p>
+<ul>
+<li>The heading <strong>Data overview</strong> appears<br>
+</li>
+<li>Within this section, you see the printed first few rows of the tibble and your brief description.</li>
+</ul></section><section id="exercise-7-create-a-multi-panel-figure-with-chunk-options" class="level2"><h2 class="anchored" data-anchor-id="exercise-7-create-a-multi-panel-figure-with-chunk-options">Exercise 7: Create a multi-panel figure with chunk options</h2>
+<p>Now you’ll create a <strong>two-panel figure</strong> that explores how wellbeing and sleep differ by group.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the section <strong># Group differences in wellbeing and sleep</strong>, add a new R chunk like the one below.</p>
+<p>Edit the <code>ggplot(...)</code> contents to create bar plots with error bars showing wellbeing for each group and sleep for each group, as in the examples below.</p>
+<p>Edit the <code>fig-cap</code> to include a brief, descriptive caption.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-group-outcomes</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "..."</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "80%"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-align: "center"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="in">group_wellbeing &lt;- ggplot(...)</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="in">group_sleep &lt;- ggplot(...)</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="in">group_wellbeing / group_sleep</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-group-outcomes" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-group-outcomes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="practical8_files/figure-html/fig-group-outcomes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-group-outcomes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Wellbeing and sleep in participant groups.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p><img src="images/do_in_R.png" class="img-fluid"> Test run the code by clicking the green arrow in the code chunk. You should see your plots (or an error message that you will need to fix). Try editing the code for your plots to polish them, e.g., by editing the axis labels, colors, etc, and running using the green arrow again until you’re happy with your choices.</p>
+<p><img src="images/answer.png" class="img-fluid"> What patterns do you see in these plots? How do wellbeing and sleep vary across groups?</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Add Markdown text within this section to briefly describe the key patterns in these plots.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Render the report and inspect:</p>
+<ul>
+<li>Both the figures and text appear in this section</li>
+<li>The code is hidden (<code>echo: false</code>)<br>
+</li>
+<li>The figure appears with a caption<br>
+</li>
+<li>The figure is not full-width because of <code>out-width: "80%"</code><br>
+</li>
+<li>The figure is centered due to <code>fig-align: "center"</code>
+</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Experiment with different values of <code>#| out-width:</code> (e.g., <code>"50%"</code>, <code>"90%"</code>). You can additionally add a line to control the figure height like this: <code>#| fig-height:</code> (e.g., 6, 7). Try rendering again with different values. Which width feels most readable in the rendered HTML report, and why?</p>
+</section><section id="exercise-8-add-another-plot-to-expand-the-story" class="level2"><h2 class="anchored" data-anchor-id="exercise-8-add-another-plot-to-expand-the-story">Exercise 8: Add another plot to expand the story</h2>
+<p>Now you’ll create a figure that explores the relationship between wellbeing and sleep.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the section <strong># Wellbeing and sleep</strong>, add a new R chunk following the same format as in Exercise 7, with its own label and caption.</p>
+<p>In this chunk, generate a scatterplot showing wellbeing on the x-axis and sleep on the y-axis, similar to the example below.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="practical8_files/figure-html/fig-scatter-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Sleep–wellbeing relationship.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p><img src="images/do_in_R.png" class="img-fluid"> As in the previous exercise, run the code by clicking the green arrow in the code chunk, and try editing it to change the appearance until you’re happy with your choices.</p>
+<p><img src="images/answer.png" class="img-fluid"> As in the previous exercise, inspect the pattern you see in this plot. How does wellbeing relate to sleep?</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Add text within this section to briefly describe the key pattern.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> As in the previous exercise, render the report and evaluate how it appears, then change the <code>out-width</code> and/or <code>fig-height</code> to be more readable if needed.</p>
+</section><section id="exercise-8-fill-out-the-introduction-and-summary" class="level2"><h2 class="anchored" data-anchor-id="exercise-8-fill-out-the-introduction-and-summary">Exercise 8: Fill out the Introduction and Summary</h2>
+<p>Considering your inspection of the dataset and the patterns:</p>
+<ul>
+<li><p>Add a few sentences to the <strong># Introduction</strong> section to introduce the dataset and the patterns that the report will depict.</p></li>
+<li><p>Try including a sentence that notes the number of participants in the dataset with inline code using <code>nrow(wellbeing_df)</code>.</p></li>
+<li><p>Add a few sentences to the <strong># Summary</strong> section to summarise the patterns shown in the plots.</p></li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save the file and Render again. Check that the inline code has been replaced with an actual number in the HTML report.</p>
+</section></section><section id="youre-finished" class="level1"><h1>You’re finished! 🎉</h1>
+<p>You have now:</p>
+<ul>
+<li>Created a <strong>project folder</strong> with a <code>data/</code> subfolder</li>
+<li>Built an RStudio project and a <strong>Quarto report</strong> inside it</li>
+<li>Written a <strong>YAML header</strong>, <strong>setup chunk</strong>, and <strong>Markdown sections</strong>
+</li>
+<li>Added code chunks with <strong>chunk options</strong> and <strong>inline code</strong>
+</li>
+<li>Rendered an HTML report that you can submit as part of a future assessment</li>
+</ul>
+<p>You can keep this mini project as a template you can adapt for your final assessment.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

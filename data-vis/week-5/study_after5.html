@@ -435,6 +435,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 8: Quarto Reports</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-8/overview8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-8/study_before8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prepare!</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-8/seminar8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seminar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-8/practical8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../data-vis/week-8/study_after8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consolidate!</span></a>
+  </div>
+</li>
+      </ul>
+</li>
     </ul>
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
@@ -504,21 +545,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <hr></section><section id="exercise-1-scatterplot" class="level2"><h2 class="anchored" data-anchor-id="exercise-1-scatterplot">Exercise 1: Scatterplot</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Make a scatterplot of <code>sleep_hours</code> (x-axis) versus <code>wellbeing_index</code> (y-axis).<br>
-Add some transparency to the points using <code>alpha</code>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Make a scatterplot of <code>training_hours</code> (x-axis) versus <code>performance_index</code> (y-axis).</p>
+<p>Add some transparency to the points using <code>alpha</code>.</p>
 <p>Reflect: Does the relationship look positive, negative, or flat?</p>
 </section><section id="exercise-2-trend-line" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-trend-line">Exercise 2: Trend line</h2>
 <p><img src="images/do_in_R.png" class="img-fluid"> Add a <strong>linear model</strong> line to the scatterplot using <code>geom_smooth(method = "lm")</code>.</p>
 <p>Reflect: What does the slope suggest about the relationship?</p>
 </section><section id="exercise-3-group-differences" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-group-differences">Exercise 3: Group differences</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Plot <code>social_hours</code> vs <code>wellbeing_index</code>, colouring points by <code>participant_group</code>. Add group-specific trend lines.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Plot <code>training_hours</code> vs <code>wellbeing_index</code>, colouring points by <code>participant_group</code>. Add group-specific trend lines.</p>
 <p>Reflect: Which group appears most negatively affected by social media hours?</p>
 </section><section id="exercise-4-faceting" class="level2"><h2 class="anchored" data-anchor-id="exercise-4-faceting">Exercise 4: Faceting</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Re-make the plot of <code>social_hours</code> vs <code>wellbeing_index</code>, but facet by <code>participant_group</code>. Try <code>scales = "free_x"</code> inside <code>facet_wrap()</code>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Re-make the plot of <code>social_hours</code> vs <code>performance_index</code>, but facet by <code>job_role</code>. Try <code>scales = "free_x"</code> inside <code>facet_wrap()</code>.</p>
 <p>Reflect: Why might faceting make patterns easier to compare?</p>
 </section><section id="exercise-5-correlation-matrix" class="level2"><h2 class="anchored" data-anchor-id="exercise-5-correlation-matrix">Exercise 5: Correlation matrix</h2>
 <p><img src="images/do_in_R.png" class="img-fluid"> Select the numeric columns of your dataset. Compute a correlation matrix with <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code>. Plot it with <code>geom_tile()</code> and customise the gradient scale.</p>
-<p>Reflect: Which variables are most strongly related to <code>wellbeing_index</code>?</p>
+<p>Reflect: Which variables are most strongly related to <code>performance_index</code>?</p>
 </section></section><section id="well-done" class="level1"><h1>🥳 Well Done! 🎉</h1>
 
 
