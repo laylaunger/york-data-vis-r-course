@@ -6809,5 +6809,725 @@
       "Week 8: Quarto Reports",
       "Prepare!"
     ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#from-last-time",
+    "href": "data-vis/week-9/seminar9.html#from-last-time",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "From last time",
+    "text": "From last time\n\nValue of reproducible reports\nBasic anatomy of a Quarto report\nHow to build a Quarto report combining prose, code and figures\n\nYAML header, setup chunk, and body sections\nEmbedded code chunks with chunk options to control output\n\nProject structure and workflow\n\n\nBriefly remind students of Week 8:\n\nThey learned how to structure a Quarto report with YAML, a setup chunk, and a body that mixes text, code, and figures.\nThe therapy example report showed multi-panel figures and polished ggplots, using many of the visualisation techniques from Weeks 3–7.\n\nSet up today as “the next step”: taking similar analyses and turning them into interactive tools.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today",
+    "href": "data-vis/week-9/seminar9.html#today",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nWhy build a Shiny app?\nInspect a finished Shiny app\nBasic anatomy of a Shiny app\nHow to build a simple Shiny app\nProject structure and workflow\n\n\nGive a quick overview of the plan:\n\nFirst, motivation and context.\nThen a quick look at what a finished Shiny app can do.\nThen the “anatomy”: the parts that make up any Shiny app.\nThen we build up a small app step by step.\nFinally, we connect this to their project structure and the assessment.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today-1",
+    "href": "data-vis/week-9/seminar9.html#today-1",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nWhy build a Shiny app?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#why-build-a-shiny-app",
+    "href": "data-vis/week-9/seminar9.html#why-build-a-shiny-app",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Why build a Shiny app?",
+    "text": "Why build a Shiny app?\n\nReports (Quarto) are great for:\n\nCommunicating a fixed story\nSharing key results and interpretations\n\nShiny apps are great for:\n\nExploring data interactively\n\n\n\nContrast Quarto and Shiny:\n\nQuarto reports are like a polished article or mini-paper.\nShiny apps are like interactive dashboards: people can change inputs and immediately see updated plots.\n\nEmphasise that both use the same R and ggplot skills they already have.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#why-build-a-shiny-app-1",
+    "href": "data-vis/week-9/seminar9.html#why-build-a-shiny-app-1",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Why build a Shiny app?",
+    "text": "Why build a Shiny app?\n\nExample applications in human data science:\n\nExplore how outcomes change across groups or predictors\nLive updates on projects as new data come in\n\nAdvantages:\n\nLet collaborators, supervisors and users “play with” the data\nDemonstrate findings in a more engaging way",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today-2",
+    "href": "data-vis/week-9/seminar9.html#today-2",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nInspect a finished Shiny app",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#a-finished-example",
+    "href": "data-vis/week-9/seminar9.html#a-finished-example",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "A finished example",
+    "text": "A finished example\n\nOur example app for this week:\n\nUses the therapy dataset\nShows how support_level is related to outcomes\nAllows the user to choose one of two outcomes and to add individual data points\n\n\n\n\n\n\n\nsupport_level\ntherapy\nage\nloneliness_score\nwellbeing_score\nsleep_quality\nsex\nyear\n\n\n\n\nMedium\nYes\n23\n69\n63\n3\nMale\n2022\n\n\nMedium\nYes\n31\n46\n89\n8\nMale\n2019\n\n\nHigh\nYes\n35\n46\n80\n8\nMale\n2019\n\n\nLow\nNo\n29\n40\n46\n5\nFemale\n2020\n\n\nLow\nYes\n34\n40\n69\n9\nFemale\n2022\n\n\nLow\nNo\n25\n68\n38\n6\nMale\n2019",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#a-finished-example-1",
+    "href": "data-vis/week-9/seminar9.html#a-finished-example-1",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "A finished example",
+    "text": "A finished example\n\nOur example app for this week:\n\nUses the therapy dataset\nShows how support_level is related to outcomes\nAllows the user to choose one of two outcomes and to add individual data points\n\n\nFull report: Open the example Shiny app",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#a-finished-example-2",
+    "href": "data-vis/week-9/seminar9.html#a-finished-example-2",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "A finished example",
+    "text": "A finished example\n\nCan you recognize the plot elements?\n\nWhat kind of plot is this?\nWhat do you think is added to the ggplot code when the user checks the “Show individual data points” box?",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today-3",
+    "href": "data-vis/week-9/seminar9.html#today-3",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nBasic anatomy of a Shiny app",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#what-is-a-web-app",
+    "href": "data-vis/week-9/seminar9.html#what-is-a-web-app",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "What is a web app?",
+    "text": "What is a web app?\n\nA web application is:\n\nA web page you can interact with (clicks, sliders, dropdowns)\nThe display updates automatically in response\n\nMost things you interact with in a browser are web apps:\n\nE.g., online forms\n\n\n\nKeep this conceptual and light:\n\nEmphasise that they already use web apps all the time (e.g., banking, booking systems).\nThe core idea: interactions in the browser trigger updates behind the scenes.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#how-does-a-web-app-work",
+    "href": "data-vis/week-9/seminar9.html#how-does-a-web-app-work",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "How does a web app work?",
+    "text": "How does a web app work?\n\nUser interface (UI) that the user sees\n\nWhat the user sees in the browser\nFixed (unchanging) elements such as a title for the webpage\nUser input options: dropdown menus, checkboxes, buttons\nPlots shown as output in response to user inputs\n\n\n\nServer (backend)\n\nCode that does the work when the user interacts\nReads the user’s inputs and sends back updated outputs to the user\n\n\n\nRelate this to everyday examples:\n\nEntering values into tax software → server calculates refund.\nChoosing filters on a data dashboard → server recomputes the plot.\n\nSet up the parallel: Shiny will give us these two parts using R code.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#what-is-shiny",
+    "href": "data-vis/week-9/seminar9.html#what-is-shiny",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "What is Shiny?",
+    "text": "What is Shiny?\n\n\nShiny is an R package for building web apps:\n\nYou write the user interface (UI) in R\nYou write the server logic in R\nShiny connects them and runs the app\n\nBuilds on what you already know:\n\nYou stay inside RStudio and use a similar project workflow / setup\nYou can use the same kind of ggplot2 code to create plots in your apps\n\n\n\n\nUnderline the “no need to be a web developer” message:\n\nThey do not need to learn HTML, CSS, or JavaScript.\nShiny lets them re-use their R and ggplot skills.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#return-to-the-example-app",
+    "href": "data-vis/week-9/seminar9.html#return-to-the-example-app",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Return to the example app",
+    "text": "Return to the example app\nTo create this app, under the hood, there is:\n\n\nA bit of familiar code to read in the data\nThe ui, which shows the title, a user input dropdown menu and a user input checkbox, and a plot\nThe server logic that generates the plot, and customizes it based on the user’s input\nA simple final line that launches the shiny app using the ui and server logic",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today-4",
+    "href": "data-vis/week-9/seminar9.html#today-4",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nHow to build a simple Shiny app",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today-5",
+    "href": "data-vis/week-9/seminar9.html#today-5",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nHow to build a simple Shiny app\n\nOverview and basic skeleton",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#building-a-shiny-app-overview",
+    "href": "data-vis/week-9/seminar9.html#building-a-shiny-app-overview",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Building a Shiny app: Overview",
+    "text": "Building a Shiny app: Overview\n\nA file called app.R that lives in your project folder\nYou can run the app locally in RStudio",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#building-a-shiny-app-overview-1",
+    "href": "data-vis/week-9/seminar9.html#building-a-shiny-app-overview-1",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Building a Shiny app: Overview",
+    "text": "Building a Shiny app: Overview\nWithin this file, you:\n\n\nInclude any initial setup steps, such as loading libraries, reading in data\nBuild the ui specify what is shown to the user: fixed content, user input options, dynamic outputs\nBuild the server logic as a function that uses user inputs from the ui to generate dynamic outputs in the ui\nInclude a simple final line to launch the app",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#inputs-and-outputs",
+    "href": "data-vis/week-9/seminar9.html#inputs-and-outputs",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Inputs and outputs",
+    "text": "Inputs and outputs\n\nInputs\n\nThe ui defines user input options (e.g., checkboxes, menus)\nThe user’s input (e.g., their dropdown menu choice) is stored as part of an object called input\nThe server can read and use the input object’s parts\n\nOutputs\n\nThe server function uses the input object’s parts\nIncludes code that uses those parts to create outputs, such as a plot that updates any time the user input changes",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton",
+    "href": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Building a Shiny app: Skeleton",
+    "text": "Building a Shiny app: Skeleton\nlibrary(shiny) # Always needed!\nlibrary(useful_stuff)\n\ndata &lt;- read_csv(\"data/...\")\n\n...\n\nLet’s make this all concrete.\nHere’s the basic skeleton of the code you’d write in your shiny app.\nWe would typically start off with some set up steps, like loading in libraries and data. We will ALWAYS need at the very least to load the shiny library to make the shiny app run. And we typically have other libraries as well.\nWe would then typically read in data. As we did in our quarto projects, it’s useful to keep the data you need in a subfolder within the same folder as your shiny app. In the future, in your careers, you might want to do clever things like pull data from the internet, but we’ll keep this simple and always just use data that we actually have.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton-1",
+    "href": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton-1",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Building a Shiny app: Skeleton",
+    "text": "Building a Shiny app: Skeleton\nlibrary(shiny) # Always needed!\nlibrary(useful_stuff)\n\ndata &lt;- read_csv(\"data/...\")\n\nui &lt;- fluidPage(\n  # UI elements go here\n)\n\n...\n\nThe next thing we do is create the ui.\nWe’ll always do this using this same basic skeleton. We create an object called ui, and we do that using a function called fluidPage.\nThen we fill the contents of that function with everything we want in our user interface.\nFor example, in our example app, this might include the title of the app, the dropown menu and checkbox, and the plot.\nWe’ll dive into how to specify the contents of the UI in a moment.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton-2",
+    "href": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton-2",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Building a Shiny app: Skeleton",
+    "text": "Building a Shiny app: Skeleton\nlibrary(shiny) # Always needed!\nlibrary(useful_stuff)\n\ndata &lt;- read_csv(\"data/...\")\n\nui &lt;- fluidPage(\n  # UI elements go here\n)\n\nserver &lt;- function(input, output, session) { \n  ... # server logic goes here \n  }\n\nThe next big step is to define the server.\nAs I mentioned, this will be a function that uses the user’s input to dynamically generate and update the output that they see, like generating the boxplot where the user can dynamically change the outcome variable and add points.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton-3",
+    "href": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton-3",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Building a Shiny app: Skeleton",
+    "text": "Building a Shiny app: Skeleton\nlibrary(shiny) # Always needed!\nlibrary(useful_stuff)\n\ndata &lt;- read_csv(\"data/...\")\n\nui &lt;- fluidPage(\n  # UI elements go here\n)\n\nserver &lt;- function(input, output, session) { \n  ... # server logic goes here \n  }\n\n\nshinyApp(ui = ui, server = server)\n\nAnd then finally, we add one simple line at the end that tells shiny to combine the ui and server into a running app",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today-6",
+    "href": "data-vis/week-9/seminar9.html#today-6",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nHow to build a simple Shiny app\n\nOverview and basic skeleton\nPopulate the ui",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui",
+    "href": "data-vis/week-9/seminar9.html#populate-ui",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI",
+    "text": "Populate UI\nStart with a basic UI using fluidPage()\nui &lt;- fluidPage(\n  # UI elements go here\n)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui-functions",
+    "href": "data-vis/week-9/seminar9.html#populate-ui-functions",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI: Functions",
+    "text": "Populate UI: Functions\nAdd elements using functions\nui &lt;- fluidPage(\n  # Each UI element is added with a function\n  # Different functions add different kinds of UI elements, e.g.,\n  # -- title\n  # -- user input options\n  # -- plot\n)\n\nWe can add UI elements using functions\nThere are different functions we can use to add different kinds of elements",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui-fixed-elements",
+    "href": "data-vis/week-9/seminar9.html#populate-ui-fixed-elements",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI: Fixed elements",
+    "text": "Populate UI: Fixed elements\nAdd fixed (unchanging) elements\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"Support, Therapy, and Wellbeing: Interactive\"),\n\n  p(\"Use the controls below to explore how outcomes vary across support levels.\")\n)\n\nWe can start by adding some simple, unchanging elements for the user to see.\nFor example, we’ll use a titlePanel function to add a title\nAnd a little paragraph (p function) to add a bit of extra text to show the user.\nFor now, there are no inputs or outputs — just static text.\nSimilar to how your quarto projects had a title and some introductory text.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui-inputs",
+    "href": "data-vis/week-9/seminar9.html#populate-ui-inputs",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI: Inputs",
+    "text": "Populate UI: Inputs\nDifferent functions add different types of user input controls\nThe option specified by the user is stored as part of an input object\nui &lt;- fluidPage(\n  titlePanel(\"Support, Therapy, and Wellbeing: Interactive\"),\n\n  p(\"Use the controls below to explore how outcomes vary across support levels.\"),\n  \n  someInput( \n    inputId = \"some_name\", # name of the part in the input object\n    label   = \"Some label:\", # label shown to the user\n    ...\n  )\n)\n\nNow we’re ready to start adding user input controls\nSo these could be dropdown menus, checkboxes, buttons, and so on.\nRemember, as I noted before, the user’s choice for these inputs will be stored as part of an object called “input”.\nAnd each type of user input control has its own function.\nRight now I’ve just put a generic placeholder in called someInput This isn’t a real function, it’s just to show you the general format\nAt minimum, every input function you use should specify at least these first two arguments.\nFirst, the inputId. This argument will be the name of the part where the user’s choice is stored in the input object. This will allow us to read and use the user’s choice in our server code later.\nSecond, the label to show the user. This is the label that the user will see on the screen, like the label of the dropdown menu or checkbox.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui-inputs-1",
+    "href": "data-vis/week-9/seminar9.html#populate-ui-inputs-1",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI: Inputs",
+    "text": "Populate UI: Inputs\nDifferent functions add different types of user input controls\nThe option specified by the user is stored as part of an input object\nui &lt;- fluidPage(\n  titlePanel(\"Support, Therapy, and Wellbeing: Interactive\"),\n\n  p(\"Use the controls below to explore how outcomes vary across support levels.\"),\n\n  selectInput(\n    inputId = \"outcome\",\n    label   = \"Outcome to plot:\",\n    ...\n  )\n)\n\nFor example, our example app has a dropdown menu. This dropdown menu is added using this selectInput function.\nRemember, that dropdown menu allows the user to choose which outcome variable to plot. So, I’ve set the inputID as outcome, and given it this user-friendly label that tells them they can use the menu to choose an outcome to plot.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui-inputs-2",
+    "href": "data-vis/week-9/seminar9.html#populate-ui-inputs-2",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI: Inputs",
+    "text": "Populate UI: Inputs\nDifferent functions add different types of user input controls\nThe option specified by the user is stored as part of an input object\nui &lt;- fluidPage(\n  titlePanel(\"Support, Therapy, and Wellbeing: Interactive\"),\n\n  p(\"Use the controls below to explore how outcomes vary across support levels.\"),\n\n  selectInput(\n    inputId = \"outcome\",\n    label   = \"Outcome to plot:\",\n    ... WHAT ELSE???\n  )\n)\n\nBut this isn’t enough to define everything about that dropdown menu.\nWhat else might we need to specify here?\n(dropdown options, default option)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui-inputs-3",
+    "href": "data-vis/week-9/seminar9.html#populate-ui-inputs-3",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI: Inputs",
+    "text": "Populate UI: Inputs\nDifferent functions add different types of user input controls\nThis will add a part to the input object called outcome\nThe value of outcome will depend on the user’s choice\nui &lt;- fluidPage(\n  titlePanel(\"Support, Therapy, and Wellbeing: Interactive\"),\n\n  p(\"Use the controls below to explore how outcomes vary across support levels.\"),\n\n  selectInput(\n    inputId = \"outcome\",\n    label   = \"Outcome to plot:\",\n    choices = c(\n      \"Wellbeing score\"  = \"wellbeing_score\",\n      \"Loneliness score\" = \"loneliness_score\"\n    ),\n    selected = \"wellbeing_score\"\n  )\n)\n\nSo we have additional arguments for our dropdown menu input.\nOne is called choices. Here, we define a vector that includes both: the option that the user will see in the menu, and the value that we want to store when the user chooses an option.\nAnd the other is called selected. Here, we specify the default value we want to use before the user has selected anything, when they first open the app.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui-inputs-4",
+    "href": "data-vis/week-9/seminar9.html#populate-ui-inputs-4",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI: Inputs",
+    "text": "Populate UI: Inputs\nDifferent functions add different types of user input controls\nui &lt;- fluidPage(\n  titlePanel(\"Support, Therapy, and Wellbeing: Interactive\"),\n\n  p(\"Use the controls below to explore how outcomes vary across support levels.\"),\n\n  selectInput(\n    inputId = \"outcome\",\n    label   = \"Outcome to plot:\",\n    choices = c(\n      \"Wellbeing score\"  = \"wellbeing_score\",\n      \"Loneliness score\" = \"loneliness_score\"\n    ),\n    selected = \"wellbeing_score\"\n  ),\n  \n  checkboxInput(\n    inputId = \"show_points\",\n    label   = \"Show individual data points\",\n    value   = FALSE\n  )\n)\n\nWe can continue using the same approach to add other kinds of input optins.\nHere I’ve added that checkbox option from the example app.\nNote that I used a different function to create the checkbox.\nI’ve given it its own id and label.\nAnd since this is a checkbox, not a dropdwn menu, it has its own additional arguments.\nHere, I specify the default value to store when the box is unchecked.\nThat default value is FALSE, meaning no, don’t show data points on the boxplot.\nAgain, use these values later in our server code to generate the plot based on the user’s input.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui-inputs-5",
+    "href": "data-vis/week-9/seminar9.html#populate-ui-inputs-5",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI: Inputs",
+    "text": "Populate UI: Inputs\nDifferent functions add different types of user input controls\n\nMore options (“widgets”)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#populate-ui-outputs",
+    "href": "data-vis/week-9/seminar9.html#populate-ui-outputs",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Populate UI: Outputs",
+    "text": "Populate UI: Outputs\nNow we tell the UI where the plot will appear\nWe refer to the name of the plot we will create using the server code\nui &lt;- fluidPage(\n  ...\n\n  plotOutput(\"support_plot\")\n)\n\nExplain:\n\nplotOutput(\"support_plot\") creates a space in the UI where Shiny will display the plot.\nThe string \"support_plot\" must match the name we’ll use on the server: output$support_plot.\n\nReinforce the mapping: output name in UI ↔︎ output name in server.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today-7",
+    "href": "data-vis/week-9/seminar9.html#today-7",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nHow to build a simple Shiny app\n\nOverview and basic skeleton\nPopulate the ui\nBuild server code\n\n\n\nNow is when we switch over to building that server logic.\nHere, we’ll use the inputs from the user to create that plot, So that the UI can then show the plot to the user.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code",
+    "href": "data-vis/week-9/seminar9.html#build-server-code",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code",
+    "text": "Build Server Code\nServer is a function that uses inputs to generate outputs\nserver &lt;- function(input, output, session) {\n\n  # Server logic will go here\n\n}\n\nPoint out:\n\nEvery Shiny app server is a function with at least these arguments:\n\ninput : list of all input values\noutput : list where we store outputs\nsession: information about the current session (not needed today)\n\n\nFor now, the body is empty — no outputs are defined yet.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-1",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-1",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code",
+    "text": "Build Server Code\nWe define an output called support_plot\nserver &lt;- function(input, output, session) {\n\n  output$support_plot &lt;- ...\n\n}\n\nSo the main output we want is that plot. And remember, in our UI, we called the plot support_plot. So we want to use that same name here.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-2",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-2",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code",
+    "text": "Build Server Code\nWe define an output called support_plot using renderPlot()\nserver &lt;- function(input, output, session) {\n\n  output$support_plot &lt;- renderPlot({\n\n    ggplot(...)\n\n  })\n\n}\n\nWe can create this output plot using a function called renderPlot.\nAs you might expect, this function renders a plot.\nSo inside the function, we can define the plot we want to render using ggplot, just as we’ve been using ggplot to create plots this whole time.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-3",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-3",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code",
+    "text": "Build Server Code\nWe define an output called support_plot using renderPlot()\nCurrently static (not responsive to user input)\nserver &lt;- function(input, output, session) {\n\n  output$support_plot &lt;- renderPlot({\n\n    ggplot(therapy_df, aes(x = support_level,\n                           y = wellbeing_score)) + # STATIC!\n      geom_boxplot(aes(fill = support_level),\n                   alpha       = 0.8,\n                   width       = 0.6,\n                   show.legend = FALSE) +\n      scale_fill_viridis_d(option = \"plasma\") +\n      labs(\n        x = \"Support level\",\n        y = \"Wellbeing score\" # STATIC!\n      ) +\n      coord_cartesian(ylim = c(0, 100))\n\n  })\n\n}\n\nTo start off with, let’s try just putting some familiar ggplot code here.\nThis is the same kind of ggplot code you’ve been learning how to write throughout the module, just wrapped inside renderPlot({ ... }).\nAt this stage, the app will show a wellbeing boxplot that does not yet respond to inputs.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\n\nRemember:\n\nui stored user options as parts of an object called input\nwe gave those parts names using inputId",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-1",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-1",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\n\nWe can now reference these input parts in our server code:\n\nuse dollar sign notation\ne.g., to reference the outcome part: input$outcome\n\nThe value of that part will be based on the user’s input\n\ne.g., if the user selected wellbeing as the outcome, then\ninput$outcome will be wellbeing_score",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-2",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-2",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\n\nOur approach:\n\nCheck input part values\nUse them in our server code to control our outputs",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-3",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-3",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\n\nSome basic programming with if-statements:\nif(input$part == \"some_value\") {\n\n  ...if TRUE, do this...\n\n}\n\nToday, I’ll show you a very basic way to do this using some basic programing called an if-statement.\nIf-statements are common throughout programming languages - this is a very basic thing you often want to tell a computer to do.\nInstead of having a computer always do a PARTICULAR THING, you often want it to check some condition, and then say IF that condition met, THEN do something.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-4",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-4",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\n\nSome basic programming with if-statements:\nif(input$part == \"some_value\") {\n\n  ...if TRUE, do this...\n\n} else {\n\n  ...if FALSE, do something else...\n}\n\nWe can make this a bit more sophisticated by saying\nIF the condition is met, then do one thing,\nbut OTHERWISE, do a DIFFERENT thing.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-5",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-5",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\n\nThis is just one way to use inputs!\nShowing for simplicity: avoid overburdening with new concepts\nMore approaches can be found in your reading (especially chapter 4)",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-6",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-6",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\nMake the plot respond to input$outcome:\nserver &lt;- function(input, output, session) {\n\n  output$support_plot &lt;- renderPlot({\n    \n    # If the user chose wellbeing_score...\n    if(input$outcome == \"wellbeing_score\") {\n      \n      # Then create output_plot as a boxplot with wellbeing_score on the y-axis\n      output_plot &lt;- therapy_df %&gt;%\n        ggplot(aes(x = support_level, y = wellbeing_score)) +\n        geom_boxplot(\n          aes(fill = support_level),\n          alpha       = 0.8,\n          width       = 0.6,\n          show.legend = FALSE\n        ) +\n        scale_fill_viridis_d(option = \"plasma\") +\n        labs(\n          x = \"Support level\",\n          y = \"Wellbeing score\"\n        ) +\n        coord_cartesian(ylim = c(0, 100))\n    } else {\n      \n      # Otherwise (i.e., if the user did NOT choose wellbeing_score), \n      # create the plot using loneliness_score as the y-axis variable\n      output_plot &lt;- therapy_df %&gt;%\n        ggplot(aes(x = support_level, y = loneliness_score)) +\n        geom_boxplot(\n          aes(fill = support_level),\n          alpha       = 0.8,\n          width       = 0.6,\n          show.legend = FALSE\n        ) +\n        scale_fill_viridis_d(option = \"plasma\") +\n        labs(\n          x = \"Support level\",\n          y = \"Loneliness score\"\n        ) +\n        coord_cartesian(ylim = c(0, 100))\n    }\n    \n}\n\nThis looks like a lot of code, but really it’s just two chunks of ggplot code -\nOne to run and store as the output if the user selected wellbeing, and another one to run if the user selected something else.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-7",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-7",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\nCan chain if… else… endlessly\nBut might want a more efficient approach with &gt; 2 options!\nserver &lt;- function(input, output, session) {\n\n  output$support_plot &lt;- renderPlot({\n    \n    # If the user chose wellbeing_score...\n    if(input$outcome == \"wellbeing_score\") {\n      \n      # Then create output_plot as a boxplot with wellbeing_score on the y-axis\n      output_plot &lt;- therapy_df %&gt;%\n        ggplot(aes(x = support_level, y = wellbeing_score)) +\n        geom_boxplot(\n          aes(fill = support_level),\n          alpha       = 0.8,\n          width       = 0.6,\n          show.legend = FALSE\n        ) +\n        scale_fill_viridis_d(option = \"plasma\") +\n        labs(\n          x = \"Support level\",\n          y = \"Wellbeing score\"\n        ) +\n        coord_cartesian(ylim = c(0, 100))\n    } else {\n      \n      # Otherwise (i.e., if the user did NOT choose wellbeing_score), \n      # create the plot using loneliness_score as the y-axis variable\n      output_plot &lt;- therapy_df %&gt;%\n        ggplot(aes(x = support_level, y = loneliness_score)) +\n        geom_boxplot(\n          aes(fill = support_level),\n          alpha       = 0.8,\n          width       = 0.6,\n          show.legend = FALSE\n        ) +\n        scale_fill_viridis_d(option = \"plasma\") +\n        labs(\n          x = \"Support level\",\n          y = \"Loneliness score\"\n        ) +\n        coord_cartesian(ylim = c(0, 100))\n    }\n    \n}\n\nSuppose your dropdown menu had more than just 2 options. For example, suppose we had 3 or more outcome variables that users could choose between.\nWe could keep extending this approach and chain if else statements however much we want. But this would make our code long and tedious.\nSo this is a simple but potentially tedious approach. There are other more efficient approaches.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-8",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-8",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\nOptionally adding points based on checkbox?\noutput$support_plot &lt;- renderPlot({\n\n  if(input$outcome == \"wellbeing_score) {\n  output_plot &lt;- ggplot(...)\n} else {\n  output_plot &lt;- ggplot(...)\n}\n\nSo now we’ve built our two versions of our boxplot that the server can choose between based on the user input to the dropdown menu for outcome.\nBut what about that checkbox for adding points?\nWe need to make our server code respond to that checkbox as well.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-9",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-9",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\nOptionally adding points based on checkbox\nRemember:\n\nour ui code stored the user’s choice in the checkbox as input$show_points\nby default, the value of input$show_points was FALSE\nif the user checks the box, it switches to TRUE",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-10",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-10",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\nOptionally adding points based on checkbox\noutput$support_plot &lt;- renderPlot({\n\n  if(input$outcome == \"wellbeing_score) {\n  output_plot &lt;- ggplot(...)\n} else {\n  output_plot &lt;- ggplot(...)\n}\n\n  if (input$show_points) {\n    output_plot &lt;- output_plot + # ADD the geom_point layer\n      geom_point(position = position_jitter(width = 0.1), alpha = 0.4)\n  }\n\n})\n\nSo we just need to have our server code check whether show_points is TRUE.\nIf it is true, then we just add a geom_point layer to our plot.\nIf show_points is FALSE, if the box isn’t checked, this won’t be added.\nSo this shows you how you can use a checkbox to toggle a feature on or off.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-11",
+    "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-11",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Build Server Code: Incorporate Inputs",
+    "text": "Build Server Code: Incorporate Inputs\nShow the plot at the end!\noutput$support_plot &lt;- renderPlot({\n\n  if(input$outcome == \"wellbeing_score) {\n  output_plot &lt;- ggplot(...)\n} else {\n  output_plot &lt;- ggplot(...)\n}\n\n  if (input$show_points) {\n   ...\n  }\n  \n  output_plot\n\n})",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today-8",
+    "href": "data-vis/week-9/seminar9.html#today-8",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nHow to build a simple Shiny app\n\n\nNow we have all the parts of our app. Let’s just review what we’ve built.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton-4",
+    "href": "data-vis/week-9/seminar9.html#building-a-shiny-app-skeleton-4",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Building a Shiny app: Skeleton",
+    "text": "Building a Shiny app: Skeleton\nlibrary(shiny) # Always needed!\nlibrary(useful_stuff)\n\ndata &lt;- read_csv(\"data/...\")\n\nui &lt;- fluidPage(\n  # UI elements: fixed content, UI input options, dynamic output\n)\n\nserver &lt;- function(input, output, session) { \n  ... # server function used inputs to generate dynamic output\n  }\n\n\nshinyApp(ui = ui, server = server) # connect the ui and server\n\nTo go back to ur basic skeleton…\nWe have some setup steps at the beginning to load packages and read in data.\nWe specified the parts of our UI – Some fixed content like a title – Interactive user input options - dropdown menu and checkbox – A dynamic output\nWe built our server code – Used user inputs to dynamically generate an output plot\nAnd then lastly, we just have this final line that’s needed to connect the ui and server.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#today-9",
+    "href": "data-vis/week-9/seminar9.html#today-9",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Today",
+    "text": "Today\n\nWhy build a Shiny app?\nInspect a finished Shiny app\nBasic anatomy of a Shiny app\nHow to build a simple Shiny app\nProject structure and workflow",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#project-structure-for-shiny-apps",
+    "href": "data-vis/week-9/seminar9.html#project-structure-for-shiny-apps",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Project structure for Shiny apps",
+    "text": "Project structure for Shiny apps\nA simple recommended structure:\ndata-vis/\n  data-vis.Rproj\n  data/\n    therapy_dataset.csv\n  app.R\n\nExplain:\n\nKeep app.R in the project root alongside their Quarto files.\nKeep data in a data/ folder, using relative paths.\nThis mirrors the structure used for their reports.\n\nHighlight that this structure will make it easier to zip the whole project for submission.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#how-to-create-app.r-in-rstudio",
+    "href": "data-vis/week-9/seminar9.html#how-to-create-app.r-in-rstudio",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "How to create app.R in RStudio",
+    "text": "How to create app.R in RStudio\n\nHave your folder and RStudio project setup\nGo to File → New File → R Script\nSave the file as app.R in the project root\nEdit:\n\nSetup\nUI (text, inputs, plotOutput)\nServer (renderPlot code)\n\nTry running by clicking Run App in the top-right of the script pane\n\n\nStress that they do not need to use “New Shiny Web App”:\n\nCreating a plain R script and saving it as app.R is simpler and keeps everything in one project.\nThis is also what you will expect in the final assessment.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#troubleshooting-common-issues",
+    "href": "data-vis/week-9/seminar9.html#troubleshooting-common-issues",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Troubleshooting: common issues",
+    "text": "Troubleshooting: common issues\n\nPackage not found\n\nAdd library(shiny) and other libraries at the top of app.R\n\nFile not found\n\nCheck the path to your data and that it’s inside the project (e.g., data/therapy_dataset.csv)\n\nInput or output not found\n\nDo inputId and output$... names match between UI and server?\n\n\n\nEncourage students to read error messages:\n\nErrors often tell them whether the problem is in the UI or server, and which name is missing.\n\nReassure them that this is normal; debugging is part of the process.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/seminar9.html#summary",
+    "href": "data-vis/week-9/seminar9.html#summary",
+    "title": "Week 9 Seminar: Shiny Apps I",
+    "section": "Summary",
+    "text": "Summary\n\n\nWhat a Shiny app is and why we might use one\nThe anatomy of a Shiny app (user interface and server)\nBuilt a simple interactive app with ui and server that dynamically generates a plot\nOrganise app.R and data files in a project structure\n\n\nClose the loop:\n\nConnect back to the final assessment: this is roughly the level and structure you expect, with Week 10 adding more advanced layout and features.\nInvite questions, especially around the UI/server mapping and how to think about inputs and outputs.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Seminar"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/overview9.html",
+    "href": "data-vis/week-9/overview9.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This week you will be introduced to Shiny apps. Shiny apps allow you to build dynamic web apps in which people can interactively explore visualisations.\n\nLearning objectives\nThe successful student will be able to:\n\nExplain what a Shiny app is and why we might use one\nRecognise the anatomy of a Shiny app:\n\nui, server, shinyApp(ui, server)\n\nBuild a simple interactive app that:\n\nUses selectInput() and checkboxInput()\nUpdates a ggplot using renderPlot() and plotOutput()\n\nOrganise app.R and data files in a project structure",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "About"
+    ]
+  },
+  {
+    "objectID": "data-vis/week-9/study_before9.html",
+    "href": "data-vis/week-9/study_before9.html",
+    "title": "Independent Study to Prepare",
+    "section": "",
+    "text": "Shiny Apps 1\nWeeks 9 and 10 both cover Shiny apps. You are advised to get started on the following reading and DataCamp course for Week 9, and can continue using these to prepare for Week 10.\nReading:\n\nChapters 1-4 of the following guide to Shiny apps: Shiny app guide\n\nDataCamp:\n\nBuilding web applications in Shiny with R\nIt would be useful to complete at least Chapter 1 in preparation Week 9, and chapters 2-4 in preparation for Week 10",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 9: Shiny Apps 1",
+      "Prepare!"
+    ]
   }
 ]
