@@ -143,14 +143,14 @@ website:
                text: Practical
              - href: data-vis/week-8/study_after8.qmd
                text: Consolidate!
-          # - section: "Week 9: Shiny Dashboards Part 1"
-          #   contents:
-          #    - href: data-vis/week-9/overview9.qmd
-          #      text: About
-          #    - href: data-vis/week-9/study_before9.qmd
-          #      text: Prepare!
-          #    - href: data-vis/week-9/seminar9.qmd
-          #      text: Seminar
+          - section: "Week 9: Shiny Apps 1"
+            contents:
+             - href: data-vis/week-9/overview9.qmd
+               text: About
+             - href: data-vis/week-9/study_before9.qmd
+               text: Prepare!
+             - href: data-vis/week-9/seminar9.qmd
+               text: Seminar
           #    - href: data-vis/week-9/practical9.qmd
           #      text: Practical
           #    - href: data-vis/week-9/study_after9.qmd
