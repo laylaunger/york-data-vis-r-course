@@ -7529,5 +7529,17 @@
       "Week 9: Shiny Apps 1",
       "Prepare!"
     ]
+  },
+  {
+    "objectID": "data-vis/week-8/practical8.html#exercise-9-fill-out-the-introduction-and-summary",
+    "href": "data-vis/week-8/practical8.html#exercise-9-fill-out-the-introduction-and-summary",
+    "title": "Practical",
+    "section": "Exercise 9: Fill out the Introduction and Summary",
+    "text": "Exercise 9: Fill out the Introduction and Summary\nConsidering your inspection of the dataset and the patterns:\n\nAdd a few sentences to the # Introduction section to introduce the dataset and the patterns that the report will depict.\nTry including a sentence that notes the number of participants in the dataset with inline code using nrow(wellbeing_df).\nAdd a few sentences to the # Summary section to summarise the patterns shown in the plots.\n\n Save the file and Render again. Check that the inline code has been replaced with an actual number in the HTML report.",
+    "crumbs": [
+      "PSY00122M-A ",
+      "Week 8: Quarto Reports",
+      "Practical"
+    ]
   }
 ]
