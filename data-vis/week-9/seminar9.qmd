@@ -1,0 +1,1379 @@
+---
+title: "Week 9 Seminar: Shiny Apps I"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    highlight-style: github
+    width: 1200
+execute:
+  eval: false
+  freeze: false
+---
+
+```{r setup, include=FALSE}
+#| context: setup
+#| eval: true
+# Packages used for the slides
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(here)
+  library(knitr)
+  library(viridis)
+  library(shiny)
+  library(kableExtra)
+})
+
+options(knitr.kable.NA = "")
+knitr::opts_chunk$set(fig.retina = 3)
+
+# Keep the same default theme style as previous weeks
+theme_set(theme_bw(base_size = 18) +
+            theme(panel.grid = element_blank()))
+
+# Load therapy dataset (for any examples we might want to run)
+therapy_df <- readr::read_csv(here("data-vis", "data", "therapy_dataset.csv"))
+
+therapy_df <- therapy_df |>
+  mutate(
+    support_level = factor(support_level, levels = c("Low", "Medium", "High")),
+    therapy = factor(therapy, levels = c("Yes", "No")),
+    sex = factor(sex)
+  )
+```
+
+---
+
+## From last time
+
+- Value of reproducible reports
+- Basic anatomy of a Quarto report
+- How to build a Quarto report combining prose, code and figures
+  - YAML header, setup chunk, and body sections
+  - Embedded code chunks with chunk options to control output
+- Project structure and workflow
+
+::: notes
+Briefly remind students of Week 8:
+
+- They learned how to structure a Quarto report with YAML, a setup chunk,
+  and a body that mixes text, code, and figures.
+- The therapy example report showed multi-panel figures and polished
+  ggplots, using many of the visualisation techniques from Weeks 3–7.
+
+Set up today as “the next step”: taking similar analyses and turning them
+into interactive tools.
+:::
+
+---
+
+## Today
+
+- Why build a Shiny app?
+- Inspect a finished Shiny app
+- Basic anatomy of a Shiny app
+- How to build a simple Shiny app
+- Project structure and workflow
+
+::: notes
+Give a quick overview of the plan:
+
+- First, motivation and context.
+- Then a quick look at what a finished Shiny app can do.
+- Then the “anatomy”: the parts that make up any Shiny app.
+- Then we build up a small app step by step.
+- Finally, we connect this to their project structure and the assessment.
+:::
+
+---
+
+## Today
+
+- **Why build a Shiny app?**
+
+---
+
+## Why build a Shiny app?
+
+- Reports (Quarto) are great for:
+  - Communicating a **fixed story**
+  - Sharing key results and interpretations
+- Shiny apps are great for:
+  - **Exploring** data interactively
+
+::: notes
+Contrast Quarto and Shiny:
+
+- Quarto reports are like a polished article or mini-paper.
+- Shiny apps are like interactive dashboards: people can change inputs and
+  immediately see updated plots.
+
+Emphasise that both use the *same R and ggplot skills* they already have.
+:::
+
+---
+
+## Why build a Shiny app?
+
+- Example applications in human data science:
+  - Explore how outcomes change across **groups** or **predictors**
+  - Live updates on projects as new data come in
+- Advantages:
+  - Let collaborators, supervisors and users “play with” the data
+  - Demonstrate findings in a more engaging way
+
+::: notes
+
+:::
+
+---
+
+## Today
+
+- **Inspect a finished Shiny app**
+
+---
+
+## A finished example
+
+- Our example app for this week:
+  - Uses the **therapy dataset**
+  - Shows how `support_level` is related to outcomes
+  - Allows the user to choose one of two outcomes and to add individual data points
+
+```{r head-therapy, eval=TRUE, echo=FALSE}
+therapy_df %>%
+  head(6) %>%
+  kable("html", digits = 0) %>%
+  kable_styling(font_size = 18, position = "center", full_width = F) %>%
+  row_spec(0, bold = TRUE, align = "c") %>%
+  column_spec(c(1,2,4,5), background = "yellow")
+```
+
+---
+
+## A finished example
+
+- Our example app for this week:
+  - Uses the **therapy dataset**
+  - Shows how `support_level` is related to outcomes
+  - Allows the user to choose one of two outcomes and to add individual data points
+  
+Full report:
+[Open the example Shiny app](https://laylaunger.shinyapps.io/week-9/)
+
+---
+
+## A finished example
+
+- Can you recognize the plot elements?
+  - What kind of plot is this?
+  - What do you think is added to the ggplot code when the user checks the "Show individual data points" box?
+
+---
+
+## Today
+
+- **Basic anatomy of a Shiny app**
+
+---
+
+## What is a web app?
+
+- A **web application** is:
+  - A web page you can **interact** with (clicks, sliders, dropdowns)
+  - The display updates automatically in response
+- Most things you interact with in a browser are web apps:
+  - E.g., online forms
+
+::: notes
+Keep this conceptual and light:
+
+- Emphasise that they already use web apps all the time (e.g., banking,
+  booking systems).
+- The core idea: interactions in the browser trigger updates behind the
+  scenes.
+:::
+
+---
+
+## How does a web app work?
+
+:::{.incremental}
+**User interface (UI) that the user sees**
+
+   - What the user sees in the browser
+   - Fixed (unchanging) elements such as a title for the webpage
+   - User input options: dropdown menus, checkboxes, buttons
+   - Plots shown as output in response to user inputs
+:::
+
+:::{.incremental}
+**Server (backend)**
+
+   - Code that does the work when the user interacts
+   - Reads the user's inputs and sends back updated outputs to the user
+:::
+
+
+::: notes
+Relate this to everyday examples:
+
+- Entering values into tax software → server calculates refund.
+- Choosing filters on a data dashboard → server recomputes the plot.
+
+Set up the parallel: Shiny will give us these two parts using *R code*.
+:::
+
+---
+
+## What is Shiny?
+
+:::{.incremental}
+- **Shiny** is an R package for building web apps:
+  - You write the **user interface** (UI) in R
+  - You write the **server logic** in R
+  - Shiny connects them and runs the app
+- Builds on what you already know:
+  - You stay inside RStudio and use a similar project workflow / setup
+  - You can use the same kind of ggplot2 code to create plots in your apps
+:::
+
+::: notes
+Underline the “no need to be a web developer” message:
+
+- They do not need to learn HTML, CSS, or JavaScript.
+- Shiny lets them re-use their R and ggplot skills.
+
+:::
+
+
+---
+
+## Return to the example app
+
+To create this app, under the hood, there is:
+
+:::{.incremental}
+1. A bit of familiar code to read in the data
+2. The **ui**, which shows the title, a user input dropdown menu and a user input checkbox, and a plot
+3. The **server logic** that generates the plot, and customizes it based on the user's input
+4. A simple final line that launches the shiny app using the ui and server logic
+:::
+
+---
+
+## Today
+
+- **How to build a simple Shiny app**
+
+---
+
+## Today
+
+- How to build a simple Shiny app
+  - **Overview and basic skeleton**
+
+---
+
+## Building a Shiny app: Overview
+
+- A file called **app.R** that lives in your project folder
+- You can run the app locally in RStudio
+
+::: notes
+:::
+
+
+---
+
+## Building a Shiny app: Overview
+
+Within this file, you:
+
+:::{.incremental}
+1. Include any initial setup steps, such as loading libraries, reading in data
+2. Build the **ui** specify what is shown to the user: fixed content, user **input** options, dynamic outputs
+3. Build the **server** logic as a function that uses user **inputs** from the ui to generate **dynamic outputs** in the ui
+4. Include a simple final line to launch the app 
+:::
+
+::: notes
+:::
+
+---
+
+## Inputs and outputs
+
+- **Inputs**
+  - The ui defines user input options (e.g., checkboxes, menus)
+  - The user's input (e.g., their dropdown menu choice) is **stored as part of an object called input**
+  - The server can read and use the input object's parts
+- **Outputs**
+  - The server function uses the input object's parts
+  - Includes code that uses those parts to create outputs, such as a plot that updates any time the user input changes
+
+
+---
+
+## Building a Shiny app: Skeleton
+
+```r
+library(shiny) # Always needed!
+library(useful_stuff)
+
+data <- read_csv("data/...")
+
+...
+
+```
+
+::: notes
+Let's make this all concrete. 
+
+Here's the basic skeleton of the code you'd write in your shiny app.
+
+We would typically start off with some set up steps, like loading in libraries and data.
+We will ALWAYS need at the very least to load the shiny library to make the shiny app run.
+And we typically have other libraries as well.
+
+We would then typically read in data.
+As we did in our quarto projects, it's useful to keep the data you need in a subfolder within
+the same folder as your shiny app.
+In the future, in your careers, you might want to do clever things like pull data from the internet, but
+we'll keep this simple and always just use data that we actually have.
+
+:::
+
+---
+
+## Building a Shiny app: Skeleton
+
+```r
+library(shiny) # Always needed!
+library(useful_stuff)
+
+data <- read_csv("data/...")
+
+ui <- fluidPage(
+  # UI elements go here
+)
+
+...
+
+```
+
+::: notes
+
+The next thing we do is create the ui. 
+
+We'll always do this using this same basic skeleton.
+We create an object called ui, and we do that using a function called fluidPage.
+
+Then we fill the contents of that function with everything we want in our user interface. 
+
+For example, in our example app, this might include the title of the app, the dropown menu and checkbox, and the plot.
+
+We'll dive into how to specify the contents of the UI in a moment. 
+
+:::
+
+---
+
+## Building a Shiny app: Skeleton
+
+```r
+library(shiny) # Always needed!
+library(useful_stuff)
+
+data <- read_csv("data/...")
+
+ui <- fluidPage(
+  # UI elements go here
+)
+
+server <- function(input, output, session) { 
+  ... # server logic goes here 
+  }
+
+```
+
+::: notes
+
+The next big step is to define the server. 
+
+As I mentioned, this will be a function that uses the user's input to dynamically generate and update the output that they see, like generating the boxplot where the user can dynamically change the outcome variable and add points.
+
+:::
+
+
+---
+
+## Building a Shiny app: Skeleton
+
+```r
+library(shiny) # Always needed!
+library(useful_stuff)
+
+data <- read_csv("data/...")
+
+ui <- fluidPage(
+  # UI elements go here
+)
+
+server <- function(input, output, session) { 
+  ... # server logic goes here 
+  }
+
+
+shinyApp(ui = ui, server = server)
+```
+
+::: notes
+
+And then finally, we add one simple line at the end that tells shiny to combine the ui and server into a running app 
+
+:::
+
+---
+
+## Today
+
+- How to build a simple Shiny app
+  - Overview and basic skeleton
+  - **Populate the ui**
+  
+---
+
+## Populate UI
+
+Start with a basic UI using `fluidPage()`
+
+```r
+ui <- fluidPage(
+  # UI elements go here
+)
+```
+
+---
+
+## Populate UI: Functions
+
+Add elements using functions
+
+```r
+ui <- fluidPage(
+  # Each UI element is added with a function
+  # Different functions add different kinds of UI elements, e.g.,
+  # -- title
+  # -- user input options
+  # -- plot
+)
+```
+
+::: notes
+
+We can add UI elements using functions
+
+There are different functions we can use to add different kinds of elements
+
+:::
+
+---
+
+## Populate UI: Fixed elements
+
+Add fixed (unchanging) elements
+
+```r
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("Support, Therapy, and Wellbeing: Interactive"),
+
+  p("Use the controls below to explore how outcomes vary across support levels.")
+)
+```
+
+::: notes
+
+We can start by adding some simple, unchanging elements for the user to see.
+
+For example, we'll use a titlePanel function to add a title
+
+And a little paragraph (p function) to add a bit of extra text to show the user.
+
+For now, there are no inputs or outputs — just static text.
+
+Similar to how your quarto projects had a title and some introductory text.
+
+:::
+
+---
+
+## Populate UI: Inputs
+
+Different functions add different types of user input controls
+
+The option specified by the user is stored as part of an **input** object
+
+```r
+ui <- fluidPage(
+  titlePanel("Support, Therapy, and Wellbeing: Interactive"),
+
+  p("Use the controls below to explore how outcomes vary across support levels."),
+  
+  someInput( 
+    inputId = "some_name", # name of the part in the input object
+    label   = "Some label:", # label shown to the user
+    ...
+  )
+)
+```
+
+::: notes
+Now we're ready to start adding user input controls
+
+So these could be dropdown menus, checkboxes, buttons, and so on.
+
+Remember, as I noted before, the user's choice for these inputs will be stored
+as part of an object called "input".
+
+
+And each type of user input control has its own function.
+
+Right now I've just put a generic placeholder in called someInput
+This isn't a real function, it's just to show you the general format
+
+At minimum, every input function you use should specify at least these
+first two arguments.
+
+First, the inputId. This argument will be the name of the part where the user's
+choice is stored in the input object. This will allow us to read and use the user's
+choice in our server code later. 
+
+Second, the label to show the user. This is the label that the user will
+see on the screen, like the label of the dropdown menu or checkbox.
+
+:::
+
+
+---
+
+## Populate UI: Inputs
+
+Different functions add different types of user input controls
+
+The option specified by the user is stored as part of an **input** object
+
+```r
+ui <- fluidPage(
+  titlePanel("Support, Therapy, and Wellbeing: Interactive"),
+
+  p("Use the controls below to explore how outcomes vary across support levels."),
+
+  selectInput(
+    inputId = "outcome",
+    label   = "Outcome to plot:",
+    ...
+  )
+)
+```
+
+::: notes
+
+For example, our example app has a dropdown menu. This dropdown menu is
+added using this selectInput function. 
+
+Remember, that  dropdown menu allows the user to choose which outcome variable 
+to plot. So, I've set the inputID as outcome, and given it this user-friendly label
+that tells them they can use the menu to choose an outcome to plot.
+
+:::
+
+
+---
+
+## Populate UI: Inputs
+
+Different functions add different types of user input controls
+
+The option specified by the user is stored as part of an **input** object
+
+```r
+ui <- fluidPage(
+  titlePanel("Support, Therapy, and Wellbeing: Interactive"),
+
+  p("Use the controls below to explore how outcomes vary across support levels."),
+
+  selectInput(
+    inputId = "outcome",
+    label   = "Outcome to plot:",
+    ... WHAT ELSE???
+  )
+)
+```
+
+::: notes
+
+But this isn't enough to define everything about that dropdown menu.
+
+What else might we need to specify here?
+
+(dropdown options, default option)
+
+:::
+
+
+---
+
+## Populate UI: Inputs
+
+Different functions add different types of user input controls
+
+This will **add** a part to the input object called `outcome`
+
+The value of `outcome` will depend on the user's choice
+
+```r
+ui <- fluidPage(
+  titlePanel("Support, Therapy, and Wellbeing: Interactive"),
+
+  p("Use the controls below to explore how outcomes vary across support levels."),
+
+  selectInput(
+    inputId = "outcome",
+    label   = "Outcome to plot:",
+    choices = c(
+      "Wellbeing score"  = "wellbeing_score",
+      "Loneliness score" = "loneliness_score"
+    ),
+    selected = "wellbeing_score"
+  )
+)
+```
+
+::: notes
+
+So we have additional arguments for our dropdown menu input.
+
+One is called choices. Here, we define a vector that includes both: the option that the user will see in the menu, and the value that we want to store when the user chooses an option.
+
+And the other is called selected. Here, we specify the default value we want to use before the user has selected anything, when they first open the app.
+
+:::
+
+---
+
+## Populate UI: Inputs
+
+Different functions add different types of user input controls
+
+```r
+ui <- fluidPage(
+  titlePanel("Support, Therapy, and Wellbeing: Interactive"),
+
+  p("Use the controls below to explore how outcomes vary across support levels."),
+
+  selectInput(
+    inputId = "outcome",
+    label   = "Outcome to plot:",
+    choices = c(
+      "Wellbeing score"  = "wellbeing_score",
+      "Loneliness score" = "loneliness_score"
+    ),
+    selected = "wellbeing_score"
+  ),
+  
+  checkboxInput(
+    inputId = "show_points",
+    label   = "Show individual data points",
+    value   = FALSE
+  )
+)
+```
+
+
+::: notes
+
+We can continue using the same approach to add other kinds of input optins.
+
+Here I've added that checkbox option from the example app. 
+
+Note that I used a different function to create the checkbox.
+
+I've given it its own id and label.
+
+And since this is a checkbox, not a dropdwn menu, it has its own additional arguments.
+
+Here, I specify the default value to store when the box is unchecked. 
+
+That default value is FALSE, meaning no, don't show data points on the boxplot.
+
+Again, use these values later in our server code to generate the plot based on the 
+user's input.
+
+:::
+
+---
+
+## Populate UI: Inputs
+
+Different functions add different types of user input controls
+
+<br>
+
+[More options ("widgets")](https://shiny.posit.co/r/getstarted/shiny-basics/lesson3/)
+
+
+---
+
+## Populate UI: Outputs
+
+Now we tell the UI where the plot will appear
+
+We refer to the name of the plot we will create using the server code
+
+```r
+ui <- fluidPage(
+  ...
+
+  plotOutput("support_plot")
+)
+```
+
+::: notes
+Explain:
+
+- `plotOutput("support_plot")` creates a space in the UI where Shiny
+  will display the plot.
+- The string `"support_plot"` must match the name we’ll use on the
+  server: `output$support_plot`.
+
+Reinforce the mapping: output name in UI ↔ output name in server.
+:::
+
+---
+
+## Today
+
+- How to build a simple Shiny app
+  - Overview and basic skeleton
+  - Populate the ui
+  - **Build server code**
+
+::: notes
+
+Now is when we switch over to building that server logic.
+
+Here, we'll use the inputs from the user to create that plot,
+So that the UI can then show the plot to the user. 
+
+:::
+
+
+---
+
+## Build Server Code
+
+Server is a **function** that uses inputs to generate outputs
+
+```r
+server <- function(input, output, session) {
+
+  # Server logic will go here
+
+}
+```
+
+::: notes
+Point out:
+
+- Every Shiny app server is a function with at least these arguments:
+  - `input`  : list of all input values
+  - `output` : list where we store outputs
+  - `session`: information about the current session (not needed today)
+
+For now, the body is empty — no outputs are defined yet.
+:::
+
+---
+
+## Build Server Code
+
+We define an output called `support_plot`
+
+```r
+server <- function(input, output, session) {
+
+  output$support_plot <- ...
+
+}
+```
+
+::: notes
+
+So the main output we want is that plot. And remember, in our UI, we called the plot
+support_plot. So we want to use that same name here.
+
+:::
+
+---
+
+## Build Server Code
+
+We define an output called `support_plot` using `renderPlot()`
+
+```r
+server <- function(input, output, session) {
+
+  output$support_plot <- renderPlot({
+
+    ggplot(...)
+
+  })
+
+}
+```
+
+::: notes
+
+We can create this output plot using a function called renderPlot.
+
+As you might expect, this function renders a plot.
+
+So inside the function, we can define the plot we want to render using
+ggplot, just as we've been using ggplot to create plots this whole time.
+
+:::
+
+---
+
+
+## Build Server Code
+
+We define an output called `support_plot` using `renderPlot()`
+
+Currently **static** (not responsive to user input)
+
+```r
+server <- function(input, output, session) {
+
+  output$support_plot <- renderPlot({
+
+    ggplot(therapy_df, aes(x = support_level,
+                           y = wellbeing_score)) + # STATIC!
+      geom_boxplot(aes(fill = support_level),
+                   alpha       = 0.8,
+                   width       = 0.6,
+                   show.legend = FALSE) +
+      scale_fill_viridis_d(option = "plasma") +
+      labs(
+        x = "Support level",
+        y = "Wellbeing score" # STATIC!
+      ) +
+      coord_cartesian(ylim = c(0, 100))
+
+  })
+
+}
+```
+
+::: notes
+
+To start off with, let's try just putting some familiar ggplot code here.
+
+This is the same kind of ggplot code you've been learning how to write throughout
+the module, just wrapped inside `renderPlot({ ... })`.
+
+At this stage, the app will show a wellbeing boxplot that does **not**
+yet respond to inputs.
+:::
+
+---
+
+## Build Server Code: Incorporate Inputs
+
+<br>
+
+Remember: 
+
+- `ui` stored user options as parts of an object called `input`
+- we gave those parts names using inputId
+
+---
+
+## Build Server Code: Incorporate Inputs
+
+<br>
+
+We can now reference these `input` parts in our server code:
+
+- use dollar sign notation
+- e.g., to reference the `outcome` part: `input$outcome`
+
+The **value** of that part will be based on the user's input
+
+- e.g., if the user selected wellbeing as the outcome, then 
+- `input$outcome` will be `wellbeing_score`
+
+--- 
+
+## Build Server Code: Incorporate Inputs
+
+<br>
+
+Our approach:
+
+- Check `input` part values
+- Use them in our server code to control our outputs
+
+--- 
+
+## Build Server Code: Incorporate Inputs
+
+<br>
+
+Some basic programming with if-statements:
+
+```r
+if(input$part == "some_value") {
+
+  ...if TRUE, do this...
+
+}
+```
+
+::: notes
+
+Today, I'll show you a very basic way to do this using
+some basic programing called an if-statement.
+
+If-statements are common throughout programming languages -
+this is a very basic thing you often want to tell a computer to do.
+
+Instead of having a computer always do a PARTICULAR THING, you often
+want it to check some condition, and then say IF that condition met, 
+THEN do something. 
+
+:::
+
+--- 
+
+## Build Server Code: Incorporate Inputs
+
+<br>
+
+Some basic programming with if-statements:
+
+```r
+if(input$part == "some_value") {
+
+  ...if TRUE, do this...
+
+} else {
+
+  ...if FALSE, do something else...
+}
+```
+
+::: notes
+
+We can make this a bit more sophisticated by saying 
+
+IF the condition is met, then do one thing,
+
+but OTHERWISE, do a DIFFERENT thing. 
+
+:::
+
+--- 
+
+## Build Server Code: Incorporate Inputs
+
+<br>
+
+This is just one way to use inputs!
+
+Showing for simplicity: avoid overburdening with new concepts
+
+More approaches can be found in your **reading** (especially chapter 4)
+
+
+---
+
+## Build Server Code: Incorporate Inputs
+
+Make the plot respond to `input$outcome`:
+
+```r
+server <- function(input, output, session) {
+
+  output$support_plot <- renderPlot({
+    
+    # If the user chose wellbeing_score...
+    if(input$outcome == "wellbeing_score") {
+      
+      # Then create output_plot as a boxplot with wellbeing_score on the y-axis
+      output_plot <- therapy_df %>%
+        ggplot(aes(x = support_level, y = wellbeing_score)) +
+        geom_boxplot(
+          aes(fill = support_level),
+          alpha       = 0.8,
+          width       = 0.6,
+          show.legend = FALSE
+        ) +
+        scale_fill_viridis_d(option = "plasma") +
+        labs(
+          x = "Support level",
+          y = "Wellbeing score"
+        ) +
+        coord_cartesian(ylim = c(0, 100))
+    } else {
+      
+      # Otherwise (i.e., if the user did NOT choose wellbeing_score), 
+      # create the plot using loneliness_score as the y-axis variable
+      output_plot <- therapy_df %>%
+        ggplot(aes(x = support_level, y = loneliness_score)) +
+        geom_boxplot(
+          aes(fill = support_level),
+          alpha       = 0.8,
+          width       = 0.6,
+          show.legend = FALSE
+        ) +
+        scale_fill_viridis_d(option = "plasma") +
+        labs(
+          x = "Support level",
+          y = "Loneliness score"
+        ) +
+        coord_cartesian(ylim = c(0, 100))
+    }
+    
+}
+```
+
+::: notes
+
+This looks like a lot of code, but really it's just two chunks of ggplot code -
+
+One to run and store as the output if the user selected wellbeing, and another one to
+run if the user selected something else.
+
+:::
+
+## Build Server Code: Incorporate Inputs
+
+Can chain if... else... endlessly
+
+But might want a more efficient approach with > 2 options!
+
+
+```r
+server <- function(input, output, session) {
+
+  output$support_plot <- renderPlot({
+    
+    # If the user chose wellbeing_score...
+    if(input$outcome == "wellbeing_score") {
+      
+      # Then create output_plot as a boxplot with wellbeing_score on the y-axis
+      output_plot <- therapy_df %>%
+        ggplot(aes(x = support_level, y = wellbeing_score)) +
+        geom_boxplot(
+          aes(fill = support_level),
+          alpha       = 0.8,
+          width       = 0.6,
+          show.legend = FALSE
+        ) +
+        scale_fill_viridis_d(option = "plasma") +
+        labs(
+          x = "Support level",
+          y = "Wellbeing score"
+        ) +
+        coord_cartesian(ylim = c(0, 100))
+    } else {
+      
+      # Otherwise (i.e., if the user did NOT choose wellbeing_score), 
+      # create the plot using loneliness_score as the y-axis variable
+      output_plot <- therapy_df %>%
+        ggplot(aes(x = support_level, y = loneliness_score)) +
+        geom_boxplot(
+          aes(fill = support_level),
+          alpha       = 0.8,
+          width       = 0.6,
+          show.legend = FALSE
+        ) +
+        scale_fill_viridis_d(option = "plasma") +
+        labs(
+          x = "Support level",
+          y = "Loneliness score"
+        ) +
+        coord_cartesian(ylim = c(0, 100))
+    }
+    
+}
+```
+
+::: notes
+
+Suppose your dropdown menu had more than just 2 options. For example, suppose we had 3
+or more outcome variables that users could choose between.
+
+We could keep extending this approach and chain if else statements however much we 
+want. But this would make our code long and tedious.
+
+So this is a simple but potentially tedious approach. There are other more efficient
+approaches.
+
+:::
+
+---
+
+## Build Server Code: Incorporate Inputs
+
+Optionally adding points based on checkbox?
+
+```r
+output$support_plot <- renderPlot({
+
+  if(input$outcome == "wellbeing_score) {
+  output_plot <- ggplot(...)
+} else {
+  output_plot <- ggplot(...)
+}
+```
+
+::: notes
+
+So now we've built our two versions of our boxplot that the server can
+choose between based on the user input to the dropdown menu for outcome.
+
+But what about that checkbox for adding points?
+
+We need to make our server code respond to that checkbox as well.
+
+:::
+
+---
+
+## Build Server Code: Incorporate Inputs
+
+Optionally adding points based on checkbox
+
+Remember: 
+
+- our ui code stored the user's choice in the checkbox as `input$show_points`
+- by default, the value of `input$show_points` was `FALSE`
+- if the user checks the box, it switches to `TRUE`
+
+
+---
+
+## Build Server Code: Incorporate Inputs
+
+Optionally adding points based on checkbox
+
+```r
+output$support_plot <- renderPlot({
+
+  if(input$outcome == "wellbeing_score) {
+  output_plot <- ggplot(...)
+} else {
+  output_plot <- ggplot(...)
+}
+
+  if (input$show_points) {
+    output_plot <- output_plot + # ADD the geom_point layer
+      geom_point(position = position_jitter(width = 0.1), alpha = 0.4)
+  }
+
+})
+```
+::: notes
+
+So we just need to have our server code check whether show_points is TRUE.
+
+If it is true, then we just add a geom_point layer to our plot.
+
+If show_points is FALSE, if the box isn't checked, this won't be added.
+
+So this shows you how you can use a checkbox to toggle a feature on or off.
+
+:::
+
+## Build Server Code: Incorporate Inputs
+
+Show the plot at the end!
+
+```r
+output$support_plot <- renderPlot({
+
+  if(input$outcome == "wellbeing_score) {
+  output_plot <- ggplot(...)
+} else {
+  output_plot <- ggplot(...)
+}
+
+  if (input$show_points) {
+   ...
+  }
+  
+  output_plot
+
+})
+```
+
+---
+
+## Today
+
+- **How to build a simple Shiny app**
+
+::: notes
+
+Now we have all the parts of our app. Let's just review what we've built.
+
+:::
+
+---
+
+## Building a Shiny app: Skeleton
+
+```r
+library(shiny) # Always needed!
+library(useful_stuff)
+
+data <- read_csv("data/...")
+
+ui <- fluidPage(
+  # UI elements: fixed content, UI input options, dynamic output
+)
+
+server <- function(input, output, session) { 
+  ... # server function used inputs to generate dynamic output
+  }
+
+
+shinyApp(ui = ui, server = server) # connect the ui and server
+
+```
+
+::: notes
+
+To go back to ur basic skeleton...
+
+We have some setup steps at the beginning to load packages and read in data.
+
+We specified the parts of our UI
+-- Some fixed content like a title
+-- Interactive user input options - dropdown menu and checkbox
+-- A dynamic output 
+
+We built our server code
+-- Used user inputs to dynamically generate an output plot
+
+And then lastly, we just have this final line that's needed to connect the ui and server.
+
+:::
+
+
+
+---
+
+## Today
+
+- Why build a Shiny app?
+- Inspect a finished Shiny app
+- Basic anatomy of a Shiny app
+- How to build a simple Shiny app
+- **Project structure and workflow**
+
+---
+
+## Project structure for Shiny apps
+
+A simple recommended structure:
+
+```r
+data-vis/
+  data-vis.Rproj
+  data/
+    therapy_dataset.csv
+  app.R
+```
+
+::: notes
+Explain:
+
+- Keep `app.R` in the **project root** alongside their Quarto files.
+- Keep data in a `data/` folder, using relative paths.
+- This mirrors the structure used for their reports.
+
+Highlight that this structure will make it easier to zip the whole
+project for submission.
+:::
+
+---
+
+## How to create `app.R` in RStudio
+
+1. Have your folder and RStudio project setup
+2. Go to **File → New File → R Script**
+3. Save the file as **`app.R`** in the project root
+4. Edit: 
+   - Setup
+   - UI (text, inputs, plotOutput)
+   - Server (renderPlot code)
+5. Try running by clicking **Run App** in the top-right of the script pane
+
+::: notes
+Stress that they *do not* need to use “New Shiny Web App”:
+
+- Creating a plain R script and saving it as `app.R` is simpler and
+  keeps everything in one project.
+- This is also what you will expect in the final assessment.
+:::
+
+
+---
+
+## Troubleshooting: common issues
+
+- **Package not found**
+  - Add `library(shiny)` and other libraries at the top of `app.R`
+- **File not found**
+  - Check the path to your data and that it’s inside the project (e.g., `data/therapy_dataset.csv`)
+- **Input or output not found**
+  - Do `inputId` and `output$...` names match between UI and server?
+
+::: notes
+Encourage students to read error messages:
+
+- Errors often tell them whether the problem is in the UI or server, and
+  which name is missing.
+
+Reassure them that this is normal; debugging is part of the process.
+:::
+
+---
+
+## Summary
+
+<br>
+
+- What a Shiny app is and why we might use one
+- The **anatomy** of a Shiny app (user interface and server)
+- Built a simple interactive app with `ui` and `server` that dynamically generates a plot
+- Organise `app.R` and data files in a project structure
+
+::: notes
+Close the loop:
+
+- Connect back to the final assessment: this is roughly the level and
+  structure you expect, with Week 10 adding more advanced layout and
+  features.
+- Invite questions, especially around the UI/server mapping and how to
+  think about inputs and outputs.
+
+:::
