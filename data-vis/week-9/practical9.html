@@ -134,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-7/overview7.html">Week 7: Advanced Customizations</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-7/practical7.html">Practical</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-9/overview9.html">Week 9: Shiny Apps 1</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-9/practical9.html">Practical</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -423,7 +423,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-7/practical7.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../data-vis/week-7/practical7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practical</span></a>
   </div>
 </li>
@@ -505,7 +505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-9/practical9.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-vis/week-9/practical9.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Practical</span></a>
   </div>
 </li>
@@ -532,37 +532,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#philosophy" id="toc-philosophy" class="nav-link" data-scroll-target="#philosophy">Philosophy</a></li>
   </ul>
 </li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
-  <li>
-<a href="#todays-data" id="toc-todays-data" class="nav-link" data-scroll-target="#todays-data">Today’s data</a>
-  <ul class="collapse">
-<li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the data</a></li>
-  <li><a href="#load-the-data-1" id="toc-load-the-data-1" class="nav-link" data-scroll-target="#load-the-data-1">Load the data</a></li>
-  <li><a href="#look-at-the-data" id="toc-look-at-the-data" class="nav-link" data-scroll-target="#look-at-the-data">Look at the data</a></li>
-  <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages">Load packages</a></li>
-  </ul>
-</li>
   <li>
 <a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-<li><a href="#exercise-1-labels-that-communicate" id="toc-exercise-1-labels-that-communicate" class="nav-link" data-scroll-target="#exercise-1-labels-that-communicate">Exercise 1: Labels that communicate</a></li>
-  <li><a href="#exercise-2-discrete-color-with-a-legend-that-helps" id="toc-exercise-2-discrete-color-with-a-legend-that-helps" class="nav-link" data-scroll-target="#exercise-2-discrete-color-with-a-legend-that-helps">Exercise 2: Discrete color with a legend that helps</a></li>
-  <li><a href="#exercise-3-explore-available-color-palettes-and-tools" id="toc-exercise-3-explore-available-color-palettes-and-tools" class="nav-link" data-scroll-target="#exercise-3-explore-available-color-palettes-and-tools">Exercise 3: Explore available color palettes and tools</a></li>
-  <li><a href="#exercise-4-discrete-axes-readable-bar-summaries" id="toc-exercise-4-discrete-axes-readable-bar-summaries" class="nav-link" data-scroll-target="#exercise-4-discrete-axes-readable-bar-summaries">Exercise 4: Discrete axes &amp; readable bar summaries</a></li>
-  <li><a href="#exercise-5-direct-labels" id="toc-exercise-5-direct-labels" class="nav-link" data-scroll-target="#exercise-5-direct-labels">Exercise 5: Direct labels</a></li>
-  <li><a href="#exercise-6-faceting-to-compare-groups-without-clutter" id="toc-exercise-6-faceting-to-compare-groups-without-clutter" class="nav-link" data-scroll-target="#exercise-6-faceting-to-compare-groups-without-clutter">Exercise 6: Faceting to compare groups without clutter</a></li>
-  <li><a href="#exercise-7-continuous-color-scale-viridis-and" id="toc-exercise-7-continuous-color-scale-viridis-and" class="nav-link" data-scroll-target="#exercise-7-continuous-color-scale-viridis-and">Exercise 7: Continuous color scale (viridis) and</a></li>
-  <li><a href="#exercise-8-facet-grid-for-compact-subgroup-comparisons" id="toc-exercise-8-facet-grid-for-compact-subgroup-comparisons" class="nav-link" data-scroll-target="#exercise-8-facet-grid-for-compact-subgroup-comparisons">Exercise 8: Facet grid for compact subgroup comparisons</a></li>
-  <li><a href="#exercise-9-using-patchwork-to-make-tidy-multi-panel-figures" id="toc-exercise-9-using-patchwork-to-make-tidy-multi-panel-figures" class="nav-link" data-scroll-target="#exercise-9-using-patchwork-to-make-tidy-multi-panel-figures">Exercise 9: Using patchwork to make tidy multi-panel figures</a></li>
+<li><a href="#exercise-1-create-a-shiny-project-folder" id="toc-exercise-1-create-a-shiny-project-folder" class="nav-link" data-scroll-target="#exercise-1-create-a-shiny-project-folder">Exercise 1: Create a Shiny project folder</a></li>
+  <li><a href="#exercise-2-create-an-app.r-file-and-load-the-data" id="toc-exercise-2-create-an-app.r-file-and-load-the-data" class="nav-link" data-scroll-target="#exercise-2-create-an-app.r-file-and-load-the-data">Exercise 2: Create an <code>app.R</code> file and load the data</a></li>
+  <li><a href="#exercise-3-add-a-minimal-shiny-app-skeleton" id="toc-exercise-3-add-a-minimal-shiny-app-skeleton" class="nav-link" data-scroll-target="#exercise-3-add-a-minimal-shiny-app-skeleton">Exercise 3: Add a minimal Shiny app skeleton</a></li>
+  <li><a href="#exercise-4-build-the-ui-layout-and-inputs" id="toc-exercise-4-build-the-ui-layout-and-inputs" class="nav-link" data-scroll-target="#exercise-4-build-the-ui-layout-and-inputs">Exercise 4: Build the UI layout and inputs</a></li>
+  <li><a href="#exercise-5-draw-a-basic-plot-in-the-server" id="toc-exercise-5-draw-a-basic-plot-in-the-server" class="nav-link" data-scroll-target="#exercise-5-draw-a-basic-plot-in-the-server">Exercise 5: Draw a basic plot in the server</a></li>
+  <li><a href="#exercise-6-use-inputoutcome-with-an-ifelse-pattern" id="toc-exercise-6-use-inputoutcome-with-an-ifelse-pattern" class="nav-link" data-scroll-target="#exercise-6-use-inputoutcome-with-an-ifelse-pattern">Exercise 6: Use <code>input$outcome</code> with an <code>if</code>/<code>else</code> pattern</a></li>
+  <li><a href="#exercise-7-use-inputshow_points-to-toggle-raw-data-points" id="toc-exercise-7-use-inputshow_points-to-toggle-raw-data-points" class="nav-link" data-scroll-target="#exercise-7-use-inputshow_points-to-toggle-raw-data-points">Exercise 7: Use <code>input$show_points</code> to toggle raw data points</a></li>
+  <li><a href="#exercise-8-review-and-tidy-your-app" id="toc-exercise-8-review-and-tidy-your-app" class="nav-link" data-scroll-target="#exercise-8-review-and-tidy-your-app">Exercise 8: Review and tidy your app</a></li>
   </ul>
 </li>
-  <li><a href="#youre-finished" id="toc-youre-finished" class="nav-link" data-scroll-target="#youre-finished">You’re finished! 🎉</a></li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-7/overview7.html">Week 7: Advanced Customizations</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-7/practical7.html">Practical</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-9/overview9.html">Week 9: Shiny Apps 1</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-9/practical9.html">Practical</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Practical</h1>
-<p class="subtitle lead">Week 7 Seminar: Advanced Customizations</p>
+<p class="subtitle lead">Week 9 Seminar: Shiny Apps 1</p>
 </div>
 
 
@@ -578,25 +566,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><section id="introduction" class="level1"><h1>Introduction</h1>
 <section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
-<p>In this practical you’ll start from basic plots and polish them using the strategies from <strong>Seminar 7</strong>:</p>
+<p>In this practical you’ll <strong>build a small Shiny app project</strong> from scratch using the <strong>wellbeing dataset</strong>, applying the ideas from <strong>Seminar 9</strong>:</p>
 <ul>
-<li>Clear, reader-friendly <strong>labels</strong> with <code>labs()</code>
+<li>Setting up a <strong>project folder</strong> with a subfolder for data<br>
 </li>
-<li>Smarter <strong>scales</strong> with <code>scale_*_*</code> (breaks, labels, limits, discrete &amp; continuous colors)</li>
-<li>Visual <strong>polish</strong> with <code>theme()</code>
+<li>Creating an <strong><code>app.R</code> file</strong> inside an RStudio project<br>
 </li>
-<li>
-<strong>Annotations</strong> and <strong>direct labels</strong> (<code>geom_text()</code> / <code>geom_label()</code>)</li>
-<li>
-<strong>Faceting</strong> (<code>facet_wrap</code>, <code>facet_grid</code>) and <strong>patchwork</strong> for multi-panel figures</li>
-</ul></section><section id="philosophy" class="level2"><h2 class="anchored" data-anchor-id="philosophy">Philosophy</h2>
-<p>Practicals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips</p>
+<li>Loading data and packages at the top of your app<br>
+</li>
+<li>Building a <strong>UI</strong> with a title, description, dropdown menu, checkbox, and plot output<br>
+</li>
+<li>Writing a <strong>server function</strong> that draws a plot from the data<br>
+</li>
+<li>Using <code>input$...</code> values and an <code>if (...) { ... } else { ... }</code> pattern to switch between outcomes<br>
+</li>
+<li>Using another <code>if</code> statement to control whether <strong>individual data points</strong> are shown<br>
+</li>
+<li>Running the app and dealing with common errors</li>
+</ul>
+<p>By the end, you should have your <strong>first complete Shiny app</strong> for this module, using a dataset on <strong>sleep and wellbeing across groups</strong>.</p>
+</section><section id="philosophy" class="level2"><h2 class="anchored" data-anchor-id="philosophy">Philosophy</h2>
+<p>Practicals are not a test. It is expected that you’ll often be unsure what to do at first – that’s normal. The goal is that each workshop helps you build confidence step-by-step.</p>
+<p>Some tips:</p>
 <ul>
-<li>don’t worry about making mistakes</li>
-<li>don’t let what you can not do interfere with what you can do</li>
-<li>discussing code with your neighbours will help</li>
-<li>look things up in the independent study material</li>
-<li>look things up in your own code from earlier workshops</li>
+<li>don’t worry about making mistakes<br>
+</li>
+<li>don’t let what you can’t do interfere with what you <em>can</em> do<br>
+</li>
+<li>discussing code with your neighbours will help<br>
+</li>
+<li>look things up in the independent study material<br>
+</li>
+<li>look things up in your own code from earlier weeks<br>
+</li>
 <li>there are no stupid questions</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -611,282 +613,241 @@ Key
 <div class="callout-body-container callout-body">
 <p>These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.</p>
 <p><img src="images/do_on_your_computer.png" class="img-fluid"> Something you need to do on your computer. It may be opening programs or documents or locating a file.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.</p>
-<p><img src="images/do_on_internet.png" class="img-fluid"> Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.</p>
-<p><img src="images/answer.png" class="img-fluid"> A question for you to think about and answer. Record your answers in your script for future reference.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Something you should do in RStudio. It will usually involve running R code, but might also be creating folders, locating or moving files.</p>
+<p><img src="images/do_on_internet.png" class="img-fluid"> Something you should do in your browser. It will usually be searching for information, going to the VLE or downloading a file.</p>
+<p><img src="images/answer.png" class="img-fluid"> A question for you to think about and answer. You can record your answers in your report, app file, or notes for future reference.</p>
 </div>
-</div>
-</section></section><section id="getting-started" class="level1"><h1>Getting started</h1>
-<p><img src="images/do_in_R.png" class="img-fluid"> Go the <strong>Files</strong> tab in the lower right pane and click on the <code>...</code> on the right. This will open a “Go to folder” window. Navigate to a place on your computer where you keep your work. Click <strong>Open</strong>.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Also on the Files tab click on <strong>New Folder</strong>. Type <code>data-visualisation-in-r</code> into the box. This will be the folder that we work in throughout.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Make an RStudio project for this workshop by clicking on the drop-down menu on top right where it says <code>Project: (None)</code> and choosing <strong>New Project</strong>, then <strong>New Directory</strong>, then <strong>New Project</strong>. Name the RStudio Project <strong><code>week-7</code></strong>.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Make a new script then save it with a name like <code>advanced-customization.R</code> to carry out the rest of the work.</p>
-</section><section id="todays-data" class="level1"><h1>Today’s data</h1>
-<p>We’ll use <strong>two</strong> CSVs from previous weeks. Save these in your project:</p>
-<ul>
-<li>
-<strong>wellbeing.csv</strong><br>
-</li>
-<li><strong>therapy.csv</strong></li>
-</ul>
-<section id="load-the-data" class="level3"><h3 class="anchored" data-anchor-id="load-the-data">Load the data</h3>
-<p><img src="images/do_on_your_computer.png" class="img-fluid"> Save this file in your <code>week-7</code> folder:</p>
-<ul>
-<li><a href="../data/wellbeing_dataset.csv">wellbeing_dataset.csv</a></li>
-<li><a href="../data/therapy_dataset.csv">therapy_dataset.csv</a></li>
-</ul></section><section id="load-the-data-1" class="level3"><h3 class="anchored" data-anchor-id="load-the-data-1">Load the data</h3>
-<p><img src="images/do_in_R.png" class="img-fluid"> Add and run:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wellbeing</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"wellbeing_dataset.csv"</span><span class="op">)</span></span>
-<span><span class="va">therapy</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"therapy_dataset.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section><section id="look-at-the-data" class="level2"><h2 class="anchored" data-anchor-id="look-at-the-data">Look at the data</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Examine the variables and first few rows of the datasets using <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">wellbeing</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  participant_id participant_group sleep_hours wellbeing_index
-  &lt;chr&gt;          &lt;chr&gt;                   &lt;dbl&gt;           &lt;dbl&gt;
-1 P0001          retired                   7.1            44.9
-2 P0002          employed                  7.2            54.9
-3 P0003          employed                  6.2            53.2
-4 P0004          retired                   8.7            70.2
-5 P0005          student                   5.9            55.3
-6 P0006          employed                  7              53.9</code></pre>
-</div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">therapy</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 8
-  support_level therapy   age loneliness_score wellbeing_score sleep_quality
-  &lt;chr&gt;         &lt;chr&gt;   &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;
-1 Medium        Yes        23             68.9            62.8             3
-2 Medium        Yes        31             46.2            88.9             8
-3 High          Yes        35             46.4            80               8
-4 Low           No         29             40.4            45.9             5
-5 Low           Yes        34             39.6            68.7             9
-6 Low           No         25             67.5            38.1             6
-# ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
-</div>
-</div>
-</section><section id="load-packages" class="level2"><h2 class="anchored" data-anchor-id="load-packages">Load packages</h2>
-<p>We’ll be using some additional packages for today’s exercises (and they will be useful for you in the future).</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Load the packages below. If you get a message saying that the package does not exist, use <code>install.packages("name of package")</code> to install and then try loading again.</p>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op">)</span>   <span class="co"># viridis palettes</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span> <span class="co"># brewer palettes</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span> <span class="co"># combine plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="exercises" class="level1"><h1>Exercises</h1>
-<p><strong>Important:</strong> In each exercise below you get starter code that makes a basic plot.<br>
-Your job is to <strong>improve clarity, readability, and/or attractiveness</strong> using the following techniques:</p>
+<p><strong>Important:</strong> For Week 9, the <strong>project setup is part of the exercises</strong>.<br>
+Follow the steps carefully so that your project structure matches the simple pattern we used in <strong>Seminar 9</strong> and that you will also use for the assessment.</p>
+<hr>
+<section id="exercise-1-create-a-shiny-project-folder" class="level2"><h2 class="anchored" data-anchor-id="exercise-1-create-a-shiny-project-folder">Exercise 1: Create a Shiny project folder</h2>
+<p>In this exercise you will create a <strong>new folder</strong> for a mini Shiny project, add a <code>data</code> subfolder for the CSV, and turn it into an <strong>RStudio project</strong>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the <strong>Files</strong> tab in the lower right pane, click on the <code>...</code> on the right (this should say “Go to directory” when you hover over it). Clicking the ‘…’ will open the <em>Go to folder</em> window. Navigate to a place on your computer where you keep your work for this module (for example your <code>data-visualisation-in-r</code> folder). Click <strong>Open</strong>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the Files tab, click on <strong>New Folder</strong>. Give your new folder a short, sensible name for this project, such as <code>week-9-shiny-app</code>.</p>
+<p>We’ll refer to this folder as <strong><code>project_name/</code></strong> in the instructions below.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Still in the Files tab, click into your new <code>project_name/</code> folder. Then use <strong>File → New Project… → Existing Directory</strong>, choose your <code>project_name/</code> folder, and create an <strong>R Project</strong> there.</p>
+<p>You should now have:</p>
+<pre><code>project_name/
+  project_name.Rproj</code></pre>
+<p><img src="images/do_in_R.png" class="img-fluid"> Inside <code>project_name/</code>, create a new subfolder called <code>data</code>.</p>
+<pre><code>project_name/
+  project_name.Rproj
+  data/</code></pre>
+<p>Now you’ll add the data file.</p>
+<p><img src="images/do_on_internet.png" class="img-fluid"> Download the wellbeing CSV file for this practical from the VLE:</p>
 <ul>
-<li><code>labs()</code></li>
-<li><code>scale_*_*</code></li>
-<li><code>theme()</code></li>
-<li>annotations/<code>geom_label()</code>/<code>geom_text()</code>
-</li>
-<li><code>facet_*</code></li>
-<li><code>patchwork</code></li>
+<li><a href="../data/wellbeing_dataset.csv">wellbeing_dataset.csv</a></li>
 </ul>
-<section id="exercise-1-labels-that-communicate" class="level2"><h2 class="anchored" data-anchor-id="exercise-1-labels-that-communicate">Exercise 1: Labels that communicate</h2>
-<p>We’ll start with a simple scatterplot of <strong>sleep vs wellbeing</strong>.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Start with this <strong>base plot</strong>:</p>
-<div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">wellbeing</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sleep_hours</span>, y <span class="op">=</span> <span class="va">wellbeing_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/do_in_R.png" class="img-fluid"> Improve the plot:</p>
+<p><img src="images/do_on_your_computer.png" class="img-fluid"> Save <code>wellbeing_dataset.csv</code> <strong>inside the <code>data</code> subfolder</strong> of your new project:</p>
+<pre><code>project_name/
+  project_name.Rproj
+  data/
+    wellbeing_dataset.csv</code></pre>
+<p><img src="images/answer.png" class="img-fluid"> Why is it helpful to keep the data file <em>inside</em> the project folder, rather than somewhere else on your computer?</p>
+</section><section id="exercise-2-create-an-app.r-file-and-load-the-data" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-create-an-app.r-file-and-load-the-data">Exercise 2: Create an <code>app.R</code> file and load the data</h2>
+<p>Next, you’ll create your main <strong>Shiny app script</strong> (<code>app.R</code>) and load the data.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In RStudio, go to <strong>File → New File → R Script</strong>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save this file in your <code>project_name/</code> folder with the name <strong><code>app.R</code></strong>.</p>
+<p>You should now have:</p>
+<pre><code>project_name/
+  project_name.Rproj
+  app.R
+  data/
+    wellbeing_dataset.csv</code></pre>
+<p>Now add the code that loads your packages and data at the top of <code>app.R</code>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In <code>app.R</code>, add code that:</p>
 <ul>
-<li>Use <code>labs()</code> to add a title and clearly label the axes (e.g., “Sleep (avg hours/night)”, “Wellbeing Index (0–100)”)</li>
-<li>Make tick marks helpful: use coord_cartesian and set <strong>breaks</strong> for scale_*_continuous so that: (A) the x-axis ranges from 4 to 10 with tick marks every 1 hour, and (B) the y-axis ranges from 30 to 90 with tick marks every 15 pints.<br>
+<li>Loads the <code>shiny</code> and <code>tidyverse</code> packages, and any others you might want (e.g., <code>viridis</code> for colors)</li>
+<li>Reads in the wellbeing_dataset.csv from the data folder and assigns it to an object called <code>wellbeing_df</code>
 </li>
-<li>Improve baseline readability via built-in themes like <code>theme_bw()</code> and manual adjustments with <code>theme()</code> (e.g., font size, gridlines).</li>
+<li>Preproceses <code>wellbeing_df</code> using <code>mutate</code> and <code>factor</code> to order <code>participant_group</code> as a factor with levels “student”, “employed” and “retired”</li>
 </ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/answer.png" class="img-fluid"> In one sentence: What is the <strong>main take-home</strong> from this scatter?</p>
-<hr></section><section id="exercise-2-discrete-color-with-a-legend-that-helps" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-discrete-color-with-a-legend-that-helps">Exercise 2: Discrete color with a legend that helps</h2>
-<p>Color points by <strong>participant_group</strong> and make the legend useful.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Color the points in the plot from Exercise 1 by <code>participant_group</code></p>
-<div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">wellbeing</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sleep_hours</span>, y <span class="op">=</span> <span class="va">wellbeing_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">participant_group</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/do_in_R.png" class="img-fluid"> Improve the use and labelling of color:</p>
+<p><img src="images/answer.png" class="img-fluid"> Why is it a good idea to load your packages and data <strong>near the top</strong> of <code>app.R</code>?</p>
+</section><section id="exercise-3-add-a-minimal-shiny-app-skeleton" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-add-a-minimal-shiny-app-skeleton">Exercise 3: Add a minimal Shiny app skeleton</h2>
+<p>A Shiny app needs three main parts:</p>
 <ul>
-<li>Use <code>labs()</code> to rename the legend title. Remember that any <code>aes()</code> you set is available to <code>labs()</code><br>
+<li>a <strong>UI</strong> that defines what the app looks like<br>
 </li>
-<li>Use either <strong>viridis (discrete)</strong> <code>scale_color_viridis_d()</code> or a <strong>brewer qualitative</strong> palette (e.g., <code>scale_color_brewer(palette = "Set2")</code>).<br>
+<li>a <strong>server</strong> function that defines how the app behaves<br>
 </li>
-<li>Adjust legend placement with <code>theme(legend.position = "top")</code> (or another purposeful spot).</li>
+<li>a final line that calls <code>shinyApp(ui = ..., server = ...)</code>
+</li>
 </ul>
-<p><img src="images/answer.png" class="img-fluid"> Which palette did you choose and why?</p>
-</section><section id="exercise-3-explore-available-color-palettes-and-tools" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-explore-available-color-palettes-and-tools">Exercise 3: Explore available color palettes and tools</h2>
-<p>We touched upon the brewer and viridis palettes. However, these are just some of the options. Many people have developed color palettes you can use in <code>R</code>, and you can create your own.</p>
-<p><img src="images/do_on_internet.png" class="img-fluid"> Look at the many palette options <a href="https://github.com/EmilHvitfeldt/r-color-palettes">on this website</a></p>
-<p><img src="images/do_on_internet.png" class="img-fluid"> Google “color picker”. You should see a tool that allows you to pick colors and provides ways to specify the color you picked. For example, it provides the HEX reference (e.g., “#6a788f”), which you can use to label colors in ggplots (e.g., <code>geom_point(color = "#6a788f")</code>).</p>
-</section><section id="exercise-4-discrete-axes-readable-bar-summaries" class="level2"><h2 class="anchored" data-anchor-id="exercise-4-discrete-axes-readable-bar-summaries">Exercise 4: Discrete axes &amp; readable bar summaries</h2>
-<p>Make a bar plt of wellbeing by participant_group</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Start with this <strong>base plot</strong>:</p>
-<div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">wellbeing</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">participant_group</span>, y <span class="op">=</span> <span class="va">wellbeing_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">stat_summary</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">participant_group</span><span class="op">)</span>, fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/do_in_R.png" class="img-fluid"> Improve the base plot by doing the following:</p>
+<p>In this exercise you’ll set up a minimal skeleton app that does nothing yet, but runs without errors.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In <code>app.R</code>, <strong>underneath</strong> the library and data-loading code, add the following skeleton:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu">fluidPage</span><span class="op">(</span></span>
+<span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">shinyApp</span><span class="op">(</span>ui <span class="op">=</span> <span class="va">ui</span>, server <span class="op">=</span> <span class="va">server</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/do_in_R.png" class="img-fluid"> Click <strong>Run App</strong> in RStudio. You should see a blank Shiny window.</p>
+</section><section id="exercise-4-build-the-ui-layout-and-inputs" class="level2"><h2 class="anchored" data-anchor-id="exercise-4-build-the-ui-layout-and-inputs">Exercise 4: Build the UI layout and inputs</h2>
+<p>Now you’ll build a simple UI that looks similar in structure to the one from <strong>Seminar 9</strong>, but adapted to the <strong>wellbeing</strong> data.</p>
+<p>Your UI will include:</p>
 <ul>
-<li>Use <code>labs()</code> for a clear title and axis titles</li>
-<li>Rename x-axis group labels with <code>scale_x_discrete(labels = c(...))</code>, e.g., to be “Employed”, “Retired” and “Student”</li>
-<li>Use <code>brewer</code> or discrete <code>viridis</code> palette to alter the fill colors</li>
-<li>Note that the legend is redundant with the x-axis. Use <code>theme()</code> to remove the legend by setting its position as <code>none</code>. In addition, improve the overall polish of the plot using built in themes and/or adding further adjustments within <code>theme()</code>
+<li>a title<br>
 </li>
-</ul></section><section id="exercise-5-direct-labels" class="level2"><h2 class="anchored" data-anchor-id="exercise-5-direct-labels">Exercise 5: Direct labels</h2>
-<p>Switch to the <strong>therapy</strong> dataset and explore <strong>loneliness vs wellbeing</strong>, colored by <strong>support_level</strong></p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Starter plot:</p>
-<div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">therapy</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">loneliness_score</span>, y <span class="op">=</span> <span class="va">wellbeing_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">support_level</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Replace legend referencing with <strong>direct labels</strong> near group <strong>centers</strong>.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Create a tibble that computes each group’s <strong>center</strong> using <code>group_by</code> and <code>summarise</code>. Store the tibble, e.g., as an object called <code>centers</code>.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  support_level loneliness_center wellbeing_center
-  &lt;chr&gt;                     &lt;dbl&gt;            &lt;dbl&gt;
-1 High                       21.0             86.2
-2 Low                        59.2             48.9
-3 Medium                     42.2             67.3</code></pre>
-</div>
-</div>
-<p><img src="images/do_in_R.png" class="img-fluid"> Use <code>geom_label</code> to use the tibble to label the groups. Note that because we are now using labels to identify the groups, using a legend to identify them would be redundant. Therefore, set <code>show.legend</code> to FALSE for both <code>geom_point</code> and <code>geom_label</code>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/answer.png" class="img-fluid"> Did direct labels make the plot faster to understand? Can you think of cases in which direct labels would make the plot harder to understand?</p>
-</section><section id="exercise-6-faceting-to-compare-groups-without-clutter" class="level2"><h2 class="anchored" data-anchor-id="exercise-6-faceting-to-compare-groups-without-clutter">Exercise 6: Faceting to compare groups without clutter</h2>
-<p>Explore how the <strong>loneliness vs wellbeing</strong> relation differs by group.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Reorder the levels of the support_level factor using <code>mutate</code> and <code>factor</code> so that the order is: Low, Medium, High</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Return to this basic scatterplot:</p>
-<div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">therapy</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">loneliness_score</span>, y <span class="op">=</span> <span class="va">wellbeing_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/do_in_R.png" class="img-fluid"> Add trendlines and split plot into facets to compare trends across groups</p>
-<ul>
-<li>Add a <code>geom_smooth</code> line to the code to shows the linear regression line for the relationship between <code>sleep_hours</code> and <code>wellbeing_index</code> for each <code>participant_group</code>.</li>
-<li>Use <code>facet_wrap</code> to create separate facets for each <code>participant_group</code>
+<li>a short instructional paragraph<br>
 </li>
-<li>Use built-in themes and <code>theme()</code> to remove the gray background from the plots and facet titles</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="exercise-7-continuous-color-scale-viridis-and" class="level2"><h2 class="anchored" data-anchor-id="exercise-7-continuous-color-scale-viridis-and">Exercise 7: Continuous color scale (viridis) and</h2>
-<p>Switch to examining the <strong>loneliness vs wellbeing</strong> relationship by <strong>sleep_quality</strong> (continuous)</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Starter plot:</p>
-<div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">therapy</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">loneliness_score</span>, y <span class="op">=</span> <span class="va">wellbeing_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/do_in_R.png" class="img-fluid"> Color by <code>sleep_quality</code> and customize:</p>
-<ul>
-<li>Within <code>geom_point</code>, color the points based on <code>sleep_quality</code>
+<li>a <strong>dropdown (selectInput)</strong> to choose the outcome<br>
 </li>
-<li>Customize the colors used for <code>sleep_quality</code> using a <code>viridis</code> scale. Within this line:
-<ul>
-<li>Use the <code>option</code> argument to choose one of the non-default color scales</li>
-<li>Set the name of the legend to something more readable</li>
-<li>Choose breaks that reduce legend clutter</li>
-</ul>
+<li>a <strong>checkbox</strong> to turn points on/off<br>
 </li>
-<li>Use <code>labs()</code> to improve the axis labels</li>
-<li>Use <code>theme()</code> to place the legend in a different position</li>
+<li>a <strong>plotOutput</strong> that will show the main plot</li>
 </ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="exercise-8-facet-grid-for-compact-subgroup-comparisons" class="level2"><h2 class="anchored" data-anchor-id="exercise-8-facet-grid-for-compact-subgroup-comparisons">Exercise 8: Facet grid for compact subgroup comparisons</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Compare the pattern in Exercise 7 by <code>sex</code> and <code>therapy</code>:</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In <code>app.R</code>, edit the contents of <code>ui &lt;- fluidPage(...)</code> so that it contains all of the elements above. Use what you saw in <strong>Seminar 9</strong> and the slides as a guide:</p>
 <ul>
-<li>Use <code>facet_grid</code> to create facets with separate rows for <code>sex</code> and separate columns for <code>therapy</code>. Include a labeller to add a “Sex:” prefix to the row labels and a “Therapy:” prefix to the column labels.</li>
-<li>Use built-in themes and <code>theme()</code> to customize the appearance of the plot, including removing the gray background from the plot and facet titles</li>
+<li>Add a <code>titlePanel()</code> with a clear title, e.g.&nbsp;<code>"Sleep and Wellbeing Across Groups: Interactive"</code>.<br>
+</li>
+<li>Add a short instruction paragraph with <code>p()</code>.<br>
+</li>
+<li>Add a <code>selectInput()</code> using the <code>inputId</code> as <code>"outcome"</code> that lets the user choose between <strong>Wellbeing index</strong> and <strong>Sleep hours</strong>. Use the <code>choices</code> and <code>selected</code> arguments to control what appears in the dropdown and which option is selected by default. For example:</li>
 </ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical7_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/answer.png" class="img-fluid"> Do the facets reveal effects of <code>sex</code> and/or <code>therapy</code>?</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Look at the documentation for the labeller function using <code>?labeller</code> to see the many ways to customise <code>facet_wrap</code> and <code>facet_grid</code> labels</p>
-</section><section id="exercise-9-using-patchwork-to-make-tidy-multi-panel-figures" class="level2"><h2 class="anchored" data-anchor-id="exercise-9-using-patchwork-to-make-tidy-multi-panel-figures">Exercise 9: Using patchwork to make tidy multi-panel figures</h2>
-<p>Create two polished plots and combine them with <code>patchwork</code>.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Use or modify <strong>any two</strong> of your improved plots from the preceding exercises that provide different insights into the same dataset (either wellbeing or therapy) and combine them with patchwork - Choose whether to align plots horizontally or vertically - Add <code><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation()</a></code> to auto-label panels <strong>A</strong>, <strong>B</strong> - Ensure <strong>consistent style</strong> (font size, theme tweaks) across panels</p>
-<p><img src="images/answer.png" class="img-fluid"> What patterns does each figure highlight, and how does combining them provide complementary insights into the data?</p>
-<hr></section></section><section id="youre-finished" class="level1"><h1>You’re finished! 🎉</h1>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">selectInput</span><span class="op">(</span></span>
+<span>  inputId <span class="op">=</span> <span class="st">"outcome"</span>,</span>
+<span>  label   <span class="op">=</span> <span class="st">"Outcome to plot:"</span>,</span>
+<span>  choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Wellbeing index"</span> <span class="op">=</span> <span class="st">"wellbeing_index"</span>,</span>
+<span>    <span class="st">"Sleep hours"</span>     <span class="op">=</span> <span class="st">"sleep_hours"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  selected <span class="op">=</span> <span class="st">"wellbeing_index"</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Add a <code>checkboxInput()</code> called <code>"show_points"</code> with default value <code>FALSE</code>.<br>
+</li>
+<li>At the end of <code>fluidPage(...)</code>, add <code>plotOutput("group_plot")</code> where the plot will appear.</li>
+</ul>
+<p>Make sure that all of these lines live <strong>inside</strong> the parentheses of <code>fluidPage(...)</code>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save <code>app.R</code>, then click <strong>Run App</strong> again. You should now see your <strong>title</strong>, <strong>instruction text</strong>, a <strong>dropdown menu</strong>, a <strong>checkbox</strong>, and an empty plot area.</p>
+<p><img src="images/answer.png" class="img-fluid"> Which argument in <code>selectInput()</code> controls the <strong>labels the user sees</strong>, and which argument controls the <strong>values Shiny stores</strong> in <code>input$outcome</code>?</p>
+</section><section id="exercise-5-draw-a-basic-plot-in-the-server" class="level2"><h2 class="anchored" data-anchor-id="exercise-5-draw-a-basic-plot-in-the-server">Exercise 5: Draw a basic plot in the server</h2>
+<p>Next, you’ll connect the UI to a <strong>static plot</strong> in the server. For now, we’ll ignore the user inputs and just draw a boxplot of <strong>wellbeing index by participant group</strong>.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Go to the <code>server</code> function part of your skeleton and flesh out the server logic:</p>
+<ol type="1">
+<li>Inside the curly braces <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>, create an output called <code>group_plot</code> using <code>renderPlot()</code>:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">output</span><span class="op">$</span><span class="va">group_plot</span> <span class="op">&lt;-</span> <span class="fu">renderPlot</span><span class="op">(</span><span class="op">{</span></span>
+<span></span>
+<span>  <span class="co"># your ggplot code will go here</span></span>
+<span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Inside <code>renderPlot({ ... })</code>, write ggplot code that:</li>
+</ol>
+<ul>
+<li>uses <code>wellbeing_df</code> as the data<br>
+</li>
+<li>puts <code>participant_group</code> on the x-axis<br>
+</li>
+<li>puts <code>wellbeing_index</code> on the y-axis<br>
+</li>
+<li>draws boxplots coloured by <code>participant_group</code><br>
+</li>
+<li>customises the fill colors</li>
+<li>labels the axes clearly</li>
+</ul>
+<p>You can start from code like:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wellbeing_df</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">participant_group</span>, y <span class="op">=</span> <span class="va">wellbeing_index</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">participant_group</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and then add extra layers (fill scale, labels, theme tweaks) to make the plot look polished, drawing on what you’ve done in previous weeks.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save <code>app.R</code> and click <strong>Run App</strong>. You should now see a boxplot of wellbeing index by participant group. The dropdown and checkbox don’t do anything yet, but your plot should appear.</p>
+</section><section id="exercise-6-use-inputoutcome-with-an-ifelse-pattern" class="level2"><h2 class="anchored" data-anchor-id="exercise-6-use-inputoutcome-with-an-ifelse-pattern">Exercise 6: Use <code>input$outcome</code> with an <code>if</code>/<code>else</code> pattern</h2>
+<p>Now you’ll make the app <strong>reactive</strong> to the dropdown menu by using <code>input$outcome</code> inside the <code>renderPlot()</code> code.</p>
+<p>We’ll use the same <strong><code>if (...) { ... } else { ... }</code> pattern</strong> as in <strong>Seminar 9</strong>:</p>
+<ul>
+<li>If the user selects <code>"wellbeing_index"</code>, plot wellbeing on the y-axis<br>
+</li>
+<li>Otherwise (i.e., if they select <code>"sleep_hours"</code>), plot sleep hours on the y-axis instead</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Modify the code <strong>inside</strong> your <code>renderPlot({ ... })</code> so that it follows this pattern:</p>
+<ol type="1">
+<li>At the top of <code>renderPlot({ ... })</code>, create an <code>if</code>/<code>else</code> block that checks <code>input$outcome</code>:</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">outcome</span> <span class="op">==</span> <span class="st">"wellbeing_index"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># build a plot with wellbeing_index on the y-axis</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="co"># build a plot with sleep_hours on the y-axis</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>In the first branch (<code>if</code>):</li>
+</ol>
+<ul>
+<li>Create an object called <code>output_plot</code>, and assign your Exercise 5 code (which creates your boxplot with <code>wellbeing_index</code> on the y-axis) to it.</li>
+<li>Note that this will set output_plot as a boxplot for <code>wellbeing_index</code> when the user selects <code>wellbeing_index</code>, just as intended.</li>
+</ul>
+<ol start="3" type="1">
+<li>In the <code>else</code> branch:</li>
+</ol>
+<ul>
+<li>Create a similar <code>output_plot</code>, but now with <code>sleep_hours</code> on the y-axis and an updated y-axis label (e.g.&nbsp;“Sleep hours”).</li>
+<li>Note that this will set output_plot as a boxplot for <code>sleep_hours</code> when the user selects <code>sleep_hours</code>, just as intended.</li>
+</ul>
+<ol start="4" type="1">
+<li>After the <code>if</code>/<code>else</code> block, make sure the <strong>last line</strong> inside <code>renderPlot({ ... })</code> is:</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">output_plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This tells Shiny to actually draw the plot.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save <code>app.R</code> and click <strong>Run App</strong>. Change the dropdown between <strong>Wellbeing index</strong> and <strong>Sleep hours</strong>. The plot should update to show the selected outcome.</p>
+<p><img src="images/answer.png" class="img-fluid"> In your own words, describe what <code>if (input$outcome == "wellbeing_index") { ... } else { ... }</code> is doing in this app.</p>
+</section><section id="exercise-7-use-inputshow_points-to-toggle-raw-data-points" class="level2"><h2 class="anchored" data-anchor-id="exercise-7-use-inputshow_points-to-toggle-raw-data-points">Exercise 7: Use <code>input$show_points</code> to toggle raw data points</h2>
+<p>Finally, you’ll use the <strong>checkbox</strong> to control whether individual data points are shown on top of the boxplots.</p>
+<p>We’ll use a second <code>if</code> statement:</p>
+<ul>
+<li>If <code>input$show_points</code> is <code>TRUE</code> (box checked), add jittered points<br>
+</li>
+<li>If <code>input$show_points</code> is <code>FALSE</code> (box not checked), keep just the boxplots</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the same <code>renderPlot({ ... })</code> code, <strong>just before</strong> the final line <code>output_plot</code>, add an <code>if</code> block that:</p>
+<ul>
+<li>Checks the value of <code>input$show_points</code>
+</li>
+<li>If the value is TRUE (i.e., if the box is checked), adds a layer to <code>output_plot</code> with jittered points</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (input<span class="sc">$</span>show_points) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  output_plot <span class="ot">&lt;-</span> output_plot <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    [insert a line here that adds jittered points]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The full structure <strong>inside</strong> <code>renderPlot()</code> should now be:</p>
+<ul>
+<li>
+<code>if/else</code> block choosing the <strong>outcome variable</strong><br>
+</li>
+<li>
+<code>if</code> block adding <strong>points</strong> if <code>input$show_points</code> is <code>TRUE</code><br>
+</li>
+<li>final line that calls <code>output_plot</code>
+</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save <code>app.R</code> and click <strong>Run App</strong>. Try:</p>
+<ul>
+<li>Switching between <strong>Wellbeing index</strong> and <strong>Sleep hours</strong><br>
+</li>
+<li>Ticking and unticking <strong>Show individual data points</strong>
+</li>
+</ul>
+<p>Make sure the plot behaves as you expect.</p>
+</section><section id="exercise-8-review-and-tidy-your-app" class="level2"><h2 class="anchored" data-anchor-id="exercise-8-review-and-tidy-your-app">Exercise 8: Review and tidy your app</h2>
+<p>In this final exercise, you’ll tidy your app and make sure you understand how each part works.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In <code>app.R</code>, add a few short <strong>comments</strong> (lines starting with <code>#</code>) to remind your future self what each section does:</p>
+<ul>
+<li>one comment above the data-loading block<br>
+</li>
+<li>one comment above the <code>ui &lt;- fluidPage(...)</code> section<br>
+</li>
+<li>one comment above the <code>server &lt;- function(...)</code> section<br>
+</li>
+<li>one comment above the <code>shinyApp(ui = ui, server = server)</code> line</li>
+</ul>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
