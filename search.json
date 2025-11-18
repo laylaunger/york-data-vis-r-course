@@ -503,7 +503,7 @@
     "href": "data-vis/week-8/seminar8.html#embedded-code-chunk-options",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Embedded code chunk options",
-    "text": "Embedded code chunk options\n\nShow the code, but do not run it\n#| eval: false\nRun the code, show only the output (e.g., a plot)\n#| echo: false\nRun the code, show nothing (no code, no output)\n#| include: false\n\nGive concrete examples:\n\nSetup chunk uses include: false so the reader never sees the plumbing.\nThey might use eval: false if they want to include example code that doesn’t need to run (less common in the final report, more for teaching).\n\nReassure them that for most chunks in their report, the main choice is simply whether they want to show or hide the code (echo).",
+    "text": "Embedded code chunk options\n\nBy default, code is both shown and run\n\nShow the code, but do not run it\n#| eval: false\nRun the code, show only the output (e.g., a plot)\n#| echo: false\nRun the code, show nothing (no code, no output)\n#| include: false\n\nGive concrete examples:\n\nSetup chunk uses include: false so the reader never sees the plumbing.\nThey might use eval: false if they want to include example code that doesn’t need to run (less common in the final report, more for teaching).\n\nReassure them that for most chunks in their report, the main choice is simply whether they want to show or hide the code (echo).",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
