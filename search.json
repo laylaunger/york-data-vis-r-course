@@ -287,7 +287,7 @@
     "href": "data-vis/week-8/seminar8.html#from-last-time",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "From last time",
-    "text": "From last time\n\nLabels with labs()\n\n\nscale_*_* to customise breaks, labels, limits, and colours\nPolishing visuals with theme()\n\nAnnotations, text, and direct labelling for clarity\nFaceting and multi-panel layouts with facet_* and patchwork\n\n\n\nRemind students very briefly what we did in Week 7: we focused on explaining with plots, not just exploring.\nEmphasise that the therapy report we will look at today uses many of those ideas: clear labels, sensible scales, consistent themes, and multi-panel patchwork layouts.",
+    "text": "From last time\n\nLabels with labs()\nscale_*_* to customise breaks, labels, limits, and colours\nPolishing visuals with theme()\nAnnotations, text, and direct labelling for clarity\nFaceting and multi-panel layouts with facet_* and patchwork\n\n\nRemind students very briefly what we did in Week 7: we focused on explaining with plots, not just exploring.\nEmphasise that the therapy report we will look at today uses many of those ideas: clear labels, sensible scales, consistent themes, and multi-panel patchwork layouts.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -299,7 +299,7 @@
     "href": "data-vis/week-8/seminar8.html#today",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Today",
-    "text": "Today\n\nWhy build a report?\nInspect a finished Quarto report\nBasic anatomy of a Quarto report\n\nHeader\nSetup\nBody combining text, code, and code-generated figures\n\n\nHow to build a Quarto report\nProject structure and workflow\n\n\n\nWhat a Quarto report looks like\nThe parts that build a report",
+    "text": "Today\n\nWhy build a report?\nInspect a finished Quarto report\nBasic anatomy of a Quarto report\n\nHeader\nSetup\nBody combining text, code, and code-generated figures\n\nHow to build a Quarto report\nProject structure and workflow\n\n\n\nWhat a Quarto report looks like\nThe parts that build a report",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -323,7 +323,7 @@
     "href": "data-vis/week-8/seminar8.html#why-build-a-report",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Why build a report?",
-    "text": "Why build a report?\n\nQuarto reports tell a story by combining:\n\n\nProse (context, narrative, explanations)\n\nCode (R for data wrangling and plots)\n\nFigures and tables (output from the code)",
+    "text": "Why build a report?\n\nQuarto reports tell a story by combining:\n\nProse (context, narrative, explanations)\nCode (R for data wrangling and plots)\nFigures and tables (output from the code)",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -335,7 +335,7 @@
     "href": "data-vis/week-8/seminar8.html#why-build-a-report-1",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Why build a report?",
-    "text": "Why build a report?\n\nEverything lives in one .qmd file:\n\nCombines code, output, and interpretation\nReproducible!\n\n\n\n\nEmphasise reproducibility: if someone presses “Render” on their report, they should get the same HTML they submitted.",
+    "text": "Why build a report?\n\nEverything lives in one .qmd file:\n\nCombines code, output, and interpretation\nReproducible!\n\n\n\nEmphasise reproducibility: if someone presses “Render” on their report, they should get the same HTML they submitted.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -359,7 +359,7 @@
     "href": "data-vis/week-8/seminar8.html#a-finished-example",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "A finished example",
-    "text": "A finished example\n\nOur example report for this week:\n\nUses the therapy dataset\n\nContains a short introduction, two main figure panels, and a summary\n\n\n\n\n\n\n\nsupport_level\ntherapy\nage\nloneliness_score\nwellbeing_score\nsleep_quality\nsex\nyear\n\n\n\nMedium\nYes\n23\n69\n63\n3\nMale\n2022\n\n\nMedium\nYes\n31\n46\n89\n8\nMale\n2019\n\n\nHigh\nYes\n35\n46\n80\n8\nMale\n2019\n\n\nLow\nNo\n29\n40\n46\n5\nFemale\n2020\n\n\nLow\nYes\n34\n40\n69\n9\nFemale\n2022\n\n\nLow\nNo\n25\n68\n38\n6\nMale\n2019",
+    "text": "A finished example\n\nOur example report for this week:\n\nUses the therapy dataset\nContains a short introduction, two main figure panels, and a summary\n\n\n\n\n\n\n\nsupport_level\ntherapy\nage\nloneliness_score\nwellbeing_score\nsleep_quality\nsex\nyear\n\n\n\n\nMedium\nYes\n23\n69\n63\n3\nMale\n2022\n\n\nMedium\nYes\n31\n46\n89\n8\nMale\n2019\n\n\nHigh\nYes\n35\n46\n80\n8\nMale\n2019\n\n\nLow\nNo\n29\n40\n46\n5\nFemale\n2020\n\n\nLow\nYes\n34\n40\n69\n9\nFemale\n2022\n\n\nLow\nNo\n25\n68\n38\n6\nMale\n2019",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -371,7 +371,7 @@
     "href": "data-vis/week-8/seminar8.html#a-finished-example-1",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "A finished example",
-    "text": "A finished example\n\nOur example report for this week:\n\nUses the therapy dataset\n\nContains a header, short introduction, two main figure panels, and a summary\n\n\n\nFull report: Example Quarto report\n\nEmphasize components: - Title and author at the top - Introductory text - First multi-panel figure showing outcomes by support level.",
+    "text": "A finished example\n\nOur example report for this week:\n\nUses the therapy dataset\nContains a header, short introduction, two main figure panels, and a summary\n\n\nFull report: Example Quarto report\n\nEmphasize components: - Title and author at the top - Introductory text - First multi-panel figure showing outcomes by support level.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -395,7 +395,7 @@
     "href": "data-vis/week-8/seminar8.html#anatomy-of-a-quarto-report-overview",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Anatomy of a Quarto report: Overview",
-    "text": "Anatomy of a Quarto report: Overview\nA file with extension .qmd\nContains:\n\n\nYAML header: at the top\n\nSetup code chunk: load packages, data\n\nBody including sections written in Markdown and code chunks that generate output (tables, plots) integrated with section text",
+    "text": "Anatomy of a Quarto report: Overview\nA file with extension .qmd\nContains:\n\nYAML header: at the top\nSetup code chunk: load packages, data\nBody including sections written in Markdown and code chunks that generate output (tables, plots) integrated with section text",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -419,7 +419,7 @@
     "href": "data-vis/week-8/seminar8.html#anatomy-of-a-quarto-report-overview-1",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Anatomy of a Quarto report: Overview",
-    "text": "Anatomy of a Quarto report: Overview\n\nWhen you click Render in RStudio, Quarto:\n\nFormats the Markdown text and runs the code\nIntegrates the code outputs with the text\nProduces an HTML report\n\n\n\n\nReassure students that this is very similar to what they saw in the DataCamp RMarkdown chapter: Markdown + code + output.\nHighlight that the main differences are: - The file extension is .qmd. - The YAML uses format: instead of output:. - Quarto supports more output types, but we’ll use HTML here.",
+    "text": "Anatomy of a Quarto report: Overview\n\nWhen you click Render in RStudio, Quarto:\n\nFormats the Markdown text and runs the code\nIntegrates the code outputs with the text\nProduces an HTML report\n\n\n\nReassure students that this is very similar to what they saw in the DataCamp RMarkdown chapter: Markdown + code + output.\nHighlight that the main differences are: - The file extension is .qmd. - The YAML uses format: instead of output:. - Quarto supports more output types, but we’ll use HTML here.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -443,7 +443,7 @@
     "href": "data-vis/week-8/seminar8.html#today-5",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Today",
-    "text": "Today\n\n\nHow to build a Quarto report\n\nYAML header",
+    "text": "Today\n\nHow to build a Quarto report\n\nYAML header",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -455,7 +455,7 @@
     "href": "data-vis/week-8/seminar8.html#yaml-header",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "YAML header",
-    "text": "YAML header\n---\ntitle: \"Social Support, Therapy, and Wellbeing\"\nauthor: \"Exam number 123456\"\ndate: \"2025-11-13\"\nformat:\n  html:\n    toc: true\n    toc-depth: 2\n    number-sections: false\n    self-contained: true\nexecute:\n  message: false\n  warning: false\n---\n\nGo through each part:\n\n\ntitle, author, date are what show up at the top of the report.\n\nformat: html: controls how the HTML looks:\n\n\ntoc: true adds a table of contents,\n\nself-contained: true bundles everything into a single HTML file.\n\n\n\nexecute: controls default behaviour of code:\n\nHere we’re hiding messages and warnings globally.\n\n\n\nEmphasise that for the assessment, they should have a sensible title and use their exam number as the author.",
+    "text": "YAML header\n---\ntitle: \"Social Support, Therapy, and Wellbeing\"\nauthor: \"Exam number 123456\"\ndate: \"2025-11-13\"\nformat:\n  html:\n    toc: true\n    toc-depth: 2\n    number-sections: false\n    self-contained: true\nexecute:\n  message: false\n  warning: false\n---\n\nGo through each part:\n\ntitle, author, date are what show up at the top of the report.\nformat: html: controls how the HTML looks:\n\ntoc: true adds a table of contents,\nself-contained: true bundles everything into a single HTML file.\n\nexecute: controls default behaviour of code:\n\nHere we’re hiding messages and warnings globally.\n\n\nEmphasise that for the assessment, they should have a sensible title and use their exam number as the author.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -467,7 +467,7 @@
     "href": "data-vis/week-8/seminar8.html#today-6",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Today",
-    "text": "Today\n\n\nHow to build a Quarto report\n\nYAML header\nEmbedded code chunks (setup and body)",
+    "text": "Today\n\nHow to build a Quarto report\n\nYAML header\nEmbedded code chunks (setup and body)",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -515,7 +515,7 @@
     "href": "data-vis/week-8/seminar8.html#embedded-code-chunk-figure-control",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Embedded code chunk figure control",
-    "text": "Embedded code chunk figure control\n\nCaption shown under the figure\n#| fig-cap: \"A helpful caption.\"\nHow wide the figure appears in the HTML column\n#| out-width: \"50%\"\nAlignment\n#| fig-align: \"left\", \"center\", or \"right\"\n\nClarify the difference between:\n\n\nfig-width / fig-height (the size of the drawing device in inches),\n\nout-width (how wide the figure appears in the HTML document).\n\nExplain that in this example, the first patchwork figure is set to be 60% of the text width so it doesn’t feel oversized.",
+    "text": "Embedded code chunk figure control\n\nCaption shown under the figure\n#| fig-cap: \"A helpful caption.\"\nHow wide the figure appears in the HTML column\n#| out-width: \"50%\"\nAlignment\n#| fig-align: \"left\", \"center\", or \"right\"\n\nClarify the difference between:\n\nfig-width / fig-height (the size of the drawing device in inches),\nout-width (how wide the figure appears in the HTML document).\n\nExplain that in this example, the first patchwork figure is set to be 60% of the text width so it doesn’t feel oversized.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -539,7 +539,7 @@
     "href": "data-vis/week-8/seminar8.html#setup-chunk",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Setup chunk",
-    "text": "Setup chunk\n```{r}\n#| label: setup\n#| include: false\nlibrary(tidyverse)\nlibrary(here)\nlibrary(patchwork)\nlibrary(viridis)\n\ntherapy_df &lt;- read_csv(\"data/therapy_dataset.csv\")\n\ntherapy_df &lt;- therapy_df |&gt;\n  mutate(\n    support_level = factor(support_level, levels = c(\"Low\", \"Medium\", \"High\")),\n    therapy = factor(therapy, levels = c(\"Yes\", \"No\"))\n  )\n\ntheme_set(theme_minimal(base_size = 14))\n```\n\nClarify the role of the setup chunk:\n\nIt runs once, near the start of the document.\nIt loads packages used throughout the report.\nIt reads in the data and does any basic recoding.\n\ninclude: false means:\n\nThe code runs, but does not appear in the report.\nNo output from this chunk is shown.\n\n\n\nHighlight the use of a relative path into the data folder, which lives inside of the same folder as the quarto report, so the quarto report will be able to find it. Matches the project structure they will use for assessment.",
+    "text": "Setup chunk\n```{r}\n#| label: setup\n#| include: false\nlibrary(tidyverse)\nlibrary(here)\nlibrary(patchwork)\nlibrary(viridis)\n\ntherapy_df &lt;- read_csv(\"data/therapy_dataset.csv\")\n\ntherapy_df &lt;- therapy_df |&gt;\n  mutate(\n    support_level = factor(support_level, levels = c(\"Low\", \"Medium\", \"High\")),\n    therapy = factor(therapy, levels = c(\"Yes\", \"No\"))\n  )\n\ntheme_set(theme_minimal(base_size = 14))\n```\n\nClarify the role of the setup chunk:\n\nIt runs once, near the start of the document.\nIt loads packages used throughout the report.\nIt reads in the data and does any basic recoding.\ninclude: false means:\n\nThe code runs, but does not appear in the report.\nNo output from this chunk is shown.\n\n\nHighlight the use of a relative path into the data folder, which lives inside of the same folder as the quarto report, so the quarto report will be able to find it. Matches the project structure they will use for assessment.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -659,7 +659,7 @@
     "href": "data-vis/week-8/seminar8.html#typical-workflow",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Typical workflow",
-    "text": "Typical workflow\n\nCreate / open the RStudio project for your assessment\nCreate / open your report.qmd\n\nMake changes to:\n\nText, headings, and interpretations\nCode chunks and chunk options\n\n\nSave the file\nClick Render to regenerate the HTML report\nCheck that the figures and text look as expected\n\n\nEmphasise the importance of saving before rendering.\nSuggest that they render frequently while working on the report, rather than only at the very end — it’s easier to catch small issues early.",
+    "text": "Typical workflow\n\nCreate / open the RStudio project for your assessment\nCreate / open your report.qmd\nMake changes to:\n\nText, headings, and interpretations\nCode chunks and chunk options\n\nSave the file\nClick Render to regenerate the HTML report\nCheck that the figures and text look as expected\n\n\nEmphasise the importance of saving before rendering.\nSuggest that they render frequently while working on the report, rather than only at the very end — it’s easier to catch small issues early.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -671,7 +671,7 @@
     "href": "data-vis/week-8/seminar8.html#troubleshooting-common-issues",
     "title": "Week 8 Seminar: Quarto Reports",
     "section": "Troubleshooting: common issues",
-    "text": "Troubleshooting: common issues\n\n\nPackage not found\n\nInstall the package, add library(package) in the setup chunk\n\n\n\nFile not found\n\nCheck the path to your data file and that it’s inside the project\n\n\n\nObject not found\n\nCheck chunk order and spelling of variable names\n\n\n\nPlot not appearing\n\nMake sure the chunk is being evaluated (no eval: false)\n\n\n\n\nEncourage students not to panic when the render fails — the error message will usually tell them which chunk label failed and why.\nRemind them they can always comment out a troublesome chunk temporarily and rerender to isolate the problem.",
+    "text": "Troubleshooting: common issues\n\nPackage not found\n\nInstall the package, add library(package) in the setup chunk\n\nFile not found\n\nCheck the path to your data file and that it’s inside the project\n\nObject not found\n\nCheck chunk order and spelling of variable names\n\nPlot not appearing\n\nMake sure the chunk is being evaluated (no eval: false)\n\n\n\nEncourage students not to panic when the render fails — the error message will usually tell them which chunk label failed and why.\nRemind them they can always comment out a troublesome chunk temporarily and rerender to isolate the problem.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 8: Quarto Reports",
@@ -3786,7 +3786,7 @@
     "href": "data-vis/week-9/seminar9.html#from-last-time",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "From last time",
-    "text": "From last time\n\nValue of reproducible reports\nBasic anatomy of a Quarto report\nHow to build a Quarto report combining prose, code and figures\n\nYAML header, setup chunk, and body sections\nEmbedded code chunks with chunk options to control output\n\n\nProject structure and workflow\n\n\nBriefly remind students of Week 8:\n\nThey learned how to structure a Quarto report with YAML, a setup chunk, and a body that mixes text, code, and figures.\nThe therapy example report showed multi-panel figures and polished ggplots, using many of the visualisation techniques from Weeks 3–7.\n\nSet up today as “the next step”: taking similar analyses and turning them into interactive tools.",
+    "text": "From last time\n\nValue of reproducible reports\nBasic anatomy of a Quarto report\nHow to build a Quarto report combining prose, code and figures\n\nYAML header, setup chunk, and body sections\nEmbedded code chunks with chunk options to control output\n\nProject structure and workflow\n\n\nBriefly remind students of Week 8:\n\nThey learned how to structure a Quarto report with YAML, a setup chunk, and a body that mixes text, code, and figures.\nThe therapy example report showed multi-panel figures and polished ggplots, using many of the visualisation techniques from Weeks 3–7.\n\nSet up today as “the next step”: taking similar analyses and turning them into interactive tools.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -3822,7 +3822,7 @@
     "href": "data-vis/week-9/seminar9.html#why-build-a-shiny-app",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Why build a Shiny app?",
-    "text": "Why build a Shiny app?\n\nReports (Quarto) are great for:\n\nCommunicating a fixed story\n\nSharing key results and interpretations\n\n\nShiny apps are great for:\n\n\nExploring data interactively\n\n\n\n\nContrast Quarto and Shiny:\n\nQuarto reports are like a polished article or mini-paper.\nShiny apps are like interactive dashboards: people can change inputs and immediately see updated plots.\n\nEmphasise that both use the same R and ggplot skills they already have.",
+    "text": "Why build a Shiny app?\n\nReports (Quarto) are great for:\n\nCommunicating a fixed story\nSharing key results and interpretations\n\nShiny apps are great for:\n\nExploring data interactively\n\n\n\nContrast Quarto and Shiny:\n\nQuarto reports are like a polished article or mini-paper.\nShiny apps are like interactive dashboards: people can change inputs and immediately see updated plots.\n\nEmphasise that both use the same R and ggplot skills they already have.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -3834,7 +3834,7 @@
     "href": "data-vis/week-9/seminar9.html#why-build-a-shiny-app-1",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Why build a Shiny app?",
-    "text": "Why build a Shiny app?\n\nExample applications in human data science:\n\nExplore how outcomes change across groups or predictors\n\nLive updates on projects as new data come in\n\n\nAdvantages:\n\nLet collaborators, supervisors and users “play with” the data\nDemonstrate findings in a more engaging way",
+    "text": "Why build a Shiny app?\n\nExample applications in human data science:\n\nExplore how outcomes change across groups or predictors\nLive updates on projects as new data come in\n\nAdvantages:\n\nLet collaborators, supervisors and users “play with” the data\nDemonstrate findings in a more engaging way",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -3858,7 +3858,7 @@
     "href": "data-vis/week-9/seminar9.html#a-finished-example",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "A finished example",
-    "text": "A finished example\n\nOur example app for this week:\n\nUses the therapy dataset\n\nShows how support_level is related to outcomes\nAllows the user to choose one of two outcomes and to add individual data points\n\n\n\n\n\n\n\nsupport_level\ntherapy\nage\nloneliness_score\nwellbeing_score\nsleep_quality\nsex\nyear\n\n\n\nMedium\nYes\n23\n69\n63\n3\nMale\n2022\n\n\nMedium\nYes\n31\n46\n89\n8\nMale\n2019\n\n\nHigh\nYes\n35\n46\n80\n8\nMale\n2019\n\n\nLow\nNo\n29\n40\n46\n5\nFemale\n2020\n\n\nLow\nYes\n34\n40\n69\n9\nFemale\n2022\n\n\nLow\nNo\n25\n68\n38\n6\nMale\n2019",
+    "text": "A finished example\n\nOur example app for this week:\n\nUses the therapy dataset\nShows how support_level is related to outcomes\nAllows the user to choose one of two outcomes and to add individual data points\n\n\n\n\n\n\n\nsupport_level\ntherapy\nage\nloneliness_score\nwellbeing_score\nsleep_quality\nsex\nyear\n\n\n\n\nMedium\nYes\n23\n69\n63\n3\nMale\n2022\n\n\nMedium\nYes\n31\n46\n89\n8\nMale\n2019\n\n\nHigh\nYes\n35\n46\n80\n8\nMale\n2019\n\n\nLow\nNo\n29\n40\n46\n5\nFemale\n2020\n\n\nLow\nYes\n34\n40\n69\n9\nFemale\n2022\n\n\nLow\nNo\n25\n68\n38\n6\nMale\n2019",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -3870,7 +3870,7 @@
     "href": "data-vis/week-9/seminar9.html#a-finished-example-1",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "A finished example",
-    "text": "A finished example\n\nOur example app for this week:\n\nUses the therapy dataset\n\nShows how support_level is related to outcomes\nAllows the user to choose one of two outcomes and to add individual data points\n\n\n\nFull report: Open the example Shiny app",
+    "text": "A finished example\n\nOur example app for this week:\n\nUses the therapy dataset\nShows how support_level is related to outcomes\nAllows the user to choose one of two outcomes and to add individual data points\n\n\nFull report: Open the example Shiny app",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -3906,7 +3906,7 @@
     "href": "data-vis/week-9/seminar9.html#what-is-a-web-app",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "What is a web app?",
-    "text": "What is a web app?\n\nA web application is:\n\nA web page you can interact with (clicks, sliders, dropdowns)\nThe display updates automatically in response\n\n\nMost things you interact with in a browser are web apps:\n\nE.g., online forms\n\n\n\n\nKeep this conceptual and light:\n\nEmphasise that they already use web apps all the time (e.g., banking, booking systems).\nThe core idea: interactions in the browser trigger updates behind the scenes.",
+    "text": "What is a web app?\n\nA web application is:\n\nA web page you can interact with (clicks, sliders, dropdowns)\nThe display updates automatically in response\n\nMost things you interact with in a browser are web apps:\n\nE.g., online forms\n\n\n\nKeep this conceptual and light:\n\nEmphasise that they already use web apps all the time (e.g., banking, booking systems).\nThe core idea: interactions in the browser trigger updates behind the scenes.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -3930,7 +3930,7 @@
     "href": "data-vis/week-9/seminar9.html#what-is-shiny",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "What is Shiny?",
-    "text": "What is Shiny?\n\n\n\nShiny is an R package for building web apps:\n\nYou write the user interface (UI) in R\nYou write the server logic in R\nShiny connects them and runs the app\n\n\nBuilds on what you already know:\n\nYou stay inside RStudio and use a similar project workflow / setup\nYou can use the same kind of ggplot2 code to create plots in your apps\n\n\n\n\n\nUnderline the “no need to be a web developer” message:\n\nThey do not need to learn HTML, CSS, or JavaScript.\nShiny lets them re-use their R and ggplot skills.",
+    "text": "What is Shiny?\n\n\nShiny is an R package for building web apps:\n\nYou write the user interface (UI) in R\nYou write the server logic in R\nShiny connects them and runs the app\n\nBuilds on what you already know:\n\nYou stay inside RStudio and use a similar project workflow / setup\nYou can use the same kind of ggplot2 code to create plots in your apps\n\n\n\n\nUnderline the “no need to be a web developer” message:\n\nThey do not need to learn HTML, CSS, or JavaScript.\nShiny lets them re-use their R and ggplot skills.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -4002,7 +4002,7 @@
     "href": "data-vis/week-9/seminar9.html#inputs-and-outputs",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Inputs and outputs",
-    "text": "Inputs and outputs\n\n\nInputs\n\nThe ui defines user input options (e.g., checkboxes, menus)\nThe user’s input (e.g., their dropdown menu choice) is stored as part of an object called input\n\nThe server can read and use the input object’s parts\n\n\n\nOutputs\n\nThe server function uses the input object’s parts\nIncludes code that uses those parts to create outputs, such as a plot that updates any time the user input changes",
+    "text": "Inputs and outputs\n\nInputs\n\nThe ui defines user input options (e.g., checkboxes, menus)\nThe user’s input (e.g., their dropdown menu choice) is stored as part of an object called input\nThe server can read and use the input object’s parts\n\nOutputs\n\nThe server function uses the input object’s parts\nIncludes code that uses those parts to create outputs, such as a plot that updates any time the user input changes",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -4182,7 +4182,7 @@
     "href": "data-vis/week-9/seminar9.html#populate-ui-outputs",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Populate UI: Outputs",
-    "text": "Populate UI: Outputs\nNow we tell the UI where the plot will appear\nWe refer to the name of the plot we will create using the server code\nui &lt;- fluidPage(\n  ...\n\n  plotOutput(\"support_plot\")\n)\n\nExplain:\n\n\nplotOutput(\"support_plot\") creates a space in the UI where Shiny will display the plot.\nThe string \"support_plot\" must match the name we’ll use on the server: output$support_plot.\n\nReinforce the mapping: output name in UI ↔︎ output name in server.",
+    "text": "Populate UI: Outputs\nNow we tell the UI where the plot will appear\nWe refer to the name of the plot we will create using the server code\nui &lt;- fluidPage(\n  ...\n\n  plotOutput(\"support_plot\")\n)\n\nExplain:\n\nplotOutput(\"support_plot\") creates a space in the UI where Shiny will display the plot.\nThe string \"support_plot\" must match the name we’ll use on the server: output$support_plot.\n\nReinforce the mapping: output name in UI ↔︎ output name in server.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -4194,7 +4194,7 @@
     "href": "data-vis/week-9/seminar9.html#today-7",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Today",
-    "text": "Today\n\nHow to build a simple Shiny app\n\nOverview and basic skeleton\nPopulate the ui\nBuild server code\n\n\n\n\nNow is when we switch over to building that server logic.\nHere, we’ll use the inputs from the user to create that plot, So that the UI can then show the plot to the user.",
+    "text": "Today\n\nHow to build a simple Shiny app\n\nOverview and basic skeleton\nPopulate the ui\nBuild server code\n\n\n\nNow is when we switch over to building that server logic.\nHere, we’ll use the inputs from the user to create that plot, So that the UI can then show the plot to the user.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -4206,7 +4206,7 @@
     "href": "data-vis/week-9/seminar9.html#build-server-code",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Build Server Code",
-    "text": "Build Server Code\nServer is a function that uses inputs to generate outputs\nserver &lt;- function(input, output, session) {\n\n  # Server logic will go here\n\n}\n\nPoint out:\n\nEvery Shiny app server is a function with at least these arguments:\n\n\ninput : list of all input values\n\noutput : list where we store outputs\n\nsession: information about the current session (not needed today)\n\n\n\nFor now, the body is empty — no outputs are defined yet.",
+    "text": "Build Server Code\nServer is a function that uses inputs to generate outputs\nserver &lt;- function(input, output, session) {\n\n  # Server logic will go here\n\n}\n\nPoint out:\n\nEvery Shiny app server is a function with at least these arguments:\n\ninput : list of all input values\noutput : list where we store outputs\nsession: information about the current session (not needed today)\n\n\nFor now, the body is empty — no outputs are defined yet.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -4254,7 +4254,7 @@
     "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Build Server Code: Incorporate Inputs",
-    "text": "Build Server Code: Incorporate Inputs\n\nRemember:\n\n\nui stored user options as parts of an object called input\n\nwe gave those parts names using inputId",
+    "text": "Build Server Code: Incorporate Inputs\n\nRemember:\n\nui stored user options as parts of an object called input\nwe gave those parts names using inputId",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -4266,7 +4266,7 @@
     "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-1",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Build Server Code: Incorporate Inputs",
-    "text": "Build Server Code: Incorporate Inputs\n\nWe can now reference these input parts in our server code:\n\nuse dollar sign notation\ne.g., to reference the outcome part: input$outcome\n\n\nThe value of that part will be based on the user’s input\n\ne.g., if the user selected wellbeing as the outcome, then\n\ninput$outcome will be wellbeing_score",
+    "text": "Build Server Code: Incorporate Inputs\n\nWe can now reference these input parts in our server code:\n\nuse dollar sign notation\ne.g., to reference the outcome part: input$outcome\n\nThe value of that part will be based on the user’s input\n\ne.g., if the user selected wellbeing as the outcome, then\ninput$outcome will be wellbeing_score",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -4362,7 +4362,7 @@
     "href": "data-vis/week-9/seminar9.html#build-server-code-incorporate-inputs-9",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Build Server Code: Incorporate Inputs",
-    "text": "Build Server Code: Incorporate Inputs\nOptionally adding points based on checkbox\nRemember:\n\nour ui code stored the user’s choice in the checkbox as input$show_points\n\nby default, the value of input$show_points was FALSE\n\nif the user checks the box, it switches to TRUE",
+    "text": "Build Server Code: Incorporate Inputs\nOptionally adding points based on checkbox\nRemember:\n\nour ui code stored the user’s choice in the checkbox as input$show_points\nby default, the value of input$show_points was FALSE\nif the user checks the box, it switches to TRUE",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -4446,7 +4446,7 @@
     "href": "data-vis/week-9/seminar9.html#how-to-create-app.r-in-rstudio",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "How to create app.R in RStudio",
-    "text": "How to create app.R in RStudio\n\nHave your folder and RStudio project setup\nGo to File → New File → R Script\n\nSave the file as app.R in the project root\nEdit:\n\nSetup\nUI (text, inputs, plotOutput)\nServer (renderPlot code)\n\n\nTry running by clicking Run App in the top-right of the script pane\n\n\nStress that they do not need to use “New Shiny Web App”:\n\nCreating a plain R script and saving it as app.R is simpler and keeps everything in one project.\nThis is also what you will expect in the final assessment.",
+    "text": "How to create app.R in RStudio\n\nHave your folder and RStudio project setup\nGo to File → New File → R Script\nSave the file as app.R in the project root\nEdit:\n\nSetup\nUI (text, inputs, plotOutput)\nServer (renderPlot code)\n\nTry running by clicking Run App in the top-right of the script pane\n\n\nStress that they do not need to use “New Shiny Web App”:\n\nCreating a plain R script and saving it as app.R is simpler and keeps everything in one project.\nThis is also what you will expect in the final assessment.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",
@@ -4458,7 +4458,7 @@
     "href": "data-vis/week-9/seminar9.html#troubleshooting-common-issues",
     "title": "Week 9 Seminar: Shiny Apps 1",
     "section": "Troubleshooting: common issues",
-    "text": "Troubleshooting: common issues\n\n\nPackage not found\n\nAdd library(shiny) and other libraries at the top of app.R\n\n\n\n\nFile not found\n\nCheck the path to your data and that it’s inside the project (e.g., data/therapy_dataset.csv)\n\n\n\nInput or output not found\n\nDo inputId and output$... names match between UI and server?\n\n\n\n\nEncourage students to read error messages:\n\nErrors often tell them whether the problem is in the UI or server, and which name is missing.\n\nReassure them that this is normal; debugging is part of the process.",
+    "text": "Troubleshooting: common issues\n\nPackage not found\n\nAdd library(shiny) and other libraries at the top of app.R\n\nFile not found\n\nCheck the path to your data and that it’s inside the project (e.g., data/therapy_dataset.csv)\n\nInput or output not found\n\nDo inputId and output$... names match between UI and server?\n\n\n\nEncourage students to read error messages:\n\nErrors often tell them whether the problem is in the UI or server, and which name is missing.\n\nReassure them that this is normal; debugging is part of the process.",
     "crumbs": [
       "PSY00122M-A ",
       "Week 9: Shiny Apps 1",

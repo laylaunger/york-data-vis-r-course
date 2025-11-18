@@ -1,563 +1,240 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Layla Unger">
-<title>Week 8 Seminar: Quarto Reports – Data Visualisation</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
-
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<html lang="en"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3084c59541715b928ed342732e9d4313.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script><script async="" src="https://hypothes.is/embed.js"></script><script>
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    document.body.classList.add('hypothesis-enabled');
-  });
-</script><script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <title>Data Visualisation – Week 8 Seminar: Quarto Reports</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8f3eebe07241f08526c91a7e9cbef8fd.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <script async="" src="https://hypothes.is/embed.js"></script>
+  <script>
+    window.document.addEventListener("DOMContentLoaded", function (_event) {
+      document.body.classList.add('hypothesis-enabled');
+    });
+  </script>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+  <link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 </head>
-<body class="nav-sidebar floating nav-fixed">
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Data Visualisation</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">Welcome!</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../../data-vis/data-vis.html" aria-current="page"> 
-<span class="menu-text">PSY00122M-A</span></a>
-  </li>  
-</ul>
-</div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-    <a href="https://github.com/laylaunger" title="Layla on GitHub" class="quarto-navigation-tool px-1" aria-label="Layla on GitHub"><i class="bi bi-github"></i></a>
-</div>
-      </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-8/overview8.html">Week 8: Quarto Reports</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-8/seminar8.html">Seminar</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/data-vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Visualisation</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 1: Principles of Data Visualisation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-1/overview1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-1/study_before1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-1/seminar1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-1/practical1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practical</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-1/study_after1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 2: Grammar of Graphics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-2/overview2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-2/study_before2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-2/seminar2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-2/practical2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practical</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-2/study_after2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 3: Distributions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-3/overview3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-3/study_before3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-3/seminar3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-3/practical3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practical</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-3/study_after3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 4: Barplots for Categorical Data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-4/overview4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-4/study_before4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-4/seminar4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-4/practical4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practical</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-4/study_after4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 5: Relationships between Variables</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-5/overview5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-5/study_before5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-5/seminar5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-5/practical5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practical</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-5/study_after5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 6: Time Series and Line Plots</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-6/overview6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-6/study_before6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-6/seminar6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-6/practical6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practical</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-6/study_after6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 7: Advanced Customizations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-7/overview7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-7/study_before7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-7/seminar7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-7/practical7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practical</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-7/study_after7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 8: Quarto Reports</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-8/overview8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-8/study_before8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-8/seminar8.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Seminar</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-8/practical8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practical</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-8/study_after8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 9: Shiny Apps 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-9/overview9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-9/study_before9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-9/seminar9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seminar</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-9/practical9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practical</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-9/study_after9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-    </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="seminar8.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
-<!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-8/overview8.html">Week 8: Quarto Reports</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-8/seminar8.html">Seminar</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Week 8 Seminar: Quarto Reports</h1>
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 8 Seminar: Quarto Reports</h1>
+
+<div class="quarto-title-authors">
 </div>
 
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header><hr>
-<section id="from-last-time" class="level2"><h2 class="anchored" data-anchor-id="from-last-time">From last time</h2>
+</section>
+<section id="from-last-time" class="slide level2">
+<h2>From last time</h2>
 <ul>
-<li>Labels with <code>labs()</code>
-</li>
-<li>
-<code>scale_*_*</code> to customise breaks, labels, limits, and colours</li>
-<li>Polishing visuals with <code>theme()</code>
-</li>
+<li>Labels with <code>labs()</code></li>
+<li><code>scale_*_*</code> to customise breaks, labels, limits, and colours</li>
+<li>Polishing visuals with <code>theme()</code></li>
 <li>Annotations, text, and direct labelling for clarity</li>
-<li>Faceting and multi-panel layouts with <code>facet_*</code> and <strong>patchwork</strong>
-</li>
+<li>Faceting and multi-panel layouts with <code>facet_*</code> and <strong>patchwork</strong></li>
 </ul>
-<div class="notes">
+<aside class="notes">
 <p>Remind students very briefly what we did in Week 7: we focused on <strong>explaining</strong> with plots, not just exploring.</p>
 <p>Emphasise that the therapy report we will look at today uses many of those ideas: clear labels, sensible scales, consistent themes, and multi-panel patchwork layouts.</p>
-</div>
-<hr></section><section id="today" class="level2"><h2 class="anchored" data-anchor-id="today">Today</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li>Why build a report?</li>
 <li>Inspect a finished Quarto report</li>
@@ -566,67 +243,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Header</li>
 <li>Setup</li>
 <li>Body combining text, code, and code-generated figures</li>
-</ul>
-</li>
+</ul></li>
 <li>How to build a Quarto report</li>
 <li>Project structure and workflow</li>
 </ul>
-<div class="notes">
+<aside class="notes">
 <ul>
 <li>What a Quarto report looks like</li>
 <li>The parts that build a report</li>
 </ul>
-</div>
-<hr></section><section id="today-1" class="level2"><h2 class="anchored" data-anchor-id="today-1">Today</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="today-1" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li><strong>Why build a report?</strong></li>
 </ul>
-<hr></section><section id="why-build-a-report" class="level2"><h2 class="anchored" data-anchor-id="why-build-a-report">Why build a report?</h2>
+</section>
+<section id="why-build-a-report" class="slide level2">
+<h2>Why build a report?</h2>
 <ul>
 <li>Quarto reports tell a story by combining:
 <ul>
-<li>
-<strong>Prose</strong> (context, narrative, explanations)</li>
-<li>
-<strong>Code</strong> (R for data wrangling and plots)</li>
-<li>
-<strong>Figures and tables</strong> (output from the code)</li>
+<li><strong>Prose</strong> (context, narrative, explanations)</li>
+<li><strong>Code</strong> (R for data wrangling and plots)</li>
+<li><strong>Figures and tables</strong> (output from the code)</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<div class="notes">
+<aside class="notes">
 
-</div>
-<hr></section><section id="why-build-a-report-1" class="level2"><h2 class="anchored" data-anchor-id="why-build-a-report-1">Why build a report?</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-build-a-report-1" class="slide level2">
+<h2>Why build a report?</h2>
 <ul>
 <li>Everything lives in one <code>.qmd</code> file:
 <ul>
 <li>Combines code, output, and interpretation</li>
 <li>Reproducible!</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<div class="notes">
+<aside class="notes">
 <p>Emphasise reproducibility: if someone presses “Render” on their report, they should get the same HTML they submitted.</p>
-</div>
-<hr></section><section id="today-2" class="level2"><h2 class="anchored" data-anchor-id="today-2">Today</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="today-2" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li><strong>Inspect a finished Quarto report</strong></li>
 </ul>
-<hr></section><section id="a-finished-example" class="level2"><h2 class="anchored" data-anchor-id="a-finished-example">A finished example</h2>
+</section>
+<section id="a-finished-example" class="slide level2">
+<h2>A finished example</h2>
 <ul>
 <li>Our example report for this week:
 <ul>
-<li>Uses the <strong>therapy dataset</strong>
-</li>
+<li>Uses the <strong>therapy dataset</strong></li>
 <li>Contains a short introduction, two main figure panels, and a summary</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
-<thead><tr class="header">
+<table class="table caption-top" data-quarto-postprocess="true" style="font-size: 18px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
 <th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">support_level</th>
 <th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">therapy</th>
 <th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">age</th>
@@ -635,7 +345,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">sleep_quality</th>
 <th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">sex</th>
 <th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">year</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left; background-color: yellow !important;">Medium</td>
@@ -699,143 +410,200 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
-<hr></section><section id="a-finished-example-1" class="level2"><h2 class="anchored" data-anchor-id="a-finished-example-1">A finished example</h2>
+</section>
+<section id="a-finished-example-1" class="slide level2">
+<h2>A finished example</h2>
 <ul>
 <li>Our example report for this week:
 <ul>
-<li>Uses the <strong>therapy dataset</strong>
-</li>
+<li>Uses the <strong>therapy dataset</strong></li>
 <li>Contains a header, short introduction, two main figure panels, and a summary</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>Full report: <a href="seminar_example8.html" target="_blank">Example Quarto report</a></p>
-<div class="notes">
+<aside class="notes">
 <p>Emphasize components: - Title and author at the top - Introductory text - First multi-panel figure showing outcomes by support level.</p>
-</div>
-<hr></section><section id="today-3" class="level2"><h2 class="anchored" data-anchor-id="today-3">Today</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="today-3" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li><strong>Basic anatomy of a Quarto report</strong></li>
 </ul>
-<hr></section><section id="anatomy-of-a-quarto-report-overview" class="level2"><h2 class="anchored" data-anchor-id="anatomy-of-a-quarto-report-overview">Anatomy of a Quarto report: Overview</h2>
+</section>
+<section id="anatomy-of-a-quarto-report-overview" class="slide level2">
+<h2>Anatomy of a Quarto report: Overview</h2>
 <p>A file with extension <strong><code>.qmd</code></strong></p>
 <p>Contains:</p>
 <ul>
-<li>
-<strong>YAML header</strong>: at the top</li>
-<li>
-<strong>Setup code chunk</strong>: load packages, data</li>
-<li>
-<strong>Body</strong> including sections written in <strong>Markdown</strong> and <strong>code chunks</strong> that generate output (tables, plots) integrated with section text</li>
+<li><strong>YAML header</strong>: at the top</li>
+<li><strong>Setup code chunk</strong>: load packages, data</li>
+<li><strong>Body</strong> including sections written in <strong>Markdown</strong> and <strong>code chunks</strong> that generate output (tables, plots) integrated with section text</li>
 </ul>
-<hr></section><section id="anatomy-of-a-quarto-report-example" class="level2"><h2 class="anchored" data-anchor-id="anatomy-of-a-quarto-report-example">Anatomy of a Quarto report: Example</h2>
+</section>
+<section id="anatomy-of-a-quarto-report-example" class="slide level2">
+<h2>Anatomy of a Quarto report: Example</h2>
 <p>Let’s look at our example report and inspect:</p>
 <ul>
 <li><strong>YAML header</strong></li>
 <li><strong>Setup chunk</strong></li>
 <li><strong>Body</strong></li>
 </ul>
-<div class="notes">
+<aside class="notes">
 
-</div>
-<hr></section><section id="anatomy-of-a-quarto-report-overview-1" class="level2"><h2 class="anchored" data-anchor-id="anatomy-of-a-quarto-report-overview-1">Anatomy of a Quarto report: Overview</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="anatomy-of-a-quarto-report-overview-1" class="slide level2">
+<h2>Anatomy of a Quarto report: Overview</h2>
 <ul>
 <li>When you click <strong>Render</strong> in RStudio, Quarto:
 <ul>
 <li>Formats the Markdown text and runs the code</li>
 <li>Integrates the code outputs with the text</li>
 <li>Produces an HTML report</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<div class="notes">
+<aside class="notes">
 <p>Reassure students that this is very similar to what they saw in the DataCamp RMarkdown chapter: Markdown + code + output.</p>
 <p>Highlight that the main differences are: - The file extension is <code>.qmd</code>. - The YAML uses <code>format:</code> instead of <code>output:</code>. - Quarto supports more output types, but we’ll use HTML here.</p>
-</div>
-<hr></section><section id="today-4" class="level2"><h2 class="anchored" data-anchor-id="today-4">Today</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="today-4" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li><strong>How to build a Quarto report</strong></li>
 </ul>
-<hr></section><section id="today-5" class="level2"><h2 class="anchored" data-anchor-id="today-5">Today</h2>
+</section>
+<section id="today-5" class="slide level2">
+<h2>Today</h2>
 <ul>
-<li>
-<strong>How to build a Quarto report</strong>
+<li><strong>How to build a Quarto report</strong>
 <ul>
 <li>YAML header</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<hr></section><section id="yaml-header" class="level2"><h2 class="anchored" data-anchor-id="yaml-header">YAML header</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Social Support, Therapy, and Wellbeing"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Exam number 123456"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2025-11-13"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="notes">
+</section>
+<section id="yaml-header" class="slide level2">
+<h2>YAML header</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a></a><span class="pp">---</span></span>
+<span id="cb1-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Social Support, Therapy, and Wellbeing"</span></span>
+<span id="cb1-3"><a></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Exam number 123456"</span></span>
+<span id="cb1-4"><a></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2025-11-13"</span></span>
+<span id="cb1-5"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb1-6"><a></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb1-7"><a></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-8"><a></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb1-9"><a></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-10"><a></a><span class="at">    </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-11"><a></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb1-12"><a></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-13"><a></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-14"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
 <p>Go through each part:</p>
 <ul>
-<li>
-<code>title</code>, <code>author</code>, <code>date</code> are what show up at the top of the report.</li>
-<li>
-<code>format: html:</code> controls how the HTML looks:
+<li><code>title</code>, <code>author</code>, <code>date</code> are what show up at the top of the report.</li>
+<li><code>format: html:</code> controls how the HTML looks:
 <ul>
-<li>
-<code>toc: true</code> adds a table of contents,</li>
-<li>
-<code>self-contained: true</code> bundles everything into a single HTML file.</li>
-</ul>
-</li>
-<li>
-<code>execute:</code> controls default behaviour of code:
+<li><code>toc: true</code> adds a table of contents,</li>
+<li><code>self-contained: true</code> bundles everything into a single HTML file.</li>
+</ul></li>
+<li><code>execute:</code> controls default behaviour of code:
 <ul>
 <li>Here we’re hiding messages and warnings globally.</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>Emphasise that for the assessment, they should have a sensible title and use their exam number as the author.</p>
-</div>
-<hr></section><section id="today-6" class="level2"><h2 class="anchored" data-anchor-id="today-6">Today</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="today-6" class="slide level2">
+<h2>Today</h2>
 <ul>
-<li>
-<strong>How to build a Quarto report</strong>
+<li><strong>How to build a Quarto report</strong>
 <ul>
 <li>YAML header</li>
 <li>Embedded code chunks (setup and body)</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<hr></section><section id="embedded-code-chunk-basics" class="level2"><h2 class="anchored" data-anchor-id="embedded-code-chunk-basics">Embedded code chunk basics</h2>
+</section>
+<section id="embedded-code-chunk-basics" class="slide level2">
+<h2>Embedded code chunk basics</h2>
 <p>Wrapper:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Label:</p>
 <pre><code>#| label: chunk-name</code></pre>
 <p>Options to control how code is run:</p>
 <pre><code>#| echo: true</code></pre>
 <p>The code itself:</p>
-<pre><code><a href="https://tidyverse.tidyverse.org">library(tidyverse)
-1+1</a></code></pre>
-<div class="notes">
+<pre><code>library(tidyverse)
+1+1</code></pre>
+<aside class="notes">
 <ul>
 <li>Wrap code chunk in ticks and {r} to identify as R code</li>
 <li>include a label - short and meaningful (e.g., <code>fig-support</code>).</li>
 <li>options to control how chunk is run</li>
 <li>code</li>
 </ul>
-</div>
-<hr></section><section id="embedded-code-label" class="level2"><h2 class="anchored" data-anchor-id="embedded-code-label">Embedded code label</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="embedded-code-label" class="slide level2">
+<h2>Embedded code label</h2>
 <p><br></p>
 <p>Each chunk should have a different label</p>
 <ul>
@@ -845,7 +613,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Error messages from code bugs will include chunk label</li>
 </ul>
-<hr></section><section id="embedded-code-chunk-options" class="level2"><h2 class="anchored" data-anchor-id="embedded-code-chunk-options">Embedded code chunk options</h2>
+</section>
+<section id="embedded-code-chunk-options" class="slide level2">
+<h2>Embedded code chunk options</h2>
 <p><br></p>
 <p>Show the code, but <strong>do not run it</strong></p>
 <pre><code>#| eval: false</code></pre>
@@ -853,15 +623,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>#| echo: false</code></pre>
 <p>Run the code, show <strong>nothing</strong> (no code, no output)</p>
 <pre><code>#| include: false</code></pre>
-<div class="notes">
+<aside class="notes">
 <p>Give concrete examples:</p>
 <ul>
 <li>Setup chunk uses <code>include: false</code> so the reader never sees the plumbing.</li>
 <li>They might use <code>eval: false</code> if they want to include example code that doesn’t need to run (less common in the final report, more for teaching).</li>
 </ul>
 <p>Reassure them that for most chunks in their report, the main choice is simply whether they want to show or hide the code (<code>echo</code>).</p>
-</div>
-<hr></section><section id="embedded-code-chunk-figure-control" class="level2"><h2 class="anchored" data-anchor-id="embedded-code-chunk-figure-control">Embedded code chunk figure control</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="embedded-code-chunk-figure-control" class="slide level2">
+<h2>Embedded code chunk figure control</h2>
 <p><br></p>
 <p>Caption shown under the figure</p>
 <pre><code>#| fig-cap: "A helpful caption."</code></pre>
@@ -869,89 +651,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>#| out-width: "50%"</code></pre>
 <p>Alignment</p>
 <pre><code>#| fig-align: "left", "center", or "right"</code></pre>
-<div class="notes">
+<aside class="notes">
 <p>Clarify the difference between:</p>
 <ul>
-<li>
-<code>fig-width</code> / <code>fig-height</code> (the size of the drawing device in inches),</li>
-<li>
-<code>out-width</code> (how wide the figure appears in the HTML document).</li>
+<li><code>fig-width</code> / <code>fig-height</code> (the size of the drawing device in inches),</li>
+<li><code>out-width</code> (how wide the figure appears in the HTML document).</li>
 </ul>
 <p>Explain that in this example, the first patchwork figure is set to be 60% of the text width so it doesn’t feel oversized.</p>
-</div>
-<hr></section><section id="test-run-your-chunk-in-rstudio" class="level2"><h2 class="anchored" data-anchor-id="test-run-your-chunk-in-rstudio">Test run your chunk in RStudio</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="test-run-your-chunk-in-rstudio" class="slide level2">
+<h2>Test run your chunk in RStudio</h2>
 <p><br></p>
 <p>Before rendering, you can (and should) try running your code as you write it</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="../figs/quarto_run_chunk.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<hr></section><section id="setup-chunk" class="level2"><h2 class="anchored" data-anchor-id="setup-chunk">Setup chunk</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: setup</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| include: false</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="in">library(here)</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="in">library(patchwork)</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="in">library(viridis)</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="in">therapy_df &lt;- read_csv("data/therapy_dataset.csv")</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="in">therapy_df &lt;- therapy_df |&gt;</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="in">    support_level = factor(support_level, levels = c("Low", "Medium", "High")),</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="in">    therapy = factor(therapy, levels = c("Yes", "No"))</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="in">theme_set(theme_minimal(base_size = 14))</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="notes">
+
+<img data-src="../figs/quarto_run_chunk.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="setup-chunk" class="slide level2">
+<h2>Setup chunk</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb12-2"><a></a><span class="in">#| label: setup</span></span>
+<span id="cb12-3"><a></a><span class="in">#| include: false</span></span>
+<span id="cb12-4"><a></a><span class="in">library(tidyverse)</span></span>
+<span id="cb12-5"><a></a><span class="in">library(here)</span></span>
+<span id="cb12-6"><a></a><span class="in">library(patchwork)</span></span>
+<span id="cb12-7"><a></a><span class="in">library(viridis)</span></span>
+<span id="cb12-8"><a></a></span>
+<span id="cb12-9"><a></a><span class="in">therapy_df &lt;- read_csv("data/therapy_dataset.csv")</span></span>
+<span id="cb12-10"><a></a></span>
+<span id="cb12-11"><a></a><span class="in">therapy_df &lt;- therapy_df |&gt;</span></span>
+<span id="cb12-12"><a></a><span class="in">  mutate(</span></span>
+<span id="cb12-13"><a></a><span class="in">    support_level = factor(support_level, levels = c("Low", "Medium", "High")),</span></span>
+<span id="cb12-14"><a></a><span class="in">    therapy = factor(therapy, levels = c("Yes", "No"))</span></span>
+<span id="cb12-15"><a></a><span class="in">  )</span></span>
+<span id="cb12-16"><a></a></span>
+<span id="cb12-17"><a></a><span class="in">theme_set(theme_minimal(base_size = 14))</span></span>
+<span id="cb12-18"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
 <p>Clarify the role of the setup chunk:</p>
 <ul>
 <li>It runs <strong>once</strong>, near the start of the document.</li>
 <li>It loads packages used throughout the report.</li>
 <li>It reads in the data and does any basic recoding.</li>
-<li>
-<code>include: false</code> means:
+<li><code>include: false</code> means:
 <ul>
 <li>The code runs, but does not appear in the report.</li>
 <li>No output from this chunk is shown.</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>Highlight the use of a <strong>relative path</strong> into the <code>data</code> folder, which lives inside of the same folder as the quarto report, so the quarto report will be able to find it. Matches the project structure they will use for assessment.</p>
-</div>
-<hr></section><section id="body-overview" class="level2"><h2 class="anchored" data-anchor-id="body-overview">Body: Overview</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="body-overview" class="slide level2">
+<h2>Body: Overview</h2>
 <ul>
 <li>Combine code chunks with Markdown to format section headers and text</li>
 </ul>
-<hr></section><section id="body-sections-using-markdown" class="level2"><h2 class="anchored" data-anchor-id="body-sections-using-markdown">Body: Sections using Markdown</h2>
+</section>
+<section id="body-sections-using-markdown" class="slide level2">
+<h2>Body: Sections using Markdown</h2>
 <p>Arrange report into high-level sections with headers:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data overview</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Support level affects wellbeing and loneliness</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="notes">
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a></a><span class="fu"># Introduction</span></span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a>...</span>
+<span id="cb13-4"><a></a></span>
+<span id="cb13-5"><a></a><span class="fu"># Data overview</span></span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a>...</span>
+<span id="cb13-8"><a></a></span>
+<span id="cb13-9"><a></a><span class="fu"># Support level affects wellbeing and loneliness</span></span>
+<span id="cb13-10"><a></a></span>
+<span id="cb13-11"><a></a>...</span>
+<span id="cb13-12"><a></a></span>
+<span id="cb13-13"><a></a><span class="fu"># Summary</span></span>
+<span id="cb13-14"><a></a></span>
+<span id="cb13-15"><a></a>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
 <p>Explain that each top-level heading begins with <code>#</code>.</p>
 <p>For the assessment, encourage students to have: - A short Introduction - A concise Data/Methods overview - 2–3 main Results sections (each tied to one or two key figures) - A short Summary/Discussion.</p>
 <p>Point out that headings drive the table of contents automatically.</p>
-</div>
-<hr></section><section id="body-text-using-markdown" class="level2"><h2 class="anchored" data-anchor-id="body-text-using-markdown">Body: Text using Markdown</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="body-text-using-markdown" class="slide level2">
+<h2>Body: Text using Markdown</h2>
 <p><strong>Headings</strong></p>
 <p><code># Main section</code></p>
 <p><code>## Subsection</code></p>
@@ -961,129 +772,183 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Lists</strong></p>
 <p><code>- First point</code></p>
 <p><code>- Second point</code></p>
-<div class="notes">
+<aside class="notes">
 <p>Keep this light: the goal is just to remind them that the text part of a Quarto report is written in Markdown.</p>
 <p>Mention that the DataCamp chapter they did covers more markdown tricks, and they can refer back to it if needed.</p>
-</div>
-<hr></section><section id="body-sections-text-and-code-chunks" class="level2"><h2 class="anchored" data-anchor-id="body-sections-text-and-code-chunks">Body: sections, text and code chunks</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="body-sections-text-and-code-chunks" class="slide level2">
+<h2>Body: sections, text and code chunks</h2>
 <p>A typical section might look like:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Support level affects wellbeing and loneliness</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>We first examine wellbeing and loneliness scores by support level. </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>The pattern is clear: participants with low perceived support report </span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>the lowest wellbeing and highest loneliness. As support increases, </span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>wellbeing also increases, whereas loneliness decreases.</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-support-outcomes</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "Wellbeing scores by perceived support level."</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "60%"</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-align: "center"</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="in">supp_wellbeing &lt;- ggplot(...)</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="in">supp_loneliness &lt;- ggplot(...) </span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="in">supp_wellbeing / supp_loneliness </span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="notes">
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a></a><span class="fu"># Support level affects wellbeing and loneliness</span></span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a>We first examine wellbeing and loneliness scores by support level. </span>
+<span id="cb14-4"><a></a>The pattern is clear: participants with low perceived support report </span>
+<span id="cb14-5"><a></a>the lowest wellbeing and highest loneliness. As support increases, </span>
+<span id="cb14-6"><a></a>wellbeing also increases, whereas loneliness decreases.</span>
+<span id="cb14-7"><a></a></span>
+<span id="cb14-8"><a></a></span>
+<span id="cb14-9"><a></a><span class="in">```{r}</span></span>
+<span id="cb14-10"><a></a><span class="in">#| label: fig-support-outcomes</span></span>
+<span id="cb14-11"><a></a><span class="in">#| echo: false</span></span>
+<span id="cb14-12"><a></a><span class="in">#| fig-cap: "Wellbeing scores by perceived support level."</span></span>
+<span id="cb14-13"><a></a><span class="in">#| out-width: "60%"</span></span>
+<span id="cb14-14"><a></a><span class="in">#| fig-align: "center"</span></span>
+<span id="cb14-15"><a></a><span class="in">supp_wellbeing &lt;- ggplot(...)</span></span>
+<span id="cb14-16"><a></a><span class="in">supp_loneliness &lt;- ggplot(...) </span></span>
+<span id="cb14-17"><a></a><span class="in">supp_wellbeing / supp_loneliness </span></span>
+<span id="cb14-18"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
 <p>Emphasise the pattern:</p>
 <p>Short paragraph to introduce the figure and describe the key pattern. Then a code chunk that produces the figure.</p>
 <p>Note that the reader doesn’t see the code for the figure, only the result, because echo: false hides the code.</p>
-</div>
-<hr></section><section id="before-and-after-figure-layout" class="level2"><h2 class="anchored" data-anchor-id="before-and-after-figure-layout">Before and after: figure layout</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="../figs/quarto_bad_width_fig.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<hr></section><section id="before-and-after-figure-layout-1" class="level2"><h2 class="anchored" data-anchor-id="before-and-after-figure-layout-1">Before and after: figure layout</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="../figs/quarto_good_width_fig.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<hr></section><section id="inline-code" class="level2"><h2 class="anchored" data-anchor-id="inline-code">Inline code</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="before-and-after-figure-layout" class="slide level2">
+<h2>Before and after: figure layout</h2>
+
+<img data-src="../figs/quarto_bad_width_fig.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="before-and-after-figure-layout-1" class="slide level2">
+<h2>Before and after: figure layout</h2>
+
+<img data-src="../figs/quarto_good_width_fig.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="inline-code" class="slide level2">
+<h2>Inline code</h2>
 <p>We can also insert small pieces of R output directly in the text:</p>
 <p><br></p>
 <p>This report uses data from <code>`r nrow(therapy_df)`</code> participants.</p>
 <p><br></p>
 <p>This report uses data from 400 participants.</p>
-<div class="notes">
+<aside class="notes">
 <p>Explain:</p>
 <p>Backticks with r … inside tell Quarto to run the R code and insert the result. This is useful for things like sample sizes, means, or percentages.</p>
 <p>Reassure them that inline code is optional, but can help keep numbers in the text in sync with the analysis.</p>
-</div>
-<hr></section><section id="today-7" class="level2"><h2 class="anchored" data-anchor-id="today-7">Today</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="today-7" class="slide level2">
+<h2>Today</h2>
 <ul>
 <li><strong>Project structure and workflow</strong></li>
 </ul>
-<hr></section><section id="project-structure-for-reports" class="level2"><h2 class="anchored" data-anchor-id="project-structure-for-reports">Project structure for reports</h2>
+</section>
+<section id="project-structure-for-reports" class="slide level2">
+<h2>Project structure for reports</h2>
 <p>A simple recommended structure:</p>
 <pre><code>project_name/
   project_name.Rproj
   project_name_report.qmd
   data/
     data_file.csv</code></pre>
-<div class="notes">
+<aside class="notes">
 <p>Have an overall folder for the project Include your qmd file inside Include a subfolder with data. This makes it easy to find/read the data within your qmd</p>
-</div>
-<hr></section><section id="typical-workflow" class="level2"><h2 class="anchored" data-anchor-id="typical-workflow">Typical workflow</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="typical-workflow" class="slide level2">
+<h2>Typical workflow</h2>
 <ol type="1">
 <li>Create / open the RStudio <strong>project</strong> for your assessment</li>
-<li>Create / open your <code>report.qmd</code>
-</li>
+<li>Create / open your <code>report.qmd</code></li>
 <li>Make changes to:
 <ul>
 <li>Text, headings, and interpretations</li>
 <li>Code chunks and chunk options</li>
-</ul>
-</li>
+</ul></li>
 <li>Save the file</li>
 <li>Click <strong>Render</strong> to regenerate the HTML report</li>
 <li>Check that the figures and text look as expected</li>
 </ol>
-<div class="notes">
+<aside class="notes">
 <p>Emphasise the importance of saving before rendering.</p>
 <p>Suggest that they render frequently while working on the report, rather than only at the very end — it’s easier to catch small issues early.</p>
-</div>
-<hr></section><section id="troubleshooting-common-issues" class="level2"><h2 class="anchored" data-anchor-id="troubleshooting-common-issues">Troubleshooting: common issues</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="troubleshooting-common-issues" class="slide level2">
+<h2>Troubleshooting: common issues</h2>
 <ul>
-<li>
-<strong>Package not found</strong>
+<li><strong>Package not found</strong>
 <ul>
-<li>Install the package, add <code><a href="https://rdrr.io/r/base/library.html">library(package)</a></code> in the setup chunk</li>
-</ul>
-</li>
-<li>
-<strong>File not found</strong>
+<li>Install the package, add <code>library(package)</code> in the setup chunk</li>
+</ul></li>
+<li><strong>File not found</strong>
 <ul>
 <li>Check the path to your data file and that it’s inside the project</li>
-</ul>
-</li>
-<li>
-<strong>Object not found</strong>
+</ul></li>
+<li><strong>Object not found</strong>
 <ul>
 <li>Check chunk order and spelling of variable names</li>
-</ul>
-</li>
-<li>
-<strong>Plot not appearing</strong>
+</ul></li>
+<li><strong>Plot not appearing</strong>
 <ul>
 <li>Make sure the chunk is being evaluated (no <code>eval: false</code>)</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<div class="notes">
+<aside class="notes">
 <p>Encourage students not to panic when the render fails — the error message will usually tell them which chunk label failed and why.</p>
 <p>Remind them they can always comment out a troublesome chunk temporarily and rerender to isolate the problem.</p>
-</div>
-<hr></section><section id="summary" class="level2"><h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
 <p><br></p>
 <p>A Quarto report is a <strong><code>.qmd</code> file</strong> with:</p>
 <ul>
@@ -1093,492 +958,505 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Code chunks can generate figures to show in the report</li>
 <li>Chunk options control what is visible and how figures are displayed</li>
 </ul>
-<div class="notes">
+<aside class="notes">
 <p>Finish by connecting back to the assessment:</p>
 <ul>
 <li>What they saw today is essentially the style and level of polish we are looking for in the final report.</li>
 <li>The practical is where they can start turning their own analysis into a Quarto report in a low-stakes setting.</li>
 </ul>
 <p>Invite questions about anything that still feels mysterious about Quarto before moving on.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
 </div>
+</div></div>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
 
-</section></main><!-- /main --><script>
-  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-  // slide changes (different for each slide format).
-  (function () {
-    // dispatch for htmlwidgets
-    function fireSlideEnter() {
-      const event = window.document.createEvent("Event");
-      event.initEvent("slideenter", true, true);
-      window.document.dispatchEvent(event);
-    }
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
-    function fireSlideChanged(previousSlide, currentSlide) {
-      fireSlideEnter();
+  <script>
 
-      // dispatch for shiny
-      if (window.jQuery) {
-        if (previousSlide) {
-          window.jQuery(previousSlide).trigger("hidden");
-        }
-        if (currentSlide) {
-          window.jQuery(currentSlide).trigger("shown");
-        }
-      }
-    }
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
 
-    // hookup for slidy
-    if (window.w3c_slidy) {
-      window.w3c_slidy.add_observer(function (slide_num) {
-        // slide_num starts at position 1
-        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
       });
-    }
+    </script>
+    
 
-  })();
-</script><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
         }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("^(?:http:|https:)\/\/laylaunger\.github\.io\/data-vis");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
           }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
         }
       }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
           } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+            return "";
           }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
+        });
       }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
       }
-    }, function(instance) {
     });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
-      });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left">
-<p>Data Visualisation</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-<li class="nav-item">
-    <a class="nav-link" href="https://github.com/laylaunger">
-<p>Layla on GitHub</p>
-</a>
-  </li>  
-</ul>
-</div>
-  </div>
-</footer>
-
+    </script>
+    
 
 </body></html>
