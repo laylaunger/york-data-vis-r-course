@@ -1,0 +1,367 @@
+---
+title: "Practical"  
+subtitle: "Week 10 Seminar: Shiny Apps 2"  
+toc: true  
+toc-location: right  
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(here)
+library(shiny)
+library(viridis)
+
+# Load wellbeing dataset so that any example code in this practical can run
+wellbeing_df <- readr::read_csv(here("data-vis", "data", "wellbeing_dataset.csv")) |>
+  mutate(
+    participant_group = factor(
+      participant_group,
+      levels = c("student", "employed", "retired")
+    )
+  )
+
+theme_set(theme_minimal(base_size = 14))
+```
+
+# Introduction
+
+## Session overview
+
+In this practical you’ll **extend your Shiny skills** by building a small **dashboard-style app** using the **wellbeing dataset**, applying the ideas from **Seminar 10**:
+
+- Using a **sidebar layout** with inputs on the left and outputs on the right  
+- Creating a **checkbox group filter** to control which groups appear in the plots  
+- Using **tabs** in the main panel to show **multiple plots** in one app  
+- Writing a **reactive expression** with `reactive()` to create a reusable filtered dataset  
+- Using `.data[[input$outcome]]` inside `ggplot()` to avoid long `if / else` blocks  
+- Adding a **tab-specific control** (checkbox) to switch faceting on and off  
+
+By the end, you should have a working **multi-tab Shiny dashboard** that lets you explore **wellbeing and sleep across participant groups**.
+
+## Philosophy
+
+Practicals are not a test. It is expected that you’ll often be unsure what to do at first – that’s normal. The goal is that each workshop helps you build confidence step-by-step.
+
+Some tips:
+
+- don’t worry about making mistakes  
+- don’t let what you can’t do interfere with what you *can* do  
+- discussing code with your neighbours will help  
+- look things up in the independent study material  
+- look things up in your own code from earlier weeks  
+- there are no stupid questions  
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will usually involve running R code, but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser. It will usually be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. You can record your answers in your report, app file, or notes for future reference.
+:::
+
+# Exercises
+
+**Important:** As in Week 9, you’ll build a **small Shiny project** from scratch.  
+Follow the steps carefully so that your project structure stays simple and consistent with what you’ll do in the final assessment.
+
+---
+
+## Exercise 1: Create a new Shiny project folder
+
+In this exercise you will create a **new folder** for a mini Shiny project, add a `data` subfolder for the CSV, and turn it into an **RStudio project**.
+
+![](images/do_in_R.png) In the **Files** tab in the lower right pane, click on the `...` on the right (this should say "Go to directory" when you hover over it). Clicking the '...' will open the *Go to folder* window. Navigate to a place on your computer where you keep your work for this module (for example your `data-visualisation-in-r` folder). Click **Open**.
+
+![](images/do_in_R.png) In the Files tab, click on **New Folder**. Give your new folder a short, sensible name for this project, such as `week-10-shiny-dashboard`.  
+
+We’ll refer to this folder as **`project_name/`** in the instructions below.
+
+![](images/do_in_R.png) Still in the Files tab, click into your new `project_name/` folder. Then use **File → New Project… → Existing Directory**, choose your `project_name/` folder, and create an **R Project** there.  
+
+You should now have:
+
+````
+project_name/
+  project_name.Rproj
+````
+
+![](images/do_in_R.png) Inside `project_name/`, create a new subfolder called `data`.
+
+````
+project_name/
+  project_name.Rproj
+  data/
+````
+
+Now you’ll add the data file.
+
+![](images/do_on_internet.png) Download the wellbeing CSV file for this practical from the VLE:  
+
+- [wellbeing_dataset.csv](../data/wellbeing_dataset.csv)
+
+![](images/do_on_your_computer.png) Save `wellbeing_dataset.csv` **inside the `data` subfolder** of your new project:
+
+````
+project_name/
+  project_name.Rproj
+  data/
+    wellbeing_dataset.csv
+````
+
+---
+
+## Exercise 2: Create `app.R` and load the data
+
+Next, you’ll create your main **Shiny app script** (`app.R`) and load the data.
+
+![](images/do_in_R.png) In RStudio, go to **File → New File → R Script**.
+
+![](images/do_in_R.png) Save this file in your `project_name/` folder with the name **`app.R`**.
+
+You should now have:
+
+````
+project_name/
+  project_name.Rproj
+  app.R
+  data/
+    wellbeing_dataset.csv
+````
+
+Now add the code that loads your packages and data at the top of `app.R`.
+
+![](images/do_in_R.png) In `app.R`, add code that:
+
+- Loads the `shiny` and `tidyverse` packages, and any others you might want (e.g., `viridis` for colours).  
+- Reads in `wellbeing_dataset.csv` from the `data` folder and assigns it to an object called `wellbeing_df`.  - Uses `mutate()` and `factor()` to order `participant_group` as a factor with levels `"student"`, `"employed"` and `"retired"`.  
+- Sets a simple base theme, for example using `theme_minimal(base_size = 14)`.
+
+Your code will be similar in spirit to Week 9, but remember that this time you are working inside a **new project folder**.
+
+---
+
+## Exercise 3: Add a minimal Shiny app skeleton
+
+A Shiny app needs three main parts:
+
+- a **UI** that defines what the app looks like  
+- a **server** function that defines how the app behaves  
+- a final line that calls `shinyApp(ui = ..., server = ...)`
+
+In this exercise you’ll set up a minimal skeleton app that does nothing yet, but runs without errors.
+
+![](images/do_in_R.png) In `app.R`, **underneath** the library and data-loading code from Exercise 2, add the following skeleton:
+
+```r
+ui <- fluidPage(
+
+)
+
+server <- function(input, output, session) {
+
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+![](images/do_in_R.png) Click **Run App** in RStudio. You should see a mostly blank Shiny window with just a title bar and empty page.
+
+
+## Exercise 4: Build a sidebar layout and inputs
+
+Now you’ll build a UI that uses a **sidebar layout**, with controls on the left and plots on the right.
+
+Your UI will include:
+
+- a title  
+- a short instructional paragraph  
+- a **sidebarLayout** with:  
+  - a **sidebarPanel** containing inputs  
+  - a **mainPanel** that will later contain tabs with plots  
+
+![](images/do_in_R.png) In `app.R`, edit the `ui <- fluidPage(...)` so that it contains:
+
+1. A `titlePanel()` with a clear title, e.g. `"Wellbeing and Sleep Dashboard"`.  
+2. A short instruction paragraph with `p()`, explaining what the app shows.  
+3. A `sidebarLayout()` with two parts: `sidebarPanel()` and `mainPanel()`.
+
+
+Next, you’ll add inputs to the **sidebar panel**.
+
+![](images/do_in_R.png) Inside `sidebarPanel(...)`, add:
+
+- A `selectInput()` using the `inputId` `"outcome"` that lets the user choose between **Wellbeing index** and **Sleep hours**.  
+  - Use the `choices` and `selected` arguments to control what appears in the dropdown and which option is selected by default.  
+  - For example, your choices vector should map readable labels to column names in the data (e.g., `"Wellbeing index" = "wellbeing_index"`).
+
+- A `checkboxGroupInput()` using the `inputId` `"group_filter"` that lets the user choose which **participant groups** to include: `"student"`, `"employed"` and `"retired"`.  
+  - Use the `choices` argument to list these three groups.  
+  - Use the `selected` argument to make all three groups selected by default.
+
+Make sure that all of these lines live **inside** the parentheses of `sidebarPanel(...)`, which itself lives inside `sidebarLayout(...)`.
+
+![](images/do_in_R.png) Save `app.R`, then click **Run App** again. You should now see your title, instruction text, a dropdown menu, a group of checkboxes, and an empty main panel on the right.
+
+
+## Exercise 5: Add tabs to the main panel
+
+Now you’ll add **multiple tabs** in the main panel so your app can show more than one plot.
+
+You’ll create two tabs:
+
+- A tab that compares outcomes **across participant groups**  
+- A tab that shows **distributions** of the selected outcome, with an option to facet by group  
+
+![](images/do_in_R.png) In `app.R`, edit the `mainPanel(...)` so that it uses `tabsetPanel()` with two `tabPanel()`s:
+
+- A first tab called `"Groups"` that contains a `plotOutput("group_plot")`.  
+- A second tab called `"Distributions"` that contains:
+  - A `checkboxInput()` with `inputId = "facet_by_group"` that controls whether to show separate panels for each group (default value `FALSE`).  
+  - A `plotOutput("distribution_plot")`.
+
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. You should now see:
+
+- Tabs called **Groups** and **Distributions** in the main panel  
+- Under **Distributions**, a checkbox and an empty plot area  
+
+The app won’t draw any plots yet – that’s the next step.
+
+
+## Exercise 6: Add a reactive filtered dataset
+
+In Seminar 10, you saw how to use a **reactive expression** to create a function that returns a filtered dataset based on user input.
+
+Here, you’ll create a `filtered_data()` function that:
+
+- Starts from `wellbeing_df`  
+- Keeps only observations whose `participant_group` is in `input$group_filter`  
+- Updates automatically whenever the user changes the group checkboxes  
+
+Remember: `input$group_filter` is a **vector of strings** (e.g., `c("student", "employed", "retired")`). The specific strings in this vector depend on which boxes are ticked.
+
+![](images/do_in_R.png) In `app.R`, go to the `server` function. Inside the curly braces `{}`, **above** any plotting code, add a reactive expression:
+
+- Use `filtered_data <- reactive({ ... })`  
+- Inside the curly braces for `reactive({ ... })`, write tidyverse code that:
+  - Starts from `wellbeing_df`  
+  - Uses `filter()` with `%in%` and `input$group_filter` to keep only rows whose `participant_group` is currently selected
+
+
+
+![](images/answer.png) What is one advantage of using a `filtered_data()` reactive expression instead of repeating the same `filter()` code inside each plot?
+
+
+## Exercise 7: Build the Groups tab plot with `.data[[input$outcome]]`
+
+Next, you’ll create the plot for the **Groups** tab. To create this plot:
+
+1. Use a simple `if/else` block to set the y-axis **label** based on `input$outcome`
+2. Use `filtered_data()` so it only shows selected groups  
+3. Put `participant_group` on the x-axis  
+4. Put the **selected outcome** (wellbeing or sleep) on the y-axis using `.data[[input$outcome]]`
+5. Use boxplots coloured by group  
+
+
+![](images/do_in_R.png) Still inside the `server` function, add code to create an output called `group_plot` using `renderPlot()`:
+
+```r
+output$group_plot <- renderPlot({
+  
+  # you will write code here that:
+  # uses an if/else statement to set the y-axis label based on input$outcome
+  # filters data and pipes it into a ggplot
+  # creates a ggplot that puts `participant_group` on the x-axis 
+  # and `.data[[input$outcome]]` for on the y-axis
+  # adds ggplot layer(s) to create colored boxplots
+  # adds any labs, colors, fills, and theme option layers 
+
+})
+```
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. Try:
+
+- Checking and unchecking different **participant groups** in the sidebar  
+- Switching between **Wellbeing index** and **Sleep hours** in the dropdown  
+
+The **Groups** tab plot should update to show only selected groups and the chosen outcome on the y-axis.
+
+![](images/answer.png) What does `.data[[input$outcome]]` do inside `aes()`?
+
+
+## Exercise 8: Build the Distributions tab plot with optional faceting
+
+Now you’ll create a second plot for the **Distributions** tab. This plot will:
+
+1. Use `filtered_data()` so it respects the group filter  
+2. Show the **distribution** of the selected outcome  
+3. Colour by `participant_group`  
+4. Optionally use `facet_wrap(~ participant_group)` when the checkbox is ticked  
+
+![](images/do_in_R.png) Inside the `server` function, add another output called `distribution_plot` using `renderPlot()`:
+
+```r
+output$distribution_plot <- renderPlot({
+
+  # Your code should have the following steps:
+  #
+  # A small if / else block at the top to set x_lab based on input$outcome
+  #
+  # Create a plot object named dist_plot that:
+  # - Starts from filtered_data()  
+  # - Pipes filtered_data() into ggplot()  
+  # - Uses aes(x = .data[[input$outcome]])  
+  # - Shows the distribution of the selected outcome using a histogram or density plot,
+  #   with aes(fill = participant_group) to show overlapping distributions by group
+  # - Uses labs(), custom colors/fills and theme layers
+  #
+  # A final line that is just dist_plot, to draw the plot
+
+
+})
+```
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. Try:
+
+- Checking and unchecking different **participant groups** in the sidebar  
+- Switching between **Wellbeing index** and **Sleep hours** in the dropdown  
+
+Check that the Distributions tab responds as expected (it won't yet respond to the "Show separate panels" checkbox - we'll do that next).
+
+![](images/do_in_R.png) Now make your plot respond to the "Show separate panels" checkbox:
+
+- Go back inside the `server` function, after the code for the base plot
+- Add a little `if(){...}` block that checks the value of `input$facet_by_group` and if the value is TRUE, adds a `facet_wrap()` layer to the base plot to facet by `participant_group`
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. Try:
+
+- Ticking and unticking **Show separate panels for each group**  
+
+Now the Distributions tab should be fully functional. 
+
+## Exercise 9: Review, tidy, and reflect
+
+In this final exercise, you’ll tidy your app and make sure you understand how each part works.
+
+![](images/do_in_R.png) In `app.R`, add a few short **comments** (lines starting with `#`) to remind your future self what each section does
+
+![](images/answer.png) Looking back at your Week 9 app and this Week 10 dashboard, what are **two key differences** in how you structure and reuse code in Shiny?
+
+You now have a **multi-tab Shiny app** that:
+
+- uses `sidebarLayout()` and `tabsetPanel()`  
+- uses a **reactive filtered dataset**  
+- efficiently looks up different outcome variables with `.data[[input$outcome]]`  
+- and includes a tab-specific control for faceting
+
+You can use any of these features in the **final assessment**.
+
+
+# You’re finished! 🎉

@@ -1,0 +1,19 @@
+---
+title: "Independent Study to Prepare"
+subtitle: "Shiny Apps 2"
+toc: true
+toc-location: right
+---
+
+# Shiny Apps 2
+
+
+Weeks 9 and 10 both cover Shiny apps. Continue the reading and DataCamp chapters started in Week 9 to prepare prepare for Week 10.
+
+**Reading:**
+
+- Chapters 1-4 of the following guide to Shiny apps: [Shiny app guide](https://sscc.wisc.edu/sscc/pubs/shiny/index.html)
+
+**DataCamp:**
+
+- Building web applications in Shiny with R

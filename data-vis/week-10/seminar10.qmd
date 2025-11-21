@@ -1,0 +1,966 @@
+---
+title: "Week 10 Seminar: Shiny Apps 2"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    highlight-style: github
+    width: 1200
+execute:
+  eval: false
+  freeze: false
+---
+
+```{r setup, include=FALSE}
+#| context: setup
+#| eval: true
+# Packages used for the slides
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(here)
+  library(knitr)
+  library(viridis)
+  library(shiny)
+  library(kableExtra)
+})
+
+options(knitr.kable.NA = "")
+knitr::opts_chunk$set(fig.retina = 3)
+
+# Keep the same default theme style as previous weeks
+theme_set(theme_bw(base_size = 18) +
+            theme(panel.grid = element_blank()))
+
+# Load therapy dataset (for any examples we might want to run)
+therapy_df <- readr::read_csv(here("data-vis", "data", "therapy_dataset.csv"))
+
+therapy_df <- therapy_df |>
+  mutate(
+    support_level = factor(support_level, levels = c("Low", "Medium", "High")),
+    therapy       = factor(therapy,       levels = c("Yes", "No")),
+    sex           = factor(sex)
+  )
+```
+
+---
+
+## From last week
+
+<br>
+
+- The **basic anatomy** of a Shiny app:
+  - `ui`, `server`, and `shinyApp(ui, server)`
+  
+---
+
+## From last week
+
+<br>
+
+- How to **populate the UI** with:
+  - `selectInput()` to create a dropdown menu (chose a y-axis variable)
+  - `checkboxInput()` to toggle a feature on/off (added points to a plot)
+  - `plotOutput()` to define where the plot appears
+
+---
+
+## From last week
+
+<br>
+
+- `renderPlot()` to create a plot output
+- How to **use inputs in the server**:
+  - Used dropdown selection in `if (...) { ... } else { ... }` blocks to choose y-axis variable
+  - Used checkbox selection in `if (...) {}` to add `geom_point()`
+
+::: notes
+:::
+
+---
+
+## Today
+
+- Inspect an updated app with new core features:
+  - Give users more controls
+  - Use these controls more efficiently "under the hood"
+- Learn how to implement the features in the  `ui` and `server`
+
+---
+
+## Today
+
+- New UI features:
+  - Sidebar layout (`sidebarLayout()`, `sidebarPanel()`, `mainPanel()`)
+  - A new input that **filters** data
+  - Multiple **tabs** for different plots
+- New server features "under the hood":
+  - Reactive filtering with `reactive()`
+  - Efficient use of user input in `ggplot` with `.data[[input$outcome]]`
+
+::: notes
+Give a quick roadmap:
+
+- First, look at the finished Week 10 app and connect it to Week 9.
+- Then, focus on the new UI structure: sidebar vs main panel and tabs.
+- Finally, explore the server-side improvements: reactive filtering, `.data[[...]]`, and the new checkbox that toggles faceting.
+:::
+
+---
+
+## Today
+
+- **Inspect an updated app with new core features**
+---
+
+## Inspect an updated app
+
+- Our finished app for this week
+  - Uses the **therapy dataset**
+  - Shows how `support_level` AND `therapy` are related to outcomes
+  - Gives users more control over the data shown in the plots
+  
+```{r head-therapy-week10, eval=TRUE, echo=FALSE}
+therapy_df %>%
+  head(6) %>%
+  kable("html", digits = 0) %>%
+  kable_styling(font_size = 18, position = "center", full_width = FALSE) %>%
+  row_spec(0, bold = TRUE, align = "c") %>%
+  column_spec(c(1,2,4,5), background = "yellow")
+```
+
+--- 
+
+## Inspect an updated app
+
+- Our finished app for this week
+  - Uses the **therapy dataset**
+  - Shows how `support_level` AND `therapy` are related to outcomes
+  - Gives users more control over the data shown in the plots
+
+Full app:
+[Open the example Shiny app](https://laylaunger.shinyapps.io/week-10/)
+
+--- 
+
+## Inspect an updated app
+
+- Key features:
+  - Inputs are in a side panel, plots in a main panel
+  - As in week 9, user choose which **outcome** to explore, but now users can also **filter support levels**: Low, Medium, High
+  - Users can switch between two tabs to view the effects of `support` and `therapy`
+
+
+::: notes
+Highlight the continuity:
+
+- Same dataset as before (`therapy_df`).
+- Same key variables: support_level, therapy, wellbeing, loneliness.
+- The new parts are about how we **organise** the UI and **reuse** code across multiple plots.
+
+Emphasise the “dashboard” feel:
+
+- Instead of a single plot responding to inputs, we now have a mini dashboard:
+  - multiple views,
+  - shared controls, and
+  - one plot-specific control (the facet checkbox).
+:::
+
+---
+
+## Today
+
+- **New UI features**
+
+---
+
+## New UI features: Overview
+
+- Today’s new UI concepts:
+  - Splitting the page into a **sidebar for inputs** and a **main panel for outputs**
+  - Including a **UI input that filters data**
+  - Including **multiple tabs** in the main panel for different plots
+
+::: notes
+This slide is just a preview.
+
+- We’ll first look at **sidebar vs main panel**.
+- Then we’ll see how to **fill the sidebar** with inputs.
+- Then we’ll look at how to add **multiple tabs** in the main panel.
+:::
+
+---
+
+## New UI features
+
+- Today’s new UI concepts:
+  - Splitting the page into a **sidebar for inputs** and a **main panel for outputs**
+
+::: notes
+Start with splitting the page into sidebar and main panel
+:::
+
+---
+
+## Sidebar and main panel
+
+- In Week 9, all UI elements lived directly inside `fluidPage()`.
+
+```r
+ui <- fluidPage(
+  titlePanel("Wellbeing and Loneliness Dashboard"),
+
+  p("Use the controls on the left to explore factors influencing wellbeing and loneliness."),
+
+)
+```
+---
+
+## Sidebar and main panel
+
+We now add a **layout function**
+
+```r
+ui <- fluidPage(
+  titlePanel("Wellbeing and Loneliness Dashboard"),
+
+  p("Use the controls on the left to explore factors influencing wellbeing and loneliness."),
+
+  sidebarLayout(
+   
+  )
+  
+)
+```
+::: notes
+
+Tells shiny to use a layout with a sidebar and main panel
+
+:::
+
+---
+
+## Sidebar and main panel
+
+We fill in the parts of the new layout
+
+```r
+ui <- fluidPage(
+  ...
+
+  sidebarLayout(
+    sidebarPanel(
+      # inputs go here (e.g., dropdowns, checkboxes)
+    ),
+    mainPanel(
+      # outputs go here (e.g., plots)
+    )
+  )
+  
+)
+```
+
+::: notes
+Key idea:
+
+- `sidebarLayout()` defines two regions:
+  - `sidebarPanel()` – the left-hand column with inputs.
+  - `mainPanel()` – the right-hand column with plots/output.
+
+This makes the app feel more like a standard data dashboard.
+:::
+
+---
+
+## Filling in the sidebar
+
+Pop in the same kinds of inputs from week 9
+
+```r
+sidebarPanel(
+
+  selectInput(
+    inputId = "outcome", # name of the part in the input object
+    label   = "Outcome to explore:", # label shown to the user
+    choices = c(
+      "Wellbeing score"  = "wellbeing_score",
+      "Loneliness score" = "loneliness_score"
+    ),
+    selected = "wellbeing_score"
+  )
+)
+```
+
+::: notes
+Point out:
+
+- The dropdown (`selectInput`) is essentially identical to Week 9, but now lives inside the sidebar.
+:::
+
+---
+
+## Filling in the sidebar: outcome dropdown
+
+Remember: this will store `input$outcome` as one of the two choice strings:
+
+`"wellbeing_score"` or `"loneliness_score"`
+
+```r
+selectInput(
+  inputId = "outcome", 
+  label   = "Outcome to explore:",
+  choices = c(
+    "Wellbeing score"  = "wellbeing_score",
+    "Loneliness score" = "loneliness_score"
+  ),
+  selected = "wellbeing_score"
+)
+```
+
+::: notes
+Remind students:
+
+- If the user chooses “Loneliness score”, then `input$outcome` becomes the string `"loneliness_score"`.
+- We will later use this string to pick the correct column to plot.
+:::
+
+---
+
+## New UI features
+
+- Today’s new UI concepts:
+  - Including a **UI input that filters data**
+
+---
+
+## Filling in the sidebar: support-level checkboxes
+
+<br>
+
+New type of input: group of checkboxes
+
+```r
+checkboxGroupInput(
+  inputId  = "support_filter",
+  label    = "Include support levels:",
+  choices  = c("Low", "Medium", "High"),
+  selected = c("Low", "Medium", "High")
+)
+```
+
+::: notes
+
+
+:::
+
+---
+
+## Filling in the sidebar: support-level checkboxes
+
+<br>
+
+This will store `input$support_filter` as a **vector** of the user's choices
+
+<br>
+
+If all checked: `c("Low", "Medium", "High")`
+
+```r
+checkboxGroupInput(
+  inputId  = "support_filter",
+  label    = "Include support levels:",
+  choices  = c("Low", "Medium", "High"),
+  selected = c("Low", "Medium", "High")
+)
+```
+
+::: notes
+Emphasise:
+
+- `input$support_filter` is a **vector** of strings:
+  - Initially: `c("Low", "Medium", "High")`.
+  - If the user unchecks “Medium”, it becomes `c("Low", "High")`.
+:::
+
+---
+
+## Filling in the sidebar: support-level checkboxes
+
+<br>
+
+Later, vector of choices will be used to filter data in `server`
+
+```r
+checkboxGroupInput(
+  inputId  = "support_filter",
+  label    = "Include support levels:",
+  choices  = c("Low", "Medium", "High"),
+  selected = c("Low", "Medium", "High")
+)
+```
+
+::: notes
+- Later in the server, we will use this vector to **filter the dataset** before plotting.
+:::
+
+
+---
+
+## New UI features
+
+- Today’s new UI concepts:
+  - Including **multiple tabs** in the main panel for different output plots
+
+::: notes
+Those were our new INPUT features.
+
+Our UI also has this new output feature, where we're now going to have different tabs for different output plots
+
+:::
+
+---
+
+## Multiple tabs in the main panel
+
+In week 9, we had a single output plot
+
+Now we'll show **multiple plots** in separate tabs
+
+```r
+ui <- fluidPage(
+  ...
+
+  sidebarLayout(
+    sidebarPanel(
+      # inputs go here (e.g., dropdowns, checkboxes)
+    ),
+    mainPanel(
+      # outputs go here (e.g., plots) <- Now MULTIPLE tabs!
+    )
+  )
+  
+)
+```
+
+
+---
+
+## Multiple tabs in the main panel
+
+We'll show **multiple plots** in separate tabs using `tabsetPanel()`
+
+```r
+mainPanel(
+  tabsetPanel(
+    tabPanel(
+      # tab title and contents
+    ),
+    tabPanel(
+      # tab title and contents
+    )
+  )
+)
+```
+
+::: notes
+Explain:
+
+- `tabsetPanel()` is a container that holds multiple `tabPanel()`s.
+- Each `tabPanel()`:
+  - Has a title.
+  - Contains the outputs (and possibly inputs) specific to that tab.
+:::
+
+---
+
+## Multiple tabs in the main panel
+
+Zooming in on a single tab, Support:
+
+```r
+tabPanel(
+  title = "Support",
+  plotOutput("support_plot") # just like our single output in week 9
+)
+```
+::: notes
+Explain:
+
+- `tabsetPanel()` is a container that holds multiple `tabPanel()`s.
+- Each `tabPanel()`:
+  - Has a title.
+  - Contains the outputs (and possibly inputs) specific to that tab.
+  
+- `plotOutput("support_plot")`:
+  - Space where Shiny will display the plot called `output$support_plot` from the server.
+:::
+
+---
+
+## Multiple tabs in the main panel
+
+Zooming in on a single tab, Therapy:
+
+```r
+tabPanel(
+  title = "Therapy",
+  plotOutput("therapy_plot")
+)
+```
+
+---
+
+## Multiple tabs in the main panel
+
+Can add tab-specific input:
+
+```r
+tabPanel(
+  title = "Therapy",
+  checkboxInput(
+    inputId = "facet_by_support",
+    label   = "Show breakdown by support level",
+    value   = FALSE
+  ),
+  plotOutput("therapy_plot")
+)
+```
+
+
+::: notes
+Key point:
+
+- Inputs can live in the sidebar (global) *or* inside individual tabs.
+- The `facet_by_support` checkbox only affects the **Therapy** tab plot, because only that server code reads `input$facet_by_support`.
+:::
+
+---
+
+## New server features: Overview
+
+- Reactive filtering with `reactive()`
+- Efficient use of user input in `ggplot` with `.data[[input$outcome]]`
+- Plot-specific user controls
+
+::: notes
+This slide previews the three main server-side concepts:
+
+1. A reactive filtered dataset.
+2. Efficient variable lookup inside `ggplot()`.
+3. Using a checkbox to add/remove a facet layer.
+:::
+
+---
+
+## New server features
+
+- **Reactive filtering with `reactive()`**
+
+---
+
+## Reactive expressions: goal
+
+<br>
+
+Last week, we used all the data in the plot
+
+<br>
+
+Now:
+
+- Our input includes a group of checkboxes where users can select which support levels they want to see: Low, Medium, and/or High
+- We'll use these checkboxes to filter which data points appear in the plots
+
+---
+
+## Reactive expressions: goal
+
+Recall the sidebar checkboxes:
+
+```r
+checkboxGroupInput(
+  inputId  = "support_filter",
+  label    = "Include support levels:",
+  choices  = c("Low", "Medium", "High"),
+  selected = c("Low", "Medium", "High")
+)
+```
+
+---
+
+## Reactive expressions: goal
+
+- Remember, user's choices are stored in `input$support_filter` as a vector
+- Default vector is `c("Low", "Medium", "High")`
+- We can use this vector to do some familiar tidyverse wrangling:
+
+```r
+therapy_df |>
+  filter(support_level %in% input$support_filter)
+```
+
+::: notes
+:::
+
+---
+
+## Reactive expressions: goal
+
+Don't want to repeat this filter for every one of our plots!
+
+```r
+therapy_df |>
+  filter(support_level %in% input$support_filter)
+```
+
+::: notes
+Highlight the problem:
+
+- Repeating the same filter code in multiple places is error-prone and harder to maintain.
+- If you ever change the filtering logic, you’d need to remember to update it everywhere.
+:::
+
+---
+
+## Reactive expressions: re-use code as a function
+
+Instead, we wrap the filtering in a **reactive expression**
+Creates a `filtered_data()` **function* that returns the filtered data
+
+```r
+filtered_data <- reactive({
+  therapy_df |>
+    filter(support_level %in% input$support_filter)
+})
+```
+
+---
+
+## Reactive expressions: re-use code as a function
+
+Instead, we wrap the filtering in a **reactive expression**
+Creates a `filtered_data()` **function* that returns the filtered data
+
+```r
+filtered_data <- reactive({
+  therapy_df |>
+    filter(support_level %in% input$support_filter)
+})
+
+# Now this:
+filtered_data()
+
+# Does the same thing as:
+therapy_df |>
+    filter(support_level %in% input$support_filter)
+```
+
+::: notes
+
+:::
+
+---
+
+## Reactive expressions: why this is useful
+
+<br>
+
+Why use `reactive()` here?
+
+- We only write the filter **once**
+- Any plot can use:
+
+```r
+filtered_data() |>
+  ggplot(...)
+```
+
+::: notes
+Connect to general programming principles:
+
+- This is an example of **DRY** (“Don’t Repeat Yourself”).
+- `reactive()` is Shiny’s way of letting you define reusable, reactive “helper functions” that depend on inputs.
+:::
+
+---
+
+## New server features
+
+- **Efficient use of user input in `ggplot` with `.data[[input$outcome]]`**
+
+---
+
+## Efficiently referencing UI input in ggplot
+
+<br>
+
+Goal:
+
+- Use the outcome dropdown to choose which **column** goes on the ggplot y-axis, like Week 9
+- But avoid writing long `if/else` blocks to choose different ggplot code for each outcome
+
+---
+
+## Efficiently referencing UI input in ggplot
+
+<br>
+
+Recall the dropdown menu:
+
+```r
+selectInput(
+  inputId = "outcome",
+  label   = "Outcome to explore:",
+  choices = c(
+    "Wellbeing score"  = "wellbeing_score",
+    "Loneliness score" = "loneliness_score"
+  ),
+  selected = "wellbeing_score"
+)
+```
+
+---
+
+## Efficiently referencing UI input in ggplot
+
+<br>
+
+- Remember, user's choices are stored in `input$outcome` as string
+- Default string is `"wellbeing_score"` and can be switched to `"loneliness_score"`
+
+
+---
+
+## Efficiently referencing UI input in ggplot
+
+<br>
+
+Last time, we used `if\else` to get ggplot to use the chosen variable on the y-axis:
+
+```r
+if(input$outcome == "wellbeing_score") {
+  output_plot <- ggplot(therapy_df, aes(y = wellbeing_score)) +
+    ...
+} else {
+  output_plot <- ggplot(therapy_df, aes(y = lone_liness_score)) +
+    ...
+}
+```
+
+---
+
+## Efficiently referencing UI input in ggplot
+
+<br>
+
+Wouldn't it be useful if we could avoid writing out the full ggplot with a different y-axis each time?
+
+<br>
+
+Why can't we just do this?
+
+```r
+ggplot(therapy_df, aes(y = input$outcome)) +
+  ...
+```
+
+---
+
+## Efficiently referencing UI input in ggplot
+
+<br>
+
+Wouldn't it be useful if we could avoid writing out the full ggplot with a different y-axis each time?
+
+<br>
+
+Why can't we just do this?
+
+```r
+ggplot(therapy_df, aes(y = input$outcome)) +
+  ...
+```
+
+Would produce:
+
+```r
+ggplot(therapy_df, aes(y = "wellbeing_score")) + # note the quotes
+  ...
+```
+
+---
+
+## Efficiently referencing UI input in ggplot
+
+<br>
+
+`ggplot` needs to interpret arguments of `aes()` as **variables**, not strings
+
+<br>
+
+Inside ggplot, we can use `.data[[...]]`:
+
+```r
+filtered_data() |>
+  ggplot(aes(
+    x    = support_level,
+    y    = .data[[input$outcome]], 
+    fill = support_level
+  )) +
+  ...
+```
+
+Read as: “Use the column whose name is given by this string.”
+
+---
+
+
+## Efficiently referencing UI input in ggplot
+
+<br>
+
+So:
+
+- If `input$outcome == "wellbeing_score"`:
+  - `.data[[input$outcome]]` → the `wellbeing_score` column.
+- If `input$outcome == "loneliness_score"`:
+  - `.data[[input$outcome]]` → the `loneliness_score` column.
+
+No need for long `if\else` blocks
+
+::: notes
+Key advantage:
+
+- We can write **one** ggplot call and have it automatically adjust to whichever outcome the user selects.
+- No need to duplicate the entire ggplot code in `if/else` blocks.
+:::
+
+---
+
+## Efficiently referencing UI input in ggplot
+
+<br>
+
+Use a quick `if\else` just to format the y-axis **label**
+
+
+```r
+if (input$outcome == "wellbeing_score") {
+  y_lab <- "Wellbeing score"
+} else {
+  y_lab <- "Loneliness score"
+}
+```
+
+Alternative: **regular expressions** to alter the string to a nice axis label
+
+---
+
+## New server features
+
+- **Plot-specific user controls**
+
+
+---
+
+## Plot-specific UI controls: revisiting Week 9
+
+<br>
+
+In Week 9, we used a checkbox to optionally add a layer:
+
+```r
+# In ui:
+checkboxInput(
+  inputId = "show_points",
+  label   = "Show individual data points",
+  value   = FALSE
+)
+
+# In server:
+output_plot <- ...
+
+if (input$show_points) {
+  output_plot <- output_plot +
+    geom_point(position = position_jitter(width = 0.1), alpha = 0.4)
+}
+
+output_plot
+```
+
+::: notes
+Remind them:
+
+- This was their first example of a plot-specific control that toggles a feature on and off.
+- The pattern was:
+  - Build a base plot,
+  - Then conditionally add a layer if a checkbox is `TRUE`.
+:::
+
+---
+
+## Plot-specific UI controls: facet on/off
+
+<br>
+
+In Week 10, we use the **same pattern** in the Therapy tab:
+
+```r
+# In ui:
+checkboxInput(
+  inputId = "facet_by_support",
+  label   = "Show breakdown by support level",
+  value   = FALSE
+)
+
+# In server:
+therapy_plot <- ...
+
+if (input$facet_by_support) {
+  therapy_plot <- therapy_plot + facet_wrap(~ support_level)
+}
+
+therapy_plot
+```
+
+::: notes
+Emphasise the parallel:
+
+- Instead of toggling a `geom_point` layer, we’re now toggling a `facet_wrap` layer.
+- The logic is the same:
+  - Build a base plot.
+  - Check the checkbox value.
+  - If `TRUE`, add an extra feature (facets).
+:::
+
+---
+
+## Summary
+
+Today we:
+
+- Introduced new UI features:
+  - `sidebarLayout()`, `sidebarPanel()`, `mainPanel()`
+  - A support-level filter based on `checkboxGroupInput()`
+  - Multiple tabs using `tabsetPanel()` and `tabPanel()`
+  
+---
+
+## Summary
+
+Today we:
+
+- Introduced new server features:
+  - Re-usable data filter using a `reactive()` expression
+  - Efficient use of the outcome input via `.data[[input$outcome]]` in `ggplot()`
+  - A tab-specific checkbox that toggles `facet_wrap(~ support_level)` in the Therapy plot
+
+::: notes
+Close the loop:
+
+- Emphasise that the Week 10 app is a model for their final assessment:
+  - Multiple views of the same data.
+  - Shared inputs.
+  - Possibly one or two plot-specific controls.
+- Encourage them to think: “How could I adapt this pattern to my own dataset?”
+:::

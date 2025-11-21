@@ -1,0 +1,294 @@
+---
+title: "Independent Study to Consolidate"
+subtitle: "Shiny Apps 2"
+toc: true
+toc-location: right
+---
+
+# Overview
+
+As in Week 9, these consolidation exercises will ask you to apply what you learned in the seminar and practical to another dataset. 
+
+In these exercises, you will re-use a dataset and code from an earlier week to create your own Shiny dashboard-style app, using the same core ideas as before plus the new layout and server tools from **Week 10**:
+
+- A single `app.R` file with a `ui` and `server`
+- A **sidebar layout** with inputs on the left and outputs on the right
+- Inputs that **filter** the data and switch between **multiple outcomes**
+- Multiple **tabs** (`tabsetPanel()`, `tabPanel()`) that show different plots
+- A **tab-specific control** (for example, a checkbox that turns faceting on/off)
+- A reusable **reactive filtered dataset** created with `reactive()`
+- Efficient mapping from the outcome dropdown to ggplot using `.data[[input$outcome]]`
+
+The goal is to consolidate the new Shiny features from Week 10 using a dataset you already know.
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer outside of RStudio. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will usually involve writing or running R code, but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser, like searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. You should usually record your answers in your script/app for future reference.
+:::
+
+---
+
+## Exercise 1: Choose your earlier work and dashboard plan
+
+Start by deciding what you want your Week 10 app to explore.
+
+For a rich enough dataset to produce multiple plots and variations, you may want to adapt the Week 5 or Week 6 dataset (the Week 4 dataset may not have enough variables / patterns to make use of the Week 10 features).
+
+![](images/do_in_R.png) Open the R script from your chosen week and quickly skim what you did.
+
+![](images/answer.png) Note:
+
+- Which **dataset** you plan to use
+- Which **two continuous outcomes** you might let the user switch between (for the outcome dropdown)
+- Which **grouping variable** you might:
+  - use as a **filter** (in a checkbox group)
+  - use in a **facet** or second tab
+
+
+## Exercise 2: Set up a Shiny project folder
+
+Create a fresh project for this Week 10 consolidation app.
+
+![](images/do_in_R.png) In RStudio, in the **Files** tab (bottom-right panel), create a new folder somewhere sensible (for example inside `data-visualisation-in-r`). Give it a clear name that relates to the graphs you will use in the app, such as `consolidate10_dashboard`.
+
+We will refer to this as **`project_name/`**.
+
+Your goal is to have a structure like:
+
+```text
+project_name/
+  project_name.Rproj
+  app.R
+  data/
+    <one or more CSV files>
+```
+
+![](images/do_in_R.png) Turn this folder into an **RStudio Project**:
+
+- Click the project dropdown in the top-right of RStudio  
+- Choose **New Project → Existing Directory**  
+- Select your new `project_name/` folder and click **Create Project**
+
+![](images/do_in_R.png) Inside this project, create a subfolder called `data`.
+
+![](images/do_on_your_computer.png) Copy the relevant CSV file(s) from the original week into this `data` folder.
+
+
+## Exercise 3: Create `app.R` and load your data
+
+
+![](images/do_in_R.png) In RStudio (inside your new project):
+
+- Create a new **R Script** and save it as `app.R` in `project_name/`.
+
+At the top of `app.R`, load the packages you need, for example:
+
+```r
+library(shiny)
+library(tidyverse)
+library(viridis)
+```
+
+Then load your dataset from the `data/` folder, using a clear object name:
+
+```r
+my_df <- readr::read_csv("data/your_dataset.csv")
+```
+
+Replace `"your_dataset.csv"` and `my_df` with names that make sense for your data.
+
+If you have a grouping variable, you may want to **reorder** it with `factor()` and `levels = ...` as in earlier weeks.
+
+![](images/answer.png) In a brief comment above your data-loading code, describe:
+- What the dataset represents
+- Which variables you expect to use in your app
+
+
+## Exercise 4: Add your basic Shiny skeleton
+
+![](images/do_in_R.png) Make sure `app.R` contains the **basic Shiny structure**:
+
+```r
+ui <- fluidPage(
+
+)
+
+server <- function(input, output, session) {
+
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+
+## Exercise 5: Move to a sidebar layout with tabs
+
+In Week 10 we moved from a simple `fluidPage()` with a single plot to a **sidebar layout** with **multiple tabs**.
+
+Your goal is to have a UI structure like this:
+
+```r
+ui <- fluidPage(
+  titlePanel("Your dashboard title"),
+  p("Short instructions for what users can explore."),
+
+  sidebarLayout(
+    sidebarPanel(
+      # inputs (dropdowns, checkboxes, etc.)
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel(
+          title = "Tab 1 title",
+          # tab-specific inputs (if any) and plotOutput(...)
+        ),
+        tabPanel(
+          title = "Tab 2 title",
+          # tab-specific inputs (if any) and plotOutput(...)
+        )
+      )
+    )
+  )
+)
+```
+
+![](images/do_in_R.png) Edit your `ui <- fluidPage(...)` so that it:
+
+- Includes a `titlePanel()` with a clear title  
+- Includes a short `p()` paragraph explaining what the app will show  
+- Uses `sidebarLayout()` with `sidebarPanel()` and `mainPanel()`  
+- Inside `mainPanel()`, uses `tabsetPanel()` with **two `tabPanel()`s**, such as:
+  - Tab 1: a view focused on one grouping (e.g., group differences)
+  - Tab 2: a view that uses faceting or a different outcome
+
+Each tab should contain at least one `plotOutput()` with a clear name
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. You should see:
+
+- A title and short paragraph  
+- A sidebar on the left (currently empty)  
+- Two tabs with empty plot areas on the right
+
+## Exercise 6: Add global inputs to the sidebar
+
+Now you’ll add **global inputs** in the sidebar that affect **both tabs**, such as:
+
+- A **dropdown** to choose between two continuous outcomes  
+- A **checkbox group filter** to control which groups appear in the plots
+
+![](images/answer.png) In a comment inside `sidebarPanel()`, note:
+
+- Which variable you will use for the **outcome dropdown** (two options)  
+- Which variable you will use for the **group filter** (e.g., support level, participant group, job type)
+
+![](images/do_in_R.png) Inside `sidebarPanel()`, add:
+
+- A `selectInput()` for a dropdown menu. Remember to fill out the `inputID`, `label`, `choices` and `selected` arguments.
+- A `checkboxGroupInput()`. Remember to fill out the `inputID`, `label`, `choices` and `selected` arguments.
+
+![](images/do_in_R.png) Inside one of the `tabPanel`s, add:
+
+- A `checkboxInput()`. Remember to fill out the `inputID`, `label`, and `value` arguments.
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. Check that the input controls all appear as intended.
+
+## Exercise 7: Create a reusable reactive filtered dataset
+
+In Week 10, we used a **reactive expression** to filter the data once and reuse it across multiple plots.
+
+You will now create a `filtered_data()` function that:
+
+- Starts from your dataset
+- Filters rows where the grouping variable is in the `input$group_filter` vector
+- Updates automatically whenever the user changes the group checkboxes
+
+![](images/do_in_R.png) In the `server` function, **above** any plotting code, add a reactive expression that creates a function called `filtered_data`. 
+
+![](images/answer.png) In a comment above `filtered_data <- reactive({ ... })`, explain what this reactive expression does in your dataset / app.
+
+## Exercise 8: Build the first tab’s plot with `.data[[input$outcome]]`
+
+Now you’ll create the **first tab’s plot**, which will:
+
+- Use `filtered_data()` so it respects the group filter  
+- Plot the intended variable on the x-axis
+- Plot the **selected outcome** (from the dropdown) on the other axis using `.data[[input$outcome]]`
+- Show a clear pattern (e.g., group differences, trends over time, etc.)
+
+![](images/do_in_R.png) Inside the `server` function, add a new output using `renderPlot()` whose name matches the `plotOutput()` in your first tab, for example:
+
+```r
+output$view1_plot <- renderPlot({
+
+  # 1) use a small if/else block to decide on the axis label based on input$outcome
+
+  # 2) start from filtered_data() and pipe into ggplot()
+
+  # 3) inside aes(), use something like:
+  #    x = grouping_variable,
+  #    y = .data[[input$outcome]]
+
+  # 4) add geom layer(s) to show the pattern (boxplot, line, bar, etc)
+
+  # 5) add labs(), scales, and theme tweaks to make it readable
+
+})
+```
+
+## Exercise 9: Build the second tab’s plot with a tab-specific control
+
+For your second tab, you will:
+
+- Use `filtered_data()` again  
+- Show a **different view** of the data (for example, a different grouping or layout)  
+
+![](images/do_in_R.png) In the `server` function, add another `renderPlot()` for the second tab, e.g.:
+
+```r
+output$view2_plot <- renderPlot({
+
+  # 1) use a small if/else block to decide on the axis label
+
+  # 2) start from filtered_data() and pipe into ggplot()
+
+  # 3) use aes(...) including .data[[input$outcome]] as needed
+
+  # 4) build a base plot: e.g., outcome by another grouping, or a distribution plot
+
+  # 5) then, use an if(){} block to test whether the checkbox is TRUE (checked), and add a plot layer if so
+
+  # 6) in one line, just enter the name of the plot so Shiny can draw it
+
+})
+```
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. Test that:
+
+- Both tabs show plots using the current dropdown and group filter  
+- The tab-specific checkbox only affects the second tab  
+- Tick/untick the checkbox and make sure the change makes sense for your plot
+
+
+## Exercise 10: Polishing, comments, and reflection
+
+In this final exercise, you’ll tidy your dashboard and make sure you understand how each part works.
+
+![](images/do_in_R.png) In `app.R`, add short **comments** to remind your future self what each major section does
+
+![](images/do_in_R.png) Consider making small polish edits
+
+![](images/answer.png) In a comment in `app.R`, consider:
+
+- What **question(s)** is your dashboard helping to answer about this dataset?  
+- How did using a **reactive filtered dataset** and `.data[[input$outcome]]` change how you structured your code compared to Week 9?
+
+# You're finished! 🎉

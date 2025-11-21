@@ -1,0 +1,21 @@
+---
+title: Overview
+subtitle: "Shiny Apps 1"
+toc: true
+toc-location: right
+---
+
+This week you will be introduced to Shiny apps. Shiny apps allow you to build dynamic web apps in which people can interactively explore visualisations.  
+
+
+### Learning objectives
+
+The successful student will be able to:
+
+- Explain what a Shiny app is and why we might use one
+- Recognise the **anatomy** of a Shiny app:
+  - `ui`, `server`, `shinyApp(ui, server)`
+- Build a simple interactive app that:
+  - Uses `selectInput()` and `checkboxInput()`
+  - Updates a ggplot using `renderPlot()` and `plotOutput()`
+- Organise `app.R` and data files in a project structure
