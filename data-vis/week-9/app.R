@@ -56,9 +56,12 @@ ui <- fluidPage(
   # Later, in the server section, we will use this to determine which outcome variable
   # to plot on the y-axis of our plot.
   # For dropdown menu inputs, we will: 
-  # -- use the choice argument to specify the dropdown menu choices as a vector (here,
-  #    this will be two of the possible outcome variables to plot)
-  # -- use the selected argument to specify the default choice
+  # -- set the `choices` argument to specify the dropdown menu choices as a named vector
+  #    containing both the name of the choice that the user will see, and the choice
+  #    value to store in the input object. For example, one choice will be shown to the
+  #    user as "Wellbeing score", and if the user chooses it, we will store "wellbeing_score"
+  #    in the input object.
+  # -- set the `selected` argument to specify the default choice
   selectInput(
     inputId = "outcome",
     label   = "Outcome to plot:",

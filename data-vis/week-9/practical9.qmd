@@ -1,0 +1,344 @@
+---
+title: "Practical"  
+subtitle: "Week 9 Seminar: Shiny Apps 1"  
+toc: true  
+toc-location: right  
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(here)
+library(shiny)
+library(viridis)
+
+# Load wellbeing dataset so that any example code in this practical can run
+wellbeing_df <- readr::read_csv(here("data-vis", "data", "wellbeing_dataset.csv")) |>
+  mutate(
+    participant_group = factor(
+      participant_group,
+      levels = c("student", "employed", "retired")
+    )
+  )
+
+theme_set(theme_minimal(base_size = 14))
+```
+
+# Introduction
+
+## Session overview
+
+In this practical you’ll **build a small Shiny app project** from scratch using the **wellbeing dataset**, applying the ideas from **Seminar 9**:
+
+- Setting up a **project folder** with a subfolder for data  
+- Creating an **`app.R` file** inside an RStudio project  
+- Loading data and packages at the top of your app  
+- Building a **UI** with a title, description, dropdown menu, checkbox, and plot output  
+- Writing a **server function** that draws a plot from the data  
+- Using `input$...` values and an `if (...) { ... } else { ... }` pattern to switch between outcomes  
+- Using another `if` statement to control whether **individual data points** are shown  
+- Running the app and dealing with common errors
+
+By the end, you should have your **first complete Shiny app** for this module, using a dataset on **sleep and wellbeing across groups**.
+
+## Philosophy
+
+Practicals are not a test. It is expected that you’ll often be unsure what to do at first – that’s normal. The goal is that each workshop helps you build confidence step-by-step.
+
+Some tips:
+
+- don’t worry about making mistakes  
+- don’t let what you can’t do interfere with what you *can* do  
+- discussing code with your neighbours will help  
+- look things up in the independent study material  
+- look things up in your own code from earlier weeks  
+- there are no stupid questions  
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will usually involve running R code, but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser. It will usually be searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. You can record your answers in your report, app file, or notes for future reference.
+:::
+
+# Exercises
+
+**Important:** For Week 9, the **project setup is part of the exercises**.  
+Follow the steps carefully so that your project structure matches the simple pattern we used in **Seminar 9** and that you will also use for the assessment.
+
+---
+
+## Exercise 1: Create a Shiny project folder
+
+In this exercise you will create a **new folder** for a mini Shiny project, add a `data` subfolder for the CSV, and turn it into an **RStudio project**.
+
+![](images/do_in_R.png) In the **Files** tab in the lower right pane, click on the `...` on the right (this should say "Go to directory" when you hover over it). Clicking the '...' will open the *Go to folder* window. Navigate to a place on your computer where you keep your work for this module (for example your `data-visualisation-in-r` folder). Click **Open**.
+
+![](images/do_in_R.png) In the Files tab, click on **New Folder**. Give your new folder a short, sensible name for this project, such as `week-9-shiny-app`.  
+
+We’ll refer to this folder as **`project_name/`** in the instructions below.
+
+![](images/do_in_R.png) Still in the Files tab, click into your new `project_name/` folder. Then use **File → New Project… → Existing Directory**, choose your `project_name/` folder, and create an **R Project** there.  
+
+You should now have:
+
+````
+project_name/
+  project_name.Rproj
+````
+
+![](images/do_in_R.png) Inside `project_name/`, create a new subfolder called `data`.
+
+````
+project_name/
+  project_name.Rproj
+  data/
+````
+
+Now you’ll add the data file.
+
+![](images/do_on_internet.png) Download the wellbeing CSV file for this practical from the VLE:  
+
+- [wellbeing_dataset.csv](../data/wellbeing_dataset.csv)
+
+![](images/do_on_your_computer.png) Save `wellbeing_dataset.csv` **inside the `data` subfolder** of your new project:
+
+````
+project_name/
+  project_name.Rproj
+  data/
+    wellbeing_dataset.csv
+````
+
+![](images/answer.png) Why is it helpful to keep the data file *inside* the project folder, rather than somewhere else on your computer?
+
+## Exercise 2: Create an `app.R` file and load the data
+
+Next, you’ll create your main **Shiny app script** (`app.R`) and load the data.
+
+![](images/do_in_R.png) In RStudio, go to **File → New File → R Script**.
+
+![](images/do_in_R.png) Save this file in your `project_name/` folder with the name **`app.R`**.
+
+You should now have:
+
+````
+project_name/
+  project_name.Rproj
+  app.R
+  data/
+    wellbeing_dataset.csv
+````
+
+Now add the code that loads your packages and data at the top of `app.R`.
+
+![](images/do_in_R.png) In `app.R`, add code that:
+
+- Loads the `shiny` and `tidyverse` packages, and any others you might want (e.g., `viridis` for colors)
+- Reads in the wellbeing_dataset.csv from the data folder and assigns it to an object called `wellbeing_df`
+- Preproceses `wellbeing_df` using `mutate` and `factor` to order `participant_group` as a factor with levels "student", "employed" and "retired"
+
+
+![](images/answer.png) Why is it a good idea to load your packages and data **near the top** of `app.R`?
+
+
+## Exercise 3: Add a minimal Shiny app skeleton
+
+A Shiny app needs three main parts:
+
+- a **UI** that defines what the app looks like  
+- a **server** function that defines how the app behaves  
+- a final line that calls `shinyApp(ui = ..., server = ...)`
+
+In this exercise you’ll set up a minimal skeleton app that does nothing yet, but runs without errors.
+
+![](images/do_in_R.png) In `app.R`, **underneath** the library and data-loading code, add the following skeleton:
+
+```r
+ui <- fluidPage(
+
+)
+
+server <- function(input, output, session) {
+
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+![](images/do_in_R.png) Click **Run App** in RStudio. You should see a blank Shiny window.
+
+
+## Exercise 4: Build the UI layout and inputs
+
+Now you’ll build a simple UI that looks similar in structure to the one from **Seminar 9**, but adapted to the **wellbeing** data.
+
+Your UI will include:
+
+- a title  
+- a short instructional paragraph  
+- a **dropdown (selectInput)** to choose the outcome  
+- a **checkbox** to turn points on/off  
+- a **plotOutput** that will show the main plot
+
+![](images/do_in_R.png) In `app.R`, edit the contents of `ui <- fluidPage(...)` so that it contains all of the elements above. Use what you saw in **Seminar 9** and the slides as a guide:
+
+- Add a `titlePanel()` with a clear title, e.g. `"Sleep and Wellbeing Across Groups: Interactive"`.  
+- Add a short instruction paragraph with `p()`.  
+- Add a `selectInput()` using the `inputId` as `"outcome"` that lets the user choose between **Wellbeing index** and **Sleep hours**. Use the `choices` and `selected` arguments to control what appears in the dropdown and which option is selected by default. For example:
+
+```r
+selectInput(
+  inputId = "outcome",
+  label   = "Outcome to plot:",
+  choices = c(
+    "Wellbeing index" = "wellbeing_index",
+    "Sleep hours"     = "sleep_hours"
+  ),
+  selected = "wellbeing_index"
+)
+```
+
+- Add a `checkboxInput()` called `"show_points"` with default value `FALSE`.  
+- At the end of `fluidPage(...)`, add `plotOutput("group_plot")` where the plot will appear.
+
+Make sure that all of these lines live **inside** the parentheses of `fluidPage(...)`.
+
+![](images/do_in_R.png) Save `app.R`, then click **Run App** again. You should now see your **title**, **instruction text**, a **dropdown menu**, a **checkbox**, and an empty plot area.
+
+![](images/answer.png) Which argument in `selectInput()` controls the **labels the user sees**, and which argument controls the **values Shiny stores** in `input$outcome`?
+
+## Exercise 5: Draw a basic plot in the server
+
+Next, you’ll connect the UI to a **static plot** in the server. For now, we’ll ignore the user inputs and just draw a boxplot of **wellbeing index by participant group**.
+
+![](images/do_in_R.png) Go to the `server` function part of your skeleton and flesh out the server logic:
+
+1. Inside the curly braces `{}`, create an output called `group_plot` using `renderPlot()`:
+
+```r
+output$group_plot <- renderPlot({
+
+  # your ggplot code will go here
+
+})
+```
+
+2. Inside `renderPlot({ ... })`, write ggplot code that:
+
+- uses `wellbeing_df` as the data  
+- puts `participant_group` on the x-axis  
+- puts `wellbeing_index` on the y-axis  
+- draws boxplots coloured by `participant_group`  
+- customises the fill colors 
+- labels the axes clearly
+
+You can start from code like:
+
+```r
+wellbeing_df %>%
+  ggplot(aes(x = participant_group, y = wellbeing_index)) +
+  geom_boxplot(aes(fill = participant_group))
+```
+
+and then add extra layers (fill scale, labels, theme tweaks) to make the plot look polished, drawing on what you’ve done in previous weeks.
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. You should now see a boxplot of wellbeing index by participant group. The dropdown and checkbox don’t do anything yet, but your plot should appear.
+
+
+## Exercise 6: Use `input$outcome` with an `if`/`else` pattern
+
+Now you’ll make the app **reactive** to the dropdown menu by using `input$outcome` inside the `renderPlot()` code.
+
+We’ll use the same **`if (...) { ... } else { ... }` pattern** as in **Seminar 9**:
+
+- If the user selects `"wellbeing_index"`, plot wellbeing on the y-axis  
+- Otherwise (i.e., if they select `"sleep_hours"`), plot sleep hours on the y-axis instead
+
+![](images/do_in_R.png) Modify the code **inside** your `renderPlot({ ... })` so that it follows this pattern:
+
+1. At the top of `renderPlot({ ... })`, create an `if`/`else` block that checks `input$outcome`:
+
+```r
+if (input$outcome == "wellbeing_index") {
+  # build a plot with wellbeing_index on the y-axis
+} else {
+  # build a plot with sleep_hours on the y-axis
+}
+```
+
+2. In the first branch (`if`):
+
+- Create an object called `output_plot`, and assign your Exercise 5 code (which creates your boxplot with `wellbeing_index` on the y-axis) to it.
+- Note that this will set output_plot as a boxplot for `wellbeing_index` when the user selects `wellbeing_index`, just as intended.
+
+3. In the `else` branch:
+
+- Create a similar `output_plot`, but now with `sleep_hours` on the y-axis and an updated y-axis label (e.g. "Sleep hours").
+- Note that this will set output_plot as a boxplot for `sleep_hours` when the user selects `sleep_hours`, just as intended.
+
+4. After the `if`/`else` block, make sure the **last line** inside `renderPlot({ ... })` is:
+
+```r
+output_plot
+```
+
+This tells Shiny to actually draw the plot.
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. Change the dropdown between **Wellbeing index** and **Sleep hours**. The plot should update to show the selected outcome.
+
+![](images/answer.png) In your own words, describe what `if (input$outcome == "wellbeing_index") { ... } else { ... }` is doing in this app.
+
+## Exercise 7: Use `input$show_points` to toggle raw data points
+
+Finally, you’ll use the **checkbox** to control whether individual data points are shown on top of the boxplots.
+
+We’ll use a second `if` statement:
+
+- If `input$show_points` is `TRUE` (box checked), add jittered points  
+- If `input$show_points` is `FALSE` (box not checked), keep just the boxplots
+
+![](images/do_in_R.png) In the same `renderPlot({ ... })` code, **just before** the final line `output_plot`, add an `if` block that:
+
+- Checks the value of `input$show_points`
+- If the value is TRUE (i.e., if the box is checked), adds a layer to `output_plot` with jittered points
+
+```r
+if (input$show_points) {
+  output_plot <- output_plot +
+    [insert a line here that adds jittered points]
+}
+```
+
+The full structure **inside** `renderPlot()` should now be:
+
+- `if/else` block choosing the **outcome variable**  
+- `if` block adding **points** if `input$show_points` is `TRUE`  
+- final line that calls `output_plot`
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. Try:
+
+- Switching between **Wellbeing index** and **Sleep hours**  
+- Ticking and unticking **Show individual data points**  
+
+Make sure the plot behaves as you expect.
+
+## Exercise 8: Review and tidy your app
+
+In this final exercise, you’ll tidy your app and make sure you understand how each part works.
+
+![](images/do_in_R.png) In `app.R`, add a few short **comments** (lines starting with `#`) to remind your future self what each section does:
+
+- data-loading block  
+- `ui <- fluidPage(...)` section  
+- `server <- function(...)` section  
+
+
+# You’re finished! 🎉

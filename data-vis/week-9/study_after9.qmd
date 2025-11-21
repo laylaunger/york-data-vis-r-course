@@ -1,0 +1,267 @@
+---
+title: "Independent Study to Consolidate"
+subtitle: "Shiny Apps 1"
+toc: true
+toc-location: right
+---
+
+# Overview
+
+As in Week 8, these consolidation exercises will ask you to apply what you learned in the seminar and practical to another dataset. 
+
+In these exercises, you will **re-use a dataset and code from an earlier week** to create your **own Shiny app**, using the same ideas and structure that you saw in the seminar and practical:
+
+- A single `app.R` file (in its own project folder)
+- A `ui` and `server` plus `shinyApp(ui, server)`
+- Inputs (e.g., dropdown, checkbox) that control what the plot shows
+- A reactive plot that updates when the user changes the inputs
+
+You will:
+
+- Adapt wrangling and plotting ideas from **one earlier week** (e.g., Week 3, 4, 5, or 6)
+- Set up a **project folder** with a `data/` subfolder and an `app.R` file
+- Build a **Shiny app** with at least:
+  - two user inputs, such as a dropdown that switches between **two outcomes** and a checkbox that turns an extra layer **on** or **off**
+  - one main plot that reacts to these inputs
+- Add **comments** and **sensible labels** so someone else can understand and use your app
+
+You do not need to invent an extremely complex dashboard. The goal is to **consolidate the core Shiny ideas** from Week 9 using a dataset you already know.
+
+
+Note:
+
+The steps below guide you through creating a shiny app with similar features to the ones covered in week 9. If you want to try exploring features mentioned in the reading, in DataCamp or elsewhere, feel free!
+
+
+::: callout-note
+## Key
+
+These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.
+
+![](images/do_on_your_computer.png) Something you need to do on your computer outside of RStudio. It may be opening programs or documents or locating a file.
+
+![](images/do_in_R.png) Something you should do in RStudio. It will usually involve writing or running R code, but might also be creating folders, locating or moving files.
+
+![](images/do_on_internet.png) Something you should do in your browser, like searching for information, going to the VLE or downloading a file.
+
+![](images/answer.png) A question for you to think about and answer. You should usually record your answers in your script/app for future reference.
+:::
+
+---
+
+## Exercise 1: Choose your earlier work and dataset
+
+Start by deciding **which earlier week** you want to build on.
+
+Choose an earlier practical or consolidation as the basis for this Week 9 app, such as:
+
+- Week 4 — **Barplots**  
+- Week 5 — **Relationships**   
+- Week 6 — **Time series & line graphs** 
+
+![](images/do_in_R.png) Open the R script from your chosen week and quickly skim what you did.
+
+![](images/answer.png) In a few bullet points (keep this in a comment at the top of `app.R` later), note:
+
+- Which **dataset** you plan to use  
+- Which **two outcomes or views** your app might switch between  
+  - e.g. two different outcome variables, or two different ways of aggregating the same variable
+- Which plot features your app might toggle off or on
+
+You can keep these notes short; they are just to orient you.
+
+
+## Exercise 2: Set up a Shiny project folder
+
+Now you will create a **fresh project** specifically for this consolidation report, using the same structure as in the Week 9 practical.
+
+![](images/do_in_R.png) In RStudio, in the **Files** tab (Rstudio bottom right panel), create a new folder somewhere sensible (for example inside `data-visualisation-in-r`). Give it a clear name that relates to the graphs you will use in the app, such as `consolidate9_barplots`.
+
+We will refer to this as **`project_name/`**.
+
+This is the first step for building your project structure. Once you finish the additional setup steps below, your project structure should look like this:
+
+```text
+project_name/
+  project_name.Rproj
+  app.R
+  data/
+    <one or more CSV files>
+  
+```
+
+![](images/do_in_R.png) Turn this folder into an **RStudio Project**:
+
+- Click the project dropdown in the top-right of RStudio (see the little icon with the blue cube)  
+- Choose **New Project → Existing Directory**  
+- Select your new `project_name/` folder and click **Create Project**.
+
+![](images/do_in_R.png) Inside this project, create a subfolder called `data`.
+
+![](images/do_on_your_computer.png) Copy the relevant CSV file(s) from the original week into this `data` folder.
+
+---
+
+## Exercise 3: Create an `app.R` file and load your data
+
+![](images/do_in_R.png) In RStudio (inside your new project):
+
+- Create a new **R Script** and save it as `app.R` in `project_name/`.
+
+At the top of `app.R`, load the packages you need, for example:
+
+```r
+library(shiny)
+library(tidyverse)
+library(viridis)
+```
+
+Then load your dataset from the `data/` folder, using a clear object name:
+
+```r
+my_df <- read_csv("data/your_dataset.csv")
+```
+
+Replace `"your_dataset.csv"` and `my_df` with names that make sense for your data.
+
+
+## Exercise 4: Add a minimal Shiny skeleton
+
+Now you will add a basic Shiny structure.
+
+![](images/do_in_R.png) In `app.R`, under the data loading code, add a minimal Shiny app skeleton:
+
+```r
+ui <- fluidPage(
+
+)
+
+server <- function(input, output, session) {
+
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+## Exercise 5: Add static elements to your UI
+
+![](images/do_in_R.png) Inside `fluidPage()`, add:
+
+- Add a `titlePanel()` with a clear title.  
+- Add a short instruction paragraph with `p()` that tells the user how they can interact with the page (you will add the interactive user inputs in the next step).  
+
+
+
+## Exercise 6: Design and add your inputs
+
+Next, you will design the **controls** that make your app interactive.
+
+![](images/answer.png) Think about your chosen dataset and answer (in comments in `app.R`):
+
+- Which **two outcomes or views** should the user be able to switch between?  
+  - e.g. two different numerical outcome variables, as we did in the seminar and practical
+- Which extra feature would be useful to **turn on/off** with a checkbox?  
+  - e.g. show/hide raw points, show/hide a regression line, show/hide a smoothing line
+
+![](images/do_in_R.png) Inside `fluidPage()` of your `ui`, after the static elements, add:
+
+1. A dropdown menu that lets the user choose between two options
+2. A checkbox that controls an extra layer
+
+Make sure that you use sensible choices for `inputId`, `label`, and other relevant arguments.
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. Your user inputs won't do anything yet, but check that:
+
+- The dropdown appears with sensible labels  
+- The checkbox appears and can be ticked/unticked
+
+## Exercise 7: Include a reactive plot in the UI
+
+The last thing you need in your UI is the plot, which will be generated in the `server` function that you will customise in the next exercise.
+
+![](images/do_in_R.png) Think of a name to use to refer to your output plot, and as the last line within `fluidPage`, add `plotOutput("name_of_output_plot")` (insert your choice of name)
+
+
+## Exercise 8: Connect user inputs to a reactive plot
+
+Now you will flesh out the `server` function to dynamically update the plot you included in the `ui`.
+
+![](images/do_in_R.png) Go to the `server` function part of your skeleton and flesh out the server logic:
+
+1. Inside the curly braces `{}`, create an output using `renderPlot()`. The name of the output should be the same as the name you created in the `ui` in Exercise 7.
+
+```r
+output$name_of_output_plot <- renderPlot({
+
+  # your ggplot code will go here
+
+})
+```
+
+2. Use an `if`/`else` pattern to check the value of the dropdown menu input. Remember to refer to the `inputId` you used when you defined the dropdown menu in the `ui` using the `input$` notation. Within the `if` block, **define the plot** that should appear if the user selects one of the dropdown options; within the `else` block, define the plot that should appear if the user selects the other dropdown option. Each block should assign the ggplot code to a named object, like `output_plot`.
+
+3. Add an `if` block that checks the value of the checkbox input, remembering to refer to the `inputId` you used when you defined the checkbox in the `ui`. Within the block, add a layer to the plot defined in step 2 if the user checks the checkbox.
+
+4. Add a final line consisting just of the name of the plot you defined. This is needed to tell Shiny to draw the plot.
+
+Once completed, your code will look something like this:
+
+```r
+output$name_of_output_plot <- renderPlot({
+
+  if (input$xxx == "option1") {
+    output_plot <- my_df |>
+      ggplot(aes(x = ..., y = ...)) +
+      geom_...
+  } else {
+    output_plot <- my_df |>
+      ggplot(aes(x = ..., y = ...)) +
+      geom_...
+  }
+
+  if (input$yyy)  {
+    output_plot <- output_plot +
+      geom_...
+  }
+
+  output_plot
+})
+
+
+```
+
+![](images/do_in_R.png) Save `app.R` and click **Run App**. Change the selection in your dropdown and check the box to confirm that the plot updates as intended. 
+
+![](images/answer.png) In your own words (as a comment in `app.R`), describe what each `if`/`else` block is doing.
+
+
+## Exercise 9: Polishing and comments
+
+At this point, you may want to polish the appearance of your plots. For example, you might:
+
+- Improve the title of the shiny app
+- Improve plot labels or colors
+
+To help you understand and adapt this code in the future, you might want to add comments that explain what each part does, for example:
+
+- Above the data loading code  
+- Above the `ui <- fluidPage(...)` section  
+- Above the `server <- function(...) { ... }` section  
+- Above any `if`/`else` blocks
+
+![](images/answer.png) Imagine another student in the course downloads only your `project_name/` folder. Would they be able to:
+
+- Understand what the app is for?  
+- Work out what the inputs do?  
+- Interpret what the plot is showing?
+
+If not, tweak labels and comments until the answer is “yes”.
+
+![](images/answer.png) In a comment at the bottom of `app.R`, or in a separate text file in the project folder, briefly answer:
+
+- What **question** is your app helping to answer about this dataset?  
+- What did you learn from turning your earlier analysis into an interactive app?  
+- If you had more time, what is **one extra feature** you would add next?
+
+
+# You're finished! 🎉

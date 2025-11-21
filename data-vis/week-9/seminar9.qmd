@@ -1,5 +1,5 @@
 ---
-title: "Week 9 Seminar: Shiny Apps I"
+title: "Week 9 Seminar: Shiny Apps 1"
 format:
   revealjs:
     theme: simple
@@ -160,7 +160,7 @@ therapy_df %>%
   - Shows how `support_level` is related to outcomes
   - Allows the user to choose one of two outcomes and to add individual data points
   
-Full report:
+Full app:
 [Open the example Shiny app](https://laylaunger.shinyapps.io/week-9/)
 
 ---
@@ -625,7 +625,6 @@ What else might we need to specify here?
 
 :::
 
-
 ---
 
 ## Populate UI: Inputs
@@ -716,6 +715,42 @@ user's input.
 
 :::
 
+---
+
+## Populate UI: Inputs
+
+<br>
+ 
+What is stored?
+
+<br>
+
+Dropdown menu:
+
+- A part of the `input` object called `outcome`
+  - `input$outcome`
+
+- Stores the choice selected by user
+  - If user selects Wellbeing score, `input$outcome` will contain `"wellbeing_score"`
+  - If user selects Loneliness score, `input$outcome` will contain `"loneliness_score"`
+
+
+## Populate UI: Inputs
+
+<br>
+ 
+What is stored?
+
+<br>
+
+Checkbox:
+
+- A part of the `input` object called `show_points`
+  - `input$show_points`
+
+- Stores whether the checkbox is checked
+  - `TRUE` if checked, `FALSE` if not
+  
 ---
 
 ## Populate UI: Inputs
