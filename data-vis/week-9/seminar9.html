@@ -445,7 +445,7 @@
 <li>Allows the user to choose one of two outcomes and to add individual data points</li>
 </ul></li>
 </ul>
-<p>Full report: <a href="https://laylaunger.shinyapps.io/week-9/">Open the example Shiny app</a></p>
+<p>Full app: <a href="https://laylaunger.shinyapps.io/week-9/">Open the example Shiny app</a></p>
 </section>
 <section id="a-finished-example-2" class="slide level2">
 <h2>A finished example</h2>
@@ -1018,6 +1018,41 @@
       }</style></aside>
 </section>
 <section id="populate-ui-inputs-5" class="slide level2">
+<h2>Populate UI: Inputs</h2>
+<p><br></p>
+<p>What is stored?</p>
+<p><br></p>
+<p>Dropdown menu:</p>
+<ul>
+<li>A part of the <code>input</code> object called <code>outcome</code>
+<ul>
+<li><code>input$outcome</code></li>
+</ul></li>
+<li>Stores the choice selected by user
+<ul>
+<li>If user selects Wellbeing score, <code>input$outcome</code> will contain <code>"wellbeing_score"</code></li>
+<li>If user selects Loneliness score, <code>input$outcome</code> will contain <code>"loneliness_score"</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="populate-ui-inputs-6" class="slide level2">
+<h2>Populate UI: Inputs</h2>
+<p><br></p>
+<p>What is stored?</p>
+<p><br></p>
+<p>Checkbox:</p>
+<ul>
+<li>A part of the <code>input</code> object called <code>show_points</code>
+<ul>
+<li><code>input$show_points</code></li>
+</ul></li>
+<li>Stores whether the checkbox is checked
+<ul>
+<li><code>TRUE</code> if checked, <code>FALSE</code> if not</li>
+</ul></li>
+</ul>
+</section>
+<section id="populate-ui-inputs-7" class="slide level2">
 <h2>Populate UI: Inputs</h2>
 <p>Different functions add different types of user input controls</p>
 <p><br></p>

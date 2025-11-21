@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Layla Unger">
-<title>Practical – Data Visualisation</title>
+
+<title>Independent Study to Consolidate – Data Visualisation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,6 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -69,7 +73,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3084c59541715b928ed342732e9d4313.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-3084c59541715b928ed342732e9d4313.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -95,16 +100,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script async="" src="https://hypothes.is/embed.js"></script><script>
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
 </script>
+
+
 </head>
+
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Data Visualisation</span>
@@ -116,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Welcome!</span></a>
   </li>  
@@ -125,24 +137,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">PSY00122M-A</span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <a href="https://github.com/laylaunger" title="Layla on GitHub" class="quarto-navigation-tool px-1" aria-label="Layla on GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-4/overview4.html">Week 4: Barplots for Categorical Data</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-4/practical4.html">Practical</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-10/overview10.html">Week 10: Shiny Dashboards Part 2</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-10/study_after10.html">Consolidate!</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/data-vis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Visualisation</span></a>
@@ -156,8 +174,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-1/overview1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -188,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
@@ -197,8 +215,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-2/overview2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -229,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -238,8 +256,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-3/overview3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -270,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
@@ -279,8 +297,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-4/overview4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -300,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-4/practical4.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../data-vis/week-4/practical4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practical</span></a>
   </div>
 </li>
@@ -311,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
@@ -320,8 +338,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-5/overview5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -352,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
@@ -361,8 +379,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-6/overview6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -393,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
@@ -402,8 +420,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-7/overview7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -434,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
@@ -443,8 +461,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-8/overview8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -475,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
@@ -484,8 +502,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-9/overview9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -516,7 +534,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
@@ -525,8 +543,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../data-vis/week-10/overview10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -552,53 +570,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../data-vis/week-10/study_after10.html" class="sidebar-item-text sidebar-link">
+  <a href="../../data-vis/week-10/study_after10.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Consolidate!</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
   <ul class="collapse">
-<li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
-  <li><a href="#philosophy" id="toc-philosophy" class="nav-link" data-scroll-target="#philosophy">Philosophy</a></li>
+  <li><a href="#exercise-1-choose-your-earlier-work-and-dashboard-plan" id="toc-exercise-1-choose-your-earlier-work-and-dashboard-plan" class="nav-link" data-scroll-target="#exercise-1-choose-your-earlier-work-and-dashboard-plan">Exercise 1: Choose your earlier work and dashboard plan</a></li>
+  <li><a href="#exercise-2-set-up-a-shiny-project-folder" id="toc-exercise-2-set-up-a-shiny-project-folder" class="nav-link" data-scroll-target="#exercise-2-set-up-a-shiny-project-folder">Exercise 2: Set up a Shiny project folder</a></li>
+  <li><a href="#exercise-3-create-app.r-and-load-your-data" id="toc-exercise-3-create-app.r-and-load-your-data" class="nav-link" data-scroll-target="#exercise-3-create-app.r-and-load-your-data">Exercise 3: Create <code>app.R</code> and load your data</a></li>
+  <li><a href="#exercise-4-add-your-basic-shiny-skeleton" id="toc-exercise-4-add-your-basic-shiny-skeleton" class="nav-link" data-scroll-target="#exercise-4-add-your-basic-shiny-skeleton">Exercise 4: Add your basic Shiny skeleton</a></li>
+  <li><a href="#exercise-5-move-to-a-sidebar-layout-with-tabs" id="toc-exercise-5-move-to-a-sidebar-layout-with-tabs" class="nav-link" data-scroll-target="#exercise-5-move-to-a-sidebar-layout-with-tabs">Exercise 5: Move to a sidebar layout with tabs</a></li>
+  <li><a href="#exercise-6-add-global-inputs-to-the-sidebar" id="toc-exercise-6-add-global-inputs-to-the-sidebar" class="nav-link" data-scroll-target="#exercise-6-add-global-inputs-to-the-sidebar">Exercise 6: Add global inputs to the sidebar</a></li>
+  <li><a href="#exercise-7-create-a-reusable-reactive-filtered-dataset" id="toc-exercise-7-create-a-reusable-reactive-filtered-dataset" class="nav-link" data-scroll-target="#exercise-7-create-a-reusable-reactive-filtered-dataset">Exercise 7: Create a reusable reactive filtered dataset</a></li>
+  <li><a href="#exercise-8-build-the-first-tabs-plot-with-.datainputoutcome" id="toc-exercise-8-build-the-first-tabs-plot-with-.datainputoutcome" class="nav-link" data-scroll-target="#exercise-8-build-the-first-tabs-plot-with-.datainputoutcome">Exercise 8: Build the first tab’s plot with <code>.data[[input$outcome]]</code></a></li>
+  <li><a href="#exercise-9-build-the-second-tabs-plot-with-a-tab-specific-control" id="toc-exercise-9-build-the-second-tabs-plot-with-a-tab-specific-control" class="nav-link" data-scroll-target="#exercise-9-build-the-second-tabs-plot-with-a-tab-specific-control">Exercise 9: Build the second tab’s plot with a tab-specific control</a></li>
+  <li><a href="#exercise-10-polishing-comments-and-reflection" id="toc-exercise-10-polishing-comments-and-reflection" class="nav-link" data-scroll-target="#exercise-10-polishing-comments-and-reflection">Exercise 10: Polishing, comments, and reflection</a></li>
+  </ul></li>
+  <li><a href="#youre-finished" id="toc-youre-finished" class="nav-link" data-scroll-target="#youre-finished">You’re finished! 🎉</a></li>
   </ul>
-</li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
-  <li>
-<a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
-  <ul class="collapse">
-<li><a href="#learning-app-engagement" id="toc-learning-app-engagement" class="nav-link" data-scroll-target="#learning-app-engagement">Learning app engagement</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#reading-in-data" id="toc-reading-in-data" class="nav-link" data-scroll-target="#reading-in-data">Reading in data</a></li>
-  <li><a href="#look-at-data" id="toc-look-at-data" class="nav-link" data-scroll-target="#look-at-data">Look at data</a></li>
-  <li><a href="#reorder-the-values-of-product_engagement" id="toc-reorder-the-values-of-product_engagement" class="nav-link" data-scroll-target="#reorder-the-values-of-product_engagement">Reorder the values of <code>product_engagement</code></a></li>
-  <li><a href="#exercise-1-bar-plot-of-counts" id="toc-exercise-1-bar-plot-of-counts" class="nav-link" data-scroll-target="#exercise-1-bar-plot-of-counts">Exercise 1: Bar plot of <strong>counts</strong></a></li>
-  <li><a href="#exercise-2-split-counts-by-a-second-variable" id="toc-exercise-2-split-counts-by-a-second-variable" class="nav-link" data-scroll-target="#exercise-2-split-counts-by-a-second-variable">Exercise 2: <strong>Split counts</strong> by a second variable</a></li>
-  <li><a href="#exercise-3-proportions-100-stacked" id="toc-exercise-3-proportions-100-stacked" class="nav-link" data-scroll-target="#exercise-3-proportions-100-stacked">Exercise 3: <strong>Proportions (100% stacked)</strong></a></li>
-  <li><a href="#exercise-4-wrangling-equivalent-for-proportions" id="toc-exercise-4-wrangling-equivalent-for-proportions" class="nav-link" data-scroll-target="#exercise-4-wrangling-equivalent-for-proportions">Exercise 4: <strong>Wrangling equivalent</strong> for proportions</a></li>
-  <li><a href="#exercise-5-summary-bar-mean-engagement-by-segment" id="toc-exercise-5-summary-bar-mean-engagement-by-segment" class="nav-link" data-scroll-target="#exercise-5-summary-bar-mean-engagement-by-segment">Exercise 5: <strong>Summary bar</strong> (mean engagement by segment)</a></li>
-  <li><a href="#exercise-6-wrangling-equivalent-for-summary-bars" id="toc-exercise-6-wrangling-equivalent-for-summary-bars" class="nav-link" data-scroll-target="#exercise-6-wrangling-equivalent-for-summary-bars">Exercise 6: <strong>Wrangling equivalent</strong> for summary bars</a></li>
-  <li><a href="#exercise-7-grouped-summary-bars-two-way-comparison" id="toc-exercise-7-grouped-summary-bars-two-way-comparison" class="nav-link" data-scroll-target="#exercise-7-grouped-summary-bars-two-way-comparison">Exercise 7: <strong>Grouped</strong> summary bars (two-way comparison)</a></li>
-  </ul>
-</li>
-  <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
-  <li><a href="#the-code-file" id="toc-the-code-file" class="nav-link" data-scroll-target="#the-code-file">The Code file</a></li>
-  </ul></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-4/overview4.html">Week 4: Barplots for Categorical Data</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-4/practical4.html">Practical</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Practical</h1>
-<p class="subtitle lead">Barplots</p>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-10/overview10.html">Week 10: Shiny Dashboards Part 2</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-10/study_after10.html">Consolidate!</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Independent Study to Consolidate</h1>
+<p class="subtitle lead">Shiny Apps 2</p>
 </div>
 
 
@@ -612,19 +623,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction" class="level1"><h1>Introduction</h1>
-<section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
-<p>In this practical you will read in a dataset and create bar plots of counts, proportions, and summary statistics. You will also get a bit more practice with tidyverse data wrangling.</p>
-</section><section id="philosophy" class="level2"><h2 class="anchored" data-anchor-id="philosophy">Philosophy</h2>
-<p>Practicals are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips</p>
+</header>
+
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>As in Week 9, these consolidation exercises will ask you to apply what you learned in the seminar and practical to another dataset.</p>
+<p>In these exercises, you will re-use a dataset and code from an earlier week to create your own Shiny dashboard-style app, using the same core ideas as before plus the new layout and server tools from <strong>Week 10</strong>:</p>
 <ul>
-<li>don’t worry about making mistakes</li>
-<li>don’t let what you can not do interfere with what you can do</li>
-<li>discussing code with your neighbours will help</li>
-<li>look things up in the independent study material</li>
-<li>look things up in your own code from earlier workshops</li>
-<li>there are no stupid questions</li>
+<li>A single <code>app.R</code> file with a <code>ui</code> and <code>server</code></li>
+<li>A <strong>sidebar layout</strong> with inputs on the left and outputs on the right</li>
+<li>Inputs that <strong>filter</strong> the data and switch between <strong>multiple outcomes</strong></li>
+<li>Multiple <strong>tabs</strong> (<code>tabsetPanel()</code>, <code>tabPanel()</code>) that show different plots</li>
+<li>A <strong>tab-specific control</strong> (for example, a checkbox that turns faceting on/off)</li>
+<li>A reusable <strong>reactive filtered dataset</strong> created with <code>reactive()</code></li>
+<li>Efficient mapping from the outcome dropdown to ggplot using <code>.data[[input$outcome]]</code></li>
 </ul>
+<p>The goal is to consolidate the new Shiny features from Week 10 using a dataset you already know.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -636,220 +651,248 @@ Key
 </div>
 <div class="callout-body-container callout-body">
 <p>These four symbols are used at the beginning of each instruction so you know where to carry out the instruction.</p>
-<p><img src="images/do_on_your_computer.png" class="img-fluid"> Something you need to do on your computer. It may be opening programs or documents or locating a file.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.</p>
-<p><img src="images/do_on_internet.png" class="img-fluid"> Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.</p>
-<p><img src="images/answer.png" class="img-fluid"> A question for you to think about and answer. Record your answers in your script for future reference.</p>
+<p><img src="images/do_on_your_computer.png" class="img-fluid"> Something you need to do on your computer outside of RStudio. It may be opening programs or documents or locating a file.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Something you should do in RStudio. It will usually involve writing or running R code, but might also be creating folders, locating or moving files.</p>
+<p><img src="images/do_on_internet.png" class="img-fluid"> Something you should do in your browser, like searching for information, going to the VLE or downloading a file.</p>
+<p><img src="images/answer.png" class="img-fluid"> A question for you to think about and answer. You should usually record your answers in your script/app for future reference.</p>
 </div>
 </div>
-</section></section><section id="getting-started" class="level1"><h1>Getting started</h1>
-<p><img src="images/do_on_your_computer.png" class="img-fluid"> Start RStudio from the Start menu.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Go the Files tab in the lower right pane and click on the <code>...</code> on the right. This will open a “Go to folder” window. Navigate to a place on your computer where you keep your work. Click Open.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Also on the Files tab click on <code>New Folder</code>. Type “data-visualisation-in-r” in to the box. This will be the folder that we work in throughout.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Make an RStudio project for this workshop by clicking on the drop-down menu on top right where it says <code>Project: (None)</code> and choosing New Project, then New Directory, then New Project. Name the RStudio Project <strong><code>week-4</code></strong>.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Make a new script then save it with a name like <code>barplots.R</code> to carry out the rest of the work.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Add a comment to the script: <code># Barplots</code>. Use comments throughout to explain what each block of code does.</p>
-</section><section id="exercises" class="level1"><h1>Exercises</h1>
-<section id="learning-app-engagement" class="level2"><h2 class="anchored" data-anchor-id="learning-app-engagement">Learning app engagement</h2>
-<p>We’ll be working with a simulated dataset from a fictional <strong>digital learning app</strong>. Users belong to different <strong>user_segments</strong> who arrive via different <strong>acquisition channels</strong> and use the app on <strong>mobile</strong> or <strong>desktop</strong>. We’ll look at how engagement differs across different groups.</p>
-<p>Variables:</p>
+<hr>
+<section id="exercise-1-choose-your-earlier-work-and-dashboard-plan" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-choose-your-earlier-work-and-dashboard-plan">Exercise 1: Choose your earlier work and dashboard plan</h2>
+<p>Start by deciding what you want your Week 10 app to explore.</p>
+<p>For a rich enough dataset to produce multiple plots and variations, you may want to adapt the Week 5 or Week 6 dataset (the Week 4 dataset may not have enough variables / patterns to make use of the Week 10 features).</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Open the R script from your chosen week and quickly skim what you did.</p>
+<p><img src="images/answer.png" class="img-fluid"> Note:</p>
 <ul>
-<li>
-<code>user_segment</code>: categorical (Students, EarlyCareer, MidCareer, Senior)<br>
-</li>
-<li>
-<code>device_type</code>: categorical (Mobile, Desktop)<br>
-</li>
-<li>
-<code>acquisition_channel</code>: categorical (Organic, Ads, Referral, Email)<br>
-</li>
-<li>
-<code>product_engagement</code>: continuous (0–100 engagement score combining use frequency, session time, and lessons completed)</li>
-</ul></section><section id="packages" class="level2"><h2 class="anchored" data-anchor-id="packages">Packages</h2>
-<p>Remember that packages, such as <strong><code>ggplot2</code></strong> (part of <strong><code>tidyverse</code></strong>) need to be installed once and then loaded each session.</p>
-<p>Today we’ll use <strong><code>tidyverse</code></strong>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are working on a University computer (or the VDS) you <em>do not</em> need to install <strong><code>tidyverse</code></strong>.</p>
-<p>If you are working on your own computer or using RStudio cloud you <em>do</em> need to install <strong><code>tidyverse</code></strong>.</p>
-</div>
-</div>
-<p>To install a package:</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Go the Packages tab on the lower right pane. Click Install and type the name of the package into the box that appears.</p>
-<p>To use a package which is installed you have to load it with the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Load the <strong><code>tidyverse</code></strong>. Type or copy the following code into your R script:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section><section id="reading-in-data" class="level2"><h2 class="anchored" data-anchor-id="reading-in-data">Reading in data</h2>
-<p><img src="images/do_on_your_computer.png" class="img-fluid"> Save this file in your <code>week-4</code> folder:</p>
+<li>Which <strong>dataset</strong> you plan to use</li>
+<li>Which <strong>two continuous outcomes</strong> you might let the user switch between (for the outcome dropdown)</li>
+<li>Which <strong>grouping variable</strong> you might:
 <ul>
-<li>App engagement data: <a href="../data/app_engagement.csv">app_engagement.csv</a>
-</li>
+<li>use as a <strong>filter</strong> (in a checkbox group)</li>
+<li>use in a <strong>facet</strong> or second tab</li>
+</ul></li>
 </ul>
-<p><img src="images/do_in_R.png" class="img-fluid"> Add the following code to your R script and run:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">app_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"app_engagement.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section><section id="look-at-data" class="level2"><h2 class="anchored" data-anchor-id="look-at-data">Look at data</h2>
-<p><img src="images/do_in_R.png" class="img-fluid"> Examine the variables and first few rows of the <code>app_df</code> object using <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">app_df</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  user_id user_segment device_type acquisition_channel product_engagement
-    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;                            &lt;dbl&gt;
-1       1 MidCareer    Mobile      Organic                           55.8
-2       2 EarlyCareer  Desktop     Organic                           89.9
-3       3 Students     Desktop     Organic                           40.6
-4       4 Senior       Mobile      Organic                           48.7
-5       5 MidCareer    Mobile      Ads                               51.1
-6       6 Students     Mobile      Referral                          79.1</code></pre>
-</div>
-</div>
-<p>See that each column is a variable (e.g., <code>product_engagement</code>), and each row is one user.</p>
-</section><section id="reorder-the-values-of-product_engagement" class="level2"><h2 class="anchored" data-anchor-id="reorder-the-values-of-product_engagement">Reorder the values of <code>product_engagement</code>
-</h2>
-<p>In R, categorical variables are often treated as a special type of variable called a “factor”.</p>
-<p>In factors, the different values of the variable are called “levels”.</p>
-<p>By default, the order of the levels is alphabetical.</p>
-<p>We have discussed reordering the levels of a factor based on values of another variable. But, we can also manually specify an order that is appropriate for our data.</p>
-<p>In this dataset, <code>user_segment</code> is a factor with a natural order from junior to senior: Students, EarlyCareer, MidCareer, Senior.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Reorder the levels of <code>user_segement</code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">app_df</span> <span class="op">&lt;-</span> <span class="va">app_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>user_segment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">user_segment</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Students"</span>, <span class="st">"EarlyCareer"</span>,<span class="st">"MidCareer"</span>, <span class="st">"Senior"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<hr></section><section id="exercise-1-bar-plot-of-counts" class="level2"><h2 class="anchored" data-anchor-id="exercise-1-bar-plot-of-counts">Exercise 1: Bar plot of <strong>counts</strong>
-</h2>
-<p>Look at <strong>how many users</strong> are in each <code>user_segment</code>.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Create a basic bar plot of counts of users in each <code>user_segment</code> (remember: counts are the default <code>stat</code> of <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> and therefore <code>stat</code> does not need to be explicitly specified):</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/do_in_R.png" class="img-fluid"> Order the bars by frequency using <code><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">forcats::fct_infreq()</a></code> on <code>user_segment</code> inside <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/answer.png" class="img-fluid"> Where does <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> get the heights from?</p>
-<hr></section><section id="exercise-2-split-counts-by-a-second-variable" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-split-counts-by-a-second-variable">Exercise 2: <strong>Split counts</strong> by a second variable</h2>
-<p>We can split counts by <code>acquisition_channel</code>.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Stack counts by <code>acquisition_channel</code> using <code>aes(fill = acquisition_channel))</code>:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/do_in_R.png" class="img-fluid"> Unstack to compare absolute counts side-by-side using <code>position = "dodge"</code>:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/answer.png" class="img-fluid"> When might stacked vs dodged bars be preferable?</p>
-<hr></section><section id="exercise-3-proportions-100-stacked" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-proportions-100-stacked">Exercise 3: <strong>Proportions (100% stacked)</strong>
-</h2>
-<p>For comparing <strong>composition</strong> across groups, use proportions.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Convert to proportions with <code>position = "fill"</code>. Remember to rename the y-axis variable:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/answer.png" class="img-fluid"> Why are proportions sometimes more informative than raw counts?</p>
-<hr></section><section id="exercise-4-wrangling-equivalent-for-proportions" class="level2"><h2 class="anchored" data-anchor-id="exercise-4-wrangling-equivalent-for-proportions">Exercise 4: <strong>Wrangling equivalent</strong> for proportions</h2>
-<p>Instead of letting <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> do the counting, compute counts yourself first.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Use <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to compute group-wise proportions:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<hr></section><section id="exercise-5-summary-bar-mean-engagement-by-segment" class="level2"><h2 class="anchored" data-anchor-id="exercise-5-summary-bar-mean-engagement-by-segment">Exercise 5: <strong>Summary bar</strong> (mean engagement by segment)</h2>
-<p>Now let’s summarise a <strong>continuous</strong> variable by category: mean <code>product_engagement</code> (y-axis) per <code>user_segment</code> (x-axis).</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Use <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code> to plot means with SE bars (for means, <code>fun = "mean"</code>, and for SE, <code>fun.data = "mean_se"</code>):</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/do_in_R.png" class="img-fluid"> Colour the bars by <code>user_segment</code> (optional: set <code>show.legend = FALSE</code> to reduce redundancy):</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<hr></section><section id="exercise-6-wrangling-equivalent-for-summary-bars" class="level2"><h2 class="anchored" data-anchor-id="exercise-6-wrangling-equivalent-for-summary-bars">Exercise 6: <strong>Wrangling equivalent</strong> for summary bars</h2>
-<p>Compute mean and SE yourself, then plot with <code>geom_bar(stat = "identity")</code>.</p>
-<p>Reminder: SE = sd(variable) / sqrt(n())</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Use <code>summarise</code> to calculate <code>mean_eng</code> and <code>se_eng</code>, then use the summarised data in a plot that uses <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_linerange()</a></code> instead of <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code>. Remember that <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> needs <code>stat = "identity"</code> to override the default <code>stat = "count"</code>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/answer.png" class="img-fluid"> What are the pros/cons of using <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code> vs pre-computing with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>?</p>
-<hr></section><section id="exercise-7-grouped-summary-bars-two-way-comparison" class="level2"><h2 class="anchored" data-anchor-id="exercise-7-grouped-summary-bars-two-way-comparison">Exercise 7: <strong>Grouped</strong> summary bars (two-way comparison)</h2>
-<p>Compare mean engagement across <strong>user_segment</strong> and <strong>device_type</strong>.</p>
-<p>You can reuse and adapt the code you wrote for Exercise 5 that used <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code> to create this plot.</p>
-<p><img src="images/do_in_R.png" class="img-fluid"> Keep <code>user_segment</code> as your x-axis variable, but add <code>device_type</code> as the fill <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> for the bars and the group <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> for the linerange error bars. Remember to dodge your bars and error bars.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="practical4_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="4200"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><img src="images/answer.png" class="img-fluid"> Describe the pattern you see. For which user segment(s) does <strong>Mobile</strong> outperform <strong>Desktop</strong>, and where is <strong>Desktop</strong> higher?</p>
-<p>You’re finished!</p>
-</section></section><section id="well-done" class="level1"><h1>🥳 Well Done! 🎉</h1>
-<p><a href="../../data-vis/week-4/study_after4.html">Consolidate</a></p>
-</section><section id="the-code-file" class="level1"><h1>The Code file</h1>
-<p>This contains all the code needed in the workshop even where it is not visible on the webpage.</p>
-<p>The <code>practical.qmd</code> file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interweaved to produce well-formatted reports including webpages.</p>
+</section>
+<section id="exercise-2-set-up-a-shiny-project-folder" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-set-up-a-shiny-project-folder">Exercise 2: Set up a Shiny project folder</h2>
+<p>Create a fresh project for this Week 10 consolidation app.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In RStudio, in the <strong>Files</strong> tab (bottom-right panel), create a new folder somewhere sensible (for example inside <code>data-visualisation-in-r</code>). Give it a clear name that relates to the graphs you will use in the app, such as <code>consolidate10_dashboard</code>.</p>
+<p>We will refer to this as <strong><code>project_name/</code></strong>.</p>
+<p>Your goal is to have a structure like:</p>
+<pre class="text"><code>project_name/
+  project_name.Rproj
+  app.R
+  data/
+    &lt;one or more CSV files&gt;</code></pre>
+<p><img src="images/do_in_R.png" class="img-fluid"> Turn this folder into an <strong>RStudio Project</strong>:</p>
+<ul>
+<li>Click the project dropdown in the top-right of RStudio<br>
+</li>
+<li>Choose <strong>New Project → Existing Directory</strong><br>
+</li>
+<li>Select your new <code>project_name/</code> folder and click <strong>Create Project</strong></li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Inside this project, create a subfolder called <code>data</code>.</p>
+<p><img src="images/do_on_your_computer.png" class="img-fluid"> Copy the relevant CSV file(s) from the original week into this <code>data</code> folder.</p>
+</section>
+<section id="exercise-3-create-app.r-and-load-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-create-app.r-and-load-your-data">Exercise 3: Create <code>app.R</code> and load your data</h2>
+<p><img src="images/do_in_R.png" class="img-fluid"> In RStudio (inside your new project):</p>
+<ul>
+<li>Create a new <strong>R Script</strong> and save it as <code>app.R</code> in <code>project_name/</code>.</li>
+</ul>
+<p>At the top of <code>app.R</code>, load the packages you need, for example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then load your dataset from the <code>data/</code> folder, using a clear object name:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/your_dataset.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Replace <code>"your_dataset.csv"</code> and <code>my_df</code> with names that make sense for your data.</p>
+<p>If you have a grouping variable, you may want to <strong>reorder</strong> it with <code>factor()</code> and <code>levels = ...</code> as in earlier weeks.</p>
+<p><img src="images/answer.png" class="img-fluid"> In a brief comment above your data-loading code, describe: - What the dataset represents - Which variables you expect to use in your app</p>
+</section>
+<section id="exercise-4-add-your-basic-shiny-skeleton" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4-add-your-basic-shiny-skeleton">Exercise 4: Add your basic Shiny skeleton</h2>
+<p><img src="images/do_in_R.png" class="img-fluid"> Make sure <code>app.R</code> contains the <strong>basic Shiny structure</strong>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-5-move-to-a-sidebar-layout-with-tabs" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5-move-to-a-sidebar-layout-with-tabs">Exercise 5: Move to a sidebar layout with tabs</h2>
+<p>In Week 10 we moved from a simple <code>fluidPage()</code> with a single plot to a <strong>sidebar layout</strong> with <strong>multiple tabs</strong>.</p>
+<p>Your goal is to have a UI structure like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">titlePanel</span>(<span class="st">"Your dashboard title"</span>),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">p</span>(<span class="st">"Short instructions for what users can explore."</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="co"># inputs (dropdowns, checkboxes, etc.)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tabsetPanel</span>(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">tabPanel</span>(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Tab 1 title"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>          <span class="co"># tab-specific inputs (if any) and plotOutput(...)</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">tabPanel</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Tab 2 title"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>          <span class="co"># tab-specific inputs (if any) and plotOutput(...)</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/do_in_R.png" class="img-fluid"> Edit your <code>ui &lt;- fluidPage(...)</code> so that it:</p>
+<ul>
+<li>Includes a <code>titlePanel()</code> with a clear title<br>
+</li>
+<li>Includes a short <code>p()</code> paragraph explaining what the app will show<br>
+</li>
+<li>Uses <code>sidebarLayout()</code> with <code>sidebarPanel()</code> and <code>mainPanel()</code><br>
+</li>
+<li>Inside <code>mainPanel()</code>, uses <code>tabsetPanel()</code> with <strong>two <code>tabPanel()</code>s</strong>, such as:
+<ul>
+<li>Tab 1: a view focused on one grouping (e.g., group differences)</li>
+<li>Tab 2: a view that uses faceting or a different outcome</li>
+</ul></li>
+</ul>
+<p>Each tab should contain at least one <code>plotOutput()</code> with a clear name</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save <code>app.R</code> and click <strong>Run App</strong>. You should see:</p>
+<ul>
+<li>A title and short paragraph<br>
+</li>
+<li>A sidebar on the left (currently empty)<br>
+</li>
+<li>Two tabs with empty plot areas on the right</li>
+</ul>
+</section>
+<section id="exercise-6-add-global-inputs-to-the-sidebar" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6-add-global-inputs-to-the-sidebar">Exercise 6: Add global inputs to the sidebar</h2>
+<p>Now you’ll add <strong>global inputs</strong> in the sidebar that affect <strong>both tabs</strong>, such as:</p>
+<ul>
+<li>A <strong>dropdown</strong> to choose between two continuous outcomes<br>
+</li>
+<li>A <strong>checkbox group filter</strong> to control which groups appear in the plots</li>
+</ul>
+<p><img src="images/answer.png" class="img-fluid"> In a comment inside <code>sidebarPanel()</code>, note:</p>
+<ul>
+<li>Which variable you will use for the <strong>outcome dropdown</strong> (two options)<br>
+</li>
+<li>Which variable you will use for the <strong>group filter</strong> (e.g., support level, participant group, job type)</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Inside <code>sidebarPanel()</code>, add:</p>
+<ul>
+<li>A <code>selectInput()</code> for a dropdown menu. Remember to fill out the <code>inputID</code>, <code>label</code>, <code>choices</code> and <code>selected</code> arguments.</li>
+<li>A <code>checkboxGroupInput()</code>. Remember to fill out the <code>inputID</code>, <code>label</code>, <code>choices</code> and <code>selected</code> arguments.</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Inside one of the <code>tabPanel</code>s, add:</p>
+<ul>
+<li>A <code>checkboxInput()</code>. Remember to fill out the <code>inputID</code>, <code>label</code>, and <code>value</code> arguments.</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save <code>app.R</code> and click <strong>Run App</strong>. Check that the input controls all appear as intended.</p>
+</section>
+<section id="exercise-7-create-a-reusable-reactive-filtered-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-7-create-a-reusable-reactive-filtered-dataset">Exercise 7: Create a reusable reactive filtered dataset</h2>
+<p>In Week 10, we used a <strong>reactive expression</strong> to filter the data once and reuse it across multiple plots.</p>
+<p>You will now create a <code>filtered_data()</code> function that:</p>
+<ul>
+<li>Starts from your dataset</li>
+<li>Filters rows where the grouping variable is in the <code>input$group_filter</code> vector</li>
+<li>Updates automatically whenever the user changes the group checkboxes</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the <code>server</code> function, <strong>above</strong> any plotting code, add a reactive expression that creates a function called <code>filtered_data</code>.</p>
+<p><img src="images/answer.png" class="img-fluid"> In a comment above <code>filtered_data &lt;- reactive({ ... })</code>, explain what this reactive expression does in your dataset / app.</p>
+</section>
+<section id="exercise-8-build-the-first-tabs-plot-with-.datainputoutcome" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-8-build-the-first-tabs-plot-with-.datainputoutcome">Exercise 8: Build the first tab’s plot with <code>.data[[input$outcome]]</code></h2>
+<p>Now you’ll create the <strong>first tab’s plot</strong>, which will:</p>
+<ul>
+<li>Use <code>filtered_data()</code> so it respects the group filter<br>
+</li>
+<li>Plot the intended variable on the x-axis</li>
+<li>Plot the <strong>selected outcome</strong> (from the dropdown) on the other axis using <code>.data[[input$outcome]]</code></li>
+<li>Show a clear pattern (e.g., group differences, trends over time, etc.)</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> Inside the <code>server</code> function, add a new output using <code>renderPlot()</code> whose name matches the <code>plotOutput()</code> in your first tab, for example:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>view1_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1) use a small if/else block to decide on the axis label based on input$outcome</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2) start from filtered_data() and pipe into ggplot()</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3) inside aes(), use something like:</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#    x = grouping_variable,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#    y = .data[[input$outcome]]</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 4) add geom layer(s) to show the pattern (boxplot, line, bar, etc)</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 5) add labs(), scales, and theme tweaks to make it readable</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-9-build-the-second-tabs-plot-with-a-tab-specific-control" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-9-build-the-second-tabs-plot-with-a-tab-specific-control">Exercise 9: Build the second tab’s plot with a tab-specific control</h2>
+<p>For your second tab, you will:</p>
+<ul>
+<li>Use <code>filtered_data()</code> again<br>
+</li>
+<li>Show a <strong>different view</strong> of the data (for example, a different grouping or layout)</li>
+</ul>
+<p><img src="images/do_in_R.png" class="img-fluid"> In the <code>server</code> function, add another <code>renderPlot()</code> for the second tab, e.g.:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>view2_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1) use a small if/else block to decide on the axis label</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2) start from filtered_data() and pipe into ggplot()</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3) use aes(...) including .data[[input$outcome]] as needed</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 4) build a base plot: e.g., outcome by another grouping, or a distribution plot</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 5) then, use an if(){} block to test whether the checkbox is TRUE (checked), and add a plot layer if so</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 6) in one line, just enter the name of the plot so Shiny can draw it</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/do_in_R.png" class="img-fluid"> Save <code>app.R</code> and click <strong>Run App</strong>. Test that:</p>
+<ul>
+<li>Both tabs show plots using the current dropdown and group filter<br>
+</li>
+<li>The tab-specific checkbox only affects the second tab<br>
+</li>
+<li>Tick/untick the checkbox and make sure the change makes sense for your plot</li>
+</ul>
+</section>
+<section id="exercise-10-polishing-comments-and-reflection" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-10-polishing-comments-and-reflection">Exercise 10: Polishing, comments, and reflection</h2>
+<p>In this final exercise, you’ll tidy your dashboard and make sure you understand how each part works.</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> In <code>app.R</code>, add short <strong>comments</strong> to remind your future self what each major section does</p>
+<p><img src="images/do_in_R.png" class="img-fluid"> Consider making small polish edits</p>
+<p><img src="images/answer.png" class="img-fluid"> In a comment in <code>app.R</code>, consider:</p>
+<ul>
+<li>What <strong>question(s)</strong> is your dashboard helping to answer about this dataset?<br>
+</li>
+<li>How did using a <strong>reactive filtered dataset</strong> and <code>.data[[input$outcome]]</code> change how you structured your code compared to Week 9?</li>
+</ul>
+</section>
+</section>
+<section id="youre-finished" class="level1">
+<h1>You’re finished! 🎉</h1>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1272,7 +1315,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>Data Visualisation</p>
 </div>   
@@ -1281,15 +1325,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-<li class="nav-item">
+    <li class="nav-item">
     <a class="nav-link" href="https://github.com/laylaunger">
 <p>Layla on GitHub</p>
 </a>
   </li>  
 </ul>
-</div>
+    </div>
   </div>
 </footer>
+
+
 
 
 </body></html>
