@@ -151,22 +151,22 @@ website:
                text: Prepare!
              - href: data-vis/week-9/seminar9.qmd
                text: Seminar
-          #    - href: data-vis/week-9/practical9.qmd
-          #      text: Practical
-          #    - href: data-vis/week-9/study_after9.qmd
-          #      text: Consolidate!
-          # - section: "Week 10: Shiny Dashboards Part 2"
-          #   contents:
-          #    - href: data-vis/week-9/overview10.qmd
-          #      text: About
-          #    - href: data-vis/week-9/study_before10.qmd
-          #      text: Prepare!
-          #    - href: data-vis/week-9/seminar10.qmd
-          #      text: Seminar
-          #    - href: data-vis/week-9/practical10.qmd
-          #      text: Practical
-          #    - href: data-vis/week-9/study_after10.qmd
-          #      text: Consolidate!
+             - href: data-vis/week-9/practical9.qmd
+               text: Practical
+             - href: data-vis/week-9/study_after9.qmd
+               text: Consolidate!
+          - section: "Week 10: Shiny Dashboards Part 2"
+            contents:
+             - href: data-vis/week-10/overview10.qmd
+               text: About
+             - href: data-vis/week-10/study_before10.qmd
+               text: Prepare!
+             - href: data-vis/week-10/seminar10.qmd
+               text: Seminar
+             - href: data-vis/week-10/practical10.qmd
+               text: Practical
+             - href: data-vis/week-10/study_after10.qmd
+               text: Consolidate!
 
 execute:
   echo: true
