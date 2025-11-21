@@ -81,7 +81,7 @@ project_name/
 
 ![](images/do_in_R.png) Inside this project, create a subfolder called `data`.
 
-![](images/do_on_your_computer.png) Copy the relevant CSV file(s) from the original week into this `data` folder. For example:
+![](images/do_on_your_computer.png) Copy the relevant CSV file(s) from the original week into this `data` folder.
 
 ![](images/answer.png) Why is it helpful to keep **all files needed for your report** (data, `.qmd`, project file) together in one project folder?
 

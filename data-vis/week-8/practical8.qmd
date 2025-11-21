@@ -409,7 +409,7 @@ ggplot(wellbeing_df, aes(x = wellbeing_index, y = sleep_hours)) +
 ![](images/do_in_R.png) As in the previous exercise, render the report and evaluate how it appears, then change the `out-width` and/or `fig-height` to be more readable if needed. 
 
 
-## Exercise 8: Fill out the Introduction and Summary
+## Exercise 9: Fill out the Introduction and Summary
 
 Considering your inspection of the dataset and the patterns:
 

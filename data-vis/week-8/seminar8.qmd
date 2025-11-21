@@ -327,6 +327,10 @@ Labels are useful for figuring out where errors come from
 
 <br>
 
+By default, code is both shown and run
+
+<br>
+
 Show the code, but **do not run it**
 
 ````
