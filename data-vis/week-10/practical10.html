@@ -134,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-10/overview10.html">Week 10: Shiny Dashboards Part 2</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-10/practical10.html">Practical</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-10/overview10.html">Week 10: Shiny Apps 2</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-10/practical10.html">Practical</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -520,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 10: Shiny Dashboards Part 2</span></a>
+ <span class="menu-text">Week 10: Shiny Apps 2</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -570,6 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
 <li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
+  <li><a href="#example-app" id="toc-example-app" class="nav-link" data-scroll-target="#example-app">Example App</a></li>
   <li><a href="#philosophy" id="toc-philosophy" class="nav-link" data-scroll-target="#philosophy">Philosophy</a></li>
   </ul>
 </li>
@@ -581,19 +582,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercise-3-add-a-minimal-shiny-app-skeleton" id="toc-exercise-3-add-a-minimal-shiny-app-skeleton" class="nav-link" data-scroll-target="#exercise-3-add-a-minimal-shiny-app-skeleton">Exercise 3: Add a minimal Shiny app skeleton</a></li>
   <li><a href="#exercise-4-build-a-sidebar-layout-and-inputs" id="toc-exercise-4-build-a-sidebar-layout-and-inputs" class="nav-link" data-scroll-target="#exercise-4-build-a-sidebar-layout-and-inputs">Exercise 4: Build a sidebar layout and inputs</a></li>
   <li><a href="#exercise-5-add-tabs-to-the-main-panel" id="toc-exercise-5-add-tabs-to-the-main-panel" class="nav-link" data-scroll-target="#exercise-5-add-tabs-to-the-main-panel">Exercise 5: Add tabs to the main panel</a></li>
-  <li><a href="#exercise-6-add-a-reactive-filtered-dataset" id="toc-exercise-6-add-a-reactive-filtered-dataset" class="nav-link" data-scroll-target="#exercise-6-add-a-reactive-filtered-dataset">Exercise 6: Add a reactive filtered dataset</a></li>
-  <li><a href="#exercise-7-build-the-groups-tab-plot-with-.datainputoutcome" id="toc-exercise-7-build-the-groups-tab-plot-with-.datainputoutcome" class="nav-link" data-scroll-target="#exercise-7-build-the-groups-tab-plot-with-.datainputoutcome">Exercise 7: Build the Groups tab plot with <code>.data[[input$outcome]]</code></a></li>
-  <li><a href="#exercise-8-build-the-distributions-tab-plot-with-optional-faceting" id="toc-exercise-8-build-the-distributions-tab-plot-with-optional-faceting" class="nav-link" data-scroll-target="#exercise-8-build-the-distributions-tab-plot-with-optional-faceting">Exercise 8: Build the Distributions tab plot with optional faceting</a></li>
-  <li><a href="#exercise-9-review-tidy-and-reflect" id="toc-exercise-9-review-tidy-and-reflect" class="nav-link" data-scroll-target="#exercise-9-review-tidy-and-reflect">Exercise 9: Review, tidy, and reflect</a></li>
+  <li><a href="#exercise-6-explore-additional-user-input-controls" id="toc-exercise-6-explore-additional-user-input-controls" class="nav-link" data-scroll-target="#exercise-6-explore-additional-user-input-controls">Exercise 6: Explore additional user input controls</a></li>
+  <li><a href="#exercise-7-add-a-reactive-filtered-dataset" id="toc-exercise-7-add-a-reactive-filtered-dataset" class="nav-link" data-scroll-target="#exercise-7-add-a-reactive-filtered-dataset">Exercise 7: Add a reactive filtered dataset</a></li>
+  <li><a href="#exercise-8-build-the-groups-tab-plot-with-.datainputoutcome" id="toc-exercise-8-build-the-groups-tab-plot-with-.datainputoutcome" class="nav-link" data-scroll-target="#exercise-8-build-the-groups-tab-plot-with-.datainputoutcome">Exercise 8: Build the Groups tab plot with <code>.data[[input$outcome]]</code></a></li>
+  <li><a href="#exercise-9-build-the-distributions-tab-plot-with-optional-faceting" id="toc-exercise-9-build-the-distributions-tab-plot-with-optional-faceting" class="nav-link" data-scroll-target="#exercise-9-build-the-distributions-tab-plot-with-optional-faceting">Exercise 9: Build the Distributions tab plot with optional faceting</a></li>
+  <li><a href="#exercise-10-review-tidy-and-reflect" id="toc-exercise-10-review-tidy-and-reflect" class="nav-link" data-scroll-target="#exercise-10-review-tidy-and-reflect">Exercise 10: Review, tidy, and reflect</a></li>
   </ul>
 </li>
   <li><a href="#youre-finished" id="toc-youre-finished" class="nav-link" data-scroll-target="#youre-finished">You’re finished! 🎉</a></li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-10/overview10.html">Week 10: Shiny Dashboards Part 2</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-10/practical10.html">Practical</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../data-vis/week-10/overview10.html">Week 10: Shiny Apps 2</a></li><li class="breadcrumb-item"><a href="../../data-vis/week-10/practical10.html">Practical</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Practical</h1>
-<p class="subtitle lead">Week 10 Seminar: Shiny Apps 2</p>
+<p class="subtitle lead">Week 10 Practical: Shiny Apps 2</p>
 </div>
 
 
@@ -609,7 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><section id="introduction" class="level1"><h1>Introduction</h1>
 <section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
-<p>In this practical you’ll <strong>extend your Shiny skills</strong> by building a small <strong>dashboard-style app</strong> using the <strong>wellbeing dataset</strong>, applying the ideas from <strong>Seminar 10</strong>:</p>
+<p>In this practical you’ll extend your Shiny skills by building a small dashboard-style app using the wellbeing dataset, applying the ideas from Seminar 10:</p>
 <ul>
 <li>Using a <strong>sidebar layout</strong> with inputs on the left and outputs on the right<br>
 </li>
@@ -622,6 +624,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Using <code>.data[[input$outcome]]</code> inside <code>ggplot()</code> to avoid long <code>if / else</code> blocks<br>
 </li>
 <li>Adding a <strong>tab-specific control</strong> (checkbox) to switch faceting on and off</li>
+</ul></section><section id="example-app" class="level2"><h2 class="anchored" data-anchor-id="example-app">Example App</h2>
+<p>These exercises will walk you through building an app similar to the one you saw in the seminar. You can download the finished example from the seminar (which contains extensive comments / explanations) here:</p>
+<ul>
+<li><a href="app.R" download="">app.R</a></li>
 </ul>
 <p>By the end, you should have a working <strong>multi-tab Shiny dashboard</strong> that lets you explore <strong>wellbeing and sleep across participant groups</strong>.</p>
 </section><section id="philosophy" class="level2"><h2 class="anchored" data-anchor-id="philosophy">Philosophy</h2>
@@ -675,7 +681,7 @@ Follow the steps carefully so that your project structure stays simple and consi
   project_name.Rproj
   data/</code></pre>
 <p>Now you’ll add the data file.</p>
-<p><img src="images/do_on_internet.png" class="img-fluid"> Download the wellbeing CSV file for this practical from the VLE:</p>
+<p><img src="images/do_on_internet.png" class="img-fluid"> Download the wellbeing CSV file for this practical:</p>
 <ul>
 <li><a href="../data/wellbeing_dataset.csv">wellbeing_dataset.csv</a></li>
 </ul>
@@ -684,7 +690,7 @@ Follow the steps carefully so that your project structure stays simple and consi
   project_name.Rproj
   data/
     wellbeing_dataset.csv</code></pre>
-<hr></section><section id="exercise-2-create-app.r-and-load-the-data" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-create-app.r-and-load-the-data">Exercise 2: Create <code>app.R</code> and load the data</h2>
+</section><section id="exercise-2-create-app.r-and-load-the-data" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-create-app.r-and-load-the-data">Exercise 2: Create <code>app.R</code> and load the data</h2>
 <p>Next, you’ll create your main <strong>Shiny app script</strong> (<code>app.R</code>) and load the data.</p>
 <p><img src="images/do_in_R.png" class="img-fluid"> In RStudio, go to <strong>File → New File → R Script</strong>.</p>
 <p><img src="images/do_in_R.png" class="img-fluid"> Save this file in your <code>project_name/</code> folder with the name <strong><code>app.R</code></strong>.</p>
@@ -704,7 +710,7 @@ Follow the steps carefully so that your project structure stays simple and consi
 <li>Sets a simple base theme, for example using <code>theme_minimal(base_size = 14)</code>.</li>
 </ul>
 <p>Your code will be similar in spirit to Week 9, but remember that this time you are working inside a <strong>new project folder</strong>.</p>
-<hr></section><section id="exercise-3-add-a-minimal-shiny-app-skeleton" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-add-a-minimal-shiny-app-skeleton">Exercise 3: Add a minimal Shiny app skeleton</h2>
+</section><section id="exercise-3-add-a-minimal-shiny-app-skeleton" class="level2"><h2 class="anchored" data-anchor-id="exercise-3-add-a-minimal-shiny-app-skeleton">Exercise 3: Add a minimal Shiny app skeleton</h2>
 <p>A Shiny app needs three main parts:</p>
 <ul>
 <li>a <strong>UI</strong> that defines what the app looks like<br>
@@ -796,8 +802,12 @@ Follow the steps carefully so that your project structure stays simple and consi
 </li>
 <li>Under <strong>Distributions</strong>, a checkbox and an empty plot area</li>
 </ul>
-<p>The app won’t draw any plots yet – that’s the next step.</p>
-</section><section id="exercise-6-add-a-reactive-filtered-dataset" class="level2"><h2 class="anchored" data-anchor-id="exercise-6-add-a-reactive-filtered-dataset">Exercise 6: Add a reactive filtered dataset</h2>
+<p>The app won’t draw any plots yet - you’ll add code to make the app draw plots in a later step.</p>
+</section><section id="exercise-6-explore-additional-user-input-controls" class="level2"><h2 class="anchored" data-anchor-id="exercise-6-explore-additional-user-input-controls">Exercise 6: Explore additional user input controls</h2>
+<p>We’ve covered some useful user input controls, including dropdown menus, single checkboxes, and groups of checkboxes. However, these aren’t the only controls available! When creating apps in the future (for your final assessment and beyond), you may want to include other controls. You can find the full set of controls you can implement in Shiny by following the link below. Note that these controls are referred to as “widgets”.</p>
+<p><img src="images/do_on_internet.png" class="img-fluid"> Explore the <a href="https://shiny.posit.co/r/gallery/widgets/widget-gallery/">Widget Gallery</a></p>
+<p><img src="images/answer.png" class="img-fluid"> What other widgets might be useful in the future? Radio buttons? Sliders?</p>
+</section><section id="exercise-7-add-a-reactive-filtered-dataset" class="level2"><h2 class="anchored" data-anchor-id="exercise-7-add-a-reactive-filtered-dataset">Exercise 7: Add a reactive filtered dataset</h2>
 <p>In Seminar 10, you saw how to use a <strong>reactive expression</strong> to create a function that returns a filtered dataset based on user input.</p>
 <p>Here, you’ll create a <code>filtered_data()</code> function that:</p>
 <ul>
@@ -821,7 +831,7 @@ Follow the steps carefully so that your project structure stays simple and consi
 </li>
 </ul>
 <p><img src="images/answer.png" class="img-fluid"> What is one advantage of using a <code>filtered_data()</code> reactive expression instead of repeating the same <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> code inside each plot?</p>
-</section><section id="exercise-7-build-the-groups-tab-plot-with-.datainputoutcome" class="level2"><h2 class="anchored" data-anchor-id="exercise-7-build-the-groups-tab-plot-with-.datainputoutcome">Exercise 7: Build the Groups tab plot with <code>.data[[input$outcome]]</code>
+</section><section id="exercise-8-build-the-groups-tab-plot-with-.datainputoutcome" class="level2"><h2 class="anchored" data-anchor-id="exercise-8-build-the-groups-tab-plot-with-.datainputoutcome">Exercise 8: Build the Groups tab plot with <code>.data[[input$outcome]]</code>
 </h2>
 <p>Next, you’ll create the plot for the <strong>Groups</strong> tab. To create this plot:</p>
 <ol type="1">
@@ -855,7 +865,7 @@ Follow the steps carefully so that your project structure stays simple and consi
 </ul>
 <p>The <strong>Groups</strong> tab plot should update to show only selected groups and the chosen outcome on the y-axis.</p>
 <p><img src="images/answer.png" class="img-fluid"> What does <code>.data[[input$outcome]]</code> do inside <code>aes()</code>?</p>
-</section><section id="exercise-8-build-the-distributions-tab-plot-with-optional-faceting" class="level2"><h2 class="anchored" data-anchor-id="exercise-8-build-the-distributions-tab-plot-with-optional-faceting">Exercise 8: Build the Distributions tab plot with optional faceting</h2>
+</section><section id="exercise-9-build-the-distributions-tab-plot-with-optional-faceting" class="level2"><h2 class="anchored" data-anchor-id="exercise-9-build-the-distributions-tab-plot-with-optional-faceting">Exercise 9: Build the Distributions tab plot with optional faceting</h2>
 <p>Now you’ll create a second plot for the <strong>Distributions</strong> tab. This plot will:</p>
 <ol type="1">
 <li>Use <code>filtered_data()</code> so it respects the group filter<br>
@@ -904,7 +914,7 @@ Follow the steps carefully so that your project structure stays simple and consi
 </li>
 </ul>
 <p>Now the Distributions tab should be fully functional.</p>
-</section><section id="exercise-9-review-tidy-and-reflect" class="level2"><h2 class="anchored" data-anchor-id="exercise-9-review-tidy-and-reflect">Exercise 9: Review, tidy, and reflect</h2>
+</section><section id="exercise-10-review-tidy-and-reflect" class="level2"><h2 class="anchored" data-anchor-id="exercise-10-review-tidy-and-reflect">Exercise 10: Review, tidy, and reflect</h2>
 <p>In this final exercise, you’ll tidy your app and make sure you understand how each part works.</p>
 <p><img src="images/do_in_R.png" class="img-fluid"> In <code>app.R</code>, add a few short <strong>comments</strong> (lines starting with <code>#</code>) to remind your future self what each section does</p>
 <p><img src="images/answer.png" class="img-fluid"> Looking back at your Week 9 app and this Week 10 dashboard, what are <strong>two key differences</strong> in how you structure and reuse code in Shiny?</p>
